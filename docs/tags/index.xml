@@ -1,81 +1,81 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Jane Doe</title>
-    <link>https://examplesite.com/tags/</link>
-    <description>Recent content in Tags on Jane Doe</description>
+    <title>Tags on Anigkus</title>
+    <link>https://anigkus.github.io/tags/</link>
+    <description>Recent content in Tags on Anigkus</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://examplesite.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://anigkus.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>css</title>
-      <link>https://examplesite.com/tags/css/</link>
+      <link>https://anigkus.github.io/tags/css/</link>
       <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://examplesite.com/tags/css/</guid>
+      <guid>https://anigkus.github.io/tags/css/</guid>
       <description></description>
     </item>
     
     <item>
       <title>html</title>
-      <link>https://examplesite.com/tags/html/</link>
+      <link>https://anigkus.github.io/tags/html/</link>
       <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://examplesite.com/tags/html/</guid>
+      <guid>https://anigkus.github.io/tags/html/</guid>
       <description></description>
     </item>
     
     <item>
       <title>markdown</title>
-      <link>https://examplesite.com/tags/markdown/</link>
+      <link>https://anigkus.github.io/tags/markdown/</link>
       <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://examplesite.com/tags/markdown/</guid>
+      <guid>https://anigkus.github.io/tags/markdown/</guid>
       <description></description>
     </item>
     
     <item>
       <title>privacy</title>
-      <link>https://examplesite.com/tags/privacy/</link>
+      <link>https://anigkus.github.io/tags/privacy/</link>
       <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://examplesite.com/tags/privacy/</guid>
+      <guid>https://anigkus.github.io/tags/privacy/</guid>
       <description></description>
     </item>
     
     <item>
       <title>shortcodes</title>
-      <link>https://examplesite.com/tags/shortcodes/</link>
+      <link>https://anigkus.github.io/tags/shortcodes/</link>
       <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://examplesite.com/tags/shortcodes/</guid>
+      <guid>https://anigkus.github.io/tags/shortcodes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>text</title>
-      <link>https://examplesite.com/tags/text/</link>
+      <link>https://anigkus.github.io/tags/text/</link>
       <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://examplesite.com/tags/text/</guid>
+      <guid>https://anigkus.github.io/tags/text/</guid>
       <description></description>
     </item>
     
     <item>
       <title>emoji</title>
-      <link>https://examplesite.com/tags/emoji/</link>
+      <link>https://anigkus.github.io/tags/emoji/</link>
       <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://examplesite.com/tags/emoji/</guid>
+      <guid>https://anigkus.github.io/tags/emoji/</guid>
       <description></description>
     </item>
     
     <item>
       <title>index</title>
-      <link>https://examplesite.com/tags/index/</link>
+      <link>https://anigkus.github.io/tags/index/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://examplesite.com/tags/index/</guid>
+      <guid>https://anigkus.github.io/tags/index/</guid>
       <description></description>
     </item>
     

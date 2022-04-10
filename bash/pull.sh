@@ -1,4 +1,5 @@
 #!/bin/bash
+#marking
 [ -z "$set_e" ] && set -e
 
 [ -z "$1" ] && { echo '$1 is not set';exit 2; }

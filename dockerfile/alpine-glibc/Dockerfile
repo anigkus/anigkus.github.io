@@ -14,7 +14,6 @@
 
 # 
 # Build the minimum version of the JDK base image based on the alpine image
-# Usage: docker build -t anigkus/glibc:2.34-r0  -f dockerfile-alpine-glibc .
 #
 FROM alpine:3.15
 
@@ -26,6 +25,7 @@ ENV LANG=C.UTF-8
 
 # Dependency Package Info
 ENV ALPINE_VERSION=3.15
+ENV ALPINE_GLIBC_VERSION=2.34-r0
 
 # A streamlined glibc
 RUN ZLIB_BASE_URL="https://github.com/anigkus/packages/raw/main/zstd" && \

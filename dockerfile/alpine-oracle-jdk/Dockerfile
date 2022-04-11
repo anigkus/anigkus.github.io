@@ -15,7 +15,6 @@
 
 # 
 # Build the minimum version of the JDK base image 
-# Usage: docker build -t anigkus/oracle-jdk:11.0.13 -f dockerfile-alpine-oracle-jdk .
 #
 FROM anigkus/glibc:2.34-r0
 

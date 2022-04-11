@@ -15,9 +15,9 @@
 
 # 
 # Build the minimum version of the JDK base image 
-# Usage: docker build -t anigkus/oracle-jdk:11.0.13 .
+# Usage: docker build -t anigkus/oracle-jdk:11.0.13 -f dockerfile-alpine-oracle-jdk .
 #
-FROM anigkus/alpine-glibc:alpine-3.5_glibc-2.34-r0
+FROM anigkus/glibc:2.34-r0
 
 # Author
 LABEL maintainer="anigkus <anigkus@gmail.com>" 
@@ -27,6 +27,11 @@ ADD jdk-11.0.13_linux-x64_bin.tar.gz /usr/java/jdk/
 
 # Set C.UTF-8 locale as default and java path
 ENV LANG=C.UTF-8
+
+# Dependency Package Info
+ENV GLIBC_VERSION=2.34-r0
+
+# Java path
 ENV JAVA_VERSION=11.0.13
 ENV JAVA_HOME /usr/java/jdk/jdk-11.0.13
 ENV PATH ${PATH}:${JAVA_HOME}/bin

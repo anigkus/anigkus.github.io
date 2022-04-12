@@ -18,6 +18,7 @@ package appte
 import (
 	"fmt"
 
+	"github.com/anigkus/hi-golang/structs"
 	"github.com/anigkus/hi-golang/types"
 )
 
@@ -29,4 +30,17 @@ func Main() {
 	//types package
 	types.Main()
 
+	//external needs to be new instance
+	new(structs.Animal).Main()
+
+	//external not to be new instance
+	structs.NewAnimalNoParameter()
+	structs.NewAnimalNoParameter().ToString()
+	structs.NewAnimalNoParameter().AnimalNoParameter()
+	structs.NewAnimalNoParameter().ToString()
+	fmt.Println(structs.NewAnimalNoParameter().GetName())
+	structs.NewAnimalNoParameter().SetName("xxx")
+	fmt.Println(structs.NewAnimalNoParameter().GetName())
+	structs.NewAnimalWithParamter("Fish", "Fishes")
+	structs.NewAnimalNoParameter().ToString()
 }

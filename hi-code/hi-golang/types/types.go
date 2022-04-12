@@ -38,6 +38,10 @@ func Main() {
 
 	variable_declaration_map()
 
+	variable_operators_builtin()
+
+	variable_operators_collection()
+
 }
 
 func variable_declaration_style() {
@@ -313,6 +317,26 @@ func variable_declaration_map() {
 	fmt.Println(v_map_one, "v_map_one[\"key1\"]:", v_map_one[`key1`]) //map[key1:1 key2:2 key3:3 key4:4] v_map_one["key1"]: 1
 	fmt.Println(v_map_two)                                            //map[key1:10 key2:10 key3:10]
 	fmt.Println(v_map_three)                                          //map[key1:10.01 key2:20.01 key3:30.01]
+
+	fmt.Printf("\n")
+}
+
+func variable_operators_builtin() {
+	fmt.Printf("variable_operators_builtin\n")
+
+	fmt.Printf("\n")
+}
+
+func variable_operators_collection() {
+	//Add
+	//Update
+	//Delete
+	//Get
+	//Iterate
+	//Sort
+	//Merge
+
+	fmt.Printf("variable_operators_collection\n")
 
 	fmt.Printf("\n")
 }

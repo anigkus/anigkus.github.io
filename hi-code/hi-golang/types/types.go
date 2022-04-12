@@ -36,6 +36,8 @@ func Main() {
 
 	variable_declaration_slice()
 
+	variable_declaration_map()
+
 }
 
 func variable_declaration_style() {
@@ -291,4 +293,26 @@ func variable_declaration_slice() {
 
 	fmt.Printf("\n")
 
+}
+
+func variable_declaration_map() {
+	fmt.Printf("variable_declaration_slice\n")
+	var v_map_one = map[string]int{} //Empty Map,Declare before assignment
+	v_map_one["key1"] = 1
+	v_map_one["key2"] = 2
+	v_map_one["key3"] = 3
+	v_map_one["key4"] = 4
+
+	var v_map_two = map[string]int{"key1": 10, "key2": 10, "key3": 10}
+
+	v_map_three := make(map[string]float32)
+	v_map_three["key1"] = 10.01
+	v_map_three["key2"] = 20.01
+	v_map_three["key3"] = 30.01
+
+	fmt.Println(v_map_one, "v_map_one[\"key1\"]:", v_map_one[`key1`]) //map[key1:1 key2:2 key3:3 key4:4] v_map_one["key1"]: 1
+	fmt.Println(v_map_two)                                            //map[key1:10 key2:10 key3:10]
+	fmt.Println(v_map_three)                                          //map[key1:10.01 key2:20.01 key3:30.01]
+
+	fmt.Printf("\n")
 }

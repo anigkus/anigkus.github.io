@@ -18,6 +18,7 @@ package types
 
 import (
 	"fmt"
+	"strings"
 )
 
 //Episode 1
@@ -28,6 +29,12 @@ func Main() {
 	variable_declaration_bool()
 
 	variable_declaration_number()
+
+	variable_declaration_string()
+
+	variable_declaration_array()
+
+	variable_declaration_slice()
 
 }
 
@@ -155,4 +162,133 @@ func variable_declaration_number() {
 	fmt.Println("v_complex64_min complex64 =", v_complex64_min, "v_complex64_max complex64 = ", v_complex64_max)
 
 	fmt.Printf("\n")
+}
+
+func variable_declaration_string() {
+
+	fmt.Printf("variable_declaration_string\n")
+	var v_string_one string = "one\tstring"
+	v_string_two := `two\tstring`
+	v_string_three := "three" + " string"
+	v_string_four := " four "
+	var v_string_five string = v_string_four + "five"
+
+	fmt.Println("&v_string_one:", &v_string_one, "&v_string_two:", &v_string_two)
+	fmt.Println(
+		"v_string_one =", v_string_one,
+		"v_string_two =", v_string_two,
+		"v_string_three =", v_string_three,
+		"v_string_five =", v_string_five)
+
+	//fun
+	fmt.Println(len(v_string_one))                          //10
+	fmt.Println(strings.Index(v_string_one, "n"))           //1
+	fmt.Println(strings.LastIndex(v_string_one, "n"))       //8
+	fmt.Println(strings.IndexAny(v_string_one, "n"))        //1
+	fmt.Println(strings.LastIndexAny(v_string_one, "n"))    //8
+	fmt.Println(strings.Replace(v_string_one, "n", "k", 1)) //oke	string
+	fmt.Println(strings.ReplaceAll(v_string_one, "n", "k")) //oke	strikg
+	fmt.Println(strings.Split(v_string_three, " "))         //[three string]
+
+	//cutset
+	v_cutset_no_trim := "T"
+	v_cutset_left_trim := " T"
+	v_cutset_right_trim := "T "
+	v_cutset_left_and_right_trim := " T "
+
+	v_string_six := "TikHoT"
+	v_string_seven := " TikHoT"
+	v_string_eight := "TikHoT "
+	v_string_nine := " TikHoT "
+
+	fmt.Println(strings.TrimLeft(v_string_nine, " T "))
+	//Trim
+	fmt.Println(strings.Trim(v_string_six, v_cutset_no_trim), len(strings.Trim(v_string_six, v_cutset_no_trim)))                         //ikHo 4
+	fmt.Println(strings.Trim(v_string_six, v_cutset_left_trim), len(strings.Trim(v_string_six, v_cutset_left_trim)))                     //ikHo 4
+	fmt.Println(strings.Trim(v_string_six, v_cutset_right_trim), len(strings.Trim(v_string_six, v_cutset_right_trim)))                   //ikHo 4
+	fmt.Println(strings.Trim(v_string_six, v_cutset_left_and_right_trim), len(strings.Trim(v_string_six, v_cutset_left_and_right_trim))) //ikHo 4
+
+	//TrimLeft
+	fmt.Println(strings.TrimLeft(v_string_seven, v_cutset_no_trim), len(strings.TrimLeft(v_string_seven, v_cutset_no_trim)))                         // TikHoT 7
+	fmt.Println(strings.TrimLeft(v_string_seven, v_cutset_left_trim), len(strings.TrimLeft(v_string_seven, v_cutset_left_trim)))                     //ikHoT 5
+	fmt.Println(strings.TrimLeft(v_string_seven, v_cutset_right_trim), len(strings.TrimLeft(v_string_seven, v_cutset_right_trim)))                   //ikHoT 5
+	fmt.Println(strings.TrimLeft(v_string_seven, v_cutset_left_and_right_trim), len(strings.TrimLeft(v_string_seven, v_cutset_left_and_right_trim))) //ikHoT 5
+
+	//TrimRight
+	fmt.Println(strings.TrimRight(v_string_eight, v_cutset_no_trim), len(strings.TrimRight(v_string_eight, v_cutset_no_trim)))                         //TikHoT  7
+	fmt.Println(strings.TrimRight(v_string_eight, v_cutset_left_trim), len(strings.TrimRight(v_string_eight, v_cutset_left_trim)))                     //TikHo 5
+	fmt.Println(strings.TrimRight(v_string_eight, v_cutset_right_trim), len(strings.TrimRight(v_string_eight, v_cutset_right_trim)))                   //TikHo 5
+	fmt.Println(strings.TrimRight(v_string_eight, v_cutset_left_and_right_trim), len(strings.TrimRight(v_string_eight, v_cutset_left_and_right_trim))) //TikHo 5
+
+	fmt.Println(strings.Repeat("-", 20))
+	//Trim
+	fmt.Println(strings.Trim(v_string_nine, v_cutset_no_trim), len(strings.Trim(v_string_nine, v_cutset_no_trim)))                         // TikHoT  8
+	fmt.Println(strings.Trim(v_string_nine, v_cutset_left_trim), len(strings.Trim(v_string_nine, v_cutset_left_trim)))                     //ikHo 4
+	fmt.Println(strings.Trim(v_string_nine, v_cutset_right_trim), len(strings.Trim(v_string_nine, v_cutset_right_trim)))                   //ikHo 4
+	fmt.Println(strings.Trim(v_string_nine, v_cutset_left_and_right_trim), len(strings.Trim(v_string_nine, v_cutset_left_and_right_trim))) //ikHo 4
+
+	//TrimLeft
+	fmt.Println(strings.TrimLeft(v_string_nine, v_cutset_no_trim), len(strings.TrimLeft(v_string_nine, v_cutset_no_trim)))                         // TikHoT  8
+	fmt.Println(strings.TrimLeft(v_string_nine, v_cutset_left_trim), len(strings.TrimLeft(v_string_nine, v_cutset_left_trim)))                     //ikHoT  6
+	fmt.Println(strings.TrimLeft(v_string_nine, v_cutset_right_trim), len(strings.TrimLeft(v_string_nine, v_cutset_right_trim)))                   //ikHoT  6
+	fmt.Println(strings.TrimLeft(v_string_nine, v_cutset_left_and_right_trim), len(strings.TrimLeft(v_string_nine, v_cutset_left_and_right_trim))) //ikHoT  6
+
+	//TrimRight
+	fmt.Println(strings.TrimRight(v_string_nine, v_cutset_no_trim), len(strings.TrimRight(v_string_nine, v_cutset_no_trim)))                         // TikHoT  8
+	fmt.Println(strings.TrimRight(v_string_nine, v_cutset_left_trim), len(strings.TrimRight(v_string_nine, v_cutset_left_trim)))                     // TikHo 6
+	fmt.Println(strings.TrimRight(v_string_nine, v_cutset_right_trim), len(strings.TrimRight(v_string_nine, v_cutset_right_trim)))                   // TikHo 6
+	fmt.Println(strings.TrimRight(v_string_nine, v_cutset_left_and_right_trim), len(strings.TrimRight(v_string_nine, v_cutset_left_and_right_trim))) // TikHo 6
+
+	fmt.Printf("\n")
+
+}
+
+func variable_declaration_array() {
+
+	fmt.Printf("variable_declaration_array\n")
+	var v_array_one [2]int //Declare before assignment
+	v_array_one[0] = 10
+	v_array_one[1] = 20
+
+	v_array_two := [5]int{10, 20, 30, 40, 50}     // Intialized with values
+	var v_array_three [5]int = [5]int{10, 20, 30} // Partial assignment
+
+	fmt.Println("&v_array_one:", &v_array_one, "&v_array_one[0]:", &v_array_one[0]) //&v_array_one: &[10 20] &v_array_one[0]: 0xc0000b2140
+	fmt.Println(v_array_one)                                                        //[10 20]
+	fmt.Println(v_array_two)                                                        //[10 20 30 40 50]
+	fmt.Println(v_array_three)                                                      //[10 20 30 0 0]
+
+	fmt.Printf("\n")
+}
+
+func variable_declaration_slice() {
+
+	fmt.Printf("variable_declaration_slice\n")
+	var v_slice_one []int //Declare before assignment
+	v_slice_one = append(v_slice_one, 10, 20, 30, 40, 50)
+
+	var v_slice_two []int = make([]int, 4)      //Len:4,Cap=4,auto resize 'Cap'
+	var v_slice_three []int = make([]int, 2, 3) //Len:2,Cap=3
+	v_slice_two[0] = 10
+	v_slice_two[2] = 20
+	v_slice_two[3] = 30
+	//v_slice_two[4] = 40 //Index out of range [3] with length 3
+	v_slice_two = append(v_slice_two, 40) //Use this
+
+	v_slice_three[0] = 10
+	v_slice_three[1] = 20
+
+	var v_slice_four []int = []int{10, 20, 30, 40, 50} // Intialized with values
+
+	fmt.Println("&v_slice_one:", &v_slice_one, "&v_slice_one[0]:", &v_slice_one[0]) //&v_slice_one: &[10 20 30 40 50] &v_slice_one[0]: 0xc0000b4090
+	fmt.Println(v_slice_one)                                                        //[10 20 30 40 50]
+	fmt.Println(v_slice_four)                                                       //[10 20 30 40 50]
+	fmt.Println(v_slice_two, v_slice_three,
+		"v_slice_two Len:", len(v_slice_two),
+		"v_slice_two Cap:", cap(v_slice_two),
+		"v_slice_three Len:", len(v_slice_three),
+		"v_slice_three Cap:", cap(v_slice_three)) //[10 0 20 30 40] [10 20] v_slice_two Len: 5 v_slice_two Cap: 8 v_slice_three Len: 2 v_slice_three Cap: 3
+
+	fmt.Printf("\n")
+
 }

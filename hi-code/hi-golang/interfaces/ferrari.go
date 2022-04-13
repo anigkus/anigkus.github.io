@@ -24,7 +24,7 @@ type FerrariCar struct {
 	color     string
 }
 
-func NewFerrariCar() *FerrariCar {
+func (f *FerrariCar) NewFerrariCar() *FerrariCar {
 	return &FerrariCar{
 		speed:     255,
 		brandName: "Ferrari",
@@ -33,8 +33,8 @@ func NewFerrariCar() *FerrariCar {
 }
 
 func (f *FerrariCar) Run() {
-	car := NewFerrariCar()
-	fmt.Println("This Car is ", car.brandName, ",Max speed is ", car.speed, "is color ", car.color)
+
+	fmt.Println("This Car is ", f.brandName, ",Max speed is ", f.speed, "is color ", f.color)
 }
 
 func (f *FerrariCar) GetBrandName() string {

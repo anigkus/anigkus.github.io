@@ -24,8 +24,8 @@ type People struct {
 func (p *People) BuyCarBySpeed(speed uint16) {
 	switch {
 	case speed >= 255:
-
-		cars := []Car{new(FerrariCar)}
+		ferrariCar := new(FerrariCar).NewFerrariCar()
+		cars := []Car{ferrariCar}
 		for _, car := range cars {
 			car.Run()
 			fmt.Println(car.GetBrandName())
@@ -36,7 +36,7 @@ func (p *People) BuyCarBySpeed(speed uint16) {
 		//not break key
 	case speed <= 140:
 		var car Car
-		car = &VolvoCar{} //car = VolvoCar{}
+		car = new(VolvoCar).NewVolvoCar() //car = VolvoCar{}
 		car.Run()
 		fmt.Println(car.GetBrandName())
 		car.UpdateColor("White")

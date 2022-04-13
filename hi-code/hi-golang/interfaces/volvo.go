@@ -31,10 +31,11 @@ func (v *VolvoCar) NewVolvoCar() *VolvoCar {
 		color:     "Black",
 	}
 }
+
 func (v *VolvoCar) Run() {
 	fmt.Println("This Car is ", v.brandName, ",Max speed is ", v.speed, "is color ", v.color)
-
 }
+
 func (f *VolvoCar) GetBrandName() string {
 	return f.brandName
 }

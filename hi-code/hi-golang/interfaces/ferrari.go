@@ -33,7 +33,6 @@ func (f *FerrariCar) NewFerrariCar() *FerrariCar {
 }
 
 func (f *FerrariCar) Run() {
-
 	fmt.Println("This Car is ", f.brandName, ",Max speed is ", f.speed, "is color ", f.color)
 }
 

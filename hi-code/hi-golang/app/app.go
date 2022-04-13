@@ -43,4 +43,7 @@ func Main() {
 	fmt.Println(structs.NewAnimalNoParameter().GetName())
 	structs.NewAnimalWithParamter("Fish", "Fishes")
 	structs.NewAnimalNoParameter().ToString()
+
+	//interface
+
 }

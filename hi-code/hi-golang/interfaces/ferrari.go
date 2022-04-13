@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,10 +14,28 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package main
+package interfaces
 
-import app "github.com/anigkus/hi-golang/app"
+import "fmt"
 
-func main() {
-	app.Main()
+type FerrariCar struct {
+	speed     uint16
+	brandName string
+}
+
+func NewFerrariCar() *FerrariCar {
+	return &FerrariCar{
+		speed:     255,
+		brandName: "Ferrari",
+	}
+}
+
+func (f *FerrariCar) Run() {
+	car := NewFerrariCar()
+	fmt.Println("This Car is ", car.brandName, ",Max speed is ", car.speed)
+}
+
+func (f *FerrariCar) BrandName(brandName string) string {
+	v := fmt.Sprintf("this %v", brandName)
+	return v
 }

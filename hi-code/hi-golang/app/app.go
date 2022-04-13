@@ -48,7 +48,8 @@ func Main() {
 
 	//interface
 	fmt.Println(strings.Repeat("-", 20))
-	new(interfaces.People).BuyCarBySpeed(100)
 	new(interfaces.People).BuyCarBySpeed(300)
+	fmt.Println(strings.Repeat("-", 20))
+	new(interfaces.People).BuyCarBySpeed(100)
 
 }

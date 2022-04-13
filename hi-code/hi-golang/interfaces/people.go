@@ -16,7 +16,10 @@ limitations under the License.
 
 package interfaces
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type People struct {
 }
@@ -41,6 +44,16 @@ func (p *People) BuyCarBySpeed(speed uint16) {
 		fmt.Println(car.GetBrandName())
 		car.UpdateColor("White")
 		car.Run()
+
+		fmt.Println(strings.Repeat("-", 20))
+
+		var car2 Car
+		car2 = &VolvoCar{} //attibuter is  use default value
+		fmt.Printf("car:%v,car2:%v\n", &car, &car2)
+		car2.Run()
+		fmt.Println(car2.GetBrandName())
+		car2.UpdateColor("White")
+		car2.Run()
 
 	default:
 		fmt.Print("No Selected Car")

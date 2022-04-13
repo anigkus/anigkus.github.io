@@ -17,7 +17,9 @@ package appte
 
 import (
 	"fmt"
+	"strings"
 
+	"github.com/anigkus/hi-golang/interfaces"
 	"github.com/anigkus/hi-golang/structs"
 	"github.com/anigkus/hi-golang/types"
 )
@@ -45,5 +47,8 @@ func Main() {
 	structs.NewAnimalNoParameter().ToString()
 
 	//interface
+	fmt.Println(strings.Repeat("-", 20))
+	new(interfaces.People).BuyCarBySpeed(100)
+	new(interfaces.People).BuyCarBySpeed(300)
 
 }

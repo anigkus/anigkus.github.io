@@ -21,16 +21,25 @@ import "fmt"
 type VolvoCar struct {
 	speed     uint16
 	brandName string
+	color     string
 }
 
 func NewVolvoCar() *VolvoCar {
 	return &VolvoCar{
 		speed:     140,
 		brandName: "Volvo",
+		color:     "Black",
 	}
 }
 func (v *VolvoCar) Run() {
 	car := NewVolvoCar()
-	fmt.Println("This Car is ", car.brandName, ",Max speed is ", car.speed)
+	fmt.Println("This Car is ", car.brandName, ",Max speed is ", car.speed, "is color ", car.color)
 
+}
+func (f *VolvoCar) GetBrandName() string {
+	return f.brandName
+}
+
+func (f *VolvoCar) UpdateColor(color string) {
+	f.color = color
 }

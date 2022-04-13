@@ -17,6 +17,7 @@ limitations under the License.
 package interfaces
 
 type Car interface {
-	BrandName(brandName string) string
-	Run(unit uint16)
+	GetBrandName() string
+	Run()
+	UpdateColor(color string)
 }

@@ -21,21 +21,26 @@ import "fmt"
 type FerrariCar struct {
 	speed     uint16
 	brandName string
+	color     string
 }
 
 func NewFerrariCar() *FerrariCar {
 	return &FerrariCar{
 		speed:     255,
 		brandName: "Ferrari",
+		color:     "Red",
 	}
 }
 
 func (f *FerrariCar) Run() {
 	car := NewFerrariCar()
-	fmt.Println("This Car is ", car.brandName, ",Max speed is ", car.speed)
+	fmt.Println("This Car is ", car.brandName, ",Max speed is ", car.speed, "is color ", car.color)
 }
 
-func (f *FerrariCar) BrandName(brandName string) string {
-	v := fmt.Sprintf("this %v", brandName)
-	return v
+func (f *FerrariCar) GetBrandName() string {
+	return f.brandName
+}
+
+func (f *FerrariCar) UpdateColor(color string) {
+	f.color = color
 }

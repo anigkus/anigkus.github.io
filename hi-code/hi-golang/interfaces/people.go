@@ -19,18 +19,29 @@ package interfaces
 import "fmt"
 
 type People struct {
-	Car
 }
 
-func BuyCarBySpeed(speed uint16) {
+func (p *People) BuyCarBySpeed(speed uint16) {
 	switch {
 	case speed >= 255:
-		//p := new(People)
 
-		break
-	case speed >= 140:
+		cars := []Car{new(FerrariCar)}
+		for _, car := range cars {
+			car.Run()
+			fmt.Println(car.GetBrandName())
+			car.UpdateColor("Yellow")
+			car.Run()
 
-		break
+		}
+		//not break key
+	case speed <= 140:
+		var car Car
+		car = &VolvoCar{} //car = VolvoCar{}
+		car.Run()
+		fmt.Println(car.GetBrandName())
+		car.UpdateColor("White")
+		car.Run()
+
 	default:
 		fmt.Print("No Selected Car")
 	}

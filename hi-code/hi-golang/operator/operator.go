@@ -20,4 +20,37 @@ import "fmt"
 
 func Main() {
 	fmt.Println("operator...")
+	/*
+		Arithmetic Operators
+		Assignment Operators
+		Comparison Operators
+		Logical Operators
+		Bitwise Operators
+	*/
+}
+
+func Arithmetic() {
+
+	int64_one := 64
+	fmt.Println("Arithmetic "+
+		"+", int64_one,
+		"-", int64_one,
+		"*", int64_one,
+		"\\", int64_one,
+		"%", int64_one,
+		"++", int64_one,
+		"--", int64_one)
+}
+
+func Assignment() {
+	fmt.Println("Assignment")
+}
+func Comparison() {
+	fmt.Println("Comparison")
+}
+func Logical() {
+	fmt.Println("Logical")
+}
+func Bitwise() {
+	fmt.Println("Bitwise")
 }

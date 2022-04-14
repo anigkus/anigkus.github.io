@@ -136,28 +136,28 @@ func convToString() {
 
 func intToInt() {
 
-	var int_one int = -32769
-	int16_one := int16(int_one)                                                     //Range: -32768 through 32767.
-	fmt.Printf("int_one value :%v To int16_one value: %v"+"\n", int_one, int16_one) //int_one value :-32769 To int16_one value: 32767
+	var int64_one int = -32769
+	int16_one := int16(int64_one)                                                       //Range: -32768 through 32767.
+	fmt.Printf("int64_one value :%v To int16_one value: %v"+"\n", int64_one, int16_one) //int64_one value :-32769 To int16_one value: 32767
 
-	int_one = 32769
-	int16_one = int16(int_one)
-	fmt.Printf("int_one value :%v To int16_one value: %v"+"\n", int_one, int16_one) //int_one value :32769 To int16_one value: -32767
+	int64_one = 32769
+	int16_one = int16(int64_one)
+	fmt.Printf("int64_one value :%v To int16_one value: %v"+"\n", int64_one, int16_one) //int64_one value :32769 To int16_one value: -32767
 
-	int_one = -32769
-	int32_one := int32(int_one)
-	fmt.Printf("int_one value :%v To int32_one value: %v"+"\n", int_one, int32_one) //int_one value :-32769 To int32_one value: -32769
+	int64_one = -32769
+	int32_one := int32(int64_one)
+	fmt.Printf("int64_one value :%v To int32_one value: %v"+"\n", int64_one, int32_one) //int64_one value :-32769 To int32_one value: -32769
 
-	int_one = -32769
-	int64_one := int64(int_one)
-	fmt.Printf("int_one value :%v To int64_one value: %v"+"\n", int_one, int64_one) //int_one value :-32769 To int64_one value: -32769
+	int64_one = -32769
+	int64_two := int64(int64_one)
+	fmt.Printf("int64_one value :%v To int64_two value: %v"+"\n", int64_one, int64_two) //int64_one value :-32769 To int64_one value: -32769
 
-	int_one = 2147483647
-	float32_one := float32(int_one)
-	fmt.Printf("int_one value :%v To float32_one value: %v"+"\n", int_one, float32_one) //int_one value :2147483647 To float32_one value: 2.1474836e+09
+	int64_one = 2147483647
+	float32_one := float32(int64_one)
+	fmt.Printf("int64_one value :%v To float32_one value: %v"+"\n", int64_one, float32_one) //int64_one value :2147483647 To float32_one value: 2.1474836e+09
 
-	int_one = -9223372036854775807
-	float64_one := float64(int_one)
-	fmt.Printf("int_one value :%v To float64_one value: %v"+"\n", int_one, float64_one) //int_one value :-9223372036854775807 To float64_one value: -9.223372036854776e+18
+	int64_one = -9223372036854775807
+	float64_one := float64(int64_one)
+	fmt.Printf("int64_one value :%v To float64_one value: %v"+"\n", int64_one, float64_one) //int64_one value :-9223372036854775807 To float64_one value: -9.223372036854776e+18
 
 }

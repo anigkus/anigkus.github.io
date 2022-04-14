@@ -30,9 +30,9 @@ type Animal struct {
 func (a *Animal) Main() {
 
 	defaultAnimal := new(Animal).DefaultAnimal()
-	fmt.Println("default Animal instance constructor", defaultAnimal.ToString())
+	fmt.Println("default Animal instance constructor", defaultAnimal.ToString()) //default Animal instance constructor name:People,classify:Human
 	defaultAnimal.AnimalNoParameter()
-	fmt.Println("no parameter constructor", defaultAnimal.ToString())
+	fmt.Println("no parameter constructor", defaultAnimal.ToString()) //no parameter constructor name:Dog,classify:Canines
 
 	//call internal fun
 	internalOne()

@@ -38,15 +38,26 @@ func Main() {
 	new(structs.Animal).Main()
 
 	//external not to be new instance
-	structs.NewAnimalNoParameter()
-	structs.NewAnimalNoParameter().ToString()
-	structs.NewAnimalNoParameter().AnimalNoParameter()
-	structs.NewAnimalNoParameter().ToString()
-	fmt.Println(structs.NewAnimalNoParameter().GetName())
-	structs.NewAnimalNoParameter().SetName("xxx")
-	fmt.Println(structs.NewAnimalNoParameter().GetName())
-	structs.NewAnimalWithParamter("Fish", "Fishes")
-	structs.NewAnimalNoParameter().ToString()
+	animal := structs.NewAnimalNoParameter()
+	fmt.Println(animal.ToString()) //name:People,classify:Human
+
+	animal.AnimalNoParameter()
+	animal.SetName("yyy")
+	fmt.Println(animal.ToString()) //name:yyy,classify:Canines
+
+	animal.AnimalNoParameter()
+	fmt.Println(animal.ToString()) //name:Dog,classify:Canines
+
+	fmt.Println(structs.NewAnimalNoParameter().ToString()) //name:People,classify:Human
+	fmt.Println(structs.NewAnimalNoParameter().GetName())  //People
+
+	animal = structs.NewAnimalNoParameter()
+	animal.SetName("xxx")
+	fmt.Println(animal.GetName()) //xxx
+
+	fmt.Println(structs.NewAnimalNoParameter().GetName())        //People
+	fmt.Println(structs.NewAnimalWithParamter("Fish", "Fishes")) //&{Fish Fishes}
+	fmt.Println(structs.NewAnimalNoParameter().ToString())       //name:People,classify:Human
 
 	//interface
 	fmt.Println(strings.Repeat("-", 20))
@@ -56,11 +67,11 @@ func Main() {
 
 	//constants
 	fmt.Println(strings.Repeat("-", 20))
-	fmt.Println(constant.BLACK)
-	fmt.Println(constant.WHITE)
-	fmt.Println(constant.RED)
-	fmt.Println(constant.HOUR_ONE)
-	fmt.Println(constant.ANIMAL_CAT)
+	fmt.Println(constant.BLACK)      //#000000
+	fmt.Println(constant.WHITE)      //#FFFFFF
+	fmt.Println(constant.RED)        //#FF0000
+	fmt.Println(constant.HOUR_ONE)   //1
+	fmt.Println(constant.ANIMAL_CAT) //CAT
 
 	//util
 	fmt.Println(strings.Repeat("-", 20))

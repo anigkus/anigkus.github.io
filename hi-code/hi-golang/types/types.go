@@ -135,7 +135,7 @@ func variable_declaration_number() {
 	var v_float32_max float32 = 3.4028235e+37           //math.MaxFloat32
 	var v_float64_min float64 = 5e-324                  //math.SmallestNonzeroFloat64
 	var v_float64_max float64 = 1.7976931348623157e+308 //math.MaxFloat64
-	var v_complex64_min complex64 = 1e-46 + 1e-46
+	var v_complex64_min complex64 = (0 + 0i)
 	var v_complex64_max complex64 = 3.4028235e+37 + 3.4028235e+37 + 3.4028235e+37
 	// var v_complex128_min complex128 = -128
 	// var v_complex128_max complex128 = 127

@@ -24,6 +24,7 @@ import (
 
 func Main() {
 
+	fmt.Println("util...")
 	stringConvTo()
 
 	convToString()

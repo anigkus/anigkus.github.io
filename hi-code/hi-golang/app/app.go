@@ -21,6 +21,7 @@ import (
 
 	"github.com/anigkus/hi-golang/constant"
 	"github.com/anigkus/hi-golang/interfaces"
+	"github.com/anigkus/hi-golang/operator"
 	"github.com/anigkus/hi-golang/structs"
 	"github.com/anigkus/hi-golang/types"
 	"github.com/anigkus/hi-golang/util"
@@ -76,4 +77,7 @@ func Main() {
 	//util
 	fmt.Println(strings.Repeat("-", 20))
 	util.Main()
+
+	//operator
+	operator.Main()
 }

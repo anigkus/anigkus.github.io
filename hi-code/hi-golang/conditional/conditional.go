@@ -26,6 +26,7 @@ func Main() {
 	//if...else
 	//if... else if...else
 	//switch...case
+	fmt.Println("conditional...")
 	ifStatement()
 
 	switchStatement()

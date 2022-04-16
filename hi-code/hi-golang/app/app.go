@@ -21,6 +21,7 @@ import (
 
 	"github.com/anigkus/hi-golang/conditional"
 	"github.com/anigkus/hi-golang/constant"
+	"github.com/anigkus/hi-golang/funcs"
 	"github.com/anigkus/hi-golang/interfaces"
 	"github.com/anigkus/hi-golang/loop"
 	"github.com/anigkus/hi-golang/operator"
@@ -68,7 +69,7 @@ func Main() {
 	fmt.Println(strings.Repeat("-", 20))
 	new(interfaces.People).BuyCarBySpeed(100)
 
-	//constants
+	//constant
 	fmt.Println(strings.Repeat("-", 20))
 	fmt.Println(constant.BLACK)      //#000000
 	fmt.Println(constant.WHITE)      //#FFFFFF
@@ -88,5 +89,9 @@ func Main() {
 
 	//loop
 	loop.Main()
+
+	//function
+	funcs.Main()
+	funcs.PublicMethodNoArgsNoReturn() //publicMethodNoArgsNoReturn
 
 }

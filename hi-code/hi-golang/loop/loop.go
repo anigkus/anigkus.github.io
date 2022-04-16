@@ -49,9 +49,8 @@ func loopStatement() {
 		}
 		i++
 	}
-	fmt.Println("i:", i) //Why
 	for i == 7 {
-		fmt.Println("00")
+		fmt.Println("\nTest for break.") //Test for break.
 		break
 	}
 

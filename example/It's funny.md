@@ -7,3 +7,6 @@
     匿名函数：顾名思义就是没有名字的函数
     闭包：说白了就是函数的嵌套
     https://segmentfault.com/a/1190000018689134
+
+# Best Blog
+    https://medium.com/@kdnotes/how-to-sort-golang-maps-by-value-and-key-eedc1199d944

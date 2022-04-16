@@ -23,18 +23,20 @@ import (
 )
 
 func Main() {
+	fmt.Println("scan...")
+	//
 	buyGoods()
-
 }
 
 func buyGoods() {
 
+	sortIndex := 0
 	buy := true
 	continueBuy := ""
 	fmt.Println("Welcom goods store.")
-	var goodLists []map[string]string
+	var goodLists []map[string]string // unordered collection
 	for buy {
-		goods := scanlnGoods()
+		goods := scanlnGoods(strconv.Itoa(sortIndex))
 		goodLists = append(goodLists, goods)
 		fmt.Print("Do you continue buy? Y/N: ")
 		fmt.Scanln(&continueBuy)
@@ -46,9 +48,8 @@ func buyGoods() {
 		} else {
 			continue
 		}
-
 	}
-
+	//sort
 	if len(goodLists) != 0 {
 		fmt.Println("You buy goods list:")
 		var sumGoodsPrice float64 = 0
@@ -58,16 +59,14 @@ func buyGoods() {
 			goodsInfo := ""
 			for key, value := range goodList {
 				goodsInfo += value + "\t"
-				if key == "goodsPrice" {
+				if key == "goodsPriceA" {
 					v, _ := strconv.ParseFloat(value, 64)
 					sumGoodsPrice += v
 				}
-
-				if key == "goodsNumber" {
+				if key == "goodsNumberA" {
 					v, _ := strconv.Atoi(value)
 					sumGoodsNumber += v
 				}
-
 			}
 			number := index + 1
 			fmt.Printf("%v. %v\n", number, goodsInfo)
@@ -80,7 +79,7 @@ func buyGoods() {
 
 }
 
-func scanlnGoods() (goods map[string]string) {
+func scanlnGoods(sortIndex string) (goods map[string]string) {
 	var goodsName string
 	var goodsPrice string
 	var goodsNumber string
@@ -91,8 +90,9 @@ func scanlnGoods() (goods map[string]string) {
 	fmt.Print("Please input number:")
 	fmt.Scanln(&goodsNumber)
 	goods = make(map[string]string)
-	goods["goodsName"] = goodsName
-	goods["goodsPrice"] = goodsPrice
-	goods["goodsNumber"] = goodsNumber
+	goods["sortIndex"] = sortIndex
+	goods["goodsNameA"] = goodsName
+	goods["goodsPriceB"] = goodsPrice
+	goods["goodsNumberC"] = goodsNumber
 	return goods
 }

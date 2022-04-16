@@ -25,6 +25,7 @@ import (
 	"github.com/anigkus/hi-golang/interfaces"
 	"github.com/anigkus/hi-golang/loop"
 	"github.com/anigkus/hi-golang/operator"
+	"github.com/anigkus/hi-golang/scanin"
 	"github.com/anigkus/hi-golang/structs"
 	"github.com/anigkus/hi-golang/types"
 	"github.com/anigkus/hi-golang/util"
@@ -94,5 +95,8 @@ func Main() {
 	funcs.Main()
 	funcs.PublicMethodNoArgsNoReturn() //publicMethodNoArgsNoReturn
 	funcs.PublicMethodVariadicsNoReturn(127, "x", "y", "z")
+
+	//scanin
+	scanin.Main()
 
 }

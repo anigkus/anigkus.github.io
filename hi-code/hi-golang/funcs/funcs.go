@@ -18,6 +18,7 @@ package funcs
 
 import (
 	"fmt"
+	"reflect"
 )
 
 func Main() {
@@ -58,4 +59,17 @@ func internalMethodWithArgsWithReturns(string_one string, int64_one int64, float
 
 func PublicMethodNoArgsNoReturn() {
 	fmt.Println("publicMethodNoArgsNoReturn")
+}
+
+func PublicMethodVariadicsNoReturn(int64_one int8, string_variadic ...string) {
+
+	fmt.Println("PublicMethodVariadicsNoReturn, int64_one:", int64_one)
+	for _, variadic := range string_variadic {
+		fmt.Println(variadic, "<=>", reflect.ValueOf(variadic).Kind())
+		/*
+			x <=> string
+			y <=> string
+			z <=> string
+		*/
+	}
 }

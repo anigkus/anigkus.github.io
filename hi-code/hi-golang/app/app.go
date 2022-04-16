@@ -93,5 +93,6 @@ func Main() {
 	//function
 	funcs.Main()
 	funcs.PublicMethodNoArgsNoReturn() //publicMethodNoArgsNoReturn
+	funcs.PublicMethodVariadicsNoReturn(127, "x", "y", "z")
 
 }

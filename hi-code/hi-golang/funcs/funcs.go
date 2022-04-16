@@ -33,6 +33,10 @@ func Main() {
 
 	string_two, int64_two, float64_two := internalMethodWithArgsWithReturns("string_one", 100, 200)
 	fmt.Println("internalMethodWithArgsWithReturns ", "string_two:", string_two, "int64_two:", int64_two, "float64_two:", float64_two)
+
+	//print deferredMethodTwo after deferredMethodOne
+	defer deferredMethodTwo()
+	deferredMethodOne()
 }
 
 func internalMethodNoArgsNoReturn() {
@@ -64,12 +68,20 @@ func PublicMethodNoArgsNoReturn() {
 func PublicMethodVariadicsNoReturn(int64_one int8, string_variadic ...string) {
 
 	fmt.Println("PublicMethodVariadicsNoReturn, int64_one:", int64_one)
-	for _, variadic := range string_variadic {
-		fmt.Println(variadic, "<=>", reflect.ValueOf(variadic).Kind())
+	for index, variadic := range string_variadic {
+		fmt.Println("index:", index, "<=>", variadic, "<=>", reflect.ValueOf(variadic).Kind())
 		/*
-			x <=> string
-			y <=> string
-			z <=> string
+			index: 0 <=> x <=> string
+			index: 1 <=> y <=> string
+			index: 2 <=> z <=> string
 		*/
 	}
+}
+
+func deferredMethodOne() {
+	fmt.Println("deferredMethodOne")
+}
+
+func deferredMethodTwo() {
+	fmt.Println("deferredMethodTwo")
 }

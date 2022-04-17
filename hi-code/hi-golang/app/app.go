@@ -23,6 +23,7 @@ import (
 	"github.com/anigkus/hi-golang/constant"
 	"github.com/anigkus/hi-golang/defers"
 	"github.com/anigkus/hi-golang/funcs"
+	"github.com/anigkus/hi-golang/gor"
 	"github.com/anigkus/hi-golang/interfaces"
 	"github.com/anigkus/hi-golang/loop"
 	"github.com/anigkus/hi-golang/operator"
@@ -101,5 +102,8 @@ func Main() {
 
 	//defers
 	defers.Main()
+
+	//gor
+	gor.Main()
 
 }

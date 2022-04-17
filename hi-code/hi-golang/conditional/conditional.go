@@ -19,6 +19,7 @@ package conditional
 import (
 	"fmt"
 	"strconv"
+	"time"
 )
 
 func Main() {
@@ -30,6 +31,8 @@ func Main() {
 	ifStatement()
 
 	switchStatement()
+
+	selectStatement()
 }
 
 func ifStatement() {
@@ -118,5 +121,44 @@ func switchStatement() {
 	default:
 		fmt.Println("default")
 	}
+
+	whatType := func(i interface{}) {
+		switch t := i.(type) {
+		case bool:
+			fmt.Println("Is bool")
+		case int:
+			fmt.Println("Is int")
+		default:
+			fmt.Println("Unknow", t)
+		}
+	}
+	whatType(true) //Is bool
+	whatType(1)    //Is int
+	whatType('c')  //Unknow 99
+}
+
+func selectStatement() {
+	char_one := make(chan int)
+	char_two := make(chan int)
+	go func() {
+		time.Sleep(time.Second * 1)
+		char_one <- 1
+	}()
+	go func() {
+		time.Sleep(time.Second * 1)
+		char_two <- 2
+	}()
+	index := 2
+	for index > 0 {
+		select {
+		case msg_one := <-char_one:
+			fmt.Println("received:", msg_one) //received: 1
+		case msg_two := <-char_two:
+			fmt.Println("received:", msg_two) //received: 2
+		}
+		index--
+	}
+	close(char_one) // Closes the channel
+	close(char_two) // Closes the channel
 
 }

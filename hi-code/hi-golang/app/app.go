@@ -21,11 +21,11 @@ import (
 
 	"github.com/anigkus/hi-golang/conditional"
 	"github.com/anigkus/hi-golang/constant"
+	"github.com/anigkus/hi-golang/defers"
 	"github.com/anigkus/hi-golang/funcs"
 	"github.com/anigkus/hi-golang/interfaces"
 	"github.com/anigkus/hi-golang/loop"
 	"github.com/anigkus/hi-golang/operator"
-	"github.com/anigkus/hi-golang/scanin"
 	"github.com/anigkus/hi-golang/structs"
 	"github.com/anigkus/hi-golang/types"
 	"github.com/anigkus/hi-golang/util"
@@ -97,6 +97,9 @@ func Main() {
 	funcs.PublicMethodVariadicsNoReturn(127, "x", "y", "z")
 
 	//scanin
-	scanin.Main()
+	//scanin.Main()
+
+	//defers
+	defers.Main()
 
 }

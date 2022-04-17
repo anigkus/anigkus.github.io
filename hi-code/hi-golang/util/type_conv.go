@@ -30,6 +30,10 @@ func Main() {
 	convToString()
 
 	intToInt()
+
+	charToInt()
+
+	intToChar()
 }
 
 func stringConvTo() {
@@ -160,4 +164,16 @@ func intToInt() {
 	float64_one := float64(int64_one)
 	fmt.Printf("int64_one value :%v To float64_one value: %v"+"\n", int64_one, float64_one) //int64_one value :-9223372036854775807 To float64_one value: -9.223372036854776e+18
 
+}
+
+func charToInt() {
+	fmt.Println("charToInt...")
+	rune_one := 'A'
+	fmt.Println("rune_one before", rune_one, "rune_one after", string(rune_one))
+}
+
+func intToChar() {
+	fmt.Println("intToChar...")
+	int_one := 65
+	fmt.Println(rune(int_one))
 }

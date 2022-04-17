@@ -21,7 +21,9 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"runtime"
 	"sync"
+	"sync/atomic"
 	"time"
 )
 
@@ -36,6 +38,10 @@ func Main() {
 	goOrdered()
 
 	goWaitGroupUnordered()
+
+	goAtomic()
+
+	goMutex()
 }
 
 func playAndPause() {
@@ -189,22 +195,19 @@ func requestHttpOrdered(url string, l chan int) {
 }
 
 // WaitGroup is used to wait for the program to finish goroutines.
-var wg sync.WaitGroup
+var wg1 sync.WaitGroup
 
 func goWaitGroupUnordered() {
 	//Add a count of three, one for each goroutine
-	wg.Add(3)
+	wg1.Add(3)
 	fmt.Println("Start goWaitGroup")
 
 	go requestHttpWaitGroupUnordered("https://www.golangprograms.com")
-	fmt.Println("x1")
 	go requestHttpWaitGroupUnordered("https://stackoverflow.com")
-	fmt.Println("x2")
 	go requestHttpWaitGroupUnordered("https://coderwall.com")
-	fmt.Println("x3")
 
 	// Wait for the goroutines to finish.
-	wg.Wait()
+	wg1.Wait()
 	fmt.Println("Ended goWaitGroup")
 	/*
 		Start goWaitGroup
@@ -226,7 +229,7 @@ func goWaitGroupUnordered() {
 
 func requestHttpWaitGroupUnordered(url string) {
 	//Schedule the call to WaitGroup's Done to tell goroutine is completed.
-	defer wg.Done() //Similar to CountDownLatch in Java
+	defer wg1.Done() //Similar to CountDownLatch in Java
 	fmt.Println("requestHttpWaitGroupUnordered.http.Get: ", url)
 	response, err := http.Get(url)
 	if err != nil {
@@ -241,4 +244,58 @@ func requestHttpWaitGroupUnordered(url string) {
 		log.Fatal(err)
 	}
 	fmt.Println("requestHttpWaitGroupUnordered.http.Len: ", len(body))
+}
+
+var (
+	counter1 int32
+	wg2      sync.WaitGroup
+)
+
+func goAtomic() {
+	fmt.Println("Start GoAtomic")
+
+	wg2.Add(3)
+	go buyBookAtomic("Golang")
+	go buyBookAtomic("Rust")
+	go buyBookAtomic("Java")
+
+	wg2.Wait()
+	fmt.Println("Ended GoAtomic Counter:", counter1) //Ended GoAtomic: counter: 140
+}
+
+func buyBookAtomic(book string) {
+	defer wg2.Done()
+	for range book { //each char
+		atomic.AddInt32(&counter1, 10)
+		runtime.Gosched()
+	}
+}
+
+var (
+	counter2 int32
+	wg3      sync.WaitGroup
+	mutex1   sync.Mutex
+)
+
+func goMutex() {
+	fmt.Println("Start goMutex")
+
+	wg3.Add(3)
+	go buyBookMutex("Golang")
+	go buyBookMutex("Rust")
+	go buyBookMutex("Java")
+
+	wg3.Wait()
+	fmt.Println("Ended GoMutex Counter:", counter2) //Ended GoAtomic: counter: 14
+}
+
+func buyBookMutex(book string) {
+	defer wg3.Done()
+	for range book { //each char
+		mutex1.Lock()
+		{
+			counter2++
+		}
+		mutex1.Unlock()
+	}
 }

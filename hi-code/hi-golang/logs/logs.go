@@ -17,6 +17,7 @@ limitations under the License.
 package logs
 
 import (
+	"fmt"
 	"io"
 	"log"
 	"os"
@@ -52,6 +53,7 @@ func init() {
 
 func Main() {
 
+	fmt.Println("Log exercises and quizzes.")
 	// print file
 	Info.Println("info")
 	Error.Println("error")

@@ -25,6 +25,7 @@ import (
 	"github.com/anigkus/hi-golang/funcs"
 	"github.com/anigkus/hi-golang/gor"
 	"github.com/anigkus/hi-golang/interfaces"
+	"github.com/anigkus/hi-golang/logs"
 	"github.com/anigkus/hi-golang/loop"
 	"github.com/anigkus/hi-golang/operator"
 	"github.com/anigkus/hi-golang/structs"
@@ -89,7 +90,7 @@ func Main() {
 	//conditional
 	conditional.Main()
 
-	//loop
+	//for
 	loop.Main()
 
 	//function
@@ -97,13 +98,16 @@ func Main() {
 	funcs.PublicMethodNoArgsNoReturn() //publicMethodNoArgsNoReturn
 	funcs.PublicMethodVariadicsNoReturn(127, "x", "y", "z")
 
-	//scanin
+	//scan
 	//scanin.Main()
 
-	//defers
+	//defer
 	defers.Main()
 
-	//gor
+	//go
 	gor.Main()
+
+	//log
+	logs.Main()
 
 }

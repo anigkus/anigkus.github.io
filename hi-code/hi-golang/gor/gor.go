@@ -34,6 +34,8 @@ func Main() {
 	goUnordered()
 
 	goOrdered()
+
+	goWaitGroupUnordered()
 }
 
 func playAndPause() {
@@ -184,4 +186,59 @@ func requestHttpOrdered(url string, l chan int) {
 	len := len(body)
 	fmt.Println("requestHttpOrdered.http.Len: ", len)
 	l <- len //return values
+}
+
+// WaitGroup is used to wait for the program to finish goroutines.
+var wg sync.WaitGroup
+
+func goWaitGroupUnordered() {
+	//Add a count of three, one for each goroutine
+	wg.Add(3)
+	fmt.Println("Start goWaitGroup")
+
+	go requestHttpWaitGroupUnordered("https://www.golangprograms.com")
+	fmt.Println("x1")
+	go requestHttpWaitGroupUnordered("https://stackoverflow.com")
+	fmt.Println("x2")
+	go requestHttpWaitGroupUnordered("https://coderwall.com")
+	fmt.Println("x3")
+
+	// Wait for the goroutines to finish.
+	wg.Wait()
+	fmt.Println("Ended goWaitGroup")
+	/*
+		Start goWaitGroup
+		requestHttpWaitGroupUnordered.http.Get:  https://coderwall.com
+		requestHttpWaitGroupUnordered.http.Get:  https://www.golangprograms.com
+		requestHttpWaitGroupUnordered.http.Get:  https://stackoverflow.com
+		requestHttpWaitGroupUnordered.http.Close:  https://coderwall.com
+		requestHttpWaitGroupUnordered.http.Body:  https://coderwall.com
+		requestHttpWaitGroupUnordered.http.Close:  https://stackoverflow.com
+		requestHttpWaitGroupUnordered.http.Body:  https://stackoverflow.com
+		requestHttpWaitGroupUnordered.http.Len:  189752
+		requestHttpWaitGroupUnordered.http.Close:  https://www.golangprograms.com
+		requestHttpWaitGroupUnordered.http.Body:  https://www.golangprograms.com
+		requestHttpWaitGroupUnordered.http.Len:  31852
+		requestHttpWaitGroupUnordered.http.Len:  175259
+		Ended goWaitGroup
+	*/
+}
+
+func requestHttpWaitGroupUnordered(url string) {
+	//Schedule the call to WaitGroup's Done to tell goroutine is completed.
+	defer wg.Done() //Similar to CountDownLatch in Java
+	fmt.Println("requestHttpWaitGroupUnordered.http.Get: ", url)
+	response, err := http.Get(url)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("requestHttpWaitGroupUnordered.http.Close: ", url)
+	defer response.Body.Close()
+
+	fmt.Println("requestHttpWaitGroupUnordered.http.Body: ", url)
+	body, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("requestHttpWaitGroupUnordered.http.Len: ", len(body))
 }

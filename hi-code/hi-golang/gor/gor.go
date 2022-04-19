@@ -31,17 +31,17 @@ func Main() {
 
 	fmt.Println("Gor...")
 
-	playAndPause()
+	// playAndPause()
 
-	goUnordered()
+	// goUnordered()
 
-	goOrdered()
+	// goOrdered()
 
-	goWaitGroupUnordered()
+	// goWaitGroupUnordered()
 
-	goAtomic()
+	// goAtomic()
 
-	goMutex()
+	// goMutex()
 }
 
 func playAndPause() {
@@ -83,7 +83,7 @@ func work() {
 	fmt.Println(i)
 }
 
-func routine(command <-chan string, wg *sync.WaitGroup) {
+func routine(command chan string, wg *sync.WaitGroup) {
 	defer wg.Done()
 	var status = "Play"
 	for {

@@ -27,13 +27,15 @@ import (
 func Main() {
 	fmt.Println("files...")
 
-	// createFile()
+	createFile()
 
-	// createDirectory()
+	createDirectory()
 
-	// readFile()
+	readFile()
 
-	//appendFile()
+	appendFile()
+
+	renameFile()
 }
 
 func createFile() {
@@ -50,7 +52,7 @@ func createFile() {
 	if err != nil {
 		log.Fatalf("Create %v exception!", fileName)
 	}
-	content := []byte("test content1!")
+	content := []byte("test content1!\n")
 	len, err := file.Write(content)
 	defer file.Close()
 	if err != nil {
@@ -100,6 +102,7 @@ func readFile() {
 	for data.Scan() {
 		fmt.Print(data.Text())
 	}
+	fmt.Println()
 
 }
 
@@ -116,7 +119,7 @@ func appendFile() {
 	// fmt.Println(b, b1, aa)
 
 	message := "appendFile content!"
-	f, err := os.OpenFile(filePath, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0660)
+	f, err := os.OpenFile(filePath, os.O_RDWR|os.O_APPEND|os.O_CREATE, 0666)
 	if err != nil {
 		log.Fatalf("open %v exception!\n", filePath)
 	}
@@ -129,3 +132,21 @@ func appendFile() {
 // 	xx2 = 10
 // 	return
 // }
+
+func renameFile() {
+	fileName := "files.md"
+	wd, err := os.Getwd()
+	if err != nil {
+		log.Fatalf("Getwd exception!")
+	}
+	oldPath := wd + "/files/" + fileName
+	if _, err = os.Stat(oldPath); err != nil {
+		log.Fatalf("%v file is not exist!", oldPath)
+	}
+	newPath := wd + "/files/" + "new_files.md"
+	err = os.Rename(oldPath, newPath)
+	if err != nil {
+		log.Fatalf(err.Error())
+	}
+
+}

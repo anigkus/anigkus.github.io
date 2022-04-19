@@ -17,28 +17,30 @@ limitations under the License.
 package files
 
 import (
+	"bufio"
 	"fmt"
 	"log"
 	"os"
+	"strings"
 )
 
 func Main() {
 	fmt.Println("files...")
 
-	createFile()
+	// createFile()
 
-	createDirectory()
+	// createDirectory()
 
 	// readFile()
 
-	// writeFile()
+	//appendFile()
 }
 
 func createFile() {
 	fileName := "files.md"
 	wd, err := os.Getwd()
 	if err != nil {
-		log.Fatalf("Getwd %v exception!", fileName)
+		log.Fatalf("Getwd exception!")
 	}
 	filePath := wd + "/files/" + fileName
 	if _, err = os.Stat(filePath); err == nil {
@@ -48,13 +50,13 @@ func createFile() {
 	if err != nil {
 		log.Fatalf("Create %v exception!", fileName)
 	}
-	content := []byte("test content!")
+	content := []byte("test content1!")
 	len, err := file.Write(content)
+	defer file.Close()
 	if err != nil {
 		log.Fatalf("Write %v exception!", fileName)
 	}
 	log.Printf("Create %v success!,Lenght:%v \n", fileName, len)
-	defer file.Close()
 
 }
 
@@ -62,7 +64,7 @@ func createDirectory() {
 	directoryName := "test"
 	wd, err := os.Getwd()
 	if err != nil {
-		log.Fatalf("Getwd %v exception!", directoryName)
+		log.Fatalf("Getwd exception!")
 	}
 	filePath := wd + "/files/" + directoryName
 	if _, err = os.Stat(filePath); err == nil {
@@ -76,9 +78,54 @@ func createDirectory() {
 }
 
 func readFile() {
+	wd, err := os.Getwd()
+	if err != nil {
+		log.Fatalf("Getwd exception!")
+	}
+	filePath := wd + "/files/files.md"
+	if _, err = os.Stat(filePath); err != nil {
+		log.Fatalf("%v file not exists!\n", filePath)
+	}
+	bytes, err := os.ReadFile(filePath)
+	if err != nil || bytes == nil {
+		log.Fatalf("ReadFile %v exception!", filePath)
+	}
+	// by whole
+	whole_content := string(bytes)
+	fmt.Println(whole_content)
+
+	// by character
+	data := bufio.NewScanner(strings.NewReader(whole_content))
+	data.Split(bufio.ScanRunes)
+	for data.Scan() {
+		fmt.Print(data.Text())
+	}
 
 }
 
-func writeFile() {
+//append
+func appendFile() {
 
+	wd, err := os.Getwd()
+	if err != nil {
+		log.Fatalf("Getwd exception!")
+	}
+	filePath := wd + "/files/files.md"
+	// b, aa := xx()
+	// b1, aa := xx()
+	// fmt.Println(b, b1, aa)
+
+	message := "appendFile content!"
+	f, err := os.OpenFile(filePath, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0660)
+	if err != nil {
+		log.Fatalf("open %v exception!\n", filePath)
+	}
+	fmt.Fprintln(f, message)
 }
+
+// test call function use same variables
+// func xx() (xx1 string, xx2 int) {
+// 	xx1 = "xx1"
+// 	xx2 = 10
+// 	return
+// }

@@ -36,7 +36,11 @@ func Main() {
 
 func createFile() {
 	fileName := "files.md"
-	file, err := os.Create(fileName)
+	wd, err := os.Getwd()
+	if err != nil {
+		log.Fatalf("Getwd %v exception!", fileName)
+	}
+	file, err := os.Create(wd + "/files/" + fileName)
 	if err != nil {
 		log.Fatalf("Create %v exception!", fileName)
 	}

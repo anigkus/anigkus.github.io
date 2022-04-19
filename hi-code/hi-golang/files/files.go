@@ -29,9 +29,9 @@ func Main() {
 
 	createDirectory()
 
-	readFile()
+	// readFile()
 
-	writeFile()
+	// writeFile()
 }
 
 func createFile() {
@@ -40,7 +40,11 @@ func createFile() {
 	if err != nil {
 		log.Fatalf("Getwd %v exception!", fileName)
 	}
-	file, err := os.Create(wd + "/files/" + fileName)
+	filePath := wd + "/files/" + fileName
+	if _, err = os.Stat(filePath); err == nil {
+		log.Fatalf("%v file is exist!", fileName)
+	}
+	file, err := os.Create(filePath)
 	if err != nil {
 		log.Fatalf("Create %v exception!", fileName)
 	}
@@ -59,6 +63,10 @@ func createDirectory() {
 	wd, err := os.Getwd()
 	if err != nil {
 		log.Fatalf("Getwd %v exception!", directoryName)
+	}
+	filePath := wd + "/files/" + directoryName
+	if _, err = os.Stat(filePath); err == nil {
+		log.Fatalf("%v directory is exist!", directoryName)
 	}
 	err = os.MkdirAll(wd+"/files/"+directoryName, 0755)
 	if err != nil {

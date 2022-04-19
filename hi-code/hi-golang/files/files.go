@@ -55,7 +55,16 @@ func createFile() {
 }
 
 func createDirectory() {
-
+	directoryName := "test"
+	wd, err := os.Getwd()
+	if err != nil {
+		log.Fatalf("Getwd %v exception!", directoryName)
+	}
+	err = os.MkdirAll(wd+"/files/"+directoryName, 0755)
+	if err != nil {
+		log.Fatalf("Create %v exception!", directoryName)
+	}
+	log.Printf("Create %v success! \n", directoryName)
 }
 
 func readFile() {

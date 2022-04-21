@@ -12,6 +12,6 @@
     https://medium.com/@kdnotes/how-to-sort-golang-maps-by-value-and-key-eedc1199d944
 
 # Tag Level
-    Python-Associate    初级(助理)
-    Python-Professional 中级(专业的)
+    Python-Associate    初级(专助)
+    Python-Professional 中级(专业)
     Python-Expert       高级(专家)

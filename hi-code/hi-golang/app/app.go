@@ -23,7 +23,6 @@ import (
 	"github.com/anigkus/hi-golang/conditional"
 	"github.com/anigkus/hi-golang/constant"
 	"github.com/anigkus/hi-golang/defers"
-	"github.com/anigkus/hi-golang/files"
 	"github.com/anigkus/hi-golang/funcs"
 	"github.com/anigkus/hi-golang/gor"
 	"github.com/anigkus/hi-golang/interfaces"
@@ -115,6 +114,6 @@ func Main() {
 	channels.Main()
 
 	//files
-	files.Main()
+	//files.Main()
 
 }

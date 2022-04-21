@@ -19,6 +19,7 @@ package files
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"log"
 	"os"
 	"strings"
@@ -27,15 +28,17 @@ import (
 func Main() {
 	fmt.Println("files...")
 
-	createFile()
+	// createFile()
 
-	createDirectory()
+	// createDirectory()
 
-	readFile()
+	// readFile()
 
-	appendFile()
+	// appendFile()
 
-	renameFile()
+	// renameFile()
+
+	//copyFile()
 }
 
 func createFile() {
@@ -123,7 +126,9 @@ func appendFile() {
 	if err != nil {
 		log.Fatalf("open %v exception!\n", filePath)
 	}
+	defer f.Close()
 	fmt.Fprintln(f, message)
+
 }
 
 // test call function use same variables
@@ -148,5 +153,32 @@ func renameFile() {
 	if err != nil {
 		log.Fatalf(err.Error())
 	}
+}
 
+func copyFile() {
+	wd, err := os.Getwd()
+	if err != nil {
+		log.Fatalf("Getwd exception!")
+	}
+	var targetFile = new(os.File)
+	var sourceFile = new(os.File)
+	var written int64
+	//var sourceFile, targetFile os.File //
+
+	sourceFileName := wd + "/files/files.go"
+	if sourceFile, err = os.Open(sourceFileName); err != nil {
+		log.Fatalf("%v file not open!", sourceFileName)
+	}
+	defer sourceFile.Close()
+
+	targetFileName := wd + "/files/files.txt"
+	if targetFile, err = os.Create(targetFileName); err != nil {
+		log.Fatalf("%v file create fatal!", sourceFileName)
+	}
+	defer targetFile.Close()
+
+	if written, err = io.Copy(targetFile, sourceFile); err != nil {
+		log.Fatalf("%v file create fatal!", sourceFileName)
+	}
+	log.Printf("written:%d", written)
 }

@@ -23,9 +23,11 @@ import (
 	"github.com/anigkus/hi-golang/conditional"
 	"github.com/anigkus/hi-golang/constant"
 	"github.com/anigkus/hi-golang/defers"
+	"github.com/anigkus/hi-golang/files"
 	"github.com/anigkus/hi-golang/funcs"
 	"github.com/anigkus/hi-golang/gor"
 	"github.com/anigkus/hi-golang/interfaces"
+	"github.com/anigkus/hi-golang/logs"
 	"github.com/anigkus/hi-golang/loop"
 	"github.com/anigkus/hi-golang/operator"
 	"github.com/anigkus/hi-golang/structs"
@@ -108,12 +110,12 @@ func Main() {
 	gor.Main()
 
 	//log
-	//logs.Main()
+	logs.Main()
 
 	//channel
 	channels.Main()
 
 	//files
-	//files.Main()
+	files.Main()
 
 }

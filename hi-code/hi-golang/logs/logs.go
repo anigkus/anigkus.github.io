@@ -55,8 +55,8 @@ func Main() {
 
 	fmt.Println("Log exercises and quizzes.")
 	// print file
-	Info.Println("info")
-	Error.Println("error")
+	// Info.Println("info")
+	// Error.Println("error")
 
 	// Println writes to the standard logger.
 	log.Println("main started")

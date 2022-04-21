@@ -62,8 +62,8 @@ func Main() {
 	log.Println("main started")
 
 	// Fatalln is Println() followed by a call to os.Exit(1)
-	log.Fatalln("fatal message")
+	//log.Fatalln("fatal message")
 
 	// Panicln is Println() followed by a call to panic()=>os.Exit(2)
-	log.Panicln("panic message")
+	//log.Panicln("panic message")
 }

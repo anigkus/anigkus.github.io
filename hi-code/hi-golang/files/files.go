@@ -20,15 +20,17 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"io/fs"
 	"log"
 	"os"
 	"strings"
+	"time"
 )
 
 func Main() {
 	fmt.Println("files...")
 
-	// createFile()
+	createFile()
 
 	// createDirectory()
 
@@ -39,6 +41,14 @@ func Main() {
 	// renameFile()
 
 	//copyFile()
+
+	//fileMetadata()
+
+	//deleteFile()
+
+	//truncateFile()
+
+	changeFile()
 }
 
 func createFile() {
@@ -48,7 +58,7 @@ func createFile() {
 		log.Fatalf("Getwd exception!")
 	}
 	filePath := wd + "/files/" + fileName
-	if _, err = os.Stat(filePath); err == nil {
+	if _, err = os.Stat(filePath); err != nil {
 		log.Fatalf("%v file is exist!", fileName)
 	}
 	file, err := os.Create(filePath)
@@ -181,4 +191,85 @@ func copyFile() {
 		log.Fatalf("%v file create fatal!", sourceFileName)
 	}
 	log.Printf("written:%d", written)
+}
+
+func fileMetadata() {
+
+	wd, err := os.Getwd()
+	if err != nil {
+		log.Fatalf("Getwd exception!")
+	}
+	var sourceFile fs.FileInfo
+	sourceFileName := wd + "/files/files.go"
+	if sourceFile, err = os.Stat(sourceFileName); err != nil {
+		log.Fatalf("%v file not exists!", sourceFileName)
+	}
+	fmt.Println(sourceFile.IsDir())
+	fmt.Println(sourceFile.ModTime())
+	fmt.Println(sourceFile.Mode())
+	fmt.Println(sourceFile.Name())
+	fmt.Println(sourceFile.Size())
+	fmt.Println(sourceFile.Sys())
+	//time := sourceFile.ModTime().Add(time.Duration(time.Duration.Seconds(10)))
+	time := sourceFile.ModTime().Add(10 * time.Second)
+	fmt.Println("time:", time) // compare sourceFile.ModTime()+10 second
+}
+
+func deleteFile() {
+	wd, err := os.Getwd()
+	if err != nil {
+		log.Fatalf("Getwd exception!")
+	}
+	sourceFileName := wd + "/files/files.md"
+	if err = os.Remove(sourceFileName); err != nil {
+		log.Fatalf("%v file remove exception!", sourceFileName)
+	} else {
+		log.Printf("%v file remove success!\n", sourceFileName)
+	}
+}
+
+func truncateFile() {
+	wd, err := os.Getwd()
+	if err != nil {
+		log.Fatalf("Getwd exception!")
+	}
+	sourceFileName := wd + "/files/files.md"
+	if err = os.Truncate(sourceFileName, 3); err != nil {
+		log.Fatalf("%v file truncate exception!", sourceFileName)
+	} else {
+		log.Printf("%v file truncate success!\n", sourceFileName)
+	}
+}
+
+func changeFile() {
+	wd, err := os.Getwd()
+	if err != nil {
+		log.Fatalf("Getwd exception!")
+	}
+	var fileInfo os.FileInfo
+	sourceFileName := wd + "/files/files.md"
+	if fileInfo, err = os.Stat(sourceFileName); err != nil {
+		log.Fatalf("%v file not exists!", sourceFileName)
+	}
+	//Chown changes the numeric uid and gid of the named file.
+	if err = os.Chown(sourceFileName, os.Getuid(), os.Getgid()); err != nil {
+		log.Fatalf("%v file change Chown  exception!", err)
+	}
+	//Chmod changes the mode of the named file to mode.
+	if err = os.Chmod(sourceFileName, 0777); err != nil {
+		log.Fatalf("%v file change Chmod 0777 exception!", err)
+	}
+	var atime, mtime time.Time
+	fmt.Printf("%v old modTime: %v\n", sourceFileName, fileInfo.ModTime())
+
+	atime = time.Now().Add(time.Hour * 24)
+	mtime = time.Now().Add(time.Hour * 48) //When atime!=mtime,by mtime finally
+	fmt.Printf("atime:%v,mtime: %v\n", atime, mtime)
+	if err = os.Chtimes(sourceFileName, atime, mtime); err != nil {
+		log.Fatalf("%v file change atime and  mtime exception!", err)
+	}
+	if fileInfo, err = os.Stat(sourceFileName); err != nil {
+		log.Fatalf("%v file not exists!", err)
+	}
+	fmt.Printf("%v new modTime: %v\n", sourceFileName, fileInfo.ModTime())
 }

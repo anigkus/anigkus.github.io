@@ -58,9 +58,6 @@ func createFile() {
 		log.Fatalf("Getwd exception!")
 	}
 	filePath := wd + "/files/" + fileName
-	if _, err = os.Stat(filePath); err != nil {
-		log.Fatalf("%v file is exist!", fileName)
-	}
 	file, err := os.Create(filePath)
 	if err != nil {
 		log.Fatalf("Create %v exception!", fileName)

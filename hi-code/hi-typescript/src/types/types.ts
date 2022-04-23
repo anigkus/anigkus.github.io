@@ -15,5 +15,6 @@ limitations under the License.
 */
 
 function Main(){
-    console.log("Hello Basic")
+    
+  
 }

@@ -13,7 +13,16 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-//https://www.tutorialspoint.com/vuejs/vuejs_environment_setup.htm
-//https://www.tutorialspoint.com/typescript/typescript_variables.htm
-let message = "Hello, App!";
-console.log(message);
+
+/**
+ * https://www.tutorialspoint.com/vuejs/vuejs_environment_setup.htm
+ * https://www.tutorialspoint.com/typescript/typescript_variables.htm
+ */
+
+function Main(){
+    let message = "Hello, App!";
+    console.log(message);
+}
+
+//start App
+Main()

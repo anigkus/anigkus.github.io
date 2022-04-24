@@ -21,7 +21,8 @@ limitations under the License.
 
 function Main(){
     let message = "Hello, App!";
-    console.log(message);
+    let  chrome_extensions="/Users/{username}/Library/Application\ Support/Google/Chrome/{Profile}/Extensions "
+    console.log(message+"\t"+chrome_extensions);
 }
 
 //start App

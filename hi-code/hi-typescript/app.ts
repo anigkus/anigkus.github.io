@@ -20,7 +20,7 @@ limitations under the License.
  * https://www.electronjs.org/
  */
 
-//import { typesMain } from "./src/types/index";
+import { typesMain } from "./src/types/index";
 // import { syntaxMain } from "./src/syntax/index";
 function app(){
     
@@ -29,7 +29,7 @@ function app(){
     console.log(message+"\t"+chrome_extensions);
 
     //
-    //typesMain()
+    typesMain()
 
     //
     // syntaxMain()

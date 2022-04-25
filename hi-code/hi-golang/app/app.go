@@ -23,6 +23,7 @@ import (
 	"github.com/anigkus/hi-golang/conditional"
 	"github.com/anigkus/hi-golang/constant"
 	"github.com/anigkus/hi-golang/defers"
+	"github.com/anigkus/hi-golang/fileo"
 	"github.com/anigkus/hi-golang/files"
 	"github.com/anigkus/hi-golang/funcs"
 	"github.com/anigkus/hi-golang/gor"
@@ -116,5 +117,8 @@ func Main() {
 
 	//files
 	files.Main()
+
+	//fileo
+	fileo.Main()
 
 }

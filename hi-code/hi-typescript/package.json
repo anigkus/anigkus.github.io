@@ -4,7 +4,7 @@
   "description": "Anigkus typescript code exercises",
   "main": "app.js",
   "scripts": {
-    "test": "console.log(\"hello\");"
+    "test": "echo test"
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,7 @@
     "hi-typescript",
     "hi-typescript"
   ],
+  "type": "module",
   "author": "anigkus@gmail.com",
   "license": "Apache-2.0",
   "bugs": {

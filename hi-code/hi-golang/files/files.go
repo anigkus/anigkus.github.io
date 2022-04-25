@@ -30,7 +30,7 @@ import (
 func Main() {
 	fmt.Println("files...")
 
-	createFile()
+	//createFile()
 
 	// createDirectory()
 
@@ -48,7 +48,7 @@ func Main() {
 
 	//truncateFile()
 
-	changeFile()
+	//changeFile()
 }
 
 func createFile() {

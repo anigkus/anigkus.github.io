@@ -18,6 +18,7 @@
     "hi-typescript",
     "hi-typescript"
   ],
+  "type": "module",
   "author": "anigkus@gmail.com",
   "license": "Apache-2.0",
   "bugs": {

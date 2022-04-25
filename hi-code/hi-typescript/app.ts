@@ -17,6 +17,7 @@ limitations under the License.
 /**
  * https://www.tutorialspoint.com/vuejs/vuejs_environment_setup.htm
  * https://www.tutorialspoint.com/typescript/typescript_variables.htm
+ * https://www.electronjs.org/
  */
 
 //import { typesMain } from "./src/types/index";

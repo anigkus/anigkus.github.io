@@ -18,21 +18,36 @@ package fileo
 
 import (
 	"archive/zip"
+	"bufio"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 func Main() {
 	fmt.Println("file operator...")
 
-	compressZip()
+	//compressZip()
 
 	//readZip() //Nomal
 
 	//extractZip()
+
+	parseText()
+	writeText()
+
+	// parseCSV()
+	// writeCSV()
+
+	// parseXML()
+	// writeXML()
+
+	// parseJSON()
+	// writeJSON()
 }
 func compressZip() {
 	fmt.Println("compressZip")
@@ -155,4 +170,130 @@ func listFiles(file *zip.File) error {
 	fmt.Println()
 
 	return nil
+}
+
+func getFileString(methodName string, fileName string) string {
+	fmt.Println(methodName)
+	pwd, err := os.Getwd()
+	if err != nil {
+		log.Fatalf("Excute %v Getwd Err:%s", methodName, err)
+	}
+	filePath := pwd + "/fileo/" + fileName
+	if _, err = os.Stat(filePath); os.IsNotExist(err) {
+		log.Fatalf("Excute %v Stat Err:%s", methodName, err)
+	}
+	if err != nil {
+		log.Fatalf("Excute %v Stat Err:%s", methodName, err)
+	}
+	bytes, err := ioutil.ReadFile(filePath)
+	if err != nil || bytes == nil {
+		log.Fatalf("Excute %v ReadFile Err:%s", methodName, err)
+	}
+	return string(bytes) //byte to string
+}
+
+func IsNotExist(methodName string, fileName string) bool {
+	fmt.Println(methodName)
+	pwd, err := os.Getwd()
+	if err != nil {
+		log.Fatalf("Excute %v Getwd Err:%s", methodName, err)
+		return false
+	}
+	filePath := pwd + "/fileo/" + fileName
+	if _, err = os.Stat(filePath); os.IsNotExist(err) {
+		return true
+	}
+	if err != nil {
+		log.Fatalf("Excute %v Stat Err:%s", methodName, err)
+		return false
+	}
+	return false
+}
+
+func parseText() {
+	stringText := getFileString("parseText", "fileo.txt")
+
+	// by character
+	data := bufio.NewScanner(strings.NewReader(stringText))
+	data.Split(bufio.ScanRunes)
+	for data.Scan() {
+		fmt.Print(data.Text())
+	}
+	fmt.Println("\n" + strings.Repeat("-", 20))
+}
+
+func writeText() {
+
+	if !IsNotExist("writeText", "fileo_write.txt") {
+		return
+	}
+	//TODO
+
+	fmt.Println("\n" + strings.Repeat("-", 20))
+}
+
+func parseCSV() {
+	stringText := getFileString("parseCSV", "fileo.csv")
+
+	// by character
+	data := bufio.NewScanner(strings.NewReader(stringText))
+	data.Split(bufio.ScanRunes)
+	for data.Scan() {
+		fmt.Println(data.Text())
+	}
+	fmt.Println("\n" + strings.Repeat("-", 20))
+}
+
+func writeCSV() {
+
+	if !IsNotExist("writeCSV", "fileo_write.csv") {
+		return
+	}
+	//TODO
+
+	fmt.Println("\n" + strings.Repeat("-", 20))
+}
+
+func parseXML() {
+	stringText := getFileString("parseXML", "fileo.xml")
+
+	// by character
+	data := bufio.NewScanner(strings.NewReader(stringText))
+	data.Split(bufio.ScanRunes)
+	for data.Scan() {
+		fmt.Println(data.Text())
+	}
+	fmt.Println("\n" + strings.Repeat("-", 20))
+}
+
+func writeXML() {
+
+	if !IsNotExist("writeXML", "fileo_write.xml") {
+		return
+	}
+	//TODO
+
+	fmt.Println("\n" + strings.Repeat("-", 20))
+}
+
+func parseJSON() {
+	stringText := getFileString("parseJSON", "fileo.json")
+
+	// by character
+	data := bufio.NewScanner(strings.NewReader(stringText))
+	data.Split(bufio.ScanRunes)
+	for data.Scan() {
+		fmt.Println(data.Text())
+	}
+	fmt.Println("\n" + strings.Repeat("-", 20))
+}
+
+func writeJSON() {
+
+	if !IsNotExist("writeJSON", "fileo_write.json") {
+		return
+	}
+	//TODO
+
+	fmt.Println("\n" + strings.Repeat("-", 20))
 }

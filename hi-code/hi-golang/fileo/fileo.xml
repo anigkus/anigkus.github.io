@@ -1,0 +1,17 @@
+<Students>
+    <Student>
+        <No>1001</No>
+        <Name>Angel</Name>
+        <Score>100</Score>
+    </Student>
+    <Student>
+        <No>1002</No>
+        <Name>Bob</Name>
+        <Score>90</Score>
+    </Student>
+    <Student>
+        <No>1003</No>
+        <Name>Sam</Name>
+        <Score>80</Score>
+    </Student>
+</Students>

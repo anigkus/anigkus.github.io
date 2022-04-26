@@ -42,11 +42,11 @@ func Main() {
 	parseText()
 	writeText()
 
-	// parseCSV()
-	// writeCSV()
+	parseCSV()
+	writeCSV()
 
-	// parseXML()
-	// writeXML()
+	parseXML()
+	writeXML()
 
 	// parseJSON()
 	// writeJSON()
@@ -178,18 +178,18 @@ func getFileString(methodName string, fileName string) string {
 	fmt.Println(methodName)
 	pwd, err := os.Getwd()
 	if err != nil {
-		log.Fatalf("Excute %v Getwd Err:%s", methodName, err)
+		log.Printf("Excute %v Getwd Err:%s", methodName, err)
 	}
 	filePath := pwd + "/fileo/" + fileName
 	if _, err = os.Stat(filePath); os.IsNotExist(err) {
-		log.Fatalf("Excute %v Stat Err:%s", methodName, err)
+		log.Printf("Excute %v Stat Err:%s", methodName, err)
 	}
 	if err != nil {
-		log.Fatalf("Excute %v Stat Err:%s", methodName, err)
+		log.Printf("Excute %v Stat Err:%s", methodName, err)
 	}
 	bytes, err := ioutil.ReadFile(filePath)
 	if err != nil || bytes == nil {
-		log.Fatalf("Excute %v ReadFile Err:%s", methodName, err)
+		log.Printf("Excute %v ReadFile Err:%s", methodName, err)
 	}
 	return string(bytes) //byte to string
 }
@@ -198,63 +198,112 @@ func IsNotExist(methodName string, fileName string) bool {
 	fmt.Println(methodName)
 	pwd, err := os.Getwd()
 	if err != nil {
-		log.Fatalf("Excute %v Getwd Err:%s", methodName, err)
+		log.Printf("Excute %v Getwd Err:%s", methodName, err)
 		return false
 	}
 	filePath := pwd + "/fileo/" + fileName
 	if _, err = os.Stat(filePath); errors.Is(err, fs.ErrNotExist) {
 		return true
 	}
-	log.Fatalf("Excute %v Stat Err:%s", methodName, err)
+	log.Printf("Excute %v Stat Err:%s", methodName, err)
 	return false
 }
 
 func parseText() {
-	stringText := getFileString("parseText", "fileo.txt")
+	methodName := "parseText"
+	stringText := getFileString(methodName, "fileo.txt")
 
 	// by character
-	data := bufio.NewScanner(strings.NewReader(stringText))
-	data.Split(bufio.ScanRunes)
-	for data.Scan() {
-		fmt.Print(data.Text())
+	scanner := bufio.NewScanner(strings.NewReader(stringText))
+	scanner.Split(bufio.ScanRunes)
+	for scanner.Scan() {
+		fmt.Print(scanner.Text())
 	}
 	fmt.Println("\n" + strings.Repeat("-", 20))
 }
 
 func writeText() {
-
-	if !IsNotExist("writeText", "fileo_write.txt") {
+	methodName := "writeText"
+	if !IsNotExist(methodName, "fileo_write.txt") {
 		return
 	}
-	//TODO
-
+	pwd, _ := os.Getwd()
+	filePath := pwd + "/fileo/fileo_write.txt"
+	file, err := os.Create(filePath)
+	if err != nil {
+		log.Printf("Excute %v Create Err:%s", methodName, err)
+	}
+	defer file.Close()
+	stringText := "1001,\"Angel\",100\n" +
+		"1002,\"Bob\",90\n" +
+		"1003,\"Sam\",80"
+	n, err := file.WriteString(stringText)
+	if err != nil || n <= 0 {
+		log.Printf("Excute %v WriteString Err:%s", methodName, err)
+	}
 	fmt.Println("\n" + strings.Repeat("-", 20))
 }
 
 func parseCSV() {
-	stringText := getFileString("parseCSV", "fileo.csv")
+	methodName := "parseCSV"
+	// fmt.Println(methodName)
+	// pwd, err := os.Getwd()
+	// if err != nil {
+	// 	log.Printf("Excute %v Getwd Err:%s", methodName, err)
+	// }
+	// filePath := pwd + "/fileo/fileo.csv"
+	// file, err := os.Open(filePath)
+	// if err != nil {
+	// 	log.Printf("Excute %v Open Err:%s", methodName, err)
+	// }
+	// defer file.Close()
+	// // by Line
+	// scanner := bufio.NewScanner(file)
+	// scanner.Split(bufio.ScanLines)
+	// for scanner.Scan() {
+	// 	fmt.Print(scanner.Text() + "\n")
+	// }
+	stringText := getFileString(methodName, "fileo.csv")
 
 	// by character
-	data := bufio.NewScanner(strings.NewReader(stringText))
-	data.Split(bufio.ScanRunes)
-	for data.Scan() {
-		fmt.Println(data.Text())
+	scanner := bufio.NewScanner(strings.NewReader(stringText))
+	scanner.Split(bufio.ScanRunes)
+	for scanner.Scan() {
+		fmt.Print(scanner.Text())
 	}
+
 	fmt.Println("\n" + strings.Repeat("-", 20))
+
 }
 
 func writeCSV() {
-
-	if !IsNotExist("writeCSV", "fileo_write.csv") {
+	methodName := "writeCSV"
+	if !IsNotExist(methodName, "fileo_write.csv") {
 		return
 	}
-	//TODO
-
+	pwd, _ := os.Getwd()
+	filePath := pwd + "/fileo/fileo_write.csv"
+	file, err := os.Create(filePath)
+	if err != nil {
+		log.Printf("Excute %v Create Err:%s", methodName, err)
+	}
+	stringText := "No,Name,Score\n" +
+		"1001,\"Angel\",100\n" +
+		"1002,\"Bob\",90\n" +
+		"1003,\"Sam\",80"
+	n, err := file.WriteString(stringText)
+	defer file.Close()
+	if err != nil || n <= 0 {
+		log.Printf("Excute %v WriteString Err:%s", methodName, err)
+	}
 	fmt.Println("\n" + strings.Repeat("-", 20))
 }
 
 func parseXML() {
-	stringText := getFileString("parseXML", "fileo.xml")
+	methodName := "parseText"
+	stringText := getFileString(methodName, "fileo.xml")
+
+	//TODO attributer
 
 	// by character
 	data := bufio.NewScanner(strings.NewReader(stringText))
@@ -266,12 +315,38 @@ func parseXML() {
 }
 
 func writeXML() {
-
-	if !IsNotExist("writeXML", "fileo_write.xml") {
+	methodName := "parseText"
+	if !IsNotExist(methodName, "fileo_write.xml") {
 		return
 	}
-	//TODO
-
+	pwd, _ := os.Getwd()
+	filePath := pwd + "/fileo/fileo_write.xml"
+	file, err := os.Create(filePath)
+	if err != nil {
+		log.Printf("Excute %v Create Err:%s", methodName, err)
+	}
+	stringText := "<Students>" +
+		"<Student>" +
+		"    <No>1001</No>" +
+		"   <Name>Angel</Name>" +
+		"   <Score>100</Score>" +
+		"</Student>" +
+		"<Student>" +
+		"   <No>1002</No>" +
+		"   <Name>Bob</Name>" +
+		"   <Score>90</Score>" +
+		"</Student>" +
+		"<Student>" +
+		"   <No>1003</No>" +
+		"   <Name>Sam</Name>" +
+		"   <Score>80</Score>" +
+		"</Student>" +
+		"</Students>"
+	n, err := file.WriteString(stringText)
+	defer file.Close()
+	if err != nil || n <= 0 {
+		log.Printf("Excute %v WriteString Err:%s", methodName, err)
+	}
 	fmt.Println("\n" + strings.Repeat("-", 20))
 }
 

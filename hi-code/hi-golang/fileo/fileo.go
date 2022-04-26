@@ -19,8 +19,10 @@ package fileo
 import (
 	"archive/zip"
 	"bufio"
+	"errors"
 	"fmt"
 	"io"
+	"io/fs"
 	"io/ioutil"
 	"log"
 	"os"
@@ -200,13 +202,10 @@ func IsNotExist(methodName string, fileName string) bool {
 		return false
 	}
 	filePath := pwd + "/fileo/" + fileName
-	if _, err = os.Stat(filePath); os.IsNotExist(err) {
+	if _, err = os.Stat(filePath); errors.Is(err, fs.ErrNotExist) {
 		return true
 	}
-	if err != nil {
-		log.Fatalf("Excute %v Stat Err:%s", methodName, err)
-		return false
-	}
+	log.Fatalf("Excute %v Stat Err:%s", methodName, err)
 	return false
 }
 

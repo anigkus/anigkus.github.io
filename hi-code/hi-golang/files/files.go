@@ -27,6 +27,13 @@ import (
 	"time"
 )
 
+func init() {
+	//console
+	log.SetPrefix("LOG: ")
+	log.SetFlags(log.Ldate | log.Lmicroseconds | log.Llongfile | log.Lmsgprefix)
+	log.Println("init started")
+}
+
 func Main() {
 	fmt.Println("files...")
 

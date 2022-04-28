@@ -307,7 +307,7 @@ type Student struct {
 }
 
 type Students struct {
-	student []Student
+	Student []Student `xml:"Student"`
 }
 
 func parseXML() {
@@ -331,13 +331,12 @@ func parseXML() {
 		log.Printf("Excute %v ReadFile Err:%s", methodName, err)
 	}
 	students := &Students{}
-	students.student = make([]Student, 3)
-	err = xml.Unmarshal([]byte(data), &students) //todo
+	err = xml.Unmarshal([]byte(data), &students)
 	if err != nil {
 		log.Printf("Excute %v Unmarshal Err:%s", methodName, err)
 	}
-	if students != nil && students.student != nil && len(students.student) > 0 {
-		for _, stu := range students.student {
+	if students != nil && students.Student != nil && len(students.Student) > 0 {
+		for _, stu := range students.Student {
 			fmt.Printf("No:%v,Name:%v,Score:%v\n", stu.No, stu.Name, stu.Score)
 		}
 	} else {

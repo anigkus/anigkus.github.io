@@ -19,6 +19,7 @@ package fileo
 import (
 	"archive/zip"
 	"bufio"
+	"encoding/xml"
 	"errors"
 	"fmt"
 	"io"
@@ -299,23 +300,54 @@ func writeCSV() {
 	fmt.Println("\n" + strings.Repeat("-", 20))
 }
 
+type Student struct {
+	No    string `xml:"No"`
+	Name  string `xml:"Name"`
+	Score string `xml:"Score"`
+}
+
+type Students struct {
+	student []Student
+}
+
 func parseXML() {
-	methodName := "parseText"
-	stringText := getFileString(methodName, "fileo.xml")
-
-	//TODO attributer
-
-	// by character
-	data := bufio.NewScanner(strings.NewReader(stringText))
-	data.Split(bufio.ScanRunes)
-	for data.Scan() {
-		fmt.Println(data.Text())
+	fileName := "fileo.xml"
+	methodName := "parseXML"
+	fmt.Println(methodName)
+	pwd, err := os.Getwd()
+	if err != nil {
+		log.Printf("Excute %v Getwd Err:%s", methodName, err)
 	}
-	fmt.Println("\n" + strings.Repeat("-", 20))
+	filePath := pwd + "/fileo/" + fileName
+	if _, err = os.Stat(filePath); os.IsNotExist(err) {
+		log.Printf("Excute %v Stat Err:%s", methodName, err)
+	}
+	if err != nil {
+		log.Printf("Excute %v Stat Err:%s", methodName, err)
+	}
+
+	data, err := ioutil.ReadFile(filePath)
+	if err != nil {
+		log.Printf("Excute %v ReadFile Err:%s", methodName, err)
+	}
+	students := &Students{}
+	students.student = make([]Student, 3)
+	err = xml.Unmarshal([]byte(data), &students) //todo
+	if err != nil {
+		log.Printf("Excute %v Unmarshal Err:%s", methodName, err)
+	}
+	if students != nil && students.student != nil && len(students.student) > 0 {
+		for _, stu := range students.student {
+			fmt.Printf("No:%v,Name:%v,Score:%v\n", stu.No, stu.Name, stu.Score)
+		}
+	} else {
+		log.Printf("Excute %v For Err:%s,students:%v", methodName, err, students)
+	}
+
 }
 
 func writeXML() {
-	methodName := "parseText"
+	methodName := "writeXML"
 	if !IsNotExist(methodName, "fileo_write.xml") {
 		return
 	}

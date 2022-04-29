@@ -19,6 +19,7 @@ package fileo
 import (
 	"archive/zip"
 	"bufio"
+	"encoding/csv"
 	"encoding/xml"
 	"errors"
 	"fmt"
@@ -288,22 +289,41 @@ func writeCSV() {
 	if err != nil {
 		log.Printf("Excute %v Create Err:%s", methodName, err)
 	}
-	stringText := "No,Name,Score\n" +
-		"1001,\"Angel\",100\n" +
-		"1002,\"Bob\",90\n" +
-		"1003,\"Sam\",80"
-	n, err := file.WriteString(stringText)
-	defer file.Close()
-	if err != nil || n <= 0 {
-		log.Printf("Excute %v WriteString Err:%s", methodName, err)
+	//By String
+	// stringText := "No,Name,Score\n" +
+	// 	"1001,\"Angel\",100\n" +
+	// 	"1002,\"Bob\",90\n" +
+	// 	"1003,\"Sam\",80"
+	// n, err := file.WriteString(stringText)
+	// defer file.Close()
+	// if err != nil || n <= 0 {
+	// 	log.Printf("Excute %v WriteString Err:%s", methodName, err)
+	// }
+
+	//By NewWriter
+	csvwriter := csv.NewWriter(file)
+	rows := [][]string{
+		{"No", "Name", "Score"},
+		{"1001", "Angel", "100"},
+		{"1002", "BoB", "90"},
+		{"1003", "Sam", "80"},
 	}
+	for _, row := range rows {
+		_ = csvwriter.Write(row)
+	}
+	closeResource := func() {
+		csvwriter.Flush()
+		file.Close()
+	}
+	defer closeResource()
+
 	fmt.Println("\n" + strings.Repeat("-", 20))
 }
 
 type Student struct {
 	No    string `xml:"No"`
 	Name  string `xml:"Name"`
-	Score string `xml:"Score"`
+	Score int8   `xml:"Score"`
 }
 
 type Students struct {
@@ -352,32 +372,46 @@ func writeXML() {
 	}
 	pwd, _ := os.Getwd()
 	filePath := pwd + "/fileo/fileo_write.xml"
-	file, err := os.Create(filePath)
-	if err != nil {
-		log.Printf("Excute %v Create Err:%s", methodName, err)
+	//By String
+	// file, err := os.Create(filePath)
+	// if err != nil {
+	// 	log.Printf("Excute %v Create Err:%s", methodName, err)
+	// }
+	// stringText := "<Students>" +
+	// 	"<Student>" +
+	// 	"    <No>1001</No>" +
+	// 	"   <Name>Angel</Name>" +
+	// 	"   <Score>100</Score>" +
+	// 	"</Student>" +
+	// 	"<Student>" +
+	// 	"   <No>1002</No>" +
+	// 	"   <Name>Bob</Name>" +
+	// 	"   <Score>90</Score>" +
+	// 	"</Student>" +
+	// 	"<Student>" +
+	// 	"   <No>1003</No>" +
+	// 	"   <Name>Sam</Name>" +
+	// 	"   <Score>80</Score>" +
+	// 	"</Student>" +
+	// 	"</Students>"
+	// n, err := file.WriteString(stringText)
+	// defer file.Close()
+	// if err != nil || n <= 0 {
+	// 	log.Printf("Excute %v WriteString Err:%s", methodName, err)
+	// }
+
+	//By Object
+	var student []Student
+	student = append(student,
+		Student{No: "1001", Name: "Angel", Score: 100},
+		Student{No: "1002", Name: "Bob", Score: 90},
+		Student{No: "1003", Name: "Sam", Score: 80})
+	students := Students{
+		Student: student,
 	}
-	stringText := "<Students>" +
-		"<Student>" +
-		"    <No>1001</No>" +
-		"   <Name>Angel</Name>" +
-		"   <Score>100</Score>" +
-		"</Student>" +
-		"<Student>" +
-		"   <No>1002</No>" +
-		"   <Name>Bob</Name>" +
-		"   <Score>90</Score>" +
-		"</Student>" +
-		"<Student>" +
-		"   <No>1003</No>" +
-		"   <Name>Sam</Name>" +
-		"   <Score>80</Score>" +
-		"</Student>" +
-		"</Students>"
-	n, err := file.WriteString(stringText)
-	defer file.Close()
-	if err != nil || n <= 0 {
-		log.Printf("Excute %v WriteString Err:%s", methodName, err)
-	}
+	file, _ := xml.MarshalIndent(students, "", " ")
+	_ = ioutil.WriteFile(filePath, file, 0644)
+
 	fmt.Println("\n" + strings.Repeat("-", 20))
 }
 

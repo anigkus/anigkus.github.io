@@ -20,6 +20,7 @@ import (
 	"archive/zip"
 	"bufio"
 	"encoding/csv"
+	"encoding/json"
 	"encoding/xml"
 	"errors"
 	"fmt"
@@ -42,16 +43,16 @@ func Main() {
 	//extractZip()
 
 	parseText()
-	writeText()
+	//writeText()
 
 	parseCSV()
-	writeCSV()
+	//writeCSV()
 
 	parseXML()
-	writeXML()
+	// writeXML()
 
-	// parseJSON()
-	// writeJSON()
+	parseJSON()
+	writeJSON()
 }
 func compressZip() {
 	fmt.Println("compressZip")
@@ -304,7 +305,7 @@ func writeCSV() {
 	csvwriter := csv.NewWriter(file)
 	rows := [][]string{
 		{"No", "Name", "Score"},
-		{"1001", "Angel", "100"},
+		{"1001", "Angel", "100"}, // Note: String double quotes
 		{"1002", "BoB", "90"},
 		{"1003", "Sam", "80"},
 	}
@@ -321,9 +322,9 @@ func writeCSV() {
 }
 
 type Student struct {
-	No    string `xml:"No"`
-	Name  string `xml:"Name"`
-	Score int8   `xml:"Score"`
+	No    int    `json:"No"`
+	Name  string `json:"Name"`
+	Score int8   `json:"Score"`
 }
 
 type Students struct {
@@ -403,9 +404,9 @@ func writeXML() {
 	//By Object
 	var student []Student
 	student = append(student,
-		Student{No: "1001", Name: "Angel", Score: 100},
-		Student{No: "1002", Name: "Bob", Score: 90},
-		Student{No: "1003", Name: "Sam", Score: 80})
+		Student{No: 1001, Name: "Angel", Score: 100},
+		Student{No: 1002, Name: "Bob", Score: 90},
+		Student{No: 1003, Name: "Sam", Score: 80})
 	students := Students{
 		Student: student,
 	}
@@ -416,23 +417,44 @@ func writeXML() {
 }
 
 func parseJSON() {
-	stringText := getFileString("parseJSON", "fileo.json")
-
-	// by character
-	data := bufio.NewScanner(strings.NewReader(stringText))
-	data.Split(bufio.ScanRunes)
-	for data.Scan() {
-		fmt.Println(data.Text())
+	fileName := "fileo.json"
+	methodName := "parseJSON"
+	fmt.Println(methodName)
+	pwd, err := os.Getwd()
+	if err != nil {
+		log.Printf("Excute %v Getwd Err:%s", methodName, err)
 	}
+	filePath := pwd + "/fileo/" + fileName
+	if _, err = os.Stat(filePath); os.IsNotExist(err) {
+		log.Printf("Excute %v Stat Err:%s", methodName, err)
+	}
+	if err != nil {
+		log.Printf("Excute %v Stat Err:%s", methodName, err)
+	}
+	file, _ := ioutil.ReadFile(filePath)
+	data := []Student{}
+	_ = json.Unmarshal([]byte(file), &data)
+	for i := 0; i < len(data); i++ {
+		fmt.Printf("No:%v,Name:%v,Score:%v\n", data[i].No, data[i].Name, data[i].Score)
+	}
+
 	fmt.Println("\n" + strings.Repeat("-", 20))
 }
 
 func writeJSON() {
-
-	if !IsNotExist("writeJSON", "fileo_write.json") {
+	methodName := "writeJSON"
+	if !IsNotExist(methodName, "fileo_write.json") {
 		return
 	}
-	//TODO
+	pwd, _ := os.Getwd()
+	filePath := pwd + "/fileo/fileo_write.json"
+	data := []Student{}
+	data = append(data,
+		Student{No: 1001, Name: "Angel", Score: 100},
+		Student{No: 1002, Name: "BoB", Score: 90},
+		Student{No: 1003, Name: "Sam", Score: 80})
+	file, _ := json.MarshalIndent(data, "", " ")
+	_ = ioutil.WriteFile(filePath, file, 0644)
 
 	fmt.Println("\n" + strings.Repeat("-", 20))
 }

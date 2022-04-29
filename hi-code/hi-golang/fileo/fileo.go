@@ -52,7 +52,7 @@ func Main() {
 	// writeXML()
 
 	parseJSON()
-	writeJSON()
+	//writeJSON()
 }
 func compressZip() {
 	fmt.Println("compressZip")

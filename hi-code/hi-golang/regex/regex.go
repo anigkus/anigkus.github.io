@@ -28,7 +28,7 @@ func Main() {
 
 	matchingHTMLTag()
 
-	//matchEmoji()
+	matchEmoji()
 
 	matchHTMLImage()
 }
@@ -73,8 +73,13 @@ func matchingHTMLTag() {
 
 func matchEmoji() {
 	fmt.Println("matchEmoji")
-	var emojiRx = regexp.MustCompile(`[🍐]`)
-	var str = emojiRx.ReplaceAllString("Thats a nice joke 🚗 🐝 🍎", `[e]`)
+	//https://www.runoob.com/charsets/emoji-smiley.html
+	/*
+		1F600~1F609:😀😁😂😃😄😅😆😇😈😉
+		1F60A~1F60F:😊😋😌😍😎😏
+	*/
+	var emojiRx = regexp.MustCompile(`[\x{1F600}-\x{1F608}|[\x{1F60A}-\x{1F60E}]`)
+	var str = emojiRx.ReplaceAllString("Thats a nice joke 😀 😏 ", `[x]`)
 	fmt.Println(str)
 }
 

@@ -83,7 +83,7 @@ func matchHTMLImage() {
 	<img src="https://cdn4.buysellads.net/uu/1/41334/1550855391-cc_dark.png" alt="ads via Carbon" border="0" height="100" width="130" style="max-width: 130px;">
 	<img class="index-logo-srcnew" src="//www.baidu.com/img/flexible/logo/pc/result@2.png" alt="到百度首页" title="到百度首页">
 	`
-	re := regexp.MustCompile(`]+\bsrc=["']([^"']+)["']`)
+	re := regexp.MustCompile(`<img.*? src=["']([^"']+)["']`)
 	submatchall := re.FindAllStringSubmatch(string1, -1)
 	for _, element := range submatchall {
 		fmt.Println(element[1])

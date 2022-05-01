@@ -39,6 +39,8 @@ func Main() {
 	matchFindAllStringParentheses()
 
 	matchFindAllStringSplit()
+
+	mactchFindStringSubmatchExtractFilename()
 }
 
 /*out:
@@ -183,4 +185,20 @@ func matchFindAllStringSplit() {
 	for _, element := range submatchall {
 		fmt.Println(element)
 	}
+}
+
+/*out:
+PCtm_d9c8750bed0b3c7d089fa7d55720d6cf
+regexp-syntax
+*/
+func mactchFindStringSubmatchExtractFilename() {
+	regex := regexp.MustCompile(`^(.*/)?(?:$|(.+?)(?:(\.[^.]*$)|$))`)
+
+	string1 := `https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png`
+	match1 := regex.FindStringSubmatch(string1)
+	fmt.Println(match1[2])
+
+	string2 := `https://www.runoob.com/regexp/regexp-syntax.html`
+	match2 := regex.FindStringSubmatch(string2)
+	fmt.Println(match2[2])
 }

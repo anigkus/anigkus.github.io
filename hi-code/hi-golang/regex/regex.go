@@ -41,6 +41,8 @@ func Main() {
 	matchFindAllStringSplit()
 
 	mactchFindStringSubmatchExtractFilename()
+
+	mactchFindStringExtractnumbers()
 }
 
 /*out:
@@ -201,4 +203,28 @@ func mactchFindStringSubmatchExtractFilename() {
 	string2 := `https://www.runoob.com/regexp/regexp-syntax.html`
 	match2 := regex.FindStringSubmatch(string2)
 	fmt.Println(match2[2])
+}
+
+/*out:
+Pattern: [-]?\d[\d,]*[\.]?[\d{2}]*
+String contains any match: true
+12
+-23
+100.00
+0.001
+100.00001
+*/
+func mactchFindStringExtractnumbers() {
+	string1 := "A 12 b -23 C 100.00 Z 0.001 X:100.00001"
+
+	regex := regexp.MustCompile(`[-]?\d[\d,]*[\.]?[\d{2}]*`)
+
+	fmt.Printf("Pattern: %v\n", regex.String()) // Print Pattern
+
+	fmt.Printf("String contains any match: %v\n", regex.MatchString(string1)) // True
+
+	submatchall := regex.FindAllString(string1, -1)
+	for _, element := range submatchall {
+		fmt.Println(element)
+	}
 }

@@ -37,8 +37,21 @@ func Main() {
 	matchreplaceAllString()
 
 	matchFindAllStringParentheses()
+
+	matchFindAllStringSplit()
 }
 
+/*out:
+matchingHHMM
+Pattern: ^([0-9]|0[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9])$
+Time: 8:2	:true
+Time: 9:9	:true
+Time: 12:29	:true
+Time: 02:5	:true
+Time: 23:59	:true
+Time: 55:59	:false
+Time: 0:01	:true
+*/
 func matchingHHMMMatchString() {
 	fmt.Println("matchingHHMM")
 	string1 := "8:2"
@@ -60,6 +73,10 @@ func matchingHHMMMatchString() {
 	fmt.Printf("Time: %v\t:%v\n", string7, regex.MatchString(string7))
 }
 
+/*out:
+matchingHTMLTag
+matchingHTMLTag div innerText
+*/
 func matchingHTMLTagFindAllStringSubmatch() {
 	fmt.Println("matchingHTMLTag")
 	string1 := `<html><body>
@@ -77,6 +94,10 @@ func matchingHTMLTagFindAllStringSubmatch() {
 	}
 }
 
+/*out:
+matchEmoji
+Thats a nice joke [x] 😏
+*/
 func matchEmojiReplaceAllString() {
 	fmt.Println("matchEmoji")
 	/*
@@ -89,6 +110,10 @@ func matchEmojiReplaceAllString() {
 	fmt.Println(str)
 }
 
+/*out:
+https://cdn4.buysellads.net/uu/1/41334/1550855391-cc_dark.png
+//www.baidu.com/img/flexible/logo/pc/result@2.png
+*/
 func matchHTMLImageFindAllStringSubmatch() {
 	string1 := `
 	<img src="https://cdn4.buysellads.net/uu/1/41334/1550855391-cc_dark.png" alt="ads via Carbon" border="0" height="100" width="130" style="max-width: 130px;">
@@ -102,6 +127,10 @@ func matchHTMLImageFindAllStringSubmatch() {
 }
 
 //https://www.runoob.com/regexp/regexp-syntax.html
+/*out:
+aAZz0123456789!@#$%^&*()-+=0 : 28 : 0
+aAZz0123456789             0 : 28 : 13
+*/
 func matchreplaceAllString() {
 
 	string1 := "aAZz0123456789!@#$%^&*()-+=0"
@@ -114,6 +143,14 @@ func matchreplaceAllString() {
 	fmt.Println(string1, ":", len(string1), ":", strings.Count(string1, " "))
 }
 
+/*out:
+Pattern: \((.*?)\)
+
+Text between parentheses:
+anigkus
+github
+microsoft
+*/
 func matchFindAllStringParentheses() {
 	string1 := "This is a (anigkus).((github)).(microsoft).com "
 
@@ -125,6 +162,25 @@ func matchFindAllStringParentheses() {
 	for _, element := range submatchall {
 		element = strings.Trim(element, "(")
 		element = strings.Trim(element, ")")
+		fmt.Println(element)
+	}
+}
+
+/*out:
+Pattern: [A-Z][^A-Z]*
+Learning to understand the syntax of the
+Golang development language by
+Anigkus
+*/
+func matchFindAllStringSplit() {
+	string1 := "Learning to understand the syntax of the Golang development language by Anigkus"
+
+	regex := regexp.MustCompile(`[A-Z][^A-Z]*`)
+
+	fmt.Printf("Pattern: %v\n", regex.String()) // Print Pattern
+
+	submatchall := regex.FindAllString(string1, -1)
+	for _, element := range submatchall {
 		fmt.Println(element)
 	}
 }

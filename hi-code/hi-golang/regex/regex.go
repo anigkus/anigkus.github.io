@@ -18,22 +18,26 @@ package regex
 
 import (
 	"fmt"
+	"log"
 	"regexp"
+	"strings"
 )
 
 func Main() {
 	fmt.Println("regex")
 
-	matchingHHMM()
+	matchingHHMMMatchString()
 
-	matchingHTMLTag()
+	matchingHTMLTagFindAllStringSubmatch()
 
-	matchEmoji()
+	matchEmojiReplaceAllString()
 
-	matchHTMLImage()
+	matchHTMLImageFindAllStringSubmatch()
+
+	matchreplaceAllString()
 }
 
-func matchingHHMM() {
+func matchingHHMMMatchString() {
 	fmt.Println("matchingHHMM")
 	string1 := "8:2"
 	string2 := "9:9"
@@ -54,7 +58,7 @@ func matchingHHMM() {
 	fmt.Printf("Time: %v\t:%v\n", string7, regex.MatchString(string7))
 }
 
-func matchingHTMLTag() {
+func matchingHTMLTagFindAllStringSubmatch() {
 	fmt.Println("matchingHTMLTag")
 	string1 := `<html><body>
 			<form name="query" method="post">
@@ -71,10 +75,10 @@ func matchingHTMLTag() {
 	}
 }
 
-func matchEmoji() {
+func matchEmojiReplaceAllString() {
 	fmt.Println("matchEmoji")
-	//https://www.runoob.com/charsets/emoji-smiley.html
 	/*
+		https://www.runoob.com/charsets/emoji-smiley.html
 		1F600~1F609:😀😁😂😃😄😅😆😇😈😉
 		1F60A~1F60F:😊😋😌😍😎😏
 	*/
@@ -83,7 +87,7 @@ func matchEmoji() {
 	fmt.Println(str)
 }
 
-func matchHTMLImage() {
+func matchHTMLImageFindAllStringSubmatch() {
 	string1 := `
 	<img src="https://cdn4.buysellads.net/uu/1/41334/1550855391-cc_dark.png" alt="ads via Carbon" border="0" height="100" width="130" style="max-width: 130px;">
 	<img class="index-logo-srcnew" src="//www.baidu.com/img/flexible/logo/pc/result@2.png" alt="到百度首页" title="到百度首页">
@@ -93,4 +97,17 @@ func matchHTMLImage() {
 	for _, element := range submatchall {
 		fmt.Println(element[1])
 	}
+}
+
+//https://www.runoob.com/regexp/regexp-syntax.html
+func matchreplaceAllString() {
+
+	string1 := "aAZz0123456789!@#$%^&*()-+=0"
+	fmt.Println(string1, ":", len(string1), ":", strings.Count(string1, " "))
+	re, err := regexp.Compile(`[^\w]`) //Non  [A-Za-z0-9_]
+	if err != nil {
+		log.Fatal(err)
+	}
+	string1 = re.ReplaceAllString(string1, " ")
+	fmt.Println(string1, ":", len(string1), ":", strings.Count(string1, " "))
 }

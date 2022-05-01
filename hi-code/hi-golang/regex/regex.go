@@ -35,6 +35,8 @@ func Main() {
 	matchHTMLImageFindAllStringSubmatch()
 
 	matchreplaceAllString()
+
+	matchFindAllStringParentheses()
 }
 
 func matchingHHMMMatchString() {
@@ -104,10 +106,25 @@ func matchreplaceAllString() {
 
 	string1 := "aAZz0123456789!@#$%^&*()-+=0"
 	fmt.Println(string1, ":", len(string1), ":", strings.Count(string1, " "))
-	re, err := regexp.Compile(`[^\w]`) //Non  [A-Za-z0-9_]
+	regex, err := regexp.Compile(`[^\w]`) //Match non [A-Za-z0-9_]
 	if err != nil {
 		log.Fatal(err)
 	}
-	string1 = re.ReplaceAllString(string1, " ")
+	string1 = regex.ReplaceAllString(string1, " ")
 	fmt.Println(string1, ":", len(string1), ":", strings.Count(string1, " "))
+}
+
+func matchFindAllStringParentheses() {
+	string1 := "This is a (anigkus).((github)).(microsoft).com "
+
+	regex := regexp.MustCompile(`\((.*?)\)`)
+	fmt.Printf("Pattern: %v\n", regex.String()) // print pattern
+
+	fmt.Println("\nText between parentheses:")
+	submatchall := regex.FindAllString(string1, -1)
+	for _, element := range submatchall {
+		element = strings.Trim(element, "(")
+		element = strings.Trim(element, ")")
+		fmt.Println(element)
+	}
 }

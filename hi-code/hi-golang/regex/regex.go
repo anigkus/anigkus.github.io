@@ -45,6 +45,8 @@ func Main() {
 	mactchFindStringExtractnumbers()
 
 	matchFindAllStringSplitSpaces()
+
+	matchReplaceAllStringFirstOccurrence()
 }
 
 /*out:
@@ -257,4 +259,15 @@ func matchFindAllStringSplitSpaces() {
 	for _, element := range submatchall {
 		fmt.Println(element)
 	}
+}
+
+/*out:
+Microsoft-Github-Git-Gitlab-Gitee
+*/
+func matchReplaceAllStringFirstOccurrence() {
+	string1 := "Git-Github-Git-Gitlab-Gitee"
+	regex := regexp.MustCompile("^(.*?)Git(.*)$")
+	repexString1 := "${1}Microsoft$2"
+	output := regex.ReplaceAllString(string1, repexString1)
+	fmt.Println(output)
 }

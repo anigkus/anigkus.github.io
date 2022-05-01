@@ -38,11 +38,13 @@ func Main() {
 
 	matchFindAllStringParentheses()
 
-	matchFindAllStringSplit()
+	matchFindAllStringSplitUpperWord()
 
 	mactchFindStringSubmatchExtractFilename()
 
 	mactchFindStringExtractnumbers()
+
+	matchFindAllStringSplitSpaces()
 }
 
 /*out:
@@ -176,7 +178,7 @@ Learning to understand the syntax of the
 Golang development language by
 Anigkus
 */
-func matchFindAllStringSplit() {
+func matchFindAllStringSplitUpperWord() {
 	string1 := "Learning to understand the syntax of the Golang development language by Anigkus"
 
 	regex := regexp.MustCompile(`[A-Z][^A-Z]*`)
@@ -222,6 +224,34 @@ func mactchFindStringExtractnumbers() {
 	fmt.Printf("Pattern: %v\n", regex.String()) // Print Pattern
 
 	fmt.Printf("String contains any match: %v\n", regex.MatchString(string1)) // True
+
+	submatchall := regex.FindAllString(string1, -1)
+	for _, element := range submatchall {
+		fmt.Println(element)
+	}
+}
+
+/*out:
+Pattern: \S+
+Learning
+to
+understand
+the
+syntax
+of
+the
+Golang
+development
+language
+by
+Anigkus
+*/
+func matchFindAllStringSplitSpaces() {
+	string1 := "Learning to understand the syntax of\n\tthe\t\tGolang   development   language\nby\tAnigkus"
+
+	regex := regexp.MustCompile(`\S+`)
+
+	fmt.Printf("Pattern: %v\n", regex.String()) // Print Pattern
 
 	submatchall := regex.FindAllString(string1, -1)
 	for _, element := range submatchall {

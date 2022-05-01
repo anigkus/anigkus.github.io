@@ -47,6 +47,8 @@ func Main() {
 	matchFindAllStringSplitSpaces()
 
 	matchReplaceAllStringFirstOccurrence()
+
+	matchReplaceAllStringNonAlphanumeric()
 }
 
 /*out:
@@ -270,4 +272,16 @@ func matchReplaceAllStringFirstOccurrence() {
 	repexString1 := "${1}Microsoft$2"
 	output := regex.ReplaceAllString(string1, repexString1)
 	fmt.Println(output)
+}
+
+/*out:
+-Golang-Python-Php-Kotlin-
+*/
+func matchReplaceAllStringNonAlphanumeric() {
+	regex, err := regexp.Compile("[^A-Za-z0-9]+") //Match non [A-Za-z0-9]
+	if err != nil {
+		log.Fatal(err)
+	}
+	string1 := regex.ReplaceAllString("#Golang#Python$Php&Kotlin@@", "-")
+	fmt.Println(string1)
 }

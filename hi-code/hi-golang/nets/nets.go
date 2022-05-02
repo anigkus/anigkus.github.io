@@ -57,22 +57,64 @@ func lookUp() {
 		// 142.250.186.36
 		// 2a00:1450:4001:813::2004
 	}
-	// ips, err := net.LookupIP("google.com")
-
-	// mxs, err := net.LookupMX("google.com")
-
-	// net.LookupNS("google.com")
-	//net.LookupPort("")
+	ips, err := net.LookupIP("www.google.com")
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, ip := range ips {
+		fmt.Println(ip)
+		// 142.250.186.36
+		// 2a00:1450:4001:813::2004
+	}
+	mxs, err := net.LookupMX("baidu.com") //mail exchange
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, mx := range mxs {
+		fmt.Println("Host:", mx.Host, "<->", "Pref:", mx.Pref)
+		// Host: mx.maillb.baidu.com. <-> Pref: 10
+		// Host: mx.n.shifen.com. <-> Pref: 15
+		// Host: usmx01.baidu.com. <-> Pref: 20
+		// Host: jpmx.baidu.com. <-> Pref: 20
+		// Host: mx1.baidu.com. <-> Pref: 20
+		// Host: mx50.baidu.com. <-> Pref: 20
+	}
 
 	//
-	// cname, srvs, err := net.LookupSRV("xmpp-server", "tcp", "golang.org")
-	// if err != nil {
-	// 	panic(err)
-	// }
-	// fmt.Printf("\ncname: %s \n\n", cname)
-	// for _, srv := range srvs {
-	// 	fmt.Printf("%v:%v:%d:%d\n", srv.Target, srv.Port, srv.Priority, srv.Weight)
-	// }
+	nss, err := net.LookupNS("google.com") //nameserver
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, ns := range nss {
+		fmt.Println("Host:", ns.Host)
+		// Host: ns4.google.com.
+		// Host: ns2.google.com.
+		// Host: ns3.google.com.
+		// Host: ns1.google.com.
+	}
+
+	//
+	port, err := net.LookupPort("tcp", "ftp")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("port:", port) //port: 21
+
+	port, err = net.LookupPort("tcp", "http")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("port:", port) //port: 80
+
+	//todo...
+	cname, srvs, err := net.LookupSRV("xmpp-server", "tcp", "golang.org")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("\ncname: %s \n\n", cname)
+	for _, srv := range srvs {
+		fmt.Printf("%v:%v:%d:%d\n", srv.Target, srv.Port, srv.Priority, srv.Weight)
+	}
 
 	//
 	names, err = net.LookupTXT("google.com")

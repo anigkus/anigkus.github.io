@@ -49,6 +49,10 @@ func Main() {
 	matchReplaceAllStringFirstOccurrence()
 
 	matchReplaceAllStringNonAlphanumeric()
+
+	matchFindAllStringExtractDomain()
+
+	matchFindAllStringExtractDNSOrIP()
 }
 
 /*out:
@@ -71,6 +75,19 @@ func matchingHHMMMatchString() {
 	string5 := "23:59"
 	string6 := "55:59"
 	string7 := "0:01"
+	//Credit Card Numbers
+	// `^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$`
+
+	//dd/mm/yyyy
+	//`(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\d\\d)`
+
+	//phone number
+	//^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$`
+
+	//email
+	//`^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$`
+
+	//HHMM
 	regex := regexp.MustCompile(`^([0-9]|0[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9])$`)
 
 	fmt.Printf("Pattern: %v\n", regex.String()) // print pattern
@@ -129,8 +146,8 @@ func matchHTMLImageFindAllStringSubmatch() {
 	<img src="https://cdn4.buysellads.net/uu/1/41334/1550855391-cc_dark.png" alt="ads via Carbon" border="0" height="100" width="130" style="max-width: 130px;">
 	<img class="index-logo-srcnew" src="//www.baidu.com/img/flexible/logo/pc/result@2.png" alt="到百度首页" title="到百度首页">
 	`
-	re := regexp.MustCompile(`<img.*? src=["']([^"']+)["']`)
-	submatchall := re.FindAllStringSubmatch(string1, -1)
+	regex := regexp.MustCompile(`<img.*? src=["']([^"']+)["']`)
+	submatchall := regex.FindAllStringSubmatch(string1, -1)
 	for _, element := range submatchall {
 		fmt.Println(element[1])
 	}
@@ -284,4 +301,48 @@ func matchReplaceAllStringNonAlphanumeric() {
 	}
 	string1 := regex.ReplaceAllString("#Golang#Python$Php&Kotlin@@", "-")
 	fmt.Println(string1)
+}
+
+/*out:
+Pattern: ^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/\n]+)
+true
+https://www.runoob.com
+*/
+func matchFindAllStringExtractDomain() {
+	string1 := `https://www.runoob.com/regexp/regexp-syntax.html`
+
+	regex := regexp.MustCompile(`^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/\n]+)`)
+	fmt.Printf("Pattern: %v\n", regex.String()) // print pattern
+	fmt.Println(regex.MatchString(string1))     // true
+
+	submatchall := regex.FindAllString(string1, -1)
+	for _, element := range submatchall {
+		fmt.Println(element)
+	}
+}
+
+/*out:
+Pattern: (25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}
+true
+127.0.0.1
+127.0.0.1
+127.0.0.1
+172.20.10.3
+172.20.10.3
+172.20.10.3
+*/
+func matchFindAllStringExtractDNSOrIP() {
+
+	str1 := `export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+	export https_proxy=http://172.20.10.3:7890 http_proxy=http://172.20.10.3:7890 all_proxy=socks5://172.20.10.3:7890`
+
+	re := regexp.MustCompile(`(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}`)
+
+	fmt.Printf("Pattern: %v\n", re.String()) // print pattern
+	fmt.Println(re.MatchString(str1))        // true
+
+	submatchall := re.FindAllString(str1, -1)
+	for _, element := range submatchall {
+		fmt.Println(element)
+	}
 }

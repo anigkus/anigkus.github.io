@@ -53,6 +53,8 @@ func Main() {
 	matchFindAllStringExtractDomain()
 
 	matchFindAllStringExtractDNSOrIP()
+
+	matchFindAllStringExtractTextBetweenSquareBrackets()
 }
 
 /*out:
@@ -86,6 +88,9 @@ func matchingHHMMMatchString() {
 
 	//email
 	//`^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$`
+
+	//YYYY-MM-DD
+	//`\d{4}-\d{2}-\d{2}`
 
 	//HHMM
 	regex := regexp.MustCompile(`^([0-9]|0[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9])$`)
@@ -333,16 +338,37 @@ true
 */
 func matchFindAllStringExtractDNSOrIP() {
 
-	str1 := `export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+	string1 := `export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
 	export https_proxy=http://172.20.10.3:7890 http_proxy=http://172.20.10.3:7890 all_proxy=socks5://172.20.10.3:7890`
 
-	re := regexp.MustCompile(`(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}`)
+	regex := regexp.MustCompile(`(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}`)
 
-	fmt.Printf("Pattern: %v\n", re.String()) // print pattern
-	fmt.Println(re.MatchString(str1))        // true
+	fmt.Printf("Pattern: %v\n", regex.String()) // print pattern
+	fmt.Println(regex.MatchString(string1))     // true
 
-	submatchall := re.FindAllString(str1, -1)
+	submatchall := regex.FindAllString(string1, -1)
 	for _, element := range submatchall {
+		fmt.Println(element)
+	}
+}
+
+/*out:
+Pattern: \[([^\[\]]*)\]
+Matched: true
+Golang
+Anigkus
+*/
+func matchFindAllStringExtractTextBetweenSquareBrackets() {
+	string1 := "Learning to understand the syntax of the [Golang] development language by [Anigkus]"
+
+	regex := regexp.MustCompile(`\[([^\[\]]*)\]`)
+	fmt.Printf("Pattern: %v\n", regex.String())         // print pattern
+	fmt.Println("Matched:", regex.MatchString(string1)) // true
+
+	submatchall := regex.FindAllString(string1, -1)
+	for _, element := range submatchall {
+		element = strings.Trim(element, "[")
+		element = strings.Trim(element, "]")
 		fmt.Println(element)
 	}
 }

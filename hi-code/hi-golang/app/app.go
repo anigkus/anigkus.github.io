@@ -27,6 +27,7 @@ import (
 	"github.com/anigkus/hi-golang/gor"
 	"github.com/anigkus/hi-golang/interfaces"
 	"github.com/anigkus/hi-golang/loop"
+	"github.com/anigkus/hi-golang/nets"
 	"github.com/anigkus/hi-golang/operator"
 	"github.com/anigkus/hi-golang/regex"
 	"github.com/anigkus/hi-golang/structs"
@@ -122,4 +123,7 @@ func Main() {
 
 	//regex
 	regex.Main()
+
+	//net
+	nets.Main()
 }

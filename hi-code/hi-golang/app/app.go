@@ -22,6 +22,7 @@ import (
 	"github.com/anigkus/hi-golang/channels"
 	"github.com/anigkus/hi-golang/conditional"
 	"github.com/anigkus/hi-golang/constant"
+	"github.com/anigkus/hi-golang/cryptography"
 	"github.com/anigkus/hi-golang/defers"
 	"github.com/anigkus/hi-golang/funcs"
 	"github.com/anigkus/hi-golang/gor"
@@ -126,4 +127,7 @@ func Main() {
 
 	//net
 	nets.Main()
+
+	//cryptography
+	cryptography.Main()
 }

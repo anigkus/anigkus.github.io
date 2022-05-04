@@ -21,6 +21,7 @@ import (
 	"crypto/sha1"
 	"crypto/sha256"
 	"crypto/sha512"
+	"encoding/base64"
 	"fmt"
 	"math/rand"
 	"time"
@@ -44,6 +45,8 @@ func Main() {
 	fmt.Println("Cryptography...")
 
 	cryptoHash()
+
+	cryptoBase64()
 }
 
 func cryptoHash() {
@@ -63,4 +66,13 @@ func cryptoHash() {
 	fmt.Printf("Sha1: %x\n\n", sha1.Sum(message))
 	fmt.Printf("Sha256: %x\n\n", sha256.Sum256(message))
 	fmt.Printf("Sha512: %x\n\n", sha512.Sum512(message))
+}
+
+func cryptoBase64() {
+	string1 := []byte("http://anigkus.github.io?a=10&b=29,19&c=xt")
+	stringEncode1 := base64.RawURLEncoding.EncodeToString([]byte(string1))
+	stringEncode2 := base64.URLEncoding.EncodeToString([]byte(string1))
+	fmt.Printf("base64.RawURLEncoding.EncodeToString(stringEncode1):%v\n", stringEncode1)
+	fmt.Printf("base64.URLEncoding.EncodeToString(stringEncode2):%v\n", stringEncode2)
+
 }

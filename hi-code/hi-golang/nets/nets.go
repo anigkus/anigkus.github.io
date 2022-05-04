@@ -23,7 +23,8 @@ import (
 )
 
 func Main() {
-	lookUp()
+	fmt.Println("net...")
+	//lookUp()
 }
 
 /*out:

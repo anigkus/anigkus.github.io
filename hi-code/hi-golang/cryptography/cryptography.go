@@ -101,11 +101,10 @@ func cryptoBase64() {
 	stringEncode1 := base64.RawStdEncoding.EncodeToString(src_byte1)
 	stringEncode2 := base64.RawURLEncoding.EncodeToString(src_byte1)
 	stringEncode3 := base64.StdEncoding.EncodeToString(src_byte1)
-	stringEncode4 := base64.URLEncoding.EncodeToString(src_byte1)
 
-	//
 	base64.URLEncoding.Encode(des_byte1, src_byte1)
 	stringEncode5 := string(des_byte1)
+	stringEncode4 := base64.URLEncoding.EncodeToString(src_byte1)
 
 	fmt.Printf("base64.RawStdEncoding.EncodeToString(src_byte1):%v\n", stringEncode1)
 	fmt.Printf("base64.RawURLEncoding.EncodeToString(src_byte1):%v\n", stringEncode2)
@@ -114,12 +113,17 @@ func cryptoBase64() {
 	fmt.Printf("base64.URLEncoding.Encode(des_byte1, src_byte1):%v\n", stringEncode5)
 
 	//.Decode
-	byte2, err := base64.RawStdEncoding.DecodeString(stringEncode5)
-	string2 := string(byte2)
+	src_byte2, err := base64.URLEncoding.DecodeString(stringEncode5)
 	if err != nil {
 		fmt.Println(err)
 	} else {
-		fmt.Printf("base64.RawStdEncoding.DecodeString(stringEncode5):%v\n", string2)
+		stringDecode1 := string(src_byte2)
+		fmt.Printf("base64.RawStdEncoding.DecodeString(stringEncode5):%v\n", stringDecode1)
 	}
+
+	var des_byte2 []byte = make([]byte, 57) //Can be greater then length
+	base64.URLEncoding.Decode(des_byte2, []byte(stringEncode3))
+	stringDecode2 := string(des_byte2)
+	fmt.Printf("base64.URLEncoding.Decode(des_byte2,src_byte1):%v\n", stringDecode2)
 
 }

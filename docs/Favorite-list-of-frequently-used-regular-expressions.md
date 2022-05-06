@@ -2,11 +2,11 @@
 # Favorite list of frequently used regular expressions {#id1-h1}
 
 ## Number expression {#id1-h2}
-- Number
+- Digits(zero or more )
   ```
   ^[0-9]*$
   ```
-- n digits
+- N digits
   ```
   ^\d{n}$
   ```
@@ -14,7 +14,7 @@
   ```
   ^\d{n,}$
   ```
-- m=> size <=n digits
+- M to N digits
   ```
   ^\d{m,n}$
   ```
@@ -26,134 +26,170 @@
   ```
   ^([1-9][0-9]*)+(\.[0-9]{1,2})?$
   ```
-- 带1-2位小数的正数或负数
+- Positive or negative numbers with 1-2 decimal places
   ```
   ^(\-)?\d+(\.\d{1,2})$
   ```
-- 正数、负数、和小数：
+- Positive, negative, and decimal numbers
   ```
   ^(\-|\+)?\d+(\.\d+)?$
   ```
-- 有两位小数的正实数：
+- Positive real numbers with two decimal places
   ```
   ^[0-9]+(\.[0-9]{2})?$
   ```
-- 有1~3位小数的正实数：
+- Positive real numbers with 1 to 3 decimal places
   ```
   ^[0-9]+(\.[0-9]{1,3})?$
   ```
-- 非零的正整数：
+- Non-zero Positive integer
   ```
-  ^[1-9]\d*$ 或 ^([1-9][0-9]*){1,3}$ 或 ^\+?[1-9][0-9]*$
+  ^[1-9]\d*$
+  ^([1-9][0-9]*){1,3}$
+  ^\+?[1-9][0-9]*$
   ```
-- 非零的负整数：
+- Non-zero negative integer
   ```
-  ^\-[1-9][]0-9"*$ 或 ^-[1-9]\d*$
+  ^\-[1-9][]0-9"*$ 
+  ^-[1-9]\d*$
   ```
 - 非负整数：
+- Non-negative integer
   ```
-  ^\d+$ 或 ^[1-9]\d*|0$
+  ^\d+$ 
+  ^[1-9]\d*|0$
   ```
 - 非正整数：
+- Non-positive integer
   ```
-  ^-[1-9]\d*|0$ 或 ^((-\d+)|(0+))$
+  ^-[1-9]\d*|0$
+  ^((-\d+)|(0+))$
   ```
 - 非负浮点数：
+- Non-negative floating point number
   ```
-  ^\d+(\.\d+)?$ 或 ^[1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0$
+  ^\d+(\.\d+)?$
+  ^[1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0$
   ```
 - 非正浮点数：
+- Noe-positive floating point number
   ```
-  ^((-\d+(\.\d+)?)|(0+(\.0+)?))$ 或 ^(-([1-9]\d*\.\d*|0\.\d*[1-9]\d*))|0?\.0+|0$
+  ^((-\d+(\.\d+)?)|(0+(\.0+)?))$
+  ^(-([1-9]\d*\.\d*|0\.\d*[1-9]\d*))|0?\.0+|0$
   ```
 - 正浮点数：
+- Positive floating point number
   ```
-  ^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$ 或 ^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9]- [0-9]*))$
+  ^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$
+  ^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9]- [0-9]*))$
   ```
 - 负浮点数：
+- Nagetive floating point number
   ```
-  ^-([1-9]\d*\.\d*|0\.\d*[1-9]\d*)$ 或 ^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*- [1-9][0-9]*)))$
+  ^-([1-9]\d*\.\d*|0\.\d*[1-9]\d*)$
+  ^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*- [1-9][0-9]*)))$
   ```
 - 浮点数：
+- Floating point number
   ```
   ^(-?\d+)(\.\d+)?$ 或 ^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$
   ```
 
 ## Character expression {#id2-h2}
 - 汉字：
+- Chinese(zero or more)
   ```
   ^[\u4e00-\u9fa5]{0,}$
   ```
 - 英文和数字：
+- English and numbers
   ```
-  ^[A-Za-z0-9]+$ 或 ^[A-Za-z0-9]{4,40}$
+  ^[A-Za-z0-9]+$
+  ^[A-Za-z0-9]{4,40}$ # length 4-40
   ```
-- 长度为3-20的所有字符：
+- 长度为3-20的除换行符\n之外的任何字符：
+- Any character except newline \n of length 3-20
   ```
   ^.{3,20}$
   ```
 - 由26个英文字母组成的字符串：
+- A string of 26 english letters
   ```
   ^[A-Za-z]+$
   ```
 - 由26个大写英文字母组成的字符串：
+- A string of 26 uppercase english letters
   ```
   ^[A-Z]+$
   ```
 - 由26个小写英文字母组成的字符串：
+- A string of 26 lowercase english letters
   ```
   ^[a-z]+$
   ```
 - 由数字和26个英文字母组成的字符串：
+- A string of numbers and 26 english letter
   ```
   ^[A-Za-z0-9]+$
   ```
 - 由数字、26个英文字母或者下划线组成的字符串：
+- A string composed of numbers, 26 english letters or underscores
   ```
-  ^\w+$ 或 ^\w{3,20}$
+  ^\w+$
+  ^\w{3,20}$ # length 3-20
   ```
 - 中文、英文、数字包括下划线：
+- Chinese, English, numbers including underscore
   ```
   ^[\u4E00-\u9FA5A-Za-z0-9_]+$
   ```
 - 中文、英文、数字但不包括下划线等符号：
+- Chinese, English, number but not including ubderscores and other symbols
   ```
   ^[\u4E00-\u9FA5A-Za-z0-9]+$ 
   ^[\u4E00-\u9FA5A-Za-z0-9]{2,20}$
   ```
 - 可以输入含有^%&',;=?$\"等字符：
+- Characters containing &%',;"=?$ there are not allowed
   ```
-  [^%&',;=?$\x22]+
+  [^%&',;=?$]+
   ```
 - 禁止输入含有~的字符：
+- Characters containing ~ are not allowed
   ```
   [^~]+
   ```
 
 ## Currency expression {#id3-h2}
 - 有四种钱的表示形式我们可以接受:"10000.00" 和 "10,000.00", 和没有 "分" 的 "10000" 和 "10,000"：
+- Match numbers that start with non-zero
   ```
   ^[1-9][0-9]*$
   ```
 - 这表示任意一个不以0开头的数字,但是,这也意味着一个字符"0"不通过,所以我们采用下面的形式：
+- Match numbers zero or start with non-zero
   ```
   ^(0|[1-9][0-9]*)$
   ```
 - 一个0或者一个不以0开头的数字.我们还可以允许开头有一个负号：
+- Match numbers negative, zero or start with non-zero
   ```
   ^(0|-?[1-9][0-9]*)$
   ```
 - 这表示一个0或者一个可能为负的开头不为0的数字.让用户以0开头好了.把负号的也去掉,因为钱总不能是负的吧。下面我们要加的是说明可能的小数部分：
+- Match amount expression
   ```
-  ^[0-9]+(.[0-9]+)?$
+  ^[0-9]+(\.[0-9]+)?$
   ```
 - 必须说明的是,小数点后面至少应该有1位数,所以"10."是不通过的,但是 "10" 和 "10.2" 是通过的：
+- Match amount expression with must have 2 decimal places
   ```
-  ^[0-9]+(.[0-9]{2})?$
+  ^[0-9]+(\.[0-9]{2})?$
   ```
 - 这样我们规定小数点后面必须有两位,如果你认为太苛刻了,可以这样：
+- Match amount expression with must have 1~2 decimal places
   ```
-  ^[0-9]+(.[0-9]{1,2})?$
+  ^[0-9]+(\.[0-9]{1,2})?$
   ```
 - 这样就允许用户只写一位小数.下面我们该考虑数字中的逗号了,我们可以这样：
 - ```

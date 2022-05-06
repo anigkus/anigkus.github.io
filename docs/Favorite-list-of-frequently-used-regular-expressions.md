@@ -1,7 +1,12 @@
 
 > Favorite list of frequently used regular expressions.<br/>
+> [Number-express](#Number-express)<br/>
+> [Character-express](#Character-express)<br/>
+> [Currency-express](#Currency-express)<br/>
+> [Special-express](#Special-express)<br/>
 
-## [Number](#Number) {#id1-h2}
+
+## Number express {#id1-h2}
 - Digits(zero or more ).
   ```
   ^[0-9]*$
@@ -88,7 +93,7 @@
   ^(-?\d+)(\.\d+)?$ 或 ^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$
   ```
 
-## Character {#id2-h2}
+## Character express {#id2-h2}
 - Basic Chinese(zero or more).
   ```
   ^[\u4e00-\u9fa5]{0,}$

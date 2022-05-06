@@ -1,8 +1,7 @@
 
 > Favorite list of frequently used regular expressions.<br/>
 
-## [yyy](##Character) {#id1-h2}
-## Number expression {#id1-h2}
+## [Number](#Number) {#id1-h2}
 - Digits(zero or more ).
   ```
   ^[0-9]*$

@@ -1,9 +1,9 @@
 
 > Favorite list of frequently used regular expressions.<br/>
-> [Number-express](#number-express)<br/>
-> [Character-express](#character-express)<br/>
-> [Currency-express](#currency-express)<br/>
-> [Special-express](#special-express)<br/>
+> [Number express](#number-express)<br/>
+> [Character express](#character-express)<br/>
+> [Currency express](#currency-express)<br/>
+> [Special express](#special-express)<br/>
 
 
 ## Number express {#id1-h2}

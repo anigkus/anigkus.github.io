@@ -3,7 +3,7 @@
 > xxxx<br/>
 > xxx<br/>
 
-## [Number](#Number) {#id1-h2}
+## [xxx](#Character) {#id1-h2}
 ## Number expression {#id1-h2}
 - Digits(zero or more ).
   ```
@@ -91,7 +91,7 @@
   ^(-?\d+)(\.\d+)?$ 或 ^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$
   ```
 
-## Character expression {#id2-h2}
+## Character {#id2-h2}
 - Basic Chinese(zero or more).
   ```
   ^[\u4e00-\u9fa5]{0,}$

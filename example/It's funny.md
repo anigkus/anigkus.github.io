@@ -18,3 +18,7 @@
     Python-Associate    初级(专助)
     Python-Professional 中级(专业)
     Python-Expert       高级(专家)
+
+# Git ignorecase
+    git config --local core.ignorecase false
+    git config --global core.ignorecase flase

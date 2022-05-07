@@ -1,8 +1,4 @@
-#theme: jekyll-theme-cayman
+theme: jekyll-theme-cayman
 title: [Anigkus]
 description: [Technologist  | Author | Interested in Distributed Technology and Cloud Native Fields]
-remote_theme: pages-themes/cayman@v0.2.0
-plugins:
-- jekyll-remote-theme
 show_downloads: false
-google_analytics: G-PDKK9K99K5

@@ -1,8 +1,13 @@
 ---
 layout: default
 title: Favorite list of frequently used regular expressions
-description: Various regular expressions are very common in software development work. But when some expressions are sometimes needed, I can't think of them all at once, so I just spend some time sorting out some frequently used expressions to avoid I'll spend more time on this later. This way, I can better free my brain and use the capacity for more important things.
 ---
+
+![Favorite list of frequently used regular expressions](assets/images/favorite-list-of-frequently-used-regular-expressions/figure-1.jpg "Github of Anigkus")
+
+> <br/>
+>  Various regular expressions are very common in software development work. But when some expressions are sometimes needed, I can't think of them all at once, so I just spend some time sorting out some frequently used expressions to avoid I'll spend more time on this later. This way, I can better free my brain and use the capacity for more important things.<br/>
+> <br/>
 
 ## Number express {#id1-h2}
 - Digits(zero or more ).

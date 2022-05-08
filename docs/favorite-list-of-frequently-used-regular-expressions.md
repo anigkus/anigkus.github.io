@@ -1,8 +1,5 @@
----
-layout: default
-title: Favorite list of frequently used regular expressions
-description:  
----
+
+<h1 style="color:#606c71;text-align:center;" >Favorite list of frequently used regular expressions</h1><br/>
 
 ![Favorite list of frequently used regular expressions](assets/images/favorite-list-of-frequently-used-regular-expressions/figure-1.jpg "Github of Anigkus")
 

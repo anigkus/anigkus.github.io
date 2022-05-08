@@ -1,11 +1,6 @@
 ---
 layout: default
 ---
-- [article1](./article1.md) 
-- [article2](./article2.md) 
-- [article3](./article3.md)
-- [article4](./article4.md)
-- [article5](./article5.md)
-- [article6](./article6.md)
+- [Anigkus github article template title](./anigkus-github-article-template-title.md) 
 - [Favorite list of frequently used regular expressions](./favorite-list-of-frequently-used-regular-expressions.md)
 - [Some suggestions for improving mysql database security](./some-suggestions-for-improving-mysql-database-security.md)

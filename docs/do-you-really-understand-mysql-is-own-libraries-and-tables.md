@@ -121,18 +121,18 @@
 | 1 | accounts | Record the current login information and total login statistics of each user corresponding to the host (disconnect one time and record it into the total number of connections), if USER and HOST are NULL, it means internal users.|
 | 2 | cond_instances | List all conditions for all instances while the server is executing(visible).|
 | 3 | events_stages_current | Stage summary table, containing currently executing stage events for each thread. |
-| 4 | events_stages_history | 阶段摘要表,包含每个线程已结束的N(系统变量:performance_schema_events_stages_history_size)个阶段事件 |
-| 5 | events_stages_history_long | 阶段摘要表,包含所有线程中全局结束的N(系统变量:performance_schema_events_stages_history_long_size)个阶段事件 |
-| 6 | events_stages_summary_by_account_by_event_name | 阶段摘要表,按照账号和主机及事件阶段名称的语句进行聚合,聚集了各个维度的统计信息,以USER、HOST、EVENT_NAME(阶段)列为维度 |
-| 7 | events_stages_summary_by_host_by_event_name | 阶段摘要表,按照主机和事件阶段名称的语句进行聚合,聚集了各个维度的统计信息,以HOST、EVENT_NAME(阶段)列为维度 |
-| 8 | events_stages_summary_by_thread_by_event_name | 阶段摘要表,按照线程和事件阶段名称的语句进行聚合,聚集了各个维度的统计信息,以THREAD_ID、EVENT_NAME(阶段)列为维度 |
-| 9 | events_stages_summary_by_user_by_event_name | 阶段摘要表,按照用户和事件阶段名称的语句进行聚合,聚集了各个维度的统计信息,以USER、EVENT_NAME(阶段)列为维度 |
-| 10 | events_stages_summary_global_by_event_name | 阶段摘要表,按照事件阶段名称进行聚合(全局),聚集了各个维度的统计信息,以EVENT_NAME(阶段)列为维度 |
-| 11 | events_statements_current | 语句摘要表,包含每个线程的当前正在执行的语句事件 |
-| 12 | events_statements_history | 语句摘要表,包含每个线程已结束的N(系统变量:performance_schema_events_statements_history_size)个语句事件 |
-| 13 | events_statements_history_long | 语句摘要表,包含所有线程中全局结束的N(系统变量:performance_schema_events_statements_history_long_size)个语句事件 |
-| 14 | events_statements_summary_by_account_by_event_name | 语句摘要表,按照账号和主机及事件语句名称的语句进行聚合,聚集了各个维度的统计信息,以USER、HOST、EVENT_NAME(语句)列为维度 |
-| 15 | events_statements_summary_by_digest |语句摘要表,SQL维度的统计信息表,可以统计某类SQL语句在各个维度的统计信息(比如：执行次数,排序次数,使用临时表等),以SCHEMA_NAME(语句)、DIGEST、DIGEST_TEXT列为维度  |
+| 4 | events_stages_history |  |
+| 5 | events_stages_history_long |  |
+| 6 | events_stages_summary_by_account_by_event_name |  |
+| 7 | events_stages_summary_by_host_by_event_name |  |
+| 8 | events_stages_summary_by_thread_by_event_name |  |
+| 9 | events_stages_summary_by_user_by_event_name |  |
+| 10 | events_stages_summary_global_by_event_name |  |
+| 11 | events_statements_current |  |
+| 12 | events_statements_history |  |
+| 13 | events_statements_history_long |  |
+| 14 | events_statements_summary_by_account_by_event_name |  |
+| 15 | events_statements_summary_by_digest |  |
 | 16 | events_statements_summary_by_host_by_event_name |  |
 | 17 | events_statements_summary_by_program	 |  |
 | 18 | events_statements_summary_by_thread_by_event_name |  |

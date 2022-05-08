@@ -104,13 +104,16 @@ If you use numbers, lowercase letters, uppercase letters, then the complexity is
 * Hot Backup: Hot backup is online backup, which has no impact on the running database operation, that is, the business is imperceptible, also known as online backup.
 * Cold Backup (cold backup): Cold backup is just the opposite of hot backup. It needs to be operated when the database is stopped. Generally, the business can accept the shutdown request. This is also the safest backup operation.
 * Warm Backup: Warm backup is between hot backup and cold backup, which will affect the current database operation, and ensure the consistency of backup data through some locks or current limiting or reducing business performance.
+
 ### Divide according to the content of the backup file
 * Logical backup: Logical backup is that the content is readable, such as exporting SQL or xls files, etc.
 * File backup: directly copy the relevant files in the Mysql data directory (frm\ibdata\mysql-bin.000\mysql-bin.index) or back up the entire MySQL data directory
+
 ### According to the content of the backup data
 * Full backup: A full backup is a complete backup of the database. Generally, a full backup is performed before the first backup or incremental backup.
 * Incremental backup: backup on the basis of full backup, you can set the time to every minute\hour\day\week, etc.
 * Log backup: Log backup is a backup that uses MySQL's (Replication) principle to realize asynchronous real-time synchronization of binary logs to the slave database for redoing.
+
 ### According to the area of ​​backup data
 * Same computer room strategy: that is, the database machine to be backed up cannot be on the same device as the database machine to be backed up, to prevent system problems or hardware problems of the current hardware equipment, etc.
 * Cross-machine room strategy: also known as dual-machine remote hot backup, that is, the database machine to be backed up cannot be in the same machine room as the database machine to be backed up, it is best to do three backup tests, such as one in the machine room and two across the machine room.<br/>

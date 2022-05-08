@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Favorite list of frequently used regular expressions
-description: 
+description:  
 ---
 
 ![Favorite list of frequently used regular expressions](assets/images/favorite-list-of-frequently-used-regular-expressions/figure-1.jpg "Github of Anigkus")

@@ -5,7 +5,6 @@
 > <br/>
 >  Some general notes on article.<br/>
 > <br/>
-<br/>
 
 Technologist, Author, Interested in Distributed Technology and Cloud Native Fields.<br/><br/>
 

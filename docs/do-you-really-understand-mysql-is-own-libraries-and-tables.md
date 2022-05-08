@@ -2,7 +2,7 @@
 
 <center>
 
-![Do you really understand MySQL's own libraries and tables](assets/images/do-you-really-understand-mysql-is-own-libraries-and-tables/figure-1.png "Github of Anigkus")
+![Do you really understand MySQL's own libraries and tables](assets/images/do-you-really-understand-mysql-is-own-libraries-and-tables/figure-1.png "Github of Anigkus") 
 
 </center>
 

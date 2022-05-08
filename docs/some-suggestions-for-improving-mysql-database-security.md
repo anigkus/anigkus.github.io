@@ -100,18 +100,18 @@ If you use numbers, lowercase letters, uppercase letters, then the complexity is
 ## Data Backup Policy
 &nbsp;&nbsp;&nbsp;&nbsp;Data security is now the core competitiveness of enterprises or enterprises, and the scale of data in various industries is growing at the terabyte level. How to ensure the integrity, availability and confidentiality of network data, and not be affected by the security threats of information leakage and illegal tampering, has become a government agency. , The core issues to be considered in the healthy development of the informatization of public institutions. MySQL data security backup has the following types:
 
-1. Divide by method according to backup type
+### Divide by method according to backup type
 * Hot Backup: Hot backup is online backup, which has no impact on the running database operation, that is, the business is imperceptible, also known as online backup.
 * Cold Backup (cold backup): Cold backup is just the opposite of hot backup. It needs to be operated when the database is stopped. Generally, the business can accept the shutdown request. This is also the safest backup operation.
 * Warm Backup: Warm backup is between hot backup and cold backup, which will affect the current database operation, and ensure the consistency of backup data through some locks or current limiting or reducing business performance.
-2. Divide according to the content of the backup file
+### Divide according to the content of the backup file
 * Logical backup: Logical backup is that the content is readable, such as exporting SQL or xls files, etc.
 * File backup: directly copy the relevant files in the Mysql data directory (frm\ibdata\mysql-bin.000\mysql-bin.index) or back up the entire MySQL data directory
-3. According to the content of the backup data
+### According to the content of the backup data
 * Full backup: A full backup is a complete backup of the database. Generally, a full backup is performed before the first backup or incremental backup.
 * Incremental backup: backup on the basis of full backup, you can set the time to every minute\hour\day\week, etc.
 * Log backup: Log backup is a backup that uses MySQL's (Replication) principle to realize asynchronous real-time synchronization of binary logs to the slave database for redoing.
-4. According to the area of ​​backup data
+### According to the area of ​​backup data
 * Same computer room strategy: that is, the database machine to be backed up cannot be on the same device as the database machine to be backed up, to prevent system problems or hardware problems of the current hardware equipment, etc.
 * Cross-machine room strategy: also known as dual-machine remote hot backup, that is, the database machine to be backed up cannot be in the same machine room as the database machine to be backed up, it is best to do three backup tests, such as one in the machine room and two across the machine room.<br/>
 <center>

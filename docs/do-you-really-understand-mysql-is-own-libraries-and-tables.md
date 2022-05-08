@@ -1,9 +1,7 @@
 <h1 style="color:#606c71;text-align:center;" >Do you really understand MySQL's own libraries and tables?</h1><br/>
 
 <center>
-
-![Do you really understand MySQL's own libraries and tables](assets/images/do-you-really-understand-mysql-is-own-libraries-and-tables/figure-1.png "Github of Anigkus") 
-
+<img src="assets/images/do-you-really-understand-mysql-is-own-libraries-and-tables/figure-1.png" alt="Do you really understand MySQL's own libraries and tables" title="Github of Anigkus" >
 </center>
 
 > <br/>

@@ -1,6 +1,3 @@
-[This is a comment that will be hidden.]: # 
-[This is a comment that will be hidden.]: # 
-[This is a comment that will be hidden.]: # 
 # 语句(Statement)和表达式(Expression)的区别
     语句(Statement)就像日常生活中说话的句子一样，随意的一句话，不一定有返回值。
     表达式(Expression)就像数学计算中的公式一样，是为了计算值而生，通常会有返回值，但表达式的返回值不一
@@ -15,10 +12,18 @@
     https://medium.com/@kdnotes/how-to-sort-golang-maps-by-value-and-key-eedc1199d944
 
 # Tag Level
-    Python-Associate    初级(专助)
-    Python-Professional 中级(专业)
-    Python-Expert       高级(专家)
+    Python-Associate    Python-初级(专助)
+    Python-Professional Python-中级(专业)
+    Python-Expert       Python-高级(专家)
 
 # Git ignorecase
     git config --local core.ignorecase false
     git config --global core.ignorecase flase
+
+# Count git current repository speciald date comment count
+    git log --until='2022-05-09 15:50:00' --author="anigkus" --oneline | wc -l
+
+# Markdown Hide
+[This is a comment that will be hidden.]: # 
+[This is a comment that will be hidden.]: # 
+[This is a comment that will be hidden.]: # 

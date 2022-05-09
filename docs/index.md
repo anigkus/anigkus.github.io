@@ -1,5 +1,3 @@
-<br/>
-
 ![Anigkus github article template title](assets/images/anigkus-github-article-template-title/figure-1.jpg "Github of Anigkus")
 <br/>
 

@@ -9,7 +9,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 ![Favorite list of frequently used regular expressions](assets/images/favorite-list-of-frequently-used-regular-expressions/figure-1.jpg "Github of Anigkus")
 
 > <br/>
-> &nbsp;&nbsp;&nbsp;&nbsp; Various regular expressions are very common in software development work. But when some expressions are sometimes needed, I can't think of them all at once, so I just spend some time sorting out some frequently used expressions to avoid I'll spend more time on this later. This way, I can better free my brain and use the capacity for more important things.<br/>
+> &nbsp;&nbsp;&nbsp;&nbsp; Various regular expressions are very common in software development. But sometimes when you need some expressions, you can't think of them for a while, so you just put some commonly used expressions together, so that you will need them later. When the time comes, just copy it directly, avoid searching Googles again, and there is no need to spend more time on this. This way, you can better free your brain capacity and use it to remember more important things.😄<br/>
 > <br/>
 
 ## Number express {#id1-h2}

@@ -7,4 +7,4 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 ![Anigkus github article template title](../assets/images/figure-1.jpg "Github of Anigkus")
 <br/>
 
-- [常用正则表达式的收藏列表。](./常用正则表达式的收藏列表.md) <br/>
+- [常用正则表达式的收藏列表。](./favorite-list-of-frequently-used-regular-expressions.md) <br/>

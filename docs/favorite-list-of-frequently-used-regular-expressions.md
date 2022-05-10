@@ -6,7 +6,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 <h1 style="color:#606c71;text-align:center;" >Favorite list of frequently used regular expressions</h1><br/>
 
-![Favorite list of frequently used regular expressions](assets/en-us/images/favorite-list-of-frequently-used-regular-expressions/figure-1.jpg "Github of Anigkus")
+![Favorite list of frequently used regular expressions](assets/images/favorite-list-of-frequently-used-regular-expressions/figure-1.jpg "Github of Anigkus")
 
 > <br/>
 > &nbsp;&nbsp;&nbsp;&nbsp; Various regular expressions are very common in software development work. But when some expressions are sometimes needed, I can't think of them all at once, so I just spend some time sorting out some frequently used expressions to avoid I'll spend more time on this later. This way, I can better free my brain and use the capacity for more important things.<br/>

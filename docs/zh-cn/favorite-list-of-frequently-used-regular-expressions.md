@@ -6,16 +6,27 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 <h1 style="color:#606c71;text-align:center;" >常用正则表达式的收藏列表</h1><br/>
 
+[<h1 style="color:#606c71;text-align:center;" >Favorite list of frequently used regular expressions</h1><br/>]:#
+
 ![Favorite list of frequently used regular expressions](../assets/images/favorite-list-of-frequently-used-regular-expressions/figure-1.jpg "Github of Anigkus")
+
+[!Favorite list of frequently used regular expressions(assets/images/favorite-list-of-frequently-used-regular-expressions/figure-1.jpg "Github of Anigkus")]:#
 
 > <br/>&nbsp;&nbsp;&nbsp;&nbsp;各种正则表达式在软件开发工作中非常常见.但有时候需要一些表达式的时候,一时半会也想不出来,所以就干脆就把一些常用的表达方式整理下放到一起，这样后续需要的时候,就干脆直接去复制就行了,避免再次Googles搜索了,也没必要在这方面花更多的时间. 这样才能更好地释放大脑容量,将其用于记住更重要的事情上去.😄<br/>
 > <br/>
 
+[> <br/>&nbsp;&nbsp;&nbsp;&nbsp;Various regular expressions are very common in software development. But sometimes when you need some expressions, you can't think of them for a while, so you just put some commonly used expressions together, so that you will need them later. When the time comes, just copy it directly, avoid searching Googles again, and there is no need to spend more time on this. This way, you can better free your brain capacity and use it to remember more important things.😄<br/>]:#
+[> <br/>]:#
+
 ## 数字表达式 {#id1-h2}
-- Digits(zero or more ).
+[## Number express {#id1-h2}]:#
+
+- 数字(0个或多个).
+[- Digits(zero or more ).]:#
   ```
   ^[0-9]*$
   ```
+
 - N digits.
   ```
   ^\d{n}$
@@ -99,6 +110,8 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
   ```
 
 ## 字符表达式 {#id2-h2}
+[## Character express {#id2-h2}]:#
+
 - Basic Chinese(zero or more).
   ```
   ^[\u4e00-\u9fa5]{0,}$
@@ -152,6 +165,8 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
   ```
 
 ## 货币表达式 {#id3-h2}
+[## Currency expression {#id3-h2}]:#
+
 - Match numbers that start with non-zero.
   ```
   ^[1-9][0-9]*$
@@ -219,6 +234,8 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
   ```
 
 ## 特殊表达式 {#id4-h2}
+[## Special expression {#id4-h2}]:#
+
 - Email regular expression.
   ```
   ^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$

@@ -196,7 +196,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 | 30 | time_zone_transition_type | MySQL时区相关表，通过mysql_tzinfo_to_sql加载相关时区信息就会有数据,该表提供查询具体的跳秒信息以及与时区的对应数据.|
 | 31 | user | MySQL用户表，创建的所有的用户都在这个表中. |
 
-#   
+# &nbsp;
 [| Serial Number | Table Name | Meaning |]:#
 [| :--- | :---  | :---  |]:#
 [| 1 | columns_priv | The permission table of the columns in the table, when executing GRANT SELECT (HOST), ON `db1`.* TO 'test'@'%' identified by "123456"; there will be data.|]:#
@@ -329,7 +329,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 | 86 | users | 值记录登录用户的统计数据,不记录主机,主机在accounts表. |
 | 87 | variables_by_thread | 每个活动会话的会话系统变量,会话变量表(session_variables,variables_by_thread)仅包含活动会话的信息,而不包含终止的会话的信息. |
 
-
+# &nbsp;
 [| Serial Number | Table Name | Meaning |
 | :--- | :---  | :---  |
 | 1 | accounts | Record the current login information and total login statistics of each user corresponding to the host (disconnect one time and record it into the total number of connections), if USER and HOST are NULL, it means internal users.|

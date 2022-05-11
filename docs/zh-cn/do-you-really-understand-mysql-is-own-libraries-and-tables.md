@@ -26,7 +26,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 [&nbsp;&nbsp;&nbsp;&nbsp;The information_schema database comes with MySQL and provides a way to access database metadata. What is metadata? Metadata is data about data, such as database or table names, data types of columns, or access rights, etc. Other terms sometimes used to describe this information include "data dictionary" and "system catalog". In MySQL, information_schema is regarded as a database, to be precise, an information database. It holds information about all other databases maintained by the MySQL server. Such as database name, database table, table column data type and access rights, etc. In INFORMATION_SCHEMA, there are several read-only tables. They are actually views, not base tables, so you won't be able to see any files related to them. Information_schema database table description:]:#
 
 | 序号 | 表名 | 含义 |
-| :--- | :----: | ---: |
+| :--- | :---  | :---  |
 | 1 | CHARACTER_SETS | 字符和校对规则默认对应关系表,这个表是无法增加、更新、删除的.|
 | 2 | COLLATIONS | 字符和校对规则所有对应关系表,并且有校对ID，默认标识、是否编译进服务器等信息（这些暂时都是MySQL扩展信息，现在没用），这个表是无法增加、更新、删除的.|
 | 3 | COLLATION_CHARACTER_SET_APPLICABILITY | 字符和校对规则所有对应关系表. |
@@ -90,7 +90,69 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 | 61 | INNODB_SYS_TABLESTATS | MySQL库中所有表的所有数据行的数量情况，当DELETE\UPDATE后会更新，如果未提交的事务正在插入或从表中删除，可能会不准确。这个表中的NUN_ROWS和TABLES中TABLE_ROWS有啥区别呢，因为有时我发现TABLE_ROWS中的数据对不上表中实际的数据，难道是事务未提交的关系? |
 
 
-[| Serial Number | Table Name | Meaning |]:#
+[| Serial Number | Table Name | Meaning |
+| :--- | :---  | :---  |
+| 1 | CHARACTER_SETS | The default correspondence table between characters and proofreading rules cannot be added, updated or deleted.|
+| 2 | COLLATIONS | All correspondence tables between characters and collation rules, and there are information such as collation ID, default identification, whether to compile into the server (these are all MySQL extension information for the time being, and are useless now). This table cannot be added, updated, or deleted.|
+| 3 | COLLATION_CHARACTER_SET_APPLICABILITY | All correspondence between characters and proofreading rules |
+| 4 | COLUMNS | Information about the columns in all data tables of the current MySQL server, such as type, whether it is empty, length, character encoding, proofreading encoding and many other useful information. |
+| 5 | COLUMN_PRIVILEGES | Almost the same as mysql.columns_priv, there is a column IS_COLUMN_PRIVILEGES: used to indicate whether the user can continue to authorize others. |
+| 6 | ENGINES | All storage engines currently served by MySQL, engine status(supported, default, disabled, and not supportd, supported but disabled), which supports transactions,XA transactions, partica transactions,etc. |
+| 7 | EVENTS | The MySQL timed task tanle is almost the same as mysql.event, and has similar fuctions, but there will be a little difference in data performance, mainly in terms of time. |
+| 8 | FILES | MySQL file table,mainly store innodb and NDB file information. |
+| 9 | GLOBAL_STATUS | The global system status table, a table reserved by MySQL for compatibility with mysql5.6, has the same effect as the SHOW GLOBAL STATUS command and SELECT * FROM performance_schema.global_status (specific to 5.7), but it may be removed later, more compatible tables. |
+| 10 | GLOBAL_VARIABLES | The global system variable table, a table reserved by MySQL for compatibility with mysql5.6, has the same effect as the SHOW GLOBAL VARIABLES command and SELECT * FROM performance_schema.global_variables (specific to 5.7), but it may be removed later. |
+| 11 | KEY_COLUMN_USAGE | Primary key constraint record table for all MySQL libraries. |
+| 12 | OPTIMIZER_TRACE | If you want to see the entire execution plan and how to choose between multiple indexing schemes? This function is supported in MySQL 5.6, optimizer_trace, which is closed by default, session level, and three carriages with the MySQL execution plan of explain, profile and optimizer_trace. |
+| 13 | PARAMETERS | MySQL stored procedure or function parameter record table, more detailed than mysql.proc. |
+| 14 | PARTITIONS | MySQL table space record table, the default innodb is shared storage, that is, the stored data information and index information are in the same *.ibd, and the Myisam storage engine, it uses an independent table space by default, but it can be changed by parameters. |
+| 15 | PLUGINS | The MySQL plugin table is the same as the command SHOW PLUGINS, but it is more detailed than this command, such as the company, version, author, loading method, etc. of the plugin. |
+| 16 | PROCESSLIST | The MySQL thread running table is the same as the SHOW FULL PROCESSLIST command, but different from the SHOW PROCESSLIST command. It seems to be related to permissions. The performance_schema.threads table can also view threads. The official website says that PROCESSLIST has a negative performance impact, but threads do not Yes, I haven't tested the obvious difference for the time being. |
+| 17 | PROFILING | QUERY_ID is equivalent to show profile for query QUERY_ID; this, show profile only displays the last time, through SET profiling = 1; turn on the switch, Show profiles displays all records of the current session. |
+| 18 | REFERENTIAL_CONSTRAINTS | MySQL reference constraint table, but through ADD CONSTRAINT there will be records in this table. |
+| 19 | ROUTINES | MySQL contains stored procedures and function tables, excluding UDFs function records. |
+| 20 | SCHEMATA | All MySQL library-defined data tables, including library names, characters, collation rules, etc. |
+| 21 | SCHEMA_PRIVILEGES | MySQL database level privilege table, the same as mysql.db. |
+| 22 | SESSION_STATUS | MySQL 5.7 has the same effect as show status in order to be compatible with the reserved table of 5.6. |
+| 23 | SESSION_VARIABLES | MySQL 5.7 has the same effect as show VARIABLES in order to be compatible with the reserved table of 5.6. |
+| 24 | STATISTICS | All index records on the MySQL server table, query a single index situation: SHOW INDEX FROM TABLE_NAME; and SHOW INDEX FROM TABLE_NAME FROM DB_NAME. |
+| 25 | TABLES | All tables on the MySQL server record the table, which may be out of sync with the current table contents, but can be updated by running ANALYZE. |
+| 26 | TABLESPACES | MySQL table space record table, this table does not provide information about InnoDB table space, you need to query the INFORMATION_SCHEMA.FILES table. |
+| 27 | TABLE_CONSTRAINTS | MySQL constraint tables, including unique constraints, primary key constraints, foreign key constraints related record tables. |
+| 28 | TABLE_PRIVILEGES | MySQL table-level privilege table, almost the same as mysql.tables_priv. |
+| 29 | TRIGGERS | MySQL trigger archive table. |
+| 30 | USER_PRIVILEGES | MySQL user permission table, almost the same as mysql.user. |
+| 31 | VIEWS | MySQL view table. |
+| 32 | INNODB_LOCKS | MySQL innodb transaction lock waiting table, used to analyze lock waiting, (transaction related table). |
+| 33 | INNODB_TRX | All open transaction tables in MySQL innodb disappear automatically when closed, (transaction-related tables). |
+| 34 | INNODB_SYS_DATAFILES | MySQL innodb data file table, only contains the disk path data of *.idb files, the default is relative to the mysql data directory, you can specify an absolute path when creating. |
+| 35 | INNODB_FT_CONFIG | MySQL full-text index configuration table, only when the full-text index is defined on the column of the field type, when set global innodb_ft_aux_table='DB_NAME/TABLE_NAME'; there will be records, how to use it in the follow-up research. |
+| 36 | INNODB_SYS_VIRTUAL | MySQL virtual field record table, when it is listed as a virtual column, there will be records. |
+| 37 | INNODB_CMP | Compression related tables, compression status, mysql table data compression, innodb table compression, how to set the compression of mysql innodb table, InnoDB record compression and usage analysis, innodb_cmp saves historical summary data, and innodb_cmp_reset records a more real-time statistics value. |
+| 38 | INNODB_FT_BEING_DELETED | MySQL full-text index ready to delete record table. |
+| 39 | INNODB_CMP_RESET | Compression related tables, compression status, mysql table data compression, innodb table compression, how to set the compression of mysql innodb table, InnoDB record compression and usage analysis. |
+| 40 | INNODB_CMP_PER_INDEX | Compress related tables, which provide the compression of each table and index, innodb compression. |
+| 41 | INNODB_CMPMEM_RESET | Compress related tables, cache compressed data mysql table data compression, innodb table compression, how to set the compression of mysql innodb table, InnoDB record compression and usage analysis. |
+| 42 |INNODB_FT_DELETED  | MySQL full-text index deleted records table. |
+| 43 | INNODB_BUFFER_PAGE_LRU | Information of each page in the buffer pool, this table to observe the specific information of each page in the LRU (Least Recently Used Page Replacement Algorithm) list. |
+| 44 | INNODB_LOCK_WAITS | Transaction-related tables, lock waiting tables. |
+| 45 | INNODB_TEMP_TABLE_INFO | This table represents information about temporary tables. |
+| 46 | INNODB_SYS_INDEXES | This table represents index metadata in all tables of the system. |
+| 47 | INNODB_SYS_TABLES | This table represents metadata for all tables in the system. |
+| 48 | INNODB_SYS_FIELDS | This table represents the mapping logic of fields and index positions in all tables of the system. |
+| 49 | INNODB_CMP_PER_INDEX_RESET | (Compression related tables) innodb_cmp_per_index_reset is similar to innodb_cmp_per_index, the difference is that the previous statistics are reset each time a query is made. |
+| 50 | INNODB_BUFFER_PAGE | Information about each page in the buffer pool. |
+| 51 | INNODB_FT_DEFAULT_STOPWORD | MySQL full-text index disabled keyword table. |
+| 52 | INNODB_FT_INDEX_TABLE | MySQL full-text index table. |
+| 53 | INNODB_FT_INDEX_CACHE | MySQL full-text index cache table. |
+| 54 | INNODB_SYS_TABLESPACES | MySQL tablespace usage table. |
+| 55 | INNODB_METRICS | MySQL monitoring table, introduced in 5.6, this table is used to monitor whether InnoDB is running normally. |
+| 56 | INNODB_SYS_FOREIGN_COLS | Mysql foreign key reference relational table is somewhat similar to REFERENTIAL_CONSTRAINTS, but REFERENTIAL_CONSTRAINTS is more detailed, and REFERENTIAL_CONSTRAINTS cannot indicate location, and this table can. |
+| 57 | INNODB_CMPMEM | (compress related tables), cache compressed data mysql table data compression, innodb table compression, how to set the compression of mysql innodb table, InnoDB record compression and usage analysis.  |
+| 58 | INNODB_BUFFER_POOL_STATS | The status information in the buffer pool is similar to some data in the SHOW ENGINE INNODB STATUS command, but this table provides more information). |
+| 59 | INNODB_SYS_COLUMNS | Corresponding table ID of all columns in the MySQL database (the relationship between the access ID and table name of this table INNODB_SYS_TABLES), column name, position in the table, column type, length and other related information. |
+| 60 | INNODB_SYS_FOREIGN | All foreign key column relationship information tables in the library are somewhat similar to INNODB_SYS_FOREIGN_COLS and REFERENTIAL_CONSTRAINTS. |
+| 61 | INNODB_SYS_TABLESTATS | The number of all data rows in all tables in the MySQL database will be updated after DELETE\UPDATE, and may be inaccurate if uncommitted transactions are being inserted or deleted from the table. What is the difference between NUN_ROWS in this table and TABLE_ROWS in TABLES, because sometimes I find that the data in TABLE_ROWS does not match the actual data in the table, is it because the transaction is not committed? |]:#
 
 ## MYSQL 
 [## MYSQL]:#
@@ -100,7 +162,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 [&nbsp;&nbsp;&nbsp;&nbsp;The core database of mysql, similar to the master table in sql server, is mainly responsible for storing the control and management information that mysql needs to use, such as database users, permission settings, keywords, etc. mysql database table description:]:#
 
 | 序号 | 表名 | 含义 |
-| :--- | :----: | ---: |
+| :--- | :---  | :---  |
 | 1 | columns_priv | 表中列的权限表，当执行GRANT SELECT (HOST), ON `db1`.* TO 'test'@'%' identified by "123456"; 就会有数据.|
 | 2 | db | 数据库的权限表，当执行 GRANT SELECT  ON `db1`.* TO 'test'@'%' identified by "123456";就会有数据.|
 | 3 | engine_cost | 代价模型 ,engine_cost  (IO代价)、 server_cost( CPU代价), mysql 执行计划分析三看explain,profiling,optimizer_trace. |
@@ -135,7 +197,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 
 [| Serial Number | Table Name | Meaning |
-| :--- | :----: | ---: |
+| :--- | :---  | :---  |
 | 1 | columns_priv | The permission table of the columns in the table, when executing GRANT SELECT (HOST), ON `db1`.* TO 'test'@'%' identified by "123456"; there will be data.|
 | 2 | db | The permission table of the database, when executing GRANT SELECT ON `db1`.* TO 'test'@'%' identified by "123456"; there will be data.|
 | 3 | engine_cost | Cost model, engine_cost (IO cost), server_cost (CPU cost), mysql execution plan analysis three see explain, profiling, optimizer_trace. |
@@ -177,7 +239,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 [&nbsp;&nbsp;&nbsp;&nbsp;Mainly used to collect database server performance parameters. And the storage engines of the tables in the library are all PERFORMANCE_SCHEMA, and users cannot create tables whose storage engine is PERFORMANCE_SCHEMA. MySQL5.7 is enabled by default, performance_schema database table description:]:#
 
 | 序号 | 表名 | 含义 |
-| :--- | :----: | ---: |
+| :--- | :---  | :---  |
 | 1 | accounts | 记录每个用户对应主机当前登录信息和总的登录统计数据(断开一次记录到总的连接数里面去),为USER和HOST为NULL表示内部用户.|
 | 2 | cond_instances | 列出服务器正在执行时所有实例的所有条件(可见的).|
 | 3 | events_stages_current | 阶段摘要表,包含每个线程的当前正在执行的阶段事件. |
@@ -268,7 +330,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 
 [| Serial Number | Table Name | Meaning |
-| :--- | :----: | ---: |
+| :--- | :---  | :---  |
 | 1 | accounts | Record the current login information and total login statistics of each user corresponding to the host (disconnect one time and record it into the total number of connections), if USER and HOST are NULL, it means internal users.|
 | 2 | cond_instances | List all conditions for all instances while the server is executing(visible).|
 | 3 | events_stages_current | Stage summary table, containing currently executing stage events for each thread. |

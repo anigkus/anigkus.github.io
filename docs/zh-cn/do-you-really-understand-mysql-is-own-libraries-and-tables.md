@@ -89,7 +89,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 | 60 | INNODB_SYS_FOREIGN | 库中所有外键列关系信息表，和INNODB_SYS_FOREIGN_COLS、REFERENTIAL_CONSTRAINTS都有点相似. |
 | 61 | INNODB_SYS_TABLESTATS | MySQL库中所有表的所有数据行的数量情况，当DELETE\UPDATE后会更新，如果未提交的事务正在插入或从表中删除，可能会不准确。这个表中的NUN_ROWS和TABLES中TABLE_ROWS有啥区别呢，因为有时我发现TABLE_ROWS中的数据对不上表中实际的数据，难道是事务未提交的关系? |
 
-# &nbsp;
+###### &nbsp;
 [| Serial Number | Table Name | Meaning |]:#
 [| :--- | :---  | :---  |]:#
 [| 1 | CHARACTER_SETS | The default correspondence table between characters and proofreading rules cannot be added, updated or deleted.|]:#
@@ -196,7 +196,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 | 30 | time_zone_transition_type | MySQL时区相关表，通过mysql_tzinfo_to_sql加载相关时区信息就会有数据,该表提供查询具体的跳秒信息以及与时区的对应数据.|
 | 31 | user | MySQL用户表，创建的所有的用户都在这个表中. |
 
-# &nbsp;
+###### &nbsp;
 [| Serial Number | Table Name | Meaning |]:#
 [| :--- | :---  | :---  |]:#
 [| 1 | columns_priv | The permission table of the columns in the table, when executing GRANT SELECT (HOST), ON `db1`.* TO 'test'@'%' identified by "123456"; there will be data.|]:#
@@ -329,96 +329,96 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 | 86 | users | 值记录登录用户的统计数据,不记录主机,主机在accounts表. |
 | 87 | variables_by_thread | 每个活动会话的会话系统变量,会话变量表(session_variables,variables_by_thread)仅包含活动会话的信息,而不包含终止的会话的信息. |
 
-# &nbsp;
-[| Serial Number | Table Name | Meaning |
-| :--- | :---  | :---  |
-| 1 | accounts | Record the current login information and total login statistics of each user corresponding to the host (disconnect one time and record it into the total number of connections), if USER and HOST are NULL, it means internal users.|
-| 2 | cond_instances | List all conditions for all instances while the server is executing(visible).|
-| 3 | events_stages_current | Stage summary table, containing currently executing stage events for each thread. |
-| 4 | events_stages_history | Stage summary table, containing N (system variable: performance_schema_events_stages_history_size) stage events that each thread has ended. |
-| 5 | events_stages_history_long | Stage summary table, containing N (system variable: performance_schema_events_stages_history_long_size) stage events that end globally in all threads. |
-| 6 | events_stages_summary_by_account_by_event_name | The stage summary table is aggregated according to the statement of account, host and event stage name, and the statistical information of each dimension is aggregated, with USER, HOST, EVENT_NAME (stage) as the dimension. |
-| 7 | events_stages_summary_by_host_by_event_name | The stage summary table is aggregated according to the statement of the host and event stage name, and the statistical information of each dimension is aggregated, with HOST and EVENT_NAME (stage) as the dimensions. |
-| 8 | events_stages_summary_by_thread_by_event_name | The stage summary table, which is aggregated according to the statement of the thread and event stage name, aggregates the statistical information of each dimension, and uses THREAD_ID and EVENT_NAME (stage) as the dimensions. |
-| 9 | events_stages_summary_by_user_by_event_name | The stage summary table, which is aggregated according to the statement of the user and event stage name, aggregates the statistical information of each dimension, and uses USER and EVENT_NAME (stage) as the dimensions. |
-| 10 | events_stages_summary_global_by_event_name | The stage summary table, aggregated according to the event stage name (global), aggregated the statistical information of each dimension, with EVENT_NAME (stage) as the dimension. |
-| 11 | events_statements_current | Statement summary table, containing currently executing statement events for each thread. |
-| 12 | events_statements_history | Statement summary table, containing N (system variable: performance_schema_events_statements_history_size) statement events that each thread has ended. |
-| 13 | events_statements_history_long | Statement summary table, containing N (system variable: performance_schema_events_statements_history_long_size) statement events that end globally in all threads. |
-| 14 | events_statements_summary_by_account_by_event_name | Statement summary table, which is aggregated according to the statement of account, host and event statement name, and aggregates the statistical information of each dimension, with USER, HOST, EVENT_NAME (statement) as the dimension. |
-| 15 | events_statements_summary_by_digest | Statement summary table, statistical information table of SQL dimension, can count the statistical information of a certain type of SQL statement in each dimension (for example: the number of executions, the number of times of sorting, the use of temporary tables, etc.), with SCHEMA_NAME (statement), DIGEST, DIGEST_TEXT as the dimensions. |
-| 16 | events_statements_summary_by_host_by_event_name | Statement summary table, which is aggregated according to the statement of host and event statement name, and aggregates the statistical information of each dimension, with HOST, EVENT_NAME (statement) as the dimension. |
-| 17 | events_statements_summary_by_program	 | The statement summary table is aggregated according to the statement of the thread and event statement function name, and the statistical information of each dimension is aggregated, with OBJECT_TYPE, OBJECT_SCHEMA, and OBJECT_NAME as the dimensions. |
-| 18 | events_statements_summary_by_thread_by_event_name | Statement summary table, which is aggregated according to the statement of thread and event statement name, and aggregates the statistical information of each dimension, with THREAD_ID and EVENT_NAME (statement) as the dimensions. |
-| 19 | events_statements_summary_by_user_by_event_name | Statement summary table, which is aggregated according to the statement of user and event statement name, and aggregates the statistical information of each dimension, with USER and EVENT_NAME (statement) as the dimensions. |
-| 20 | events_statements_summary_global_by_event_name | Statement summary table, which is aggregated according to the event statement name (globally), aggregates the statistical information of each dimension, and uses EVENT_NAME (statement) as the dimension. |
-| 21 | events_transactions_current | Transaction summary table, containing currently executing transaction events for each thread. |
-| 22 | events_transactions_history | Transaction summary table, containing N (system variable: performance_schema_events_transactions_history_size) transaction events that each thread has ended. |
-| 23 | events_transactions_history_long | Transaction summary table, containing N (system variable: performance_schema_events_transactions_history_long_size) transaction events that end globally in all threads. |
-| 24 | events_transactions_summary_by_account_by_event_name | The transaction summary table is aggregated according to the statement of account, host and event transaction name, and aggregates the statistical information of each dimension, with USER, HOST, EVENT_NAME (transaction) as the dimension. |
-| 25 | events_transactions_summary_by_host_by_event_name | The transaction summary table is aggregated according to the statement of the host and event transaction name, and the statistical information of each dimension is aggregated, with HOST and EVENT_NAME (transaction) as the dimensions. |
-| 26 | events_transactions_summary_by_thread_by_event_name | The transaction summary table is aggregated according to the statement of the thread and event transaction name, and the statistical information of each dimension is aggregated, with THREAD_ID and EVENT_NAME (transaction) as the dimensions. |
-| 27 | events_transactions_summary_by_user_by_event_name | The transaction summary table is aggregated according to the statement of the user and event transaction name, and the statistical information of each dimension is aggregated, with USER and EVENT_NAME (transaction) as the dimensions. |
-| 28 | events_transactions_summary_global_by_event_name | The transaction summary table is aggregated according to the event name (global), and the statistical information of each dimension is aggregated, with EVENT_NAME (transaction) as the dimension. |
-| 29 | events_waits_current | Wait summary table, containing currently executing wait events for each thread. |
-| 30 | events_waits_history | Wait summary table, containing N (system variable: performance_schema_events_waits_history_size) wait events that each thread has ended. |
-| 31 | events_waits_history_long | Wait summary table, containing N (system variable: performance_schema_events_waits_history_long_size) wait events that end globally in all threads. |
-| 32 | events_waits_summary_by_account_by_event_name | The waiting summary table is aggregated according to the statement of account, host and event waiting name, and the statistical information of each dimension is aggregated, and USER, HOST, EVENT_NAME (waiting) are listed as dimensions.  |
-| 33 | events_waits_summary_by_host_by_event_name | The waiting summary table is aggregated according to the statement of the host and the event waiting name, and the statistical information of each dimension is aggregated, and the HOST and EVENT_NAME (waiting) are listed as the dimensions. |
-| 34 | events_waits_summary_by_instance | The waiting summary table is aggregated according to the statement of thread and event waiting function name, and the statistical information of each dimension is aggregated, and EVENT_NAME (waiting) and OBJECT_INSTANCE_BEGIN are listed as dimensions. |
-| 35 | events_waits_summary_by_thread_by_event_name | The waiting summary table is aggregated according to the statement of the thread and event waiting name, and the statistical information of each dimension is aggregated, with THREAD_ID and EVENT_NAME (waiting) as the dimensions. |
-| 36 | events_waits_summary_by_user_by_event_name | The waiting summary table is aggregated according to the statement of the user and the event waiting name, and the statistical information of each dimension is aggregated, with USER and EVENT_NAME (waiting) as the dimensions. |
-| 37 | events_waits_summary_global_by_event_name | The waiting summary table is aggregated according to the event waiting name (global), and the statistical information of each dimension is aggregated, with EVENT_NAME (waiting) as the dimension. |
-| 38 | file_instances | List all files (open) of all instances while the server is executing. |
-| 39 | file_summary_by_event_name | Performance file I/O summary table, each row counts events for a given event name, with EVENT_NAME (event file) as the dimension. |
-| 40 | file_summary_by_instance | Performance file I/O summary table, each row counts events for a given file and event name, with FILE_NAME (file) and EVENT_NAME (event file) as dimensions. |
-| 41 | global_status | The global system status table, that is, the values ​​we usually display with showglobalstatuslike'% parameter name%' are stored in this table. |
-| 42 |global_variables  | The global system variable table, that is, the values ​​that we usually display with `show global variables like '%parameter%'` are stored in this table. |
-| 43 | host_cache | Host cache table statistics, users speed up dns resolution. |
-| 44 | hosts | Statistics on the number of current connections and total connections by host dimension. |
-| 45 | memory_summary_by_account_by_event_name | The memory summary table is aggregated according to the statement of account, host and event memory object variable name, and the statistical information of each dimension is aggregated, and USER, HOST, EVENT_NAME (memory object variable) is listed as the dimension. |
-| 46 | memory_summary_by_host_by_event_name | The memory summary table is aggregated according to the statement of the host and event memory object variable names, and the statistical information of each dimension is aggregated, with HOST and EVENT_NAME (memory object variable) as the dimensions.|
-| 47 | memory_summary_by_thread_by_event_name | The memory summary table is aggregated according to the statement of thread and event memory object variable name, and the statistical information of each dimension is aggregated, with THREAD_ID and EVENT_NAME (memory object variable) as the dimensions. |
-| 48 | memory_summary_by_user_by_event_name | The memory summary table is aggregated according to the statement of the user and event memory object variable names, and the statistical information of each dimension is aggregated, with USER and EVENT_NAME (memory object variable) as the dimensions. |
-| 49 | memory_summary_global_by_event_name | The memory summary table is aggregated according to the event memory object variable name (global), and the statistical information of each dimension is aggregated, and EVENT_NAME (memory object variable) is listed as the dimension. |
-| 50 | metadata_locks | Use a record-locked table that uses metadata locking to manage concurrent access to database objects and ensure data consistency (records only happen when they happen). |
-| 51 | mutex_instances | See which other thread currently owns the mutex. |
-| 52 | objects_summary_global_by_type | Object wait summary table, which is used to summarize the object wait event table. |
-| 53 | performance_timers | Used to query the table of available event timer types. |
-| 54 | prepared_statements_instances | Prepared Statement Examples and Statistics. |
-| 55 | replication_applier_configuration | Check whether each channel is configured with replication delay. |
-| 56 | replication_applier_status | Check whether each channel is replicated normally (service_state) and the number of transaction reconnections. |
-| 57 | replication_applier_status_by_coordinator | Check whether each channel is copied normally, and copy the wrong code, message and time. |
-| 58 | replication_applier_status_by_worker | Check whether the replication of each channel is normal, and copy the work number in parallel, copy the wrong code, SQL and time. |
-| 59 | replication_connection_configuration | View the connection configuration information of each channel: host, port, user, auto_position, etc. |
-| 60 | replication_connection_status | View the connection information of each channel. |
-| 61 | replication_group_member_stats | Only has value when GroupReplication full synchronous replication mode is enabled, the user provides group level information related to the authentication process. |
-| 62 | replication_group_members | Only has value when GroupReplication full synchronous replication mode is enabled, which is used to monitor the status of different server instances that are members of the group. |
-| 63 | rwlock_instances | The table lists all rwlock (read-write lock) instances related records of the server. |
-| 64 | session_account_connect_attrs | A connection properties table containing only the current session and other sessions associated with this session account. |
-| 65 | session_connect_attrs | All session connection properties table. |
-| 66 | session_status | The user status table at the current session level, that is, the values ​​that we usually use `show ('session') status like '%parameter%'` to display are stored in this table. |
-| 67 | session_variables  | The user variable table of the current session level, that is, the values ​​that we usually display with `show ('session') variables like '%parameter%'` are stored in this table. |
-| 68 | setup_actors | The settings table provides information about the current instrumentation, how to initialize monitoring for new foreground threads, to change the number control of table records, modify at server startup (system variable: performance_schema_setup_actors_size). |
-| 69 | setup_consumers | The settings table provides information about the current instrumentation, listing the consumer types that can store event information and which consumers are enabled. |
-| 70 | setup_instruments | The settings table provides information about the current instrumentation, classes of instrumented objects that can collect events. |
-| 71 | setup_objects | The settings table provides information about the current detection, and controls whether to monitor specific objects, such as changing the number of records table conditions, please modify at server startup (system variable: performance_schema_setup_objects_size). |
-| 72 | setup_timers | The settings table provides information about the current detection, the table shows the currently selected event timer. |
-| 73 | socket_instances | This table provides a real-time snapshot of active connections to the MySQL server. |
-| 74 | socket_summary_by_event_name | Socket summary table, aggregates events by event name, with EVENT_NAME (event name) as the column dimension, provides some additional information, such as socket operations and the number of bytes transmitted and received by the network. |
-| 75 | socket_summary_by_instance | Socket summary table, aggregates events by event name, with EVENT_NAME (event name), OBJECT_INSTANCE_BEGIN columns as dimensions, provides some additional information, such as socket operations and the number of bytes transmitted and received by the network. |
-| 76 | status_by_account | Status variable summary table with USER, HOST, VARIABLE_NAME columns to summarize status variables by account. |
-| 77 | status_by_host | State variable summary table with HOST, VARIABLE_NAME columns for summarizing state variables by the host connected to the client. |
-| 78 | status_by_thread |State variable summary table with THREAD_ID, VARIABLE_NAME columns, summary session state variables for each active user. |
-| 79 | status_by_user | Status variable summary table with USER, VARIABLE_NAME columns to summarize status variables by client username. |
-| 80 | table_handles | Table locks detect the contents of records, this information shows which table handles are opened by the server, how they are locked and by which session, such as changing the number of records table conditions, please modify at server startup (system variable: performance_schema_max_table_handles). |
-| 81 | table_io_waits_summary_by_index_usage | This table summarizes all table index I/O wait events generated by wait/io/table/sql/handler, grouped by table index. |
-| 82 | table_io_waits_summary_by_table | This table summarizes all table I/O wait events generated by wait/io/table/sql/handler, grouped by table. |
-| 83 | table_lock_waits_summary_by_table | This table summarizes all table lock wait events generated by wait/lock/table/sql/handler, grouped by table. |
-| 84 | threads | All threads statistics for the current server, each row contains information about the thread and indicates whether monitoring and historical event logging are enabled for that thread. |
-| 85 | user_variables_by_thread | Change the table to record some user-defined variables, these are variables defined in a specific session, that is, use set@v1=10;, and then select@v1fromdual; in the current connection. |
-| 86 | users | The value records the statistics of the logged in user, does not record the host, the host is in the accounts table. |
-| 87 | variables_by_thread | Session system variables for each active session, the session variable table (session_variables, variables_by_thread) only contains information for active sessions, not for terminated sessions. |]:#
+###### &nbsp;
+[| Serial Number | Table Name | Meaning |]:#
+[| :--- | :---  | :---  |]:#
+[| 1 | accounts | Record the current login information and total login statistics of each user corresponding to the host (disconnect one time and record it into the total number of connections), if USER and HOST are NULL, it means internal users.|]:#
+[| 2 | cond_instances | List all conditions for all instances while the server is executing(visible).|]:#
+[| 3 | events_stages_current | Stage summary table, containing currently executing stage events for each thread. |]:#
+[| 4 | events_stages_history | Stage summary table, containing N (system variable: performance_schema_events_stages_history_size) stage events that each thread has ended. |]:#
+[| 5 | events_stages_history_long | Stage summary table, containing N (system variable: performance_schema_events_stages_history_long_size) stage events that end globally in all threads. |]:#
+[| 6 | events_stages_summary_by_account_by_event_name | The stage summary table is aggregated according to the statement of account, host and event stage name, and the statistical information of each dimension is aggregated, with USER, HOST, EVENT_NAME (stage) as the dimension. |]:#
+[| 7 | events_stages_summary_by_host_by_event_name | The stage summary table is aggregated according to the statement of the host and event stage name, and the statistical information of each dimension is aggregated, with HOST and EVENT_NAME (stage) as the dimensions. |]:#
+[| 8 | events_stages_summary_by_thread_by_event_name | The stage summary table, which is aggregated according to the statement of the thread and event stage name, aggregates the statistical information of each dimension, and uses THREAD_ID and EVENT_NAME (stage) as the dimensions. |]:#
+[| 9 | events_stages_summary_by_user_by_event_name | The stage summary table, which is aggregated according to the statement of the user and event stage name, aggregates the statistical information of each dimension, and uses USER and EVENT_NAME (stage) as the dimensions. |]:#
+[| 10 | events_stages_summary_global_by_event_name | The stage summary table, aggregated according to the event stage name (global), aggregated the statistical information of each dimension, with EVENT_NAME (stage) as the dimension. |]:#
+[| 11 | events_statements_current | Statement summary table, containing currently executing statement events for each thread. |]:#
+[| 12 | events_statements_history | Statement summary table, containing N (system variable: performance_schema_events_statements_history_size) statement events that each thread has ended. |]:#
+[| 13 | events_statements_history_long | Statement summary table, containing N (system variable: performance_schema_events_statements_history_long_size) statement events that end globally in all threads. |]:#
+[| 14 | events_statements_summary_by_account_by_event_name | Statement summary table, which is aggregated according to the statement of account, host and event statement name, and aggregates the statistical information of each dimension, with USER, HOST, EVENT_NAME (statement) as the dimension. |]:#
+[| 15 | events_statements_summary_by_digest | Statement summary table, statistical information table of SQL dimension, can count the statistical information of a certain type of SQL statement in each dimension (for example: the number of executions, the number of times of sorting, the use of temporary tables, etc.), with SCHEMA_NAME (statement), DIGEST, DIGEST_TEXT as the dimensions. |]:#
+[| 16 | events_statements_summary_by_host_by_event_name | Statement summary table, which is aggregated according to the statement of host and event statement name, and aggregates the statistical information of each dimension, with HOST, EVENT_NAME (statement) as the dimension. |]:#
+[| 17 | events_statements_summary_by_program	 | The statement summary table is aggregated according to the statement of the thread and event statement function name, and the statistical information of each dimension is aggregated, with OBJECT_TYPE, OBJECT_SCHEMA, and OBJECT_NAME as the dimensions. |]:#
+[| 18 | events_statements_summary_by_thread_by_event_name | Statement summary table, which is aggregated according to the statement of thread and event statement name, and aggregates the statistical information of each dimension, with THREAD_ID and EVENT_NAME (statement) as the dimensions. |]:#
+[| 19 | events_statements_summary_by_user_by_event_name | Statement summary table, which is aggregated according to the statement of user and event statement name, and aggregates the statistical information of each dimension, with USER and EVENT_NAME (statement) as the dimensions. |]:#
+[| 20 | events_statements_summary_global_by_event_name | Statement summary table, which is aggregated according to the event statement name (globally), aggregates the statistical information of each dimension, and uses EVENT_NAME (statement) as the dimension. |]:#
+[| 21 | events_transactions_current | Transaction summary table, containing currently executing transaction events for each thread. |]:#
+[| 22 | events_transactions_history | Transaction summary table, containing N (system variable: performance_schema_events_transactions_history_size) transaction events that each thread has ended. |]:#
+[| 23 | events_transactions_history_long | Transaction summary table, containing N (system variable: performance_schema_events_transactions_history_long_size) transaction events that end globally in all threads. |]:#
+[| 24 | events_transactions_summary_by_account_by_event_name | The transaction summary table is aggregated according to the statement of account, host and event transaction name, and aggregates the statistical information of each dimension, with USER, HOST, EVENT_NAME (transaction) as the dimension. |]:#
+[| 25 | events_transactions_summary_by_host_by_event_name | The transaction summary table is aggregated according to the statement of the host and event transaction name, and the statistical information of each dimension is aggregated, with HOST and EVENT_NAME (transaction) as the dimensions. |]:#
+[| 26 | events_transactions_summary_by_thread_by_event_name | The transaction summary table is aggregated according to the statement of the thread and event transaction name, and the statistical information of each dimension is aggregated, with THREAD_ID and EVENT_NAME (transaction) as the dimensions. |]:#
+[| 27 | events_transactions_summary_by_user_by_event_name | The transaction summary table is aggregated according to the statement of the user and event transaction name, and the statistical information of each dimension is aggregated, with USER and EVENT_NAME (transaction) as the dimensions. |]:#
+[| 28 | events_transactions_summary_global_by_event_name | The transaction summary table is aggregated according to the event name (global), and the statistical information of each dimension is aggregated, with EVENT_NAME (transaction) as the dimension. |]:#
+[| 29 | events_waits_current | Wait summary table, containing currently executing wait events for each thread. |]:#
+[| 30 | events_waits_history | Wait summary table, containing N (system variable: performance_schema_events_waits_history_size) wait events that each thread has ended. |]:#
+[| 31 | events_waits_history_long | Wait summary table, containing N (system variable: performance_schema_events_waits_history_long_size) wait events that end globally in all threads. |]:#
+[| 32 | events_waits_summary_by_account_by_event_name | The waiting summary table is aggregated according to the statement of account, host and event waiting name, and the statistical information of each dimension is aggregated, and USER, HOST, EVENT_NAME (waiting) are listed as dimensions.  |]:#
+[| 33 | events_waits_summary_by_host_by_event_name | The waiting summary table is aggregated according to the statement of the host and the event waiting name, and the statistical information of each dimension is aggregated, and the HOST and EVENT_NAME (waiting) are listed as the dimensions. |]:#
+[| 34 | events_waits_summary_by_instance | The waiting summary table is aggregated according to the statement of thread and event waiting function name, and the statistical information of each dimension is aggregated, and EVENT_NAME (waiting) and OBJECT_INSTANCE_BEGIN are listed as dimensions. |]:#
+[| 35 | events_waits_summary_by_thread_by_event_name | The waiting summary table is aggregated according to the statement of the thread and event waiting name, and the statistical information of each dimension is aggregated, with THREAD_ID and EVENT_NAME (waiting) as the dimensions. |]:#
+[| 36 | events_waits_summary_by_user_by_event_name | The waiting summary table is aggregated according to the statement of the user and the event waiting name, and the statistical information of each dimension is aggregated, with USER and EVENT_NAME (waiting) as the dimensions. |]:#
+[| 37 | events_waits_summary_global_by_event_name | The waiting summary table is aggregated according to the event waiting name (global), and the statistical information of each dimension is aggregated, with EVENT_NAME (waiting) as the dimension. |]:#
+[| 38 | file_instances | List all files (open) of all instances while the server is executing. |]:#
+[| 39 | file_summary_by_event_name | Performance file I/O summary table, each row counts events for a given event name, with EVENT_NAME (event file) as the dimension. |]:#
+[| 40 | file_summary_by_instance | Performance file I/O summary table, each row counts events for a given file and event name, with FILE_NAME (file) and EVENT_NAME (event file) as dimensions. |]:#
+[| 41 | global_status | The global system status table, that is, the values ​​we usually display with showglobalstatuslike'% parameter name%' are stored in this table. |]:#
+[| 42 |global_variables  | The global system variable table, that is, the values ​​that we usually display with `show global variables like '%parameter%'` are stored in this table. |]:#
+[| 43 | host_cache | Host cache table statistics, users speed up dns resolution. |]:#
+[| 44 | hosts | Statistics on the number of current connections and total connections by host dimension. |]:#
+[| 45 | memory_summary_by_account_by_event_name | The memory summary table is aggregated according to the statement of account, host and event memory object variable name, and the statistical information of each dimension is aggregated, and USER, HOST, EVENT_NAME (memory object variable) is listed as the dimension. |]:#
+[| 46 | memory_summary_by_host_by_event_name | The memory summary table is aggregated according to the statement of the host and event memory object variable names, and the statistical information of each dimension is aggregated, with HOST and EVENT_NAME (memory object variable) as the dimensions.|]:#
+[| 47 | memory_summary_by_thread_by_event_name | The memory summary table is aggregated according to the statement of thread and event memory object variable name, and the statistical information of each dimension is aggregated, with THREAD_ID and EVENT_NAME (memory object variable) as the dimensions. |]:#
+[| 48 | memory_summary_by_user_by_event_name | The memory summary table is aggregated according to the statement of the user and event memory object variable names, and the statistical information of each dimension is aggregated, with USER and EVENT_NAME (memory object variable) as the dimensions. |]:#
+[| 49 | memory_summary_global_by_event_name | The memory summary table is aggregated according to the event memory object variable name (global), and the statistical information of each dimension is aggregated, and EVENT_NAME (memory object variable) is listed as the dimension. |]:#
+[| 50 | metadata_locks | Use a record-locked table that uses metadata locking to manage concurrent access to database objects and ensure data consistency (records only happen when they happen). |]:#
+[| 51 | mutex_instances | See which other thread currently owns the mutex. |]:#
+[| 52 | objects_summary_global_by_type | Object wait summary table, which is used to summarize the object wait event table. |]:#
+[| 53 | performance_timers | Used to query the table of available event timer types. |]:#
+[| 54 | prepared_statements_instances | Prepared Statement Examples and Statistics. |]:#
+[| 55 | replication_applier_configuration | Check whether each channel is configured with replication delay. |]:#
+[| 56 | replication_applier_status | Check whether each channel is replicated normally (service_state) and the number of transaction reconnections. |]:#
+[| 57 | replication_applier_status_by_coordinator | Check whether each channel is copied normally, and copy the wrong code, message and time. |]:#
+[| 58 | replication_applier_status_by_worker | Check whether the replication of each channel is normal, and copy the work number in parallel, copy the wrong code, SQL and time. |]:#
+[| 59 | replication_connection_configuration | View the connection configuration information of each channel: host, port, user, auto_position, etc. |]:#
+[| 60 | replication_connection_status | View the connection information of each channel. |]:#
+[| 61 | replication_group_member_stats | Only has value when GroupReplication full synchronous replication mode is enabled, the user provides group level information related to the authentication process. |]:#
+[| 62 | replication_group_members | Only has value when GroupReplication full synchronous replication mode is enabled, which is used to monitor the status of different server instances that are members of the group. |]:#
+[| 63 | rwlock_instances | The table lists all rwlock (read-write lock) instances related records of the server. |]:#
+[| 64 | session_account_connect_attrs | A connection properties table containing only the current session and other sessions associated with this session account. |]:#
+[| 65 | session_connect_attrs | All session connection properties table. |]:#
+[| 66 | session_status | The user status table at the current session level, that is, the values ​​that we usually use `show ('session') status like '%parameter%'` to display are stored in this table. |]:#
+[| 67 | session_variables  | The user variable table of the current session level, that is, the values ​​that we usually display with `show ('session') variables like '%parameter%'` are stored in this table. |]:#
+[| 68 | setup_actors | The settings table provides information about the current instrumentation, how to initialize monitoring for new foreground threads, to change the number control of table records, modify at server startup (system variable: performance_schema_setup_actors_size). |]:#
+[| 69 | setup_consumers | The settings table provides information about the current instrumentation, listing the consumer types that can store event information and which consumers are enabled. |]:#
+[| 70 | setup_instruments | The settings table provides information about the current instrumentation, classes of instrumented objects that can collect events. |]:#
+[| 71 | setup_objects | The settings table provides information about the current detection, and controls whether to monitor specific objects, such as changing the number of records table conditions, please modify at server startup (system variable: performance_schema_setup_objects_size). |]:#
+[| 72 | setup_timers | The settings table provides information about the current detection, the table shows the currently selected event timer. |]:#
+[| 73 | socket_instances | This table provides a real-time snapshot of active connections to the MySQL server. |]:#
+[| 74 | socket_summary_by_event_name | Socket summary table, aggregates events by event name, with EVENT_NAME (event name) as the column dimension, provides some additional information, such as socket operations and the number of bytes transmitted and received by the network. |]:#
+[| 75 | socket_summary_by_instance | Socket summary table, aggregates events by event name, with EVENT_NAME (event name), OBJECT_INSTANCE_BEGIN columns as dimensions, provides some additional information, such as socket operations and the number of bytes transmitted and received by the network. |]:#
+[| 76 | status_by_account | Status variable summary table with USER, HOST, VARIABLE_NAME columns to summarize status variables by account. |]:#
+[| 77 | status_by_host | State variable summary table with HOST, VARIABLE_NAME columns for summarizing state variables by the host connected to the client. |]:#
+[| 78 | status_by_thread |State variable summary table with THREAD_ID, VARIABLE_NAME columns, summary session state variables for each active user. |]:#
+[| 79 | status_by_user | Status variable summary table with USER, VARIABLE_NAME columns to summarize status variables by client username. |]:#
+[| 80 | table_handles | Table locks detect the contents of records, this information shows which table handles are opened by the server, how they are locked and by which session, such as changing the number of records table conditions, please modify at server startup (system variable: performance_schema_max_table_handles). |]:#
+[| 81 | table_io_waits_summary_by_index_usage | This table summarizes all table index I/O wait events generated by wait/io/table/sql/handler, grouped by table index. |]:#
+[| 82 | table_io_waits_summary_by_table | This table summarizes all table I/O wait events generated by wait/io/table/sql/handler, grouped by table. |]:#
+[| 83 | table_lock_waits_summary_by_table | This table summarizes all table lock wait events generated by wait/lock/table/sql/handler, grouped by table. |]:#
+[| 84 | threads | All threads statistics for the current server, each row contains information about the thread and indicates whether monitoring and historical event logging are enabled for that thread. |]:#
+[| 85 | user_variables_by_thread | Change the table to record some user-defined variables, these are variables defined in a specific session, that is, use set@v1=10;, and then select@v1fromdual; in the current connection. |]:#
+[| 86 | users | The value records the statistics of the logged in user, does not record the host, the host is in the accounts table. |]:#
+[| 87 | variables_by_thread | Session system variables for each active session, the session variable table (session_variables, variables_by_thread) only contains information for active sessions, not for terminated sessions. |]:#
 
 # SYS 
 [# SYS]:#

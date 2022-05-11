@@ -24,6 +24,7 @@
     git log --until='2022-05-09 15:50:00' --author="anigkus" --oneline | wc -l
 
 # Markdown Hide
-[This is a comment that will be hidden.]: # 
-[This is a comment that will be hidden.]: # 
-[This is a comment that will be hidden.]: # 
+[This is a comment that will be hidden1.]:# 
+[This is a comment that will be hidden2. 
+This is a comment that will be hidden3.]:# 
+[This is a comment that will be hidden4.]: # 

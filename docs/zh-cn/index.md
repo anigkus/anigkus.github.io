@@ -7,4 +7,5 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 ![Anigkus github article template title](../assets/images/figure-1.jpg "Github of Anigkus")
 <br/>
 
-- [常用正则表达式的收藏列表。](./favorite-list-of-frequently-used-regular-expressions.md) <br/>
+- [常用正则表达式的收藏列表.](./favorite-list-of-frequently-used-regular-expressions.md) <br/>
+- [分布式事务概念和几种实现思路.](./the-concept-of-distributed-transaction-and-several-implementation-ideas)<br/>

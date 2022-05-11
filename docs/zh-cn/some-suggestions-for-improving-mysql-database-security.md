@@ -6,7 +6,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 <h1 style="color:#606c71;text-align:center;" >Some suggestions for improving mysql database security</h1><br/>
 
-![Some suggestions for improving mysql database security](assets/images/some-suggestions-for-improving-mysql-database-security/figure-1.jpg "Github of Anigkus")
+![Some suggestions for improving mysql database security](../assets/images/some-suggestions-for-improving-mysql-database-security/figure-1.jpg "Github of Anigkus")
 
 > <br/>&nbsp;&nbsp;&nbsp;&nbsp; MySQL is the most popular RDBMS (Relational Database Management System) relational database management system. It was developed by the Swedish MySQL AB company and eventually acquired by Oracle. Later, a number of open source branches appeared one after another,the more popular ones being XtraDB, Percona, MariaDB (The main creator of MariaDB is Monty Widenius,Who is also the original creator of MySQL). MySQL and the open source version are both popular relational OLTP databases, helping users solve OLTP-related problems in countless enterprises, so how to How to improve the security of MySQL itself?This article will lead you to do a good job of MySQL security.<br/>
 > <br/>
@@ -15,25 +15,25 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 &nbsp;&nbsp;&nbsp;&nbsp;The first step in improving MySQL security is to upgrade the operating system of the server where MySQL is located. The operating system itself will have security vulnerabilities and other problems, and the operating system suppliers will also regularly release upgrade patches, so in order to avoid security risks caused by system vulnerabilities , we must regularly upgrade the operating system kernel and patches. We need to consider the compatibility of the patch version, do a good job of all database-related backups, and make multiple sets of plans in advance, and we need to test the database with the kernel and the same version of the database server first. Patch verification, then be sure to implement relevant stress tests and carefully analyze whether the system vulnerability has been fixed, verify the difference between before and after the upgrade, and then gradually upgrade to the database machine system in the production environment to avoid major security incidents in the company. Now, DB and operation and maintenance can basically start running, and developers can update their resumes, ready to start a new life (😄)...<br/>
 
 <center>
-<img src="assets/images/some-suggestions-for-improving-mysql-database-security/figure-2.png" alt="Some suggestions for improving mysql database security" title="Github of Anigkus" style="width:512px;height:256px;">
+<img src="../assets/images/some-suggestions-for-improving-mysql-database-security/figure-2.png" alt="Some suggestions for improving mysql database security" title="Github of Anigkus" style="width:512px;height:256px;">
 </center>
 
 ## Upgrade MySQL
 &nbsp;&nbsp;&nbsp;&nbsp;MySQL products are constantly evolving, the community is constantly feeding back problems, and the community team has been fixing various problems found in the testing process, so in order to ensure that your MySQL has always been safe and reliable, the best way is to regularly repair or upgrade MySQL Kernel patches and related plug-in patches can avoid major vulnerabilities or hidden dangers in MySQL itself, which will bring irreparable losses to the company's performance.<br/>
 <center>
-<img src="assets/images/some-suggestions-for-improving-mysql-database-security/figure-3.png" alt="Some suggestions for improving mysql database security" title="Github of Anigkus" style="width:512px;height:256px;">
+<img src="../assets/images/some-suggestions-for-improving-mysql-database-security/figure-3.png" alt="Some suggestions for improving mysql database security" title="Github of Anigkus" style="width:512px;height:256px;">
 </center>
 
 ## Upgrading MySQL Dependent Components
 &nbsp;&nbsp;&nbsp;&nbsp;In addition to its own software, MySQL also includes a lot of dependent software, such as Innodb, Password components, Replication components, Auth components, etc. Similar to the operating systems mentioned above, these softwares themselves also have potential security risks. In order to ensure the security of the entire MySQL system, it is recommended that you upgrade the version of the MySQL-dependent software. Of course, you must also pay attention to the compatibility of the version of the dependent software, and pay attention to the instructions on the relevant patch upgrades released by the MySQL official website or the community.<br/>
 <center>
-<img src="assets/images/some-suggestions-for-improving-mysql-database-security/figure-4.png" alt="Some suggestions for improving mysql database security" title="Github of Anigkus" style="width:512px;height:256px;">
+<img src="../assets/images/some-suggestions-for-improving-mysql-database-security/figure-4.png" alt="Some suggestions for improving mysql database security" title="Github of Anigkus" style="width:512px;height:256px;">
 </center>
 
 ## Security Components of Operating Systems
 &nbsp;&nbsp;&nbsp;&nbsp;The operating system itself also has a variety of security components, such as firewalls in Windows, security policies (local policies, domain policies, OU policies), Defender anti-spyware, Action Center (action center and problem diagnosis reminder function), and Linux such as CentOS itself It includes Firewalld (Iptables firewall), Selinux (mandatory access control), AIDE (advanced intrusion detection environment), ACL (file permissions of R\W\X) to provide security capabilities, so be sure to configure related software when deploying related software Component security level and system granularity policy, it is best not to turn off the Iptables firewall and Selinux in the MySQL server. Of course, when Iptables is turned on, more attention needs to be paid to the operation and maintenance management. It is necessary to open several ports used by MySQL and the ports required by the application, and all others must be closed or prohibited.<br/>
 <center>
-<img src="assets/images/some-suggestions-for-improving-mysql-database-security/figure-5.png" alt="Some suggestions for improving mysql database security" title="Github of Anigkus" style="width:512px;height:256px;">
+<img src="../assets/images/some-suggestions-for-improving-mysql-database-security/figure-5.png" alt="Some suggestions for improving mysql database security" title="Github of Anigkus" style="width:512px;height:256px;">
 </center>
 
 ## Improve password complexity
@@ -65,20 +65,20 @@ If numbers and lowercase letters are used, the complexity is 10 digits plus 26 l
 
 If you use numbers, lowercase letters, uppercase letters, then the complexity is 10 digits plus 26 lowercase letters plus 26 uppercase letters, which is 62 to the 12th power.<br/>
 <center>
-<img src="assets/images/some-suggestions-for-improving-mysql-database-security/figure-6.png" alt="Some suggestions for improving mysql database security" title="Github of Anigkus" style="width:512px;height:256px;">
+<img src="../assets/images/some-suggestions-for-improving-mysql-database-security/figure-6.png" alt="Some suggestions for improving mysql database security" title="Github of Anigkus" style="width:512px;height:256px;">
 </center>
 
 ## Use SSL Protocol
 &nbsp;&nbsp;&nbsp;&nbsp;Needless to say, there are many benefits of SSL. If the database needs external access, and the external I am talking about is from the public network, then I strongly recommend that you apply for an SSL certificate, then deploy the ssl certificate, close the HTTP access method, and let Everyone accesses the MySQL database through the HTTPS protocol. If it is an intranet, it is not necessary. You can control security in other aspects, because enabling SSL requests and enabling ssl encrypted connections will inevitably reduce performance, and the performance overhead is about 25% (online I mean, I haven't actually tested it).<br/>
 <center>
-<img src="assets/images/some-suggestions-for-improving-mysql-database-security/figure-7.png" alt="Some suggestions for improving mysql database security" title="Github of Anigkus" style="width:512px;height:256px;">
+<img src="../assets/images/some-suggestions-for-improving-mysql-database-security/figure-7.png" alt="Some suggestions for improving mysql database security" title="Github of Anigkus" style="width:512px;height:256px;">
 </center>
 
 ## Principle of least privilege
 &nbsp;&nbsp;&nbsp;&nbsp;MySQL authorized users should abide by the principle of minimizing permissions from beginning to end. MySQL permissions are divided into several levels, host authorization->user authorization->database authorization-table authorization-column authorization-other operations (such as stored procedures, master-slave replication) , function execution), etc., generally speaking, there are 6 levels. Therefore, when authorizing, you must strictly control the corresponding permission level, and do not set too large (boundary exceeded, risky) or too small (restrict business operations). Required Strictly control the management of OS and DB accounts to prevent account information from leaking, especially for root and mysql accounts, and access authorization limits access to host information. We can limit the range of visiting hosts by specifying the host name, domain name or IP address information of the host during authorization. These accounts will bring great security risks to the system, so we must delete them as soon as possible before they are officially activated, or Set a relatively secure password. To authorize a user, use the GRANT command, and to remove a user's existing permissions, use the REVOKE command. Of course, in addition to these two commands, there is also a more violent method, which is to update the system tables directly, both in mysql(user(proxies_priv)\db\tables_priv\columns_priv\procs_priv\) and information_schema(USER_PRIVILEGES
 \SCHEMA_PRIVILEGES\TABLE_PRIVILEGES\COLUMN_PRIVILEGES) under the two internal libraries, 90% of the permission-related tables under different libraries overlap, MySQL's access control is actually composed of two functional modules, one is the user responsible for "guarding the MySQL gate" The management module, the other is the access control module responsible for monitoring every action of the visitor.<br/>
 <center>
-<img src="assets/images/some-suggestions-for-improving-mysql-database-security/figure-8.png" alt="Some suggestions for improving mysql database security" title="Github of Anigkus" >
+<img src="../assets/images/some-suggestions-for-improving-mysql-database-security/figure-8.png" alt="Some suggestions for improving mysql database security" title="Github of Anigkus" >
 </center>
 
 ## Authorization follows principles
@@ -93,13 +93,13 @@ If you use numbers, lowercase letters, uppercase letters, then the complexity is
   
 <br/>
 <center>
-<img src="assets/images/some-suggestions-for-improving-mysql-database-security/figure-9.png" alt="Some suggestions for improving mysql database security" title="Github of Anigkus" style="width:512px;height:256px;">
+<img src="../assets/images/some-suggestions-for-improving-mysql-database-security/figure-9.png" alt="Some suggestions for improving mysql database security" title="Github of Anigkus" style="width:512px;height:256px;">
 </center>
 
 ## Security Audit Log
 &nbsp;&nbsp;&nbsp;&nbsp;Now data is money, to prevent data leakage, to find out where the source of the leak came from as soon as possible, you must need relevant log records, otherwise there will be breaking news in the technology circle, a certain company has data leakage, or the database is dragged However, the company came out to clarify, we are continuing to investigate, and we have not said who leaked what content through some method (because there is no log, it will not be able to answer for a while), which will have a fatal blow to the company's market. ,Database auditing can record database activities on the network in real time, conduct fine-grained audit compliance management for database operations, warn the risk behaviors suffered by the database, and block attack behaviors. It records, analyzes and reports the user's access to the database to help users generate compliance reports and trace the source of accidents.<br/>
 <center>
-<img src="assets/images/some-suggestions-for-improving-mysql-database-security/figure-10.png" alt="Some suggestions for improving mysql database security" title="Github of Anigkus" style="width:512px;height:256px;">
+<img src="../assets/images/some-suggestions-for-improving-mysql-database-security/figure-10.png" alt="Some suggestions for improving mysql database security" title="Github of Anigkus" style="width:512px;height:256px;">
 </center>
 
 ## Data Backup Policy
@@ -123,7 +123,7 @@ If you use numbers, lowercase letters, uppercase letters, then the complexity is
 * Same computer room strategy: that is, the database machine to be backed up cannot be on the same device as the database machine to be backed up, to prevent system problems or hardware problems of the current hardware equipment, etc.
 * Cross-machine room strategy: also known as dual-machine remote hot backup, that is, the database machine to be backed up cannot be in the same machine room as the database machine to be backed up, it is best to do three backup tests, such as one in the machine room and two across the machine room.<br/>
 <center>
-<img src="assets/images/some-suggestions-for-improving-mysql-database-security/figure-11.png" alt="Some suggestions for improving mysql database security" title="Github of Anigkus" >
+<img src="../assets/images/some-suggestions-for-improving-mysql-database-security/figure-11.png" alt="Some suggestions for improving mysql database security" title="Github of Anigkus" >
 </center>
 
 <br>

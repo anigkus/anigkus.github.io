@@ -97,7 +97,7 @@ Compared with 2PC, 3PC sets a timeout for both the coordinator (Coordinator) and
 7. The coordinator and the coordinator return the result to the business initiator whether the result of this operation is a success or a failure.
 
 
-<mark>Known issues</mark>
+<mark>Known issues</mark>:
 
 1. Synchronous blocking: All transaction participants are in a synchronous blocking state while waiting for responses from other participants and cannot perform other operations.
 2. Single point problem: The coordinator plays a very important role in 2PC, and a failure will have a great impact. Especially when a failure occurs in Phase 2, all participants will be in a waiting state and cannot complete other operations.

@@ -163,9 +163,9 @@ MQ:比如kafka和rocketMQ都支持事务型的生产和消费消息类型的功�
 [6. Then the coordinator sends an instruction to the business participant, and the business participant can commit or roll back the local transaction.]:#
 [7. The coordinator and the coordinator return the result to the business initiator whether the result of this operation is a success or a failure.]:#
 
-<mark>存在的问题</mark>
+<mark>存在的问题</mark>:
 
-[<mark>Known issues</mark>]:#
+[<mark>Known issues</mark>:]:#
 
 1. 同步阻塞: 所有事务参与者在等待其它参与者响应的时候都处于同步阻塞状态,无法进行其它操作.
 2. 单点问题: 协调者在 2PC 中起到非常大的作用,发生故障将会造成很大影响.特别是在阶段二发生故障,所有参与者会一直等待状态,无法完成其它操作.

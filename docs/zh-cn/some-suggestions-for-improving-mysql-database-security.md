@@ -8,8 +8,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 ![Some suggestions for improving mysql database security](assets/images/some-suggestions-for-improving-mysql-database-security/figure-1.jpg "Github of Anigkus")
 
-> <br/>
-> &nbsp;&nbsp;&nbsp;&nbsp; MySQL is the most popular RDBMS (Relational Database Management System) relational database management system. It was developed by the Swedish MySQL AB company and eventually acquired by Oracle. Later, a number of open source branches appeared one after another,the more popular ones being XtraDB, Percona, MariaDB (The main creator of MariaDB is Monty Widenius,Who is also the original creator of MySQL). MySQL and the open source version are both popular relational OLTP databases, helping users solve OLTP-related problems in countless enterprises, so how to How to improve the security of MySQL itself?This article will lead you to do a good job of MySQL security.<br/>
+> <br/>&nbsp;&nbsp;&nbsp;&nbsp; MySQL is the most popular RDBMS (Relational Database Management System) relational database management system. It was developed by the Swedish MySQL AB company and eventually acquired by Oracle. Later, a number of open source branches appeared one after another,the more popular ones being XtraDB, Percona, MariaDB (The main creator of MariaDB is Monty Widenius,Who is also the original creator of MySQL). MySQL and the open source version are both popular relational OLTP databases, helping users solve OLTP-related problems in countless enterprises, so how to How to improve the security of MySQL itself?This article will lead you to do a good job of MySQL security.<br/>
 > <br/>
 
 ## Upgrade the operating system

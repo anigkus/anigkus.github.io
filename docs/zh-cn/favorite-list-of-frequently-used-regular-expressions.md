@@ -8,8 +8,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 ![Favorite list of frequently used regular expressions](../assets/images/favorite-list-of-frequently-used-regular-expressions/figure-1.jpg "Github of Anigkus")
 
-> <br/>
-> &nbsp;&nbsp;&nbsp;&nbsp;各种正则表达式在软件开发工作中非常常见.但有时候需要一些表达式的时候,一时半会也想不出来,所以就干脆就把一些常用的表达方式整理下放到一起，这样后续需要的时候,就干脆直接去复制就行了,避免再次Googles搜索了,也没必要在这方面花更多的时间. 这样才能更好地释放大脑容量,将其用于记住更重要的事情上去.😄<br/>
+> <br/>&nbsp;&nbsp;&nbsp;&nbsp;各种正则表达式在软件开发工作中非常常见.但有时候需要一些表达式的时候,一时半会也想不出来,所以就干脆就把一些常用的表达方式整理下放到一起，这样后续需要的时候,就干脆直接去复制就行了,避免再次Googles搜索了,也没必要在这方面花更多的时间. 这样才能更好地释放大脑容量,将其用于记住更重要的事情上去.😄<br/>
 > <br/>
 
 ## 数字表达式 {#id1-h2}

@@ -8,8 +8,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 ![Java微服务部署之分布式事务一致性概念篇](../assets/images/the-concept-of-distributed-transaction-and-several-implementation-ideas/figure-1.jpg "Github of Anigkus")
 
-> <br/>
-> &nbsp;&nbsp;&nbsp;&nbsp;服务化后单体系统被拆分成多个服务系统,各服务访问自己的数据库.而我们的一次请求操作很可能要跨多个服务,同时需要操作多个数据库的数据,我们发现以前用的数据库事务不好用了.那么基于微服务的拆分架构后如何才能再次保证数据一致性呢？<br/>
+> <br/>&nbsp;&nbsp;&nbsp;&nbsp;服务化后单体系统被拆分成多个服务系统,各服务访问自己的数据库.而我们的一次请求操作很可能要跨多个服务,同时需要操作多个数据库的数据,我们发现以前用的数据库事务不好用了.那么基于微服务的拆分架构后如何才能再次保证数据一致性呢？<br/>
 > <br/>
 
 ## 分布式事务中的一些名词和概念

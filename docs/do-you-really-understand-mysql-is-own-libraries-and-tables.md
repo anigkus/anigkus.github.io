@@ -21,7 +21,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 | 1 | CHARACTER_SETS | The default correspondence table between characters and proofreading rules cannot be added, updated or deleted.|
 | 2 | COLLATIONS | All correspondence tables between characters and collation rules, and there are information such as collation ID, default identification, whether to compile into the server (these are all MySQL extension information for the time being, and are useless now). This table cannot be added, updated, or deleted.|
 | 3 | COLLATION_CHARACTER_SET_APPLICABILITY | All correspondence between characters and proofreading rules |
-| 4 | COLUMNS | Information about the columns in all data tables of the current MySQL server, such as type, whether it is empty, length, character encoding, proofreading encoding and many other useful information; |
+| 4 | COLUMNS | Information about the columns in all data tables of the current MySQL server, such as type, whether it is empty, length, character encoding, proofreading encoding and many other useful information. |
 | 5 | COLUMN_PRIVILEGES | Almost the same as mysql.columns_priv, there is a column IS_COLUMN_PRIVILEGES: used to indicate whether the user can continue to authorize others. |
 | 6 | ENGINES | All storage engines currently served by MySQL, engine status(supported, default, disabled, and not supportd, supported but disabled), which supports transactions,XA transactions, partica transactions,etc. |
 | 7 | EVENTS | The MySQL timed task tanle is almost the same as mysql.event, and has similar fuctions, but there will be a little difference in data performance, mainly in terms of time. |
@@ -41,7 +41,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 | 21 | SCHEMA_PRIVILEGES | MySQL database level privilege table, the same as mysql.db. |
 | 22 | SESSION_STATUS | MySQL 5.7 has the same effect as show status in order to be compatible with the reserved table of 5.6. |
 | 23 | SESSION_VARIABLES | MySQL 5.7 has the same effect as show VARIABLES in order to be compatible with the reserved table of 5.6. |
-| 24 | STATISTICS | All index records on the MySQL server table, query a single index situation: SHOW INDEX FROM TABLE_NAME; and SHOW INDEX FROM TABLE_NAME FROM DB_NAME; |
+| 24 | STATISTICS | All index records on the MySQL server table, query a single index situation: SHOW INDEX FROM TABLE_NAME; and SHOW INDEX FROM TABLE_NAME FROM DB_NAME. |
 | 25 | TABLES | All tables on the MySQL server record the table, which may be out of sync with the current table contents, but can be updated by running ANALYZE. |
 | 26 | TABLESPACES | MySQL table space record table, this table does not provide information about InnoDB table space, you need to query the INFORMATION_SCHEMA.FILES table. |
 | 27 | TABLE_CONSTRAINTS | MySQL constraint tables, including unique constraints, primary key constraints, foreign key constraints related record tables. |
@@ -65,7 +65,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 | 45 | INNODB_TEMP_TABLE_INFO | This table represents information about temporary tables. |
 | 46 | INNODB_SYS_INDEXES | This table represents index metadata in all tables of the system. |
 | 47 | INNODB_SYS_TABLES | This table represents metadata for all tables in the system. |
-| 48 | INNODB_SYS_FIELDS | This table represents the mapping logic of fields and index positions in all tables of the system |
+| 48 | INNODB_SYS_FIELDS | This table represents the mapping logic of fields and index positions in all tables of the system. |
 | 49 | INNODB_CMP_PER_INDEX_RESET | (Compression related tables) innodb_cmp_per_index_reset is similar to innodb_cmp_per_index, the difference is that the previous statistics are reset each time a query is made. |
 | 50 | INNODB_BUFFER_PAGE | Information about each page in the buffer pool. |
 | 51 | INNODB_FT_DEFAULT_STOPWORD | MySQL full-text index disabled keyword table. |
@@ -94,7 +94,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 | 7 | gtid_executed | MySQL Global Transaction ID Persistent Table.  |
 | 8 | help_category | Help information table, information about help topic categories, through help 'keyword'; to view help information, search through the name field in help_category, help_keyword, help_topic. |
 | 9 | help_keyword | Help information sheet, keyword information related to help topics. |
-| 10 | help_relation | Help information table, mapping between help keyword information and topic information |
+| 10 | help_relation | Help information table, mapping between help keyword information and topic information. |
 | 11 | help_topic | Help information sheet, details of help topics. |
 | 12 | innodb_index_stats | Statistics table, which stores statistics of index dimensions, which is quite effective for analyzing SQL parsing and query optimization. |
 | 13 | innodb_table_stats | Statistics table, which stores statistics for table dimensions. |
@@ -102,10 +102,8 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 | 15 | plugin | The plugin table that MySQL has loaded, the plugin loaded through my.cnf or INSTALL PLUGIN will have a record in this table. |
 | 16 | proc | MySQL stored procedures and custom Function record tables, when PROCEDURE or FUNCTION are created, there will be records. The permissions of Mysq.5.7.19 functions and stored procedures are much stronger than before, and the syntax has also changed a little. |
 | 17 | procs_priv | Stored procedure permission table, when executing GRANT EXECUTE ON PROCEDURE `db1`.procedure_name TO 'someuser'@'%';; there will be data. |
-| 18 | proxies_priv | Proxy user permission table, which only appears in this table when the proxy user is authorized through grant proxy
-Translated with Google (Chinese → English)  |
-| 19 | server_cost | Cost model, engine_cost (IO cost), server_cost (CPU cost), mysql execution plan analysis three see explain, profiling, optimizer_trace
-Translated with Google (Chinese → English) |
+| 18 | proxies_priv | Proxy user permission table, which only appears in this table when the proxy user is authorized through grant proxy. |
+| 19 | server_cost | Cost model, engine_cost (IO cost), server_cost (CPU cost), mysql execution plan analysis three see explain, profiling, optimizer_trace. |
 | 20 | servers | The remote data user table, which is used when using the federated engine, can share remote data and local data, but the function is not complete. Use CREATE SERVER. . . To create, one thing to note is that the information must be written in the first time, otherwise it seems that it cannot be modified by commands in the future. Only by manually deleting the data in the servers table and restarting the service can the same server_name be created again, and then used again, FEDERATED The function of the engine is that the local machine can have the same data table as the remote, and the table name can be different, but the local machine does not save data, only the table definition, and the data is on the remote database. |
 | 21 | slave_master_info | MySQL server main binlog information, when the binlog log is enabled and master_info_repository=TABLE, the relevant information will be recorded to this table.|
 | 22 | slave_relay_log_info | The repeater binlog information of the MySQL server slave, when the slave opens the binlog log and relay_log_info_repository=TABLE., the relevant information will be recorded to this table. |
@@ -166,7 +164,7 @@ Translated with Google (Chinese → English) |
 | 39 | file_summary_by_event_name | Performance file I/O summary table, each row counts events for a given event name, with EVENT_NAME (event file) as the dimension. |
 | 40 | file_summary_by_instance | Performance file I/O summary table, each row counts events for a given file and event name, with FILE_NAME (file) and EVENT_NAME (event file) as dimensions. |
 | 41 | global_status | The global system status table, that is, the values ​​we usually display with showglobalstatuslike'% parameter name%' are stored in this table. |
-| 42 |global_variables  | The global system variable table, that is, the values ​​that we usually display with showglobalvariableslike'% parameter name%' are stored in this table. |
+| 42 |global_variables  | The global system variable table, that is, the values ​​that we usually display with `show global variables like '%parameter%'` are stored in this table. |
 | 43 | host_cache | Host cache table statistics, users speed up dns resolution. |
 | 44 | hosts | Statistics on the number of current connections and total connections by host dimension. |
 | 45 | memory_summary_by_account_by_event_name | The memory summary table is aggregated according to the statement of account, host and event memory object variable name, and the statistical information of each dimension is aggregated, and USER, HOST, EVENT_NAME (memory object variable) is listed as the dimension. |
@@ -190,8 +188,8 @@ Translated with Google (Chinese → English) |
 | 63 | rwlock_instances | The table lists all rwlock (read-write lock) instances related records of the server. |
 | 64 | session_account_connect_attrs | A connection properties table containing only the current session and other sessions associated with this session account. |
 | 65 | session_connect_attrs | All session connection properties table. |
-| 66 | session_status | The user status table at the current session level, that is, the values ​​that we usually use show[session]statuslike'% parameter name%' to display are stored in this table. |
-| 67 | session_variables  | The user variable table of the current session level, that is, the values ​​that we usually display with show[session]variableslike'% parameter name%' are stored in this table. |
+| 66 | session_status | The user status table at the current session level, that is, the values ​​that we usually use `show ('session') status like '%parameter%'` to display are stored in this table. |
+| 67 | session_variables  | The user variable table of the current session level, that is, the values ​​that we usually display with `show ('session') variables like '%parameter%'` are stored in this table. |
 | 68 | setup_actors | The settings table provides information about the current instrumentation, how to initialize monitoring for new foreground threads, to change the number control of table records, modify at server startup (system variable: performance_schema_setup_actors_size). |
 | 69 | setup_consumers | The settings table provides information about the current instrumentation, listing the consumer types that can store event information and which consumers are enabled. |
 | 70 | setup_instruments | The settings table provides information about the current instrumentation, classes of instrumented objects that can collect events. |

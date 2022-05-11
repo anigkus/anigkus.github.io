@@ -10,7 +10,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 ![Java微服务部署之分布式事务一致性概念篇](../assets/images/the-concept-of-distributed-transaction-and-several-implementation-ideas/figure-1.jpg "Github of Anigkus")
 
-[!\[The concept of distributed transaction and several implementation ideas\](assets/images/the-concept-of-distributed-transaction-and-several-implementation-ideas/figure-1.jpg "Github of Anigkus")]:#
+[! The concept of distributed transaction and several implementation ideas (assets/images/the-concept-of-distributed-transaction-and-several-implementation-ideas/figure-1.jpg "Github of Anigkus")]:#
 
 
 > <br/>&nbsp;&nbsp;&nbsp;&nbsp;服务化后单体系统被拆分成多个服务系统,各服务访问自己的数据库.而我们的一次请求操作很可能要跨多个服务,同时需要操作多个数据库的数据,我们发现以前用的数据库事务不好用了.那么基于微服务的拆分架构后如何才能再次保证数据一致性呢？<br/>
@@ -183,7 +183,7 @@ MQ:比如kafka和rocketMQ都支持事务型的生产和消费消息类型的功�
 <img src="../assets/images/the-concept-of-distributed-transaction-and-several-implementation-ideas/figure-5.png" alt="Some suggestions for improving mysql database security" title="Github of Anigkus" >
 </center> 
 
-<mark>特点</mark>
+<mark>特点</mark>:
 
 &nbsp;&nbsp;&nbsp;&nbsp;不与具体的服务框架耦合,位于业务服务层,而不是资源层,可以灵活的选择业务资源的锁定粒度.TCC内部对每个服务资源操作的是本地事务,数据被锁住的时间短,可扩展性好,可以说是为独立部署的SOA服务而设计的.
 

@@ -89,6 +89,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 | 60 | INNODB_SYS_FOREIGN | 库中所有外键列关系信息表，和INNODB_SYS_FOREIGN_COLS、REFERENTIAL_CONSTRAINTS都有点相似. |
 | 61 | INNODB_SYS_TABLESTATS | MySQL库中所有表的所有数据行的数量情况，当DELETE\UPDATE后会更新，如果未提交的事务正在插入或从表中删除，可能会不准确。这个表中的NUN_ROWS和TABLES中TABLE_ROWS有啥区别呢，因为有时我发现TABLE_ROWS中的数据对不上表中实际的数据，难道是事务未提交的关系? |
 
+
 [| Serial Number | Table Name | Meaning |
 | :--- | :----: | ---: |
 | 1 | CHARACTER_SETS | The default correspondence table between characters and proofreading rules cannot be added, updated or deleted.|
@@ -193,6 +194,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 | 29 | time_zone_transition | MySQL时区相关表，通过mysql_tzinfo_to_sql加载相关时区信息就会有数据,该表提供查询时区的跳秒数据. |
 | 30 | time_zone_transition_type | MySQL时区相关表，通过mysql_tzinfo_to_sql加载相关时区信息就会有数据,该表提供查询具体的跳秒信息以及与时区的对应数据.|
 | 31 | user | MySQL用户表，创建的所有的用户都在这个表中. |
+
 
 [| Serial Number | Table Name | Meaning |
 | :--- | :----: | ---: |
@@ -325,6 +327,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 | 85 | user_variables_by_thread | 改表记录了用户自定义的一些变量,这些是在特定会话中定义的变量,就是使用set@v1=10;,然后select@v1fromdual;的当次连接中. |
 | 86 | users | 值记录登录用户的统计数据,不记录主机,主机在accounts表. |
 | 87 | variables_by_thread | 每个活动会话的会话系统变量,会话变量表(session_variables,variables_by_thread)仅包含活动会话的信息,而不包含终止的会话的信息. |
+
 
 [| Serial Number | Table Name | Meaning |
 | :--- | :----: | ---: |

@@ -9,7 +9,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 ![The concept of distributed transaction and several implementation ideas](assets/images/the-concept-of-distributed-transaction-and-several-implementation-ideas/figure-1.jpg "Github of Anigkus")
 
 > <br/>
-[&nbsp;&nbsp;&nbsp;&nbsp;服务化后单体系统被拆分成多个服务系统,各服务访问自己的数据库.而我们的一次请求操作很可能要跨多个服务,同时需要操作多个数据库的数据,我们发现以前用的数据库事务不好用了.那么基于微服务的拆分架构后如何才能再次保证数据一致性呢？]:# 
+[&nbsp;&nbsp;&nbsp;&nbsp;服务化后单体系统被拆分成多个服务系统,各服务访问自己的数据库.而我们的一次请求操作很可能要跨多个服务,同时需要操作多个数据库的数据,我们发现以前用的数据库事务不好用了.那么基于微服务的拆分架构后如何才能再次保证数据一致性呢?]:# 
 > &nbsp;&nbsp;&nbsp;&nbsp;After serviceization, the single system is split into multiple service systems,and each service accesses its own database. Our one request operation is likely so span multiple services, and we need to operate the data of multilple databases at the same time. We found that the previously used Database transactions are not easy to use. So how can ensure data consistency again after the split architecture based on microservices?<br/>
 > <br/>
 

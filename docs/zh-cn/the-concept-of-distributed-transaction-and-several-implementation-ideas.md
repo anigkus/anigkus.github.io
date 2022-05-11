@@ -24,7 +24,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 - 事务: 事务是由一组操作构成的可靠的独立的工作单元,事务具备ACID的特性,即原子性、一致性、隔离性和持久性.
   
-[Transaction: A transaction is a reliable and independent unit of work composed of a set of operations, and transaction has the charecteristics of ACID,namely atomicity, consistency, isolation and durability.]:#
+[- Transaction: A transaction is a reliable and independent unit of work composed of a set of operations, and transaction has the charecteristics of ACID,namely atomicity, consistency, isolation and durability.]:#
 
 - 本地事务: 当事务由资源管理器本地管理时被称作本地事务.本地事务的优点就是支持严格的ACID特性,高效,可靠,状态可以只在资源管理器中维护,而且应用编程模型简单.但是本地事务不具备分布式事务的处理能力,隔离的最小单位受限于资源管理器.
 
@@ -48,28 +48,28 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 - RM: 资源管理器,这里可以是一个DBMS或者消息服务器管理系统,应用程序通过资源管理器对资源进行控制,资源必须实现XA定义的接口.资源管理器负责控制和管理实际的资源`(Resource Manager)`.
 
-[RM: Resource Manager, here can be a DBMS or a messsage server management system, the application controls resources throught the resource manager, and the resource must implement the interface defined by XA. The resource manager is responsible for controlling and manager the actual resources`(Resource Manager)`.]:#
+[- RM: Resource Manager, here can be a DBMS or a messsage server management system, the application controls resources throught the resource manager, and the resource must implement the interface defined by XA. The resource manager is responsible for controlling and manager the actual resources`(Resource Manager)`.]:#
 
 - TM：事务管理器,负责协调和管理事务,提供给AP编程接口以及管理资源管理器.事务管理器控制着全局事务,管理事务的生命周期,并且协调资源`(Transaction Manager)`.
 
-[TM: Transaction manager, responsible for coordinating and managing transactions, prividing API programming interfaces and managing resource manager. The transaction manager controls global transactions, manages the life cycle of transactions, and coordinates resource`(Transaction Manager)`]:#
+[- TM: Transaction manager, responsible for coordinating and managing transactions, prividing API programming interfaces and managing resource manager. The transaction manager controls global transactions, manages the life cycle of transactions, and coordinates resource`(Transaction Manager)`]:#
 
 - 两阶段提交协议: XA用于在全局事务中协调多个资源的机制.TM和RM之间采取两阶段提交的方案来解决一致性问题.两节点提交需要一个协调者（TM:Transaction Manager）来掌控所有参与者（RM:Resource Manager）节点的操作结果并且指引这些节点是否需要最终提交.两阶段提交的局限在于协议成本,准备阶段的持久成本,全局事务状态的持久成本,潜在故障点多带来的脆弱性,准备后,提交前的故障引发一系列隔离与恢复难题.
 
-[Two-phase commit protocol: XA is a mechanism for coordinating multiple resources in a global transaction. A two-phase commit scheme is adopted between TM and RM to solve the consistency problem. Two-node commit requires a coordinator (TM: Transaction Manager) to Controls the operation results of all participants (RM: Resource Manager) nodes and guides whether these nodes need final submission. The limitations of two-phase submission are the protocol cost, the persistence cost of the preparation phase, the persistence cost of the global transaction state, and the multiple potential failure points. The vulnerability, after preparation, and failure before submission cause a series of isolation and recovery problems. ]:#
+[- Two-phase commit protocol: XA is a mechanism for coordinating multiple resources in a global transaction. A two-phase commit scheme is adopted between TM and RM to solve the consistency problem. Two-node commit requires a coordinator (TM: Transaction Manager) to Controls the operation results of all participants (RM: Resource Manager) nodes and guides whether these nodes need final submission. The limitations of two-phase submission are the protocol cost, the persistence cost of the preparation phase, the persistence cost of the global transaction state, and the multiple potential failure points. The vulnerability, after preparation, and failure before submission cause a series of isolation and recovery problems. ]:#
 
 - BASE理论: BASE理论是由eBay架构师提出的.BA(Basically Available)指的是基本业务可用性,支持分区失败,S(Soft State)表示柔性状态,也就是允许短时间内不同步,E(Eventually Consistent)表示最终一致性,数据最终是一致的,但是实时是不一致的.原子性和持久性必须从根本上保障,为了可用性、性能和服务降级的需要.
 
-[BASE thory: BASE theory was proposed by eBay architects. BA (Basically Available) refers to the basic business availability, supports partition failure, S (Soft State) represents a flexible state, that is, allows a short time out of synchronization, E (Eventually Consistent) means eventual consistency, the data is eventually consistent, but the real-time is inconsistent. Atomicity and durability must be fundamentally guaranteed. For the needs of availability, performance and service degradation, only the requirements for consistency and isolation are reduced. ]:#
+[- BASE thory: BASE theory was proposed by eBay architects. BA (Basically Available) refers to the basic business availability, supports partition failure, S (Soft State) represents a flexible state, that is, allows a short time out of synchronization, E (Eventually Consistent) means eventual consistency, the data is eventually consistent, but the real-time is inconsistent. Atomicity and durability must be fundamentally guaranteed. For the needs of availability, performance and service degradation, only the requirements for consistency and isolation are reduced. ]:#
 
 - CAP定理: CAP定理(CAP theorem),又被称作布鲁尔定理(Brewer's theorem).对于共享数据系统,最多只能同时满足CAP其中的两项,任意两个都有其适应的场景,真实的业务系统中通常是ACID与CAP的混合体.分布式系统中最重要的是满足业务需求,而不是追求高度抽象,绝对的系统特性.C(Consistence)表示一致性,也就是所有用户看到的数据是一样的.A(Availability)表示可用性,是指总能找到一个可用的数据副本.P(Partition tolerance)表示分区容错性,能够容忍网络中断等故障.
 
-[CAP theorem: CAP theorem, also known as Brewer's theorem. For a shared data system, at most two of the CAP can be satisfied at the same time, and any two have their own suitable scenarios. The most important thing in distributed systems is to meet business requirements, rather than to pursue highly abstract, absolute system characteristics. C (Consistence) means consistency, that is, all users see the data is the same. A (Availability) means availability, which means that an available copy of the data can always be found. P (Partition tolerance) means partition fault tolerance, which can tolerate network interruptions and other failures. ]:#
+[- CAP theorem: CAP theorem, also known as Brewer's theorem. For a shared data system, at most two of the CAP can be satisfied at the same time, and any two have their own suitable scenarios. The most important thing in distributed systems is to meet business requirements, rather than to pursue highly abstract, absolute system characteristics. C (Consistence) means consistency, that is, all users see the data is the same. A (Availability) means availability, which means that an available copy of the data can always be found. P (Partition tolerance) means partition fault tolerance, which can tolerate network interruptions and other failures. ]:#
 
 
 
 ## 分布式事务的大体思路就这么几种
-[### The general ideas of distributed transactions are as follows]:#
+[## The general ideas of distributed transactions are as follows]:#
 
 ### 最终一致性事务(MQ中间件解耦) 
 [### Eventually consistent transactions (MQ middleware decoupling) ]:#
@@ -165,7 +165,7 @@ MQ:比如kafka和rocketMQ都支持事务型的生产和消费消息类型的功�
 
 <mark>存在的问题</mark>
 
-[<mark>known issues</mark>]:#
+[<mark>Known issues</mark>]:#
 
 1. 同步阻塞: 所有事务参与者在等待其它参与者响应的时候都处于同步阻塞状态,无法进行其它操作.
 2. 单点问题: 协调者在 2PC 中起到非常大的作用,发生故障将会造成很大影响.特别是在阶段二发生故障,所有参与者会一直等待状态,无法完成其它操作.

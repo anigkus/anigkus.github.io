@@ -89,7 +89,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 | 60 | INNODB_SYS_FOREIGN | 库中所有外键列关系信息表，和INNODB_SYS_FOREIGN_COLS、REFERENTIAL_CONSTRAINTS都有点相似. |
 | 61 | INNODB_SYS_TABLESTATS | MySQL库中所有表的所有数据行的数量情况，当DELETE\UPDATE后会更新，如果未提交的事务正在插入或从表中删除，可能会不准确。这个表中的NUN_ROWS和TABLES中TABLE_ROWS有啥区别呢，因为有时我发现TABLE_ROWS中的数据对不上表中实际的数据，难道是事务未提交的关系? |
 
-
+# xx
 [| Serial Number | Table Name | Meaning |
 | :--- | :---  | :---  |
 | 1 | CHARACTER_SETS | The default correspondence table between characters and proofreading rules cannot be added, updated or deleted.|

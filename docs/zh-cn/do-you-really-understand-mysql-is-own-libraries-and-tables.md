@@ -89,7 +89,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 | 60 | INNODB_SYS_FOREIGN | 库中所有外键列关系信息表，和INNODB_SYS_FOREIGN_COLS、REFERENTIAL_CONSTRAINTS都有点相似. |
 | 61 | INNODB_SYS_TABLESTATS | MySQL库中所有表的所有数据行的数量情况，当DELETE\UPDATE后会更新，如果未提交的事务正在插入或从表中删除，可能会不准确。这个表中的NUN_ROWS和TABLES中TABLE_ROWS有啥区别呢，因为有时我发现TABLE_ROWS中的数据对不上表中实际的数据，难道是事务未提交的关系? |
 
-# xx
+# &nbsp;
 [| Serial Number | Table Name | Meaning |]:#
 [| :--- | :---  | :---  |]:#
 [| 1 | CHARACTER_SETS | The default correspondence table between characters and proofreading rules cannot be added, updated or deleted.|]:#
@@ -153,7 +153,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 [| 59 | INNODB_SYS_COLUMNS | Corresponding table ID of all columns in the MySQL database (the relationship between the access ID and table name of this table INNODB_SYS_TABLES), column name, position in the table, column type, length and other related information. |]:#
 [| 60 | INNODB_SYS_FOREIGN | All foreign key column relationship information tables in the library are somewhat similar to INNODB_SYS_FOREIGN_COLS and REFERENTIAL_CONSTRAINTS. |]:#
 [| 61 | INNODB_SYS_TABLESTATS | The number of all data rows in all tables in the MySQL database will be updated after DELETE\UPDATE, and may be inaccurate if uncommitted transactions are being inserted or deleted from the table. What is the difference between NUN_ROWS in this table and TABLE_ROWS in TABLES, because sometimes I find that the data in TABLE_ROWS does not match the actual data in the table, is it because the transaction is not committed? |]:#
-</p>
+
 
 # MYSQL 
 [# MYSQL]:#

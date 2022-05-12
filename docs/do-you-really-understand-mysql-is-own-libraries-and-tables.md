@@ -17,7 +17,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 &nbsp;&nbsp;&nbsp;&nbsp;The information_schema database comes with MySQL and provides a way to access database metadata. What is metadata? Metadata is data about data, such as database or table names, data types of columns, or access rights, etc. Other terms sometimes used to describe this information include "data dictionary" and "system catalog". In MySQL, information_schema is regarded as a database, to be precise, an information database. It holds information about all other databases maintained by the MySQL server. Such as database name, database table, table column data type and access rights, etc. In INFORMATION_SCHEMA, there are several read-only tables. They are actually views, not base tables, so you won't be able to see any files related to them. Information_schema database table description:
 
 | Serial Number | Table Name | Meaning |
-| :--- | :----: | ---: |
+| :--- | :---  | :---  |
 | 1 | CHARACTER_SETS | The default correspondence table between characters and proofreading rules cannot be added, updated or deleted.|
 | 2 | COLLATIONS | All correspondence tables between characters and collation rules, and there are information such as collation ID, default identification, whether to compile into the server (these are all MySQL extension information for the time being, and are useless now). This table cannot be added, updated, or deleted.|
 | 3 | COLLATION_CHARACTER_SET_APPLICABILITY | All correspondence between characters and proofreading rules |
@@ -84,7 +84,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 &nbsp;&nbsp;&nbsp;&nbsp;The core database of mysql, similar to the master table in sql server, is mainly responsible for storing the control and management information that mysql needs to use, such as database users, permission settings, keywords, etc. mysql database table description: 
 
 | Serial Number | Table Name | Meaning |
-| :--- | :----: | ---: |
+| :--- | :---  | :---  |
 | 1 | columns_priv | The permission table of the columns in the table, when executing GRANT SELECT (HOST), ON `db1`.* TO 'test'@'%' identified by "123456"; there will be data.|
 | 2 | db | The permission table of the database, when executing GRANT SELECT ON `db1`.* TO 'test'@'%' identified by "123456"; there will be data.|
 | 3 | engine_cost | Cost model, engine_cost (IO cost), server_cost (CPU cost), mysql execution plan analysis three see explain, profiling, optimizer_trace. |
@@ -122,7 +122,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 &nbsp;&nbsp;&nbsp;&nbsp;Mainly used to collect database server performance parameters. And the storage engines of the tables in the library are all PERFORMANCE_SCHEMA, and users cannot create tables whose storage engine is PERFORMANCE_SCHEMA. MySQL5.7 is enabled by default, performance_schema database table description: 
 
 | Serial Number | Table Name | Meaning |
-| :--- | :----: | ---: |
+| :--- | :---  | :---  |
 | 1 | accounts | Record the current login information and total login statistics of each user corresponding to the host (disconnect one time and record it into the total number of connections), if USER and HOST are NULL, it means internal users.|
 | 2 | cond_instances | List all conditions for all instances while the server is executing(visible).|
 | 3 | events_stages_current | Stage summary table, containing currently executing stage events for each thread. |

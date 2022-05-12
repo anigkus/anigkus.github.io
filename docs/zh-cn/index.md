@@ -8,4 +8,6 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 <br/>
 
 - [常用正则表达式的收藏列表.](./favorite-list-of-frequently-used-regular-expressions.md) <br/>
+- [提升 MySQL 数据库安全的一些建议!](./some-suggestions-for-improving-mysql-database-security.md) <br/>
+- [MySQL自带库和表你真的理解??](./do-you-really-understand-mysql-is-own-libraries-and-tables.md)<br/>
 - [分布式事务概念和几种实现思路.](./the-concept-of-distributed-transaction-and-several-implementation-ideas.md)<br/>

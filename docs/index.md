@@ -7,7 +7,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 ![Anigkus github article template title](assets/images/figure-1.jpg "Github of Anigkus")
 <br/>
 
-- [Favorite list of frequently used regular expressions.](./favorite-list-of-frequently-used-regular-expressions.md) <br/>
+[- Favorite list of frequently used regular expressions.(./favorite-list-of-frequently-used-regular-expressions.md) <br/>]:#
 - [Some suggestions for improving mysql database security!](./some-suggestions-for-improving-mysql-database-security.md) <br/>
 - [Do you really understand MySQL's own libraries and tables?](./do-you-really-understand-mysql-is-own-libraries-and-tables.md)<br/>
-- [The concept of distributed transaction and several implementation ideas](./the-concept-of-distributed-transaction-and-several-implementation-ideas.md)<br/>
+- [The concept of distributed transaction and several implementation ideas.](./the-concept-of-distributed-transaction-and-several-implementation-ideas.md)<br/>

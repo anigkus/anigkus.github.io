@@ -9,7 +9,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 [<h1 style="color:#606c71;text-align:center;" >Do you really understand MySQL's own libraries and tables?</h1><br/>]:#
 
 <center>
-<img src="../assets/images/do-you-really-understand-mysql-is-own-libraries-and-tables/figure-1.png" alt="Do you really understand MySQL's own libraries and tables" title="Github of Anigkus" >
+<img src="../assets/images/do-you-really-understand-mysql-is-own-libraries-and-tables/figure-1.png" alt="MySQL自带库和表你真的理解?" title="Github of Anigkus" >
 </center>
 
 > <br/>&nbsp;&nbsp;&nbsp;&nbsp;MySQL的历史可以追溯到1979年,后来几十年不断开发和迭代,从1996年MySQL 1.0发布到后来的3.x、4.x、5.x及最新发布的8.x,不断开发新功能和完善问题,获得大众的喜欢和使用,但是数据库自带内置的数据库和表也变化了不少,我就以5.7.19(不过大版本的差异还是很大,小版本基本都差不多)这个版本来了解下现在的存在的自带库和表都有哪些,都来存储哪些数据,分别有什么用,能给我们日常数据库维护或者开发工作中带来什么便利,让我们一起来看看吧.<br/>

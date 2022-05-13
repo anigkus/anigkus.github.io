@@ -11,3 +11,4 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 - [提升 MySQL 数据库安全的一些建议!](./some-suggestions-for-improving-mysql-database-security.md) <br/>
 - [MySQL自带库和表你真的理解??](./do-you-really-understand-mysql-is-own-libraries-and-tables.md)<br/>
 - [分布式事务概念和几种实现思路.](./the-concept-of-distributed-transaction-and-several-implementation-ideas.md)<br/>
+- [聊聊Log4j2的Lookup RCE漏洞.](./talk-about-the-lookup-rce-vulnerability-of-log4j2.md)<br/>

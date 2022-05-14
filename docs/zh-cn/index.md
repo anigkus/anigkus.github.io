@@ -12,3 +12,4 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 - [MySQL自带库和表你真的理解??](./do-you-really-understand-mysql-is-own-libraries-and-tables.md)<br/>
 - [分布式事务概念和几种实现思路.](./the-concept-of-distributed-transaction-and-several-implementation-ideas.md)<br/>
 - [聊聊Log4j2的Lookup RCE漏洞.](./talk-about-the-lookup-rce-vulnerability-of-log4j2.md)<br/>
+- [开源包中SHA和ASC两个文件到底是什么?](./what-are-the-sha-and-asc-files-in-the-open-source-package.md)<br/>

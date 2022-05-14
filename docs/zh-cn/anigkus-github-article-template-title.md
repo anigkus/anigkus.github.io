@@ -9,9 +9,13 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 [<h1 style="color:#606c71;text-align:center;" >Anigkus github article template title</h1><br/>]:#
 
 <!--文章模版标题 -->
-![文章模版标题](../assets/images/figure-1.jpg "Github of Anigkus")
+<center>
+<img src="../assets/images/figure-1.jpg" alt="文章模版标题" title="Github of Anigkus" >
+</center>
 
-[!Article template title(assets/images/figure-1.jpg "Github of Anigkus")]:#
+[<center>]:#
+[<img src="assets/images/figure-1.jpg" alt="Anigkus github article template title" title="Github of Anigkus" >]:#
+[</center>]:#
 
 > <br/>&nbsp;&nbsp;&nbsp;&nbsp; 文章简要说明.<br/>
 > <br/>

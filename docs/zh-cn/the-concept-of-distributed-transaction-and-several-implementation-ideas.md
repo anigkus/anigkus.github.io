@@ -8,7 +8,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 [<h1 style="color:#606c71;text-align:center;" >The concept of distributed transaction and several implementation ideas</h1><br/>]:#
 
-![Java微服务部署之分布式事务一致性概念篇](../assets/images/the-concept-of-distributed-transaction-and-several-implementation-ideas/figure-1.jpg "Github of Anigkus")
+![The concept of distributed transaction and several implementation ideas](../assets/images/the-concept-of-distributed-transaction-and-several-implementation-ideas/figure-1.jpg "Github of Anigkus")
 
 [! The concept of distributed transaction and several implementation ideas (assets/images/the-concept-of-distributed-transaction-and-several-implementation-ideas/figure-1.jpg "Github of Anigkus")]:#
 

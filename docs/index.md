@@ -12,3 +12,4 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 - [Do you really understand MySQL's own libraries and tables?](./do-you-really-understand-mysql-is-own-libraries-and-tables.md)<br/>
 - [The concept of distributed transaction and several implementation ideas.](./the-concept-of-distributed-transaction-and-several-implementation-ideas.md)<br/>
 - [Talk about the Lookup RCE vulnerability of Log4j2.](./talk-about-the-lookup-rce-vulnerability-of-log4j2.md)<br/>
+- [What are the SHA and ASC files in the open source package?](./what-are-the-sha-and-asc-files-in-the-open-source-package.md)<br/>

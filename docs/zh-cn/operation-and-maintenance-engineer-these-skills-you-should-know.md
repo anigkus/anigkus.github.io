@@ -62,7 +62,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 <br/>
 
 <center>
-<img src="../assets/images/operation-and-maintenance-engineer-these-skills-you-should-know/figure-5.png" alt="Operation and Maintenance Engineer These Skills You Should Know" title="Github of Anigkus" >
+<img src="../assets/images/operation-and-maintenance-engineer-these-skills-you-should-know/figure-5.png" alt="Operation and Maintenance Engineer These Skills You Should Know" title="Github of Anigkus" ><br/>
 职业发展方向
 </center>
 

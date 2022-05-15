@@ -35,7 +35,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 * Adobe Dreamweaver(DW): 网页代码编辑器.
 
-* Cutterman: PhotoShop中的插件，能够自动将你需要的图层进行输出.
+* Cutterman: PhotoShop中的插件,能够自动将你需要的图层进行输出.
 
 * LanhuApp: 蓝湖是一款高效的产品设计协作平台.
 
@@ -64,7 +64,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 * BAE(Baidu App Engine): 是百度智能云提供的PaaS平台.
 
-* OpenShift: 是红帽 云计算平台使开发人员能够创建、测试和运行他们的应用程序，并且可以把它们部署到云中,也是Paas云平台模式,这个在社区说反应比较不错.
+* OpenShift: 是红帽 云计算平台使开发人员能够创建、测试和运行他们的应用程序,并且可以把它们部署到云中,也是Paas云平台模式,这个在社区说反应比较不错.
 
 
 # 技术社区
@@ -156,7 +156,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 
 # 软性技能
-&nbsp;&nbsp;&nbsp;&nbsp; 如果是编码是我们的硬性技能,那么也需要提高我们自身的软性技能,因为东西都是两面性,需要软硬兼施,才能做到恰到好处,那么需要培养我们哪些软性技能了,软技能涉及自我管理、人际沟通、职业发展、领导管理各个方面，解决问题的能力,技术总结分享,跨团队沟通或开发能力,对需求的理解能力以及项目管理能力,还有框架模块化思想及分支版本管理,也没交互设计及服务可用性知识等,这些都是非标品,没法和技术相比,能用一个特定的值来衡量,只能因事而论.
+&nbsp;&nbsp;&nbsp;&nbsp; 如果是编码是我们的硬性技能,那么也需要提高我们自身的软性技能,因为东西都是两面性,需要软硬兼施,才能做到恰到好处,那么需要培养我们哪些软性技能了,软技能涉及自我管理、人际沟通、职业发展、领导管理各个方面,解决问题的能力,技术总结分享,跨团队沟通或开发能力,对需求的理解能力以及项目管理能力,还有框架模块化思想及分支版本管理,也没交互设计及服务可用性知识等,这些都是非标品,没法和技术相比,能用一个特定的值来衡量,只能因事而论.
 
 
 # 知识储备
@@ -167,11 +167,11 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 * JSLint/JSHint/ESLint/JSCS: 一个插件化并且可配置的 JavaScript 语法规则和代码风格的检查工具,现在ESLint是主流.
 
-* Grunt/Webpack/Gulp: 一个集模块打包+控制管理+编译处理+过程控制于一体的前端自动化开发构建工具,grunt稍过气，现在比较流行的是grunt和webpack，这两个侧重点不同，可以结合使用.
+* Grunt/Webpack/Gulp: 一个集模块打包+控制管理+编译处理+过程控制于一体的前端自动化开发构建工具,grunt稍过气,现在比较流行的是grunt和webpack,这两个侧重点不同,可以结合使用.
 
 * YUICompressor/JSMin/Tpacker-minifier:  是一些用来压缩 JS 和 CSS 文件的工具.
 
-* JSDoc3/Doxx/YUIDoc: 前端代码用来生成HTML版API文档的一系列工具集 ,如果你的JavaScript文档符合规定的注释规范，并且命令书写正确，那么正确的JavaScript文档就会出现在你眼前.
+* JSDoc3/Doxx/YUIDoc: 前端代码用来生成HTML版API文档的一系列工具集 ,如果你的JavaScript文档符合规定的注释规范,并且命令书写正确,那么正确的JavaScript文档就会出现在你眼前.
 
 
 # 标准规范 
@@ -193,11 +193,11 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 * Jquery/YUI/EXtjs: 老牌的JS库,在当前也是非常流行,基本影响着后来诸多框架的发展形态.
 
-* Redux/MobX: React 和 MobX 是一对强力组合,React 通过提供机制把应用状态转换为可渲染组件树并对其进行渲染。而MobX提供机制来存储和更新应用状态供 React 使用.
+* Redux/MobX: React 和 MobX 是一对强力组合,React 通过提供机制把应用状态转换为可渲染组件树并对其进行渲染.而MobX提供机制来存储和更新应用状态供 React 使用.
 
 * ramda: 函数式编程风格而设计.
 
-* WeUI: 微信官方团队为微信Web开发打造的一个样式库，类似于 Bootstrap.
+* WeUI: 微信官方团队为微信Web开发打造的一个样式库,类似于 Bootstrap.
 
 * ColorUI: 是小程序组件库.
 
@@ -205,13 +205,13 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 * Taro: 京东出品的跨平台框架.
 
-* DoKit: 全称为DoraemonKit， 是滴滴推出一个跨平台的功能集合面板.
+* DoKit: 全称为DoraemonKit, 是滴滴推出一个跨平台的功能集合面板.
 
 * MooTools: 面向对象的JS框架.
 
 * prototype: 是应用最为广泛的Ajax开发框架.
 
-* Jasmine: 是一个Javascript的BDD（Behavior-Driven Development）测试框架，不依赖任何其他框架.
+* Jasmine: 是一个Javascript的BDD（Behavior-Driven Development）测试框架,不依赖任何其他框架.
 
 * QUnit: jQuery 单元测试框架.
 

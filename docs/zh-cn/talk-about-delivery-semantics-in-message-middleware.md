@@ -24,7 +24,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 # 背景说明
 
-&nbsp;&nbsp;&nbsp;&nbsp; 流处理,有时也称为事件处理,可以简洁地描述为对无限数据或事件的连续处理.流或事件处理应用程序可以或多或少地被描述为有向图(Directed Graph),但通常被描述为有向无环图 (Directed Acyclic Graph)[DAG].在这样的图中,每条边代表一个数据或事件流,每个顶点代表一次或多次计算操作,该运算符使用应用程序定义的逻辑来处理来自相邻边的数据或事件.有两种特殊类型的顶点,通常称为数据源和接收器.数据源消耗外部数据/事件并将它们注入应用程序,而接收器通常收集应用程序产生的结果.如下图描述了一个典型处理的拓扑应用示例.
+&nbsp;&nbsp;&nbsp;&nbsp; 流处理,有时也称为事件处理,可以简洁地描述为对无限数据或事件的连续处理.流或事件处理应用程序可以或多或少地被描述为有向图(Directed Graph),但通常被描述为有向无环图 (Directed Acyclic Graph)<font color="red">DAG</font>.在这样的图中,每条边代表一个数据或事件流,每个顶点代表一次或多次计算操作,该运算符使用应用程序定义的逻辑来处理来自相邻边的数据或事件.有两种特殊类型的顶点,通常称为数据源和接收器.数据源消耗外部数据/事件并将它们注入应用程序,而接收器通常收集应用程序产生的结果.如下图描述了一个典型处理的拓扑应用示例.
 
 <center>
 <img src="../assets/images/talk-about-delivery-semantics-in-message-middleware/figure-2.png" alt="Talk about delivery semantics in message middleware" title="Github of Anigkus" >

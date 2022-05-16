@@ -39,7 +39,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 * 质量：保障并不断提升服务的可用性,确保用户数据安全,提升用户体验.
 
-项目管理黄金三角:
+<mark>项目管理黄金三角:</mark>
 
 <center>
 <img src="../assets/images/operation-and-maintenance-engineer-these-skills-you-should-know/figure-2.png" alt="Operation and Maintenance Engineer These Skills You Should Know" title="Github of Anigkus" >
@@ -142,6 +142,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 &nbsp;&nbsp;&nbsp;&nbsp;比如查看各类型服务器机架式、刀片式、塔式、机柜式的区别、查看网络接口类型、查看CPU、内存、硬盘的硬件信息等.
 
 # 安全防护
+
 &nbsp;&nbsp;&nbsp;&nbsp; IT技术可以说是一把双刃剑,为我们带来便捷的同时,也带来了威胁,网络安全问题就是其中之一.如今,随着黑客技术的发展,服务器被攻击的事件屡见不鲜,如何保障服务器安全是运维界广泛关注的问题,我们没有办法彻底解决网络安全问题,但可以不断加强防护,提高服务器的抵御能力.那么,我们要如何提升服务器的安全性呢? IT运维专家为大家提供了八个维护服务器安全的技巧.
 
 * 从基本做起,及时安装系统补丁
@@ -161,7 +162,18 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 * 授权遵循目标责任原则
 
 # 云上厂商
+
 &nbsp;&nbsp;&nbsp;&nbsp; 现在云平台已经非常成熟和稳定,云平台产品简单高效、处理能力可弹性伸缩的计算服务,帮助您快速构建更稳定、安全的应用,提升运维效率,降低 IT 成本,使您更专注于核心业务创新,因此必须要熟悉并使用当前主流的云厂商的产品,包括云服务器、数据库、负载均衡、弹性伸缩、CDN等,并且大型的云厂商都有相关认证,如阿里ACA/ACP/ACE.亚马逊:SAA/SAP,腾讯TCA/TCP/TCE,谷歌的PCA/PCD,微软AZ-300/AZ-301等,如果有几家的认证或者使用经历,一定会在你求职过程增加不少分,国内业务就用阿里云就够了,其它云厂商的市场份额基本都可以忽略可以(太少了),国外业务就亚马逊云就行.
+
+# 结论
+
+&nbsp;&nbsp;&nbsp;&nbsp; 以上罗列的运维技术方面主要还是根据本人这些年在工作经验中和运维人员经常打交道而梳理出来的.我记得我早期参加工作的时候是PS、前端、后端、测试、服务器运维、数据库运维、机房运维等等都是一条龙服务啊.但是领的薪水只要一份(<font color="red">🤬</font>)啊.那时候国内的技术圈编剧还没有现在划分得这么清楚,现在分的可细了,是技术的发展和市场的进步,希望每个工种都能更加聚焦和深度专业化.运维技术工种现在也分了好几种.因此一定要把自己的运维定位弄清楚,到底是运维研发(DevOps)、系统保障运维(SRE)、还是安全运维架构和管理(Expert&Manager).技术之路路途漫漫,应当学会勉励前行!
+
+[# Conclusion ]:#
+
+
+
+
 <br>
 
 ### [back](./)

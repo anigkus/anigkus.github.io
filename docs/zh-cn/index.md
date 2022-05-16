@@ -13,7 +13,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 - [分布式事务概念和几种实现思路.](./the-concept-of-distributed-transaction-and-several-implementation-ideas.md)<br/>
 - [聊聊Log4j2的Lookup RCE漏洞.](./talk-about-the-lookup-rce-vulnerability-of-log4j2.md)<br/>
 - [开源包中SHA和ASC两个文件到底是什么?](./what-are-the-sha-and-asc-files-in-the-open-source-package.md)<br/>
-- [聊聊Flink流批一体中的"三高"](./talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching.md)<br/>
-- [聊聊消息中间件中的投递语义](./talk-about-delivery-semantics-in-message-middleware.md)<br/>
+- [聊聊Flink流批一体中的"三高".](./talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching.md)<br/>
+- [聊聊消息中间件中的投递语义.](./talk-about-delivery-semantics-in-message-middleware.md)<br/>
 - [运维工程师这些技能你应该知道!](./operation-and-maintenance-engineer-these-skills-you-should-know.md)<br/>
 - [现在入个前端坑容易嘛?](./is-it-easy-to-enter-a-front-end-pit-now.md)<br/>

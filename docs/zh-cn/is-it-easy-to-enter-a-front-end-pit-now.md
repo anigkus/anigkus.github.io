@@ -8,7 +8,6 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 [<h1 style="color:#606c71;text-align:center;" >Is it easy to enter a front-end pit now?</h1><br/>]:#
 
-<!--文章模版标题 -->
 <center>
 <img src="../assets/images/is-it-easy-to-enter-a-front-end-pit-now/figure-1.jpg" alt="Is it easy to enter a front-end pit now?" title="Github of Anigkus" >
 </center>
@@ -125,7 +124,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 * YSlow/Smushit: YSlow是Yahoo发布的一款基于FireFox的插件/smushit是一款免费在线图片压缩小工具.
 
-* IEDeveloperToolBar/IETester: 在IE浏览器的诊断工具/以及测试IE不同版本兼容性的工具),IE基本快淘汰了,最新的微软浏览器是Microsoft Edge(听说也快挂了.
+* IEDeveloperToolBar/IETester: 在IE浏览器的诊断工具/以及测试IE不同版本兼容性的工具),IE基本快淘汰了,最新的微软浏览器是Microsoft Edge(听说也快挂了).
 
 * SuperPreview/JsBeautifier: SuperPreview 浏览器兼容性测试/Jsbeautifier是一款JS代码美化工具.
 

@@ -16,15 +16,17 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 [<img src="assets/images/is-it-easy-to-enter-a-front-end-pit-now/figure-1.jpg" alt="Is it easy to enter a front-end pit now" title="Github of Anigkus" >]:#
 [</center>]:#
 
-> <br/>&nbsp;&nbsp;&nbsp;&nbsp; 记得刚学编程那会,基的前端也会学,但是刚开始学时,老师不会告诉你有啥前端开发工具(Dreamweaver、Frontpage),直接纯手工.比如记事本写,那时多么痛苦,根本没有任何提示信息,刚开始基本是靠完全抄书或者脑子记(那时头发掉的特快,霸王完全不够用啊,差点就地中海或者光头强了),慢慢的手工敲打的熟练了,老师也会告诉你使用一些工具,这样可以提高效率.比如Notepad、Editplus、TextEdit,后来才有什么Sublime、Vs Code,自从会使用工具之后,头发浓密多了,在也不想使用记事本靠脑子死记硬背了,那断不堪回首的时光,真是惨不忍睹啊,但是会使用多种前端编程工具只是入门,核心还是要理解各个框架的核心原理和架构模型.这样就算怎么变,入门和理解起来都很快.你想现在入门个前端那时不容易啊,前端的技术进几年发展变化太快了,完全跟不上节奏,基本每个月都会出来一个新框架或者新开发工具,现在就让我们来看看现在入坑前端需要懂多少东西吧,这在以前着分分钟都是大牛啊,现在学会这些还只是个菜鸟,哎,不容啊!<br/>
+> <br/>&nbsp;&nbsp;&nbsp;&nbsp; 记得我刚学编程那会,基础的前端也会学点.只是刚开始学时,老师基本不会告诉大伙怎么使用前端开发工具,如(Dreamweaver、Frontpage).只能纯手工,只能是window系统Notepad.那时是多么痛苦,Notepad是根本没有任何代码提示的,那么基本都是靠笔完全抄书或者脑子硬记(那时就是感觉头发掉的很快,用霸王都管用,估计差点就 `地中海` 或者 `光头强` ).后来慢慢的手工敲打的熟练了,老师才会告诉你使用一些工具(主要是你们打的太慢了,老师想赶快下课).工具当然是帮助很大.比如Dreamweaver、Frontpage等.自从会使用工具之后,头发都浓密多了,睡觉也好了,再也不想使用记事本去敲了.那断不堪回首的时光,真是惨不忍睹.但是会使用多种前端编程工具还只是入门,关键核心还是要理解各个语言底层逻辑和框架架构原理.这样就算他们怎么变,基本可以做到拿来就用就行.不过如果现在做前端开发也不是那么容易.前端的技术栈这些年发展变化实在是太快了,一不留神就掉线了.基本每几个月就会出来一个新框架或者新开发工具,现在就让我们来看看现在如果入行前端需要懂多少东西.这在以前分分钟都是大牛啊,现在学会这些还只是个菜鸟,哎,不容啊!<br/>
 > <br/>
 
-[> <br/>&nbsp;&nbsp;&nbsp;&nbsp; Some general notes on article.<br/>]:#
+[I remember that when I first learned programming, I also learned some basic front-end. But when I first started learning, the teacher basically wouldn't tell everyone how to use front-end development tools, such as (Dreamweaver, Frontpage). It can only be purely manual, and it can only be a window system. Notepad, how painful it was at that time, Notepad did not have any code prompts at all, so basically it was completely copied by pen or memorized by brain (at that time, I felt that my hair was falling very fast, and using the overlord would work, I guess it was almost ` The Mediterranean or the bald head is strong) . Later, when you become proficient in manual beating, the teacher will tell you to use some tools (mainly because you are playing too slowly, the teacher wants to leave the class quickly). Of course, the tools are very helpful. For example, Dreamweaver, Frontpage, etc. Since I started to use tools, my hair is thicker, and I can sleep better. I no longer want to use a notepad to type, and then my brain is rote. The time that I can't look back on is really horrible. However, using a variety of front-end programming tools is just an introduction. The key core is to understand the underlying logic of each language and the principles of framework architecture. In this way, no matter how they change, they can basically be used. However, if you are doing front-end development now, it is not So easy. The front-end technology stack has developed and changed so fast over the years that it will be disconnected if you are not careful. Basically, a new framework or new development tool will come out every few months. Now let's see if How many things do you need to know before entering the business. This used to be a master every minute, but now you are just a rookie to learn these things, hey, no!]:# 
+
+[> <br/>&nbsp;&nbsp;&nbsp;&nbsp; I remember that when I first learned programming,  .<br/>]:#
 [> <br/>]:#
 
 # 切图工具
 
-&nbsp;&nbsp;&nbsp;&nbsp; 以前前端和美工是一个技术工种啊,随着互联网的发展,美工叫视觉设计师或者UI设计师,前端已经是另一个就是单独的工种了,但是UI工程师把页面设计出来,还是需要前端负责把一张整体图片,切成一个个小小的图标或者图片按钮,然后使用html+css组装起来,那么现在的前期切页面或多或少都会用到以下的工具.
+&nbsp;&nbsp;&nbsp;&nbsp; 以前前端和美工是一个技术工种的.随着互联网的发展,分的更细了,有UI(用户界面设计)、UED(用户体验设计)、UCD(以用户为中心的设计)等.前端演变成一个统称了.但是UI工程师把页面设计出来,还是需要前端负责把一张整体图片,切成一个个小小的图标或者图片按钮,然后使用html+css组装起来,那么现在的前期切页面或多或少都会用到以下的工具.
 
 * HTML+CSS: 浏览器底层支持的语言,必须用到.
 

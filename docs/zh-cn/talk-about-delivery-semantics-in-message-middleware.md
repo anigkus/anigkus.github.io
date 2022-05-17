@@ -16,7 +16,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 [<img src="assets/images/talk-about-delivery-semantics-in-message-middleware/figure-1.jpeg" alt="Talk about delivery semantics in message middleware" title="Github of Anigkus" >]:#
 [</center>]:#
 
-> <br/>&nbsp;&nbsp;&nbsp;&nbsp; 分布式系统的流式计算已经成为大数据处理领域越来越热门的话题.业界社区比较流行的流处理引擎  (SPE) 包括 Flink (Flink DataStream)、Spark (Spark Streaming)、Storm (Storm Streams )、Pulsar (Pulsar Functions)、Kafka (Kafka Streams).其中里面讨论最广泛的特性之一就是它们的消息处理语义,但是现在业界公认的投递语义的有三种(At Least Once、At Most Once、Exactly Once).其中讨论最多的也是最复杂的语义就是Exactly Once,Exactly Once通常理解为“有且只有一次,消息不丢失不重复,且只消费一次”.我其实更愿意把Exactly Once处理语义称为"恰好一次".<br/>
+> <br/>&nbsp;&nbsp;&nbsp;&nbsp; 分布式系统的流式计算已经成为大数据处理领域越来越热门的话题.业界社区比较流行的流处理引擎(SPE)包括 Flink (Flink DataStream)、Spark (Spark Streaming)、Storm (Storm Streams )、Pulsar (Pulsar Functions)、Kafka (Kafka Streams)等.其中里面讨论最广泛的特性之一就是它们的消息处理语义,但是现在业界公认的投递语义的有三种(At Least Once、At Most Once、Exactly Once).其中讨论最多的也是最复杂的语义就是Exactly Once,Exactly Once通常理解为“有且只有一次,消息不丢失不重复,且只消费一次”.我其实更愿意把Exactly Once处理语义称为"恰好一次",不多不少刚刚好.以下内容我将以我个人的理解以及一些公开的文章给简单聊聊这三种语义的特点以及在各个消息中间件中的语义实现思路等.<br/>
 > <br/>
 
 [> <br/>&nbsp;&nbsp;&nbsp;&nbsp; Some general notes on article.<br/>]:#

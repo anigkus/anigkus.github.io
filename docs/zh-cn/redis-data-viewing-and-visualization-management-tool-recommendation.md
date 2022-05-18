@@ -30,3 +30,8 @@ Redis Explorer
 
   
 &nbsp;&nbsp;xxx
+
+
+# 解读Redis存储模式
+
+https://redis.io/docs/manual/persistence/

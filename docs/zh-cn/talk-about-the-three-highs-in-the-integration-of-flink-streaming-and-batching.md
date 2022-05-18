@@ -24,9 +24,17 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 > <br/>&nbsp;&nbsp;&nbsp;&nbsp; 那么当单机处理的性能达到一定的瓶颈的时候,这时候就必须横向扩展,就是发展分布式,分布式就涉及到高可用,就是必须考虑单个节点挂掉的可能性,业界通常的中间件部署3个节点,也就是为了高可用而设计的.<br/>
 > <br/>
 
+[> <br/>&nbsp;&nbsp;&nbsp;&nbsp; The "three highs" mentioned here are not "??three hights??(https://baike.baidu.com/item/三高/2898551)"(😂) Oh,there have always been three pursuit goals in the iterative history of software development: high performance, high concurrency, and higt availability, commonly known as three hights. The there are both different and related. From the perspective of software development history, I personally think that the development process is high performance ( Single core) -> high concurrency (multi-core) -> high availability (multi-machine). ]:#
+[> <br/>&nbsp;&nbsp;&nbsp;&nbsp; Of course, it is high performance first. From the very old DOS as as single-user operating system, to the later Window98 as a multi-tasking system (actually a single process), and later UNIX supports a multi-user multi-tasking operating system (the real meaning of multi-process, multi-threaded system),the purpose is how to process the program with the highest performance in the case of a CPU.]:#
+[> <br/>&nbsp;&nbsp;&nbsp;&nbsp; The second is high concurrency. Of course, what needs to the broken is the processing limit of a single machine. If the memory of CPU of a single machine is insufficient, the hardware configuration os a single machine can be increased  by vertical expansion to maximize concurrency, and single-core becomes multi-core, so that parallelism can be achieved at the same time. Multiple tasks, thereby speeding up the overall thime cost of processing. ]:#
+[> <br/>&nbsp;&nbsp;&nbsp;&nbsp; Then when the performance of the single-machine processing reaches a certain bottleneck, it must scale horizontally, that is, to develop and distributed involves high availability, that is, the possibility of a single node hanging up must be considered. The industry's usual middleware deployment 3 nodes, which is designed for high availability.  ]:#
+[> <br/>]:#
+
 <center>
 <img src="../assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-2.png" alt="Talk about the \"three highs\" in the integration of Flink streaming and batching" title="Github of Anigkus" >
 Flink基本架构和执行流程
+
+[Flink architecture and process]:#
 </center>
 
 Flink中所有分布式RPC通信都是借助于[Akka框架](https://doc.akka.io/docs/akka/current/general/terminology.html)(一款高性能、高容错性的分布式并发应用框架).

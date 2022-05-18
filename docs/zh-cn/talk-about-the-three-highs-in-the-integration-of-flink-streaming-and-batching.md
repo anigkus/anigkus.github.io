@@ -103,8 +103,8 @@ Flink中所有分布式RPC通信都是借助于[Akka框架](https://doc.akka.io/
 
 &nbsp;&nbsp;&nbsp;&nbsp;Flink 如何在吞吐量和延迟之间做权衡呢?在流式处理系统中,如果出现下游消费的速度跟不上上游生产数据的速度,就种现象就叫做反压.出现反压时,理所应当限制上游生产者的速度,使得下游的速度跟得上上游的速度.反压会导致流处理作业数据延迟的增加,同时还会影响到Checkpoint.Flink 天然支持流式处理,即每来一条数据就能处理一条,而不是像 Spark Streaming 一样,完全是微批处理.但是为了提高吞吐量,默认使用的 Flink 并不是每来一条数据就处理一条.那这个到底是怎么控制的呢?Flink 是使用了高效有界的分布式阻塞队列.
 
-[]:#
-[]:#
+[x]:#
+[x]:#
 
 <center>
 <img src="../assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-5.png" alt="Talk about the three highs in the integration of flink streaming and batching" title="Github of Anigkus" >

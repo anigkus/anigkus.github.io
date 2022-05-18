@@ -114,7 +114,9 @@ Flink中所有分布式RPC通信都是借助于[Akka框架](https://doc.akka.io/
 [&nbsp;&nbsp;&nbsp;&nbsp;For example, after the upstream Subtask S2 sends data, there are still 4 Buffers that are backlogged, then the sent data and Backlog size = 4 will be sent to the downstream Subtask S5. After receiving the data, the downstream knows There is a backlog of 4 Buffers in the upstream, so apply for Buffers from the Buffer Pool. Due to the limited capacity, the downstream InputChannel currently has only 2 Buffer spaces. Therefore, Subtask S6 will feedback Channel Credit = 2 to the upstream Subtask S2. Then the upstream will only give at most the next time. The data of 2 Buffers is sent downstream, so that the data sent upstream each time is the amount of data that the Buffer of the downstream InputChannel can bear. Therefore, through this feedback strategy, it is ensured that data will not accumulate in the shared Netty and TCP layers. Affects other Subtask communications.]:#
 
 如何定位反压:
+
 [How to locate back pressure:]:#
+
 * [Monitoring Back Pressure](https://nightlies.apache.org/flink/flink-docs-release-1.14/docs/ops/monitoring/back_pressure/)
 * [Monitoring, Metrics](https://flink.apache.org/2019/07/23/flink-network-stack-2.html)
 

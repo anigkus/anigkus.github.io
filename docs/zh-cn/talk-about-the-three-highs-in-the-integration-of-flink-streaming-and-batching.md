@@ -1,5 +1,3 @@
-<!--
-talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching-->
 <script>
 var pageHeader=document.getElementsByClassName("page-header")[0].innerHTML;
  pageHeader="<center><img style='border-radius: 50% !important;' src='https://avatars.githubusercontent.com/u/88264073?s=400&amp;u=63e618520a5b6aa87636714e69f8228374c4e9b1&amp;v=4' width='200' height='200' alt='@anigkus' title='Github of Anigkus' ></center>"+pageHeader;

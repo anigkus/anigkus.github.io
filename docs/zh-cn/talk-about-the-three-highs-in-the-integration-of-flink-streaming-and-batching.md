@@ -11,11 +11,11 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 [<h1 style="color:#606c71;text-align:center;" >Talk about the three highs in the integration of flink streaming and batching</h1><br/>]:#
 
 <center>
-<img src="../assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-1.jpg" alt="Talk about the \"three highs\" in the integration of Flink streaming and batching" title="Github of Anigkus" >
+<img src="../assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-1.jpg" alt="Talk about the three highs in the integration of flink streaming and batching" title="Github of Anigkus" >
 </center>
 
 [<center>]:#
-[<img src="assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-1.jpg" alt="Talk about the \"three highs\" in the integration of Flink streaming and batching" title="Github of Anigkus" >]:#
+[<img src="assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-1.jpg" alt="Talk about the three highs in the integration of flink streaming and batching" title="Github of Anigkus" >]:#
 [</center>]:#
 
 > <br/>&nbsp;&nbsp;&nbsp;&nbsp; 此处所说的"三高"非彼"[三高](https://baike.baidu.com/item/三高/2898551)"(😂)哦,软件发展迭代历史过程中一直有三个追求目标:高性能、高并发、高可用,俗称三高.三者既有区别也有联系,从软件发展历史来看,我个人认为的发展历程是高性能(单核)->高并发(多核)->高可用(多机).<br/>
@@ -31,7 +31,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 [> <br/>]:#
 
 <center>
-<img src="../assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-2.png" alt="Talk about the \"three highs\" in the integration of Flink streaming and batching" title="Github of Anigkus" >
+<img src="../assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-2.png" alt="Talk about the three highs in the integration of flink streaming and batching" title="Github of Anigkus" >
 Flink基本架构和执行流程
 
 [Flink architecture and process]:#
@@ -43,44 +43,74 @@ Flink中所有分布式RPC通信都是借助于[Akka框架](https://doc.akka.io/
 * JobManager：负责是资源的分配、CheckPoint的协调、任务状态维护等(<font color="red">JobManager Standby需要借助Zookeeper或者Yarn来实现</font>);
 * TaskManager：相当于Slave,负责具体的任务执行和以及对应任务在每个节点的资源申请和管理等;
 
+[All distributed RPC communication in Flink relies on the ??Akka framework??(https://doc.akka.io/docs/akka/current/general/terminology.html) (a high-performance, fault-tolerant distributed Concurrent Application Framework).]:#
+[* Flink Program: Submit tasks using CLI, WebUI, Code(Java&Scala), etc.;]:#
+[* Client: Use DataStream (stream computing), DataSet (batch computing) for business logic development, etc.;]:#
+[* JobManager: Responsible for resource allocation, CheckPoint coordination, task stats maintenance, etc. (<font color="red">JobManager Standby needs to be implemented with Zookeeper or Yarn</font>); ]:#
+[* TaskManager: equivalent to Slave, responsible for specific task execution and resource application and management of corresponding tasks in echo node, etc.]:#
+
 
 # 高性能
 
+[# High Performance]:#
+
 ## Flink缓存机制
+
+[## Flink Cache Mechanism]:#
 
 ### 分布式缓存
 
+[### Distributed Cache]:#
+
 &nbsp;&nbsp;&nbsp;&nbsp; 在批计算中,需要处理的数据大部分来自外部文件,这些文件可能来自类似于HDFS系统,也可以是类似于AWS中S3文件系统中,但是Flink并不像MapReduce一样可以让计算随着数据所在的位置上而进行,因此多数情况下会出现网络频繁地复制文件的情况.因此对于有些高频使用的文件可以通过使用Flink内部提供的一种分布式缓存机制,将其放置在每台计算节点实例的本地内存中,可以使用户在并行函数中很方便的读取本地文件,并把它放在taskmanager节点中,防止task重复拉取.此缓存的工作机制是程序注册一个文件或者目录(本地或者远程文件系统，例如hdfs或者s3),通过ExecutionEnvironment注册缓存文件并为它起一个名称。然后当程序执行,Flink自动将文件或者目录复制到所有taskmanager节点的本地文件系统,仅会执行一次.用户可以通过这个指定的名称查找文件或者目录,然后从taskmanager节点的本地文件系统访问它.其实分布式缓存就相当于消息队列中的广播模式,把一个变量广播到所有的taskmanager上,只不过这里广播的是一个文件.这样就能有效的避免因为读取某些文件而必须通过远程网络获取文件内容的情况,进而提升整个任务的执行效率.
 
+[&nbsp;&nbsp;&nbsp;&nbsp; In batch computing, most of the data to be processed comes from external files, which may come from systems like HDFS or S3 file systems in AWS, but Flink is not like MapReduce In the same way, the calculation can be performed with the location of the data, so in most cases, the network frequently copies files. Therefore, for some frequently used files, you can use a distributed cache mechanism provided  by Flink internally, Placing it in the local memory of each computing node instance allows users to easily read the local file in parallel functions, and put it in the taskmanager node to prevent tasks from being repeatedly pulled. The working mechanism of this cache is The program registers a file or directory (local or remote file system, such as hdfs or s3), registers the cache file with the ExecutionEnvironment and  gives it a name. Then when the program is executed, Flink automatically copies the file or directory to the local file system of all taskmanager nodes, which will only be executed once. Users can search for the file or directory by this specified name, and then access it from the local file system of the taskmanager node. In fact The distributed cache is equivalent to the broadcast mode in the message queue, which broadcasts a variable to all taskmanagers, except that a file is broadcast here. This can effectively avoid reading some files and having to obtain them through a remote network The situation of the file content, thereby improving the execution efficiency of the entire task. ]:#
+
 ### Network Buffer
+
 &nbsp;&nbsp;&nbsp;&nbsp; Network Buffer就是在网络传输中使用到的 Buffer(实际非网络传输也会用到).了解 Flink 网络栈的同学应该会比较清楚,Flink 经过网络传输的上下游 Task 的设计会比较类似生产者-消费者模型.如果没有这个缓冲区,那么生产者或消费者会消耗大量时间在等待下游拿数据和上游发数据的环节上.加上这个缓冲区,生产者和消费者解耦开,任何一方短时间内的抖动理论上对另一方的数据处理都不会产生太大影响.
 
-<center>
-<img src="../assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-3.png" alt="Talk about the \"three highs\" in the integration of Flink streaming and batching" title="Github of Anigkus" >
-</center>
 
+[&nbsp;&nbsp;&nbsp;&nbsp; Network Buffer is the Buffer used in network transmission (actually non-network transmission will also be used). Students who understand the Flink network stack should know better that Flink transmits the upstream and downstream tasks through the network. The design will be similar to the producer-consumer model. Without this buffer, the producer or consumer will spend a lot of time waiting for the downstream to get data and the upstream to send data. With this buffer, the producer and consumer In theory, the jitter of one party in a short time will not have much impact on the data processing of the other party.]:#
+
+<center>
+<img src="../assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-3.png" alt="Talk about the three highs in the integration of flink streaming and batching" title="Github of Anigkus" >
+</center>
+  
 在 Flink 中有三种情况下 Netty 服务器可以消费缓存：
 * 缓冲区满后刷新
 * 缓冲区超时后刷新
 * 特殊事件后刷新
 
+[There are three situations in Flink where the Netty server can consume the cache:]:#
+[* Refrsh when the buffer is full]:#
+[* Refresh after buffer timeout]:#
+[* Refresh after special events]:#
+
 ## Flink反压机制
+
+[## Flink back pressure machanism ]:#
 
 先说一下什么是反压,如下图:
 
+[Let's about what back pressure is, as shown below:]:#
+
 <center>
-<img src="../assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-4.png" alt="Talk about the \"three highs\" in the integration of Flink streaming and batching" title="Github of Anigkus" >
+<img src="../assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-4.png" alt="Talk about the three highs in the integration of flink streaming and batching" title="Github of Anigkus" >
 </center>
 
 &nbsp;&nbsp;&nbsp;&nbsp; 正常情况下消息处理速度(Receiver)>=消息的发送速度(Sender),就不会发送消息拥堵.系统运行流畅,但是当消息发送的太快,消息接受的太慢,产生消息拥堵,如果系统可以自动降低消息发送的速度,这就是反压机制.
 
 &nbsp;&nbsp;&nbsp;&nbsp;Flink 如何在吞吐量和延迟之间做权衡呢?在流式处理系统中,如果出现下游消费的速度跟不上上游生产数据的速度,就种现象就叫做反压.出现反压时,理所应当限制上游生产者的速度,使得下游的速度跟得上上游的速度.反压会导致流处理作业数据延迟的增加,同时还会影响到Checkpoint.Flink 天然支持流式处理,即每来一条数据就能处理一条,而不是像 Spark Streaming 一样,完全是微批处理.但是为了提高吞吐量,默认使用的 Flink 并不是每来一条数据就处理一条.那这个到底是怎么控制的呢?Flink 是使用了高效有界的分布式阻塞队列.
 
+[]:#
+[]:#
+
 <center>
-<img src="../assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-5.png" alt="Talk about the \"three highs\" in the integration of Flink streaming and batching" title="Github of Anigkus" >
+<img src="../assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-5.png" alt="Talk about the three highs in the integration of flink streaming and batching" title="Github of Anigkus" >
 </center>
 
-&nbsp;&nbsp;&nbsp;&nbsp;例如,上游 Subtask S2 发送完数据后，还有 4 个 Buffer 被积压,那么会把发送数据和 Backlog size = 4 一块发送给下游 Subtask S5,下游接受到数据后,知道上游积压了 4 个Buffer,于是向 Buffer Pool 申请 Buffer,由于容量有限,下游 InputChannel 目前仅有 2 个 Buffer 空间,所以,Subtask S6 会向上游 Subtask S2 反馈 Channel Credit = 2.然后上游下一次最多只给下游发送 2 个 Buffer 的数据,这样每次上游发送的数据都是下游 InputChannel 的 Buffer 可以承受的数据量,所以通过这种反馈策略,保证了不会在共用的 Netty 和 TCP 这一层数据堆积而影响其他Subtask 通信.
+&nbsp;&nbsp;&nbsp;&nbsp;例如,上游 Subtask S2 发送完数据后，还有 4 个 Buffer 被积压,那么会把发送数据和 Backlog size = 4 一块发送给下游 Subtask S5,下游接受到数据后,知道上游积压了 4 个Buffer,于是向 Buffer Pool 申请 Buffer,由于容量有限,下游 InputChannel 目前仅有 2 个 Buffer 空间,所以,Subtask S6 会向上游 Subtask S2 反馈 Channel Credit = 2.然后上游下一次最多只给下游发送 2 个 Buffer 的数据,这样每次上游发送的数据都是下游 InputChannel 的 Buffer 可以承受的数据量,所以通过这种反馈策略,保证了不会在共用的 Netty 和 TCP 这一层数据堆积而影响其他 Subtask 通信.
 
 如何定位反压:
 * [Monitoring Back Pressure](https://nightlies.apache.org/flink/flink-docs-release-1.14/docs/ops/monitoring/back_pressure/)
@@ -121,14 +151,14 @@ Flink中所有分布式RPC通信都是借助于[Akka框架](https://doc.akka.io/
 &nbsp;&nbsp;&nbsp;&nbsp;下面图片中有两个 Task Manager,每个 Task Manager 有2个 slot,这样我们的算子最大并行度那么就可以达到 4 个,在同一个 slot 里面可以执行 1 至多个子任务.
 
 <center>
-<img src="../assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-6.png" alt="Talk about the \"three highs\" in the integration of Flink streaming and batching" title="Github of Anigkus" >
+<img src="../assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-6.png" alt="Talk about the three highs in the integration of flink streaming and batching" title="Github of Anigkus" >
 </center>
 
 ### slot是指taskmanager的并发执行能力
 &nbsp;&nbsp;&nbsp;&nbsp;下图所示:taskmanager.numberOfTaskSlots:3;即每一个 taskmanager 中的分配 3 个 TaskSlot,4 个 taskmanager 一共有 12 个 TaskSlot.
 
 <center>
-<img src="../assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-7.png" alt="Talk about the \"three highs\" in the integration of Flink streaming and batching" title="Github of Anigkus" >
+<img src="../assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-7.png" alt="Talk about the three highs in the integration of flink streaming and batching" title="Github of Anigkus" >
 </center>
 
 
@@ -136,7 +166,7 @@ Flink中所有分布式RPC通信都是借助于[Akka框架](https://doc.akka.io/
 &nbsp;&nbsp;&nbsp;&nbsp;下图所示:parallelism.default:1;即运行程序默认的并行度为 1,12个 TaskSlot 只用了 1 个,有 11 个空闲,设置合适的并行度才能提高效率.
 
 <center>
-<img src="../assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-8.png" alt="Talk about the \"three highs\" in the integration of Flink streaming and batching" title="Github of Anigkus" >
+<img src="../assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-8.png" alt="Talk about the three highs in the integration of flink streaming and batching" title="Github of Anigkus" >
 </center>
 
 可以这么理解上面两个概念:
@@ -157,7 +187,7 @@ Flink中所有分布式RPC通信都是借助于[Akka框架](https://doc.akka.io/
 &nbsp;&nbsp;&nbsp;&nbsp;Flink在Standalone集群中高可用主要是借助Zookeeper来实现的,并且还需要一个文件系统,如hdfs等(用来存储JobManager的元数据).JobManager的服务信息会被注册到Zookeeper中,并通过[Zookeeper](https://nightlies.apache.org/flink/flink-docs-master/docs/deployment/ha/zookeeper_ha/)完成JobManager Leader的选举.Standalone集群会同时存在多个JobManager,但是只有一个提供服务,其他处于Standby状态,当Active JobManager失去连接后(节点消失或者网络超时等),Zookeeper会自动从其他Standby列表中选举一个新的JobManager来接管Flink集群并提供服务.
 
 <center>
-<img src="../assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-9.png" alt="Talk about the \"three highs\" in the integration of Flink streaming and batching" title="Github of Anigkus" >
+<img src="../assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-9.png" alt="Talk about the three highs in the integration of flink streaming and batching" title="Github of Anigkus" >
 </center>
 
 
@@ -181,7 +211,7 @@ Flink中所有分布式RPC通信都是借助于[Akka框架](https://doc.akka.io/
 新的数据因为时间还没到因此暂时不会触发定时任务去保存Checkpoint.
 
 <center>
-<img src="../assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-10.png" alt="Talk about the \"three highs\" in the integration of Flink streaming and batching”" title="Github of Anigkus" >
+<img src="../assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-10.png" alt="Talk about the three highs in the integration of flink streaming and batching”" title="Github of Anigkus" >
 Checkpoint机制
 </center>
 

@@ -16,13 +16,21 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 [<img src="assets/images/is-it-easy-to-enter-a-front-end-pit-now/figure-1.jpg" alt="Is it easy to enter a front-end pit now" title="Github of Anigkus" >]:#
 [</center>]:#
 
-> <br/>&nbsp;&nbsp;&nbsp;&nbsp; 记得我刚学编程那会,基础的前端也会学点.只是刚开始学时,老师基本不会告诉大伙怎么使用前端开发工具,如(Dreamweaver、Frontpage).只能纯手工,只能是window系统Notepad.那时是多么痛苦,Notepad是根本没有任何代码提示的,那么基本都是靠笔完全抄书或者脑子硬记(那时就是感觉头发掉的很快,用霸王都管用,估计差点就 `地中海` 或者 `光头强` ).后来慢慢的手工敲打的熟练了,老师才会告诉你使用一些工具(主要是你们打的太慢了,老师想赶快下课).工具当然是帮助很大.比如Dreamweaver、Frontpage等.自从会使用工具之后,头发都浓密多了,睡觉也好了,再也不想使用记事本去敲了.那断不堪回首的时光,真是惨不忍睹.但是会使用多种前端编程工具还只是入门,关键核心还是要理解各个语言底层逻辑和框架架构原理.这样就算他们怎么变,基本可以做到拿来就用就行.不过如果现在做前端开发也不是那么容易.前端的技术栈这些年发展变化实在是太快了,一不留神就掉线了.基本每几个月就会出来一个新框架或者新开发工具,现在就让我们来看看现在如果入行前端需要懂多少东西.这在以前分分钟都是大牛啊,现在学会这些还只是个菜鸟,哎,不容啊!<br/>
+> <br/>&nbsp;&nbsp;&nbsp;&nbsp; 记得我刚学编程那会,基础的前端也会学点.只是刚开始学时,老师基本不会告诉大伙怎么使用前端开发工具,如(Dreamweaver、Frontpage).只能纯手工,只能是window系统Notepad.那时是多么痛苦,Notepad是根本没有任何代码提示的,那么基本都是靠笔完全抄书或者脑子硬记(那时就是感觉头发掉的很快,用"霸王"都不管用,估计差点就 `地中海` 或者 `光头强` ).后来慢慢的手工敲打的熟练了,老师才会告诉你使用一些工具(主要是你们打的太慢了,老师想赶快下课).工具当然是帮助很大.比如Dreamweaver、Frontpage等.自从会使用工具之后,头发都浓密多了,睡觉也好了,再也不想使用记事本去敲了.那断不堪回首的时光,真是惨不忍睹.但是会使用多种前端编程工具还只是入门,关键核心还是要理解各个语言底层逻辑和框架架构原理.这样就算他们怎么变,基本可以做到拿来就用就行.不过如果现在做前端开发也不是那么容易.前端的技术栈这些年发展变化实在是太快了,一不留神就掉线了.基本每几个月就会出来一个新框架或者新开发工具,现在就让我们来看看现在如果入行前端需要懂多少东西.这在以前分分钟都是大牛啊,现在学会这些还只是个菜鸟,哎,不容啊!<br/>
 > <br/>
 
-[I remember that when I first learned programming, I also learned some basic front-end. But when I first started learning, the teacher basically wouldn't tell everyone how to use front-end development tools, such as (Dreamweaver, Frontpage). It can only be purely manual, and it can only be a window system. Notepad, how painful it was at that time, Notepad did not have any code prompts at all, so basically it was completely copied by pen or memorized by brain (at that time, I felt that my hair was falling very fast, and using the overlord would work, I guess it was almost ` The Mediterranean or the bald head is strong) . Later, when you become proficient in manual beating, the teacher will tell you to use some tools (mainly because you are playing too slowly, the teacher wants to leave the class quickly). Of course, the tools are very helpful. For example, Dreamweaver, Frontpage, etc. Since I started to use tools, my hair is thicker, and I can sleep better. I no longer want to use a notepad to type, and then my brain is rote. The time that I can't look back on is really horrible. However, using a variety of front-end programming tools is just an introduction. The key core is to understand the underlying logic of each language and the principles of framework architecture. In this way, no matter how they change, they can basically be used. However, if you are doing front-end development now, it is not So easy. The front-end technology stack has developed and changed so fast over the years that it will be disconnected if you are not careful. Basically, a new framework or new development tool will come out every few months. Now let's see if How many things do you need to know before entering the business. This used to be a master every minute, but now you are just a rookie to learn these things, hey, no!]:# 
-
-[> <br/>&nbsp;&nbsp;&nbsp;&nbsp; I remember that when I first learned programming,  .<br/>]:#
+[> <br/>&nbsp;&nbsp;&nbsp;&nbsp; I remember that when I first learned programming, I also learned some basic front-end. But when I first started learning, the teacher basically wouldn't tell everyone how to use front-end development tools, such as (Dreamweaver, FrontPage). It can only be purely manual, and it can only be a window system. Notepad, how painful it was at that time, Notepad did not have any code prompts at all, so basically it was completely copied by pen or memorized by brain (at that time, I felt that my hair was falling very fast, and using the "bawang" doesn't work, I guess it was almost `The Mediterranean` or `The bald head is strong` ). Later, when you become proficient in manual beating, the teacher will tell you to use some tools (mainly because you are playing too slowly, the teacher wants to leave the class quickly). Of course, the tools are very helpful. For example, Dreamweaver, FrontPage, etc. Since I started to use tools, my hair is thicker, and I can sleep better. I no longer want to use a notepad to type, and then my brain is rote. The time that I can't look back on is really horrible. However, using a variety of front-end programming tools is just an introduction. The key core is to understand the underlying logic of each language and the principles of framework architecture. In this way, no matter how they change, they can basically be used. However, if you are doing front-end development now, it is not So easy. The front-end technology stack has developed and changed so fast over the years that it will be disconnected if you are not careful. Basically, a new framework or new development tool will come out every few months. Now let's see if How many things do you need to know before entering the business. This used to be a master every minute, but now you are just a Noob to learn these things, hey, no! <br/>]:#
 [> <br/>]:#
+
+
+[basically 基本的]:#
+[proficient 熟练的]:#
+[beating 敲打]:#
+[thicker 浓密的]:#
+[rote 死记硬背]:#
+[horrible 恐怖的]:#
+[underlying 根本的]:#
+
 
 # 切图工具
 
@@ -42,6 +50,31 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 * Avocode: 主要功能包括设计、导出素材、获取图像规格等.
 
+
+[# Cut Tools]:#
+
+[&nbsp;&nbsp;&nbsp;&nbsp; In the past, front-end and art were a technical job. With the development of the Internet, they were divided into UI (User Interface Design), UED (User Experience Design), and UCD (User Interface Design). The front-end has evolved into a general term. Now that the UI designs the page, the front-end may still need to do some things. For example, cut an overall picture into small icons or picture buttons, and then Use html+css to assemble. Now css3 also supports displaying pictures with different coordinates in the same picture, so that there is no need to cut small pictures, it can also reduce the number of browser requests, and speed up rendering speed and efficiency. If you need to cut Pages will use the following tools more or less. ]:#
+
+[* HTML+CSS: The underlying language supported by the browser, must be used.]:#
+
+[* Adobe PhotoShop(PS): Edit picture or picture processing.]:#
+
+[* Adobe Illustrator（AI): Vector graphics processing tool.]:#
+
+[* Adobe Dreamweaver(DW): Web code editor.]:#
+
+[* Cutterman: A plugin in PhotoShop that can automatically output the layers you need.]:#
+
+[* LanhuApp: Blue Lake is an efficient product design collaboration platform.]:#
+
+[* Avocode: The main functions include designing, exporting materials, obtaining image specifications, etc.]:#
+
+[evolved 逐渐演变]:#
+[term 术语]:#
+[assemble 收集]:#
+[materials 素材]:#
+[obtaining 获取,包含]:#
+[specifications 规格]:#
 
 # 编程知识
 

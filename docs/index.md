@@ -13,6 +13,6 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 - [The concept of distributed transaction and several implementation ideas.](./the-concept-of-distributed-transaction-and-several-implementation-ideas.md)<br/>
 - [Talk about the Lookup RCE vulnerability of Log4j2.](./talk-about-the-lookup-rce-vulnerability-of-log4j2.md)<br/>
 - [What are the SHA and ASC files in the open source package?](./what-are-the-sha-and-asc-files-in-the-open-source-package.md)<br/>
-- [Talk about the three highs in the integration of flink streaming and batching.](./talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching.md)
-- [Talk about delivery semantics in message middleware.](./talk-about-delivery-semantics-in-message-middleware.md)
+- [Talk about the three highs in the integration of flink streaming and batching.](./talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching.md)<br/>
+- [Talk about delivery semantics in message middleware.](./talk-about-delivery-semantics-in-message-middleware.md)<br/>
 - [Is it easy to enter a front-end pit now?](./is-it-easy-to-enter-a-front-end-pit-now.md)<br/>

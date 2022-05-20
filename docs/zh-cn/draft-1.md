@@ -1,4 +1,7 @@
- 参考地址
+
+如何在MySQL里使用外部插件功能
+
+参考地址
 https://dev.mysql.com/doc/refman/5.7/en/validate-password-plugin-installation.html
 https://dev.mysql.com/doc/refman/5.7/en/validate-password-options-variables.html
 以validate_password举例

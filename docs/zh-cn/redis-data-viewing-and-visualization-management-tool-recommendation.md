@@ -32,6 +32,12 @@ Redis Explorer
 &nbsp;&nbsp;xxx
 
 
-# 解读Redis存储模式
+# 解读Redis 持久化存储模式
+## Interpretation of Redis persistent storage mode
 
 https://redis.io/docs/manual/persistence/
+
+# 解读Redis 缓存逐出策略
+## Explaining of Redis cache eviction strategy
+
+https://redis.io/docs/manual/eviction/

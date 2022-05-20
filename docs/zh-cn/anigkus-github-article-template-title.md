@@ -8,14 +8,9 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 [<h1 style="color:#606c71;text-align:center;" >Anigkus github article template title</h1><br/>]:#
 
-<!--文章模版标题 -->
 <center>
-<img src="../assets/images/figure-1.jpg" alt="文章模版标题" title="Github of Anigkus" >
+<img src="../assets/images/figure-1.jpg" alt="Anigkus github article template title" title="Github of Anigkus" >
 </center>
-
-[<center>]:#
-[<img src="assets/images/figure-1.jpg" alt="Anigkus github article template title" title="Github of Anigkus" >]:#
-[</center>]:#
 
 > <br/>&nbsp;&nbsp;&nbsp;&nbsp; 文章简要说明.<br/>
 > <br/>
@@ -26,6 +21,8 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 &nbsp;&nbsp;&nbsp;&nbsp; 技术专家, 作者, 对分布式技术和云原生领域感兴趣.<br/><br/>
 
 [&nbsp;&nbsp;&nbsp;&nbsp; Technologist, Author, Interested in Distributed Technology and Cloud Native Fields.<br/><br/>]:#
+
+...
 
 
 <br>

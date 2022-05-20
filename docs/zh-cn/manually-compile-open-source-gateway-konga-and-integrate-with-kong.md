@@ -1,10 +1,25 @@
+<script>
+var pageHeader=document.getElementsByClassName("page-header")[0].innerHTML;
+ pageHeader="<center><img style='border-radius: 50% !important;' src='https://avatars.githubusercontent.com/u/88264073?s=400&amp;u=63e618520a5b6aa87636714e69f8228374c4e9b1&amp;v=4' width='200' height='200' alt='@anigkus' title='Github of Anigkus' ></center>"+pageHeader;
+document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
+</script>
 
-自动编译konga
+<h1 style="color:#606c71;text-align:center;" >手动编译开源网关konga与kong集成</h1><br/>
 
-使用最新版本的 kong(2.6.0) 与konga (0.14.9)集成体验 Use the latest version of kong (2.6.0) to integrate with konga (0.14.9)
+[<h1 style="color:#606c71;text-align:center;" >Manually compile open source gateway konga and integrate with kong</h1><br/>]:#
 
-使用最新版本的 kong 与 konga 集成体验 Use the latest version of kong to integrate with konga
-使用最新版本的 konga 与 kong 集成体验 Use the latest version of konga to integrate with kong
+<center>
+<img src="../assets/images/manually-compile-open-source-gateway-konga-and-integrate-with-kong/figure-1.jpg" alt="Manually compile open source gateway konga and integrate with kong" title="Github of Anigkus" >
+</center>
+
+> <br/>&nbsp;&nbsp;&nbsp;&nbsp; 文章简要说明.<br/>
+> <br/>
+
+[> <br/>&nbsp;&nbsp;&nbsp;&nbsp; Some general notes on article.<br/>]:#
+[> <br/>]:#
+
+
+
 
 
 ##Help documentation
@@ -36,6 +51,7 @@ postgres=# GRANT ALL PRIVILEGES ON DATABASE konga1 to kong1;
 
 ##Configuration kong
 #wget --no-check-certificate  https://download.konghq.com/gateway-2.x-centos-7/Packages/k/kong-2.6.0.el7.amd64.rpm
+// https://download.konghq.com/gateway-2.x-centos-8/Packages/k/kong-2.8.1.el8.amd64.rpm
 #yum install kong-2.6.0.el7.amd64.rpm 
 # kong version
 2.6.0
@@ -185,3 +201,8 @@ Instead, please use another adapter; e.g. sails-postgresql or sails-mongo.
 For more info, see: http://sailsjs.org/documentation/concepts/deployment
 To hide this warning message, enable `sails.config.orm.skipProductionWarnings`.
 
+
+
+<br>
+
+### [back](./)

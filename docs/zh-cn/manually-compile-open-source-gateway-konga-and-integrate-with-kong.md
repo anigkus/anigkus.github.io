@@ -12,7 +12,9 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 <img src="../assets/images/manually-compile-open-source-gateway-konga-and-integrate-with-kong/figure-1.jpg" alt="Manually compile open source gateway konga and integrate with kong" title="Github of Anigkus" >
 </center>
 
-> <br/>&nbsp;&nbsp;&nbsp;&nbsp; 文章简要说明.<br/>
+
+
+> <br/>&nbsp;&nbsp;&nbsp;&nbsp; `Kong` 由Mashape公司开发的一款云原生、平台无关、可扩展的 API 网关,基于OpenResty(Nginx + Lua脚本）而编写的<br/>
 > <br/>
 
 [> <br/>&nbsp;&nbsp;&nbsp;&nbsp; Some general notes on article.<br/>]:#

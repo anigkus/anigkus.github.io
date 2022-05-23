@@ -40,5 +40,5 @@ then
 else
  echo "Nothing..."
 fi
-git push -u origin main
+git push
 

@@ -13,19 +13,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-git pull 
+#
+#
+#
 
+git pull 
+SHELL_FOLDER=$(cd "$(dirname "$0")";pwd)
+cd $SHELL_FOLDER
 date=`date +"%Y-%m-%d" `
-gc=`git log --since='$date 00:00:00' --author="anigkus" --oneline | wc -l`
+gcs=`git log --since='$date 00:00:00' --author="anigkus" --oneline | wc -l`
+gc="$gcs" 
 #gc=3
 fc=`expr 5 - $gc`
 if [ $fc -gt 0 ]
 then
   while [ $fc -gt 0 ]
   do
-     echo "# "`date`"\n  It's auto generated content." >> ./auto.md
+    
+     echo "# "`date`"\n  It's auto generated content." >> $SHELL_FOLDER/auto.md
      commit='fix:(example) Auto commit.'`date`
-     SHELL_FOLDER=$(cd "$(dirname "$0")";pwd)
      git commit -m "$commit" $SHELL_FOLDER/auto.md 
      sleep 5
     (( fc-- ))

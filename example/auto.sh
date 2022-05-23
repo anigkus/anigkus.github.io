@@ -36,7 +36,8 @@ then
      sleep 5
     (( fc-- ))
   done
-  git push
 else
  echo "Nothing..."
 fi
+
+git push

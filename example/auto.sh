@@ -14,7 +14,7 @@
 # limitations under the License.
 
 #
-#
+#  
 #
 
 git pull 
@@ -24,7 +24,7 @@ date=`date +"%Y-%m-%d" `
 gcs=`git log --since='$date 00:00:00' --author="anigkus" --oneline | wc -l`
 gc="$gcs" 
 #gc=3
-fc=`expr 77 - $gc`
+fc=`expr 5 - $gc`
 if [ $fc -gt 0 ]
 then
   while [ $fc -gt 0 ]
@@ -40,5 +40,5 @@ then
 else
  echo "Nothing..."
 fi
-git push
+git push # crontab: mac terminal nothing
 

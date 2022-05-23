@@ -13,11 +13,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+git pull 
 
-#gc=`git log --since='2022-05-21 00:00:00' --author="anigkus" --oneline | wc -l`
-
-
-gc=3
+date=`date +"%Y-%m-%d" `
+gc=`git log --since='$date 00:00:00' --author="anigkus" --oneline | wc -l`
+#gc=3
 fc=`expr 5 - $gc`
 if [ $fc -gt 0 ]
 then
@@ -26,8 +26,11 @@ then
      echo "# "`date`"\n  It's auto generated content." >> ./auto.md
      commit='fix:(example) Auto commit.'`date`
      SHELL_FOLDER=$(cd "$(dirname "$0")";pwd)
-     git add $SHELL_FOLDER/auto.md -m $commit
+     git commit -m "$commit" $SHELL_FOLDER/auto.md 
      sleep 5
     (( fc-- ))
   done
+  git push
+else
+ echo "Nothing..."
 fi

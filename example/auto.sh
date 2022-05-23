@@ -40,7 +40,5 @@ then
 else
  echo "Nothing..."
 fi
-echo "x:"`date` >> /tmp/xx.log
-git push >> /tmp/xx.log
-echo "y:"`date` >> /tmp/xx.log
+git push 
 

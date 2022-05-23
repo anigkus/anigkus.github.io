@@ -24,7 +24,7 @@ date=`date +"%Y-%m-%d" `
 gcs=`git log --since='$date 00:00:00' --author="anigkus" --oneline | wc -l`
 gc="$gcs" 
 #gc=3
-fc=`expr 76 - $gc`
+fc=`expr 77 - $gc`
 if [ $fc -gt 0 ]
 then
   while [ $fc -gt 0 ]
@@ -41,6 +41,6 @@ else
  echo "Nothing..."
 fi
 echo "x:"`date` >> /tmp/xx.log
-git push 
+git push >> /tmp/xx.log
 echo "y:"`date` >> /tmp/xx.log
 

@@ -24,7 +24,7 @@ date=`date +"%Y-%m-%d" `
 gcs=`git log --since='$date 00:00:00' --author="anigkus" --oneline | wc -l`
 gc="$gcs" 
 #gc=3
-fc=`expr 5 - $gc`
+fc=`expr 76 - $gc`
 if [ $fc -gt 0 ]
 then
   while [ $fc -gt 0 ]
@@ -32,6 +32,7 @@ then
     
      echo "# "`date`"\n  It's auto generated content." >> $SHELL_FOLDER/auto.md
      commit='fix:(example) Auto commit.'`date`
+     git add --all
      git commit -m "$commit" $SHELL_FOLDER/auto.md 
      sleep 5
     (( fc-- ))
@@ -39,5 +40,7 @@ then
 else
  echo "Nothing..."
 fi
+echo "x:"`date` >> /tmp/xx.log
+git push 
+echo "y:"`date` >> /tmp/xx.log
 
-git push --force 

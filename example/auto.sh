@@ -29,10 +29,8 @@ if [ $fc -gt 0 ]
 then
   while [ $fc -gt 0 ]
   do
-    
      echo "# "`date`"\n  It's auto generated content." >> $SHELL_FOLDER/auto.md
      commit='fix:(example) Auto commit.'`date`
-     git add --all
      git commit -m "$commit" $SHELL_FOLDER/auto.md 
      sleep 5
     (( fc-- ))

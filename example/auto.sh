@@ -40,4 +40,4 @@ else
  echo "Nothing..."
 fi
 
-git push origin main --force 
+git push --force 

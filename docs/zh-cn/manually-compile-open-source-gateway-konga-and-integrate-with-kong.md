@@ -12,13 +12,143 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 <img src="../assets/images/manually-compile-open-source-gateway-konga-and-integrate-with-kong/figure-1.jpg" alt="Manually compile open source gateway konga and integrate with kong" title="Github of Anigkus" >
 </center>
 
+![Stars](https://img.shields.io/github/stars/Kong/kong?style=flat-square) &nbsp;&nbsp;![License](https://img.shields.io/badge/License-Apache%202.0-blue?style=flat-square)
 
-
-> <br/>&nbsp;&nbsp;&nbsp;&nbsp; `Kong` 由Mashape公司开发的一款云原生、平台无关、可扩展的 API 网关,基于OpenResty(Nginx + Lua脚本）而编写的<br/>
+> <br/>&nbsp;&nbsp;&nbsp;&nbsp; [`Kong`](https://docs.konghq.com/) 由Mashape公司开发的一款云原生、平台无关、可扩展的 API 网关,是基于OpenResty(Nginx + Lua）而编写的.而 [`konga`](https://github.com/pantsel/konga) 是社区贡献的,主要是为了更好和方便管理和操作kong而提供的一套Web系统. kong 和 konga 都无论是社区还是官方都提供容器部署版本,但是有时候我们的客户没法使用容器化方案,因此就需要使用二进制来安装.kong官方提供了rpm和多种系统的二进制安装教程,而konga就需要自己编译了.因此本文主要是简单说明下如何使用二进制的方式来部署来部署.<br/>
 > <br/>
 
 [> <br/>&nbsp;&nbsp;&nbsp;&nbsp; Some general notes on article.<br/>]:#
 [> <br/>]:#
+
+
+# 安装 PostgreSQL
+
+&nbsp;&nbsp;&nbsp;&nbsp; 因为Kong只支持Cassandra或PostgreSQL,我这里就使用PG了.,也可以看[官方安装文档](https://www.postgresql.org/download/linux/redhat/#yum).我这里使用二进制解压的方式来安装 Postgresql.
+
+
+## 下载文件和解压
+
+```
+$ mkdir -p /soft
+$ cd /soft
+$ wget https://download.postgresql.org/pub/source/v11.2/postgresql-11.2.tar.gz
+$ unzip postgresql.zip
+$ cd postgresql
+$ tar -vxf postgresql-11.2.tar.gz
+$ mv postgresql-11.2 /opt/
+$ tar -vxf rpm.tar.gz
+$ rpm -ivh  rpm/* --force --nodeps
+```
+
+## 配置环境和用户
+
+```
+# add env add x
+$ vim /etc/profile
+export POSTGRESQL_HOME=/opt/postgresql-11.2
+export PATH=${POSTGRESQL_HOME}/bin:$PATH
+$ source /etc/profile
+$ cd /opt/postgresql-11.2/bin
+$ chmod 755 ./*
+$ cp postgresql /etc/init.d/
+
+# 这步不是必须的,主从复制用的
+$ vi /data/postgresql-11.2/data/postgresql.conf
+archive_command = 'cp %p /data/postgresql-11.2/pg_archive/%f' 
+
+# useradd postgres
+$ mkdir -p /data/postgresql-11.2/{data,logs,pg_archive} 
+$ chown -R postgres:postgres /data/postgresql-11.2
+$ chown -R postgres:postgres /opt/postgresql-11.2
+```
+
+## 首次初始数据库
+
+```
+# su - postgres
+$ cd /opt/postgresql-11.2/bin
+$ ./initdb -D /data/postgresql-11.2/data
+```
+
+## 启动数据库服务
+
+```
+$ /etc/init.d/postgresql start
+```
+
+## 配置账号和密码
+
+```
+$ su postgres
+$ psql
+
+# Change postgres password of [postgres123456]
+postgres-# \password postgres
+Enter new password: 
+Enter it again: 
+postgres-# 
+postgres=#  CREATE DATABASE kong;
+CREATE DATABASE
+postgres=# CREATE DATABASE konga;
+CREATE DATABASE
+postgres=#  CREATE ROLE kong WITH SUPERUSER LOGIN PASSWORD 'kong123456';
+postgres=#  CREATE ROLE konga WITH SUPERUSER LOGIN PASSWORD 'konga123456';
+CREATE ROLE
+postgres=# GRANT ALL PRIVILEGES ON DATABASE kong to kong;
+GRANT
+postgres=# GRANT ALL PRIVILEGES ON DATABASE konga to konga;
+
+# 至关重要，主从复制和patroni 都用到了这2个玩意(如果已经同步了执行这个DDL语句,会自动复制到所有的slave节点上的),不需要可以忽略这三句
+postgres=# create user replipuser replication login encrypted password 'replipuser123456';
+postgres=# select * from pg_roles; #查询所有角色
+postgres=# select * from pg_user; #查询所有用户
+
+
+postgres=# exit
+$ exit
+$
+```
+
+## 容器启动数据库
+```
+$ docker pull postgres:11.2
+$ mkdir -p /soft/postgresql
+$ vi /soft/postgresql/start_postgresql.sh
+
+#!/bin/bash
+
+# remove container
+docker rm -f postgresql_m1 &> /dev/null
+
+# run container
+docker run -d --restart=always --restart=on-failure:3 --privileged=true \
+        -p 5432:5432 --memory 2048m  --memory-reservation 1024m -w /data/postgresql \
+        -v $PWD/m1/pgdata:/var/lib/postgresql/data \
+	    -v $PWD/m1/pg_archive/:/var/lib/postgresql/pg_archive \
+        -v /etc/localtime:/etc/localtime:ro \
+        -v /etc/timezone/timezone:/etc/timezone:ro \
+        -e "POSTGRES_USER=kong" \
+        -e "POSTGRES_DB=kong" \
+        --name postgresql_m1 postgres:11.2
+
+$ chmod +x /soft/start_postgresql.sh
+sh start_postgresql.sh 
+```
+
+# 安装 Kong
+```
+$ wget --no-check-certificate  https://download.konghq.com/gateway-2.x-centos-7/Packages/k/kong-2.6.0.el7.amd64.rpm
+// https://download.konghq.com/gateway-2.x-centos-8/Packages/k/kong-2.8.1.el8.amd64.rpm
+#yum install kong-2.6.0.el7.amd64.rpm 
+```
+
+
+
+
+
+
+
+
 
 编译&安装&打包kong
 编译&安装&打包konga

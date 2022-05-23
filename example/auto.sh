@@ -40,4 +40,4 @@ else
  echo "Nothing..."
 fi
 
-git push
+git push --force 

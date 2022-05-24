@@ -15,11 +15,18 @@
 
 #
 #  
+# 
+# Debug 1: */1 * * * * sh -xv /Users/frank/STS/github/anigkus.github.io/example/auto.sh >>/tmp/xx.log 2>&1 
+# Debug 2: sh -xv auto.sh
+# Debug 3: set -x; sh auto.sh
+# Debug 4: bash -x auto.sh
+# DEbug 5: #git push >>/tmp/xx.log 2>&1 #debug crontab: mac terminal nothing
 #
 
-git pull 
+
 SHELL_FOLDER=$(cd "$(dirname "$0")";pwd)
 cd $SHELL_FOLDER
+git pull 
 date=`date +"%Y-%m-%d" `
 gcs=`git log --since='$date 00:00:00' --author="anigkus" --oneline | wc -l`
 gc="$gcs" 
@@ -38,5 +45,5 @@ then
 else
  echo "Nothing..."
 fi
-git push # crontab: mac terminal nothing
+git push
 

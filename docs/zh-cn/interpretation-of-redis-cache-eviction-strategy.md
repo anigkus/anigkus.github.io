@@ -12,11 +12,6 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 <img src="../assets/images/interpretation-of-redis-cache-eviction-strategy/figure-1.jpg" alt="Interpretation of Redis cache eviction strategy" title="Github of Anigkus" >
 </center>
 
-Ehcache
-MemCache
-Redis
-aerospike
-
 > <br/>&nbsp;&nbsp;&nbsp;&nbsp; 开发当中都会使用到缓存,缓存通常分内部缓存和外部缓存,专业术语来说应该叫堆内缓存或者说堆外缓存.通俗理解一点来讲就是堆内缓存就是直接在同一个进程中或者说无需要去跨网络访问的缓存,而堆外缓存基本就是需要跨网络访问的.缓存有多种,比如Ehcache、MemCache、Redis、 Aerospike,第一种算堆内缓存,而后三种就是所称的分布式堆外缓存.那么其中Redis是当前社区使用最多的缓存中间件.那么使用缓存就一定涉及到缓存过期,因为物质(内存)都是有限的,也就说所说当系统资源不足时是如何使用哪种策略去逐出一些Key的呢?这篇文章我将说明下在Redis中的缓存逐出策略以及每种策略的基本原理和执行效果等.<br/>
 > <br/>
 
@@ -56,9 +51,6 @@ aerospike
 
 <mark>工作原理</mark>:
 
-while 32 bit systems use an implicit memory limit of 3GB.
-而 32 位系统使用 3GB 的隐式内存限制。
-Translated with Google (English → Chinese (Simplified))
 
 # Redis 逐出策略
 
@@ -136,7 +128,6 @@ double p = 1.0/((200-5)*30+1) //0.00017091095539224064
 # 验证环节
 
 &nbsp;&nbsp;&nbsp;&nbsp; 那么我将通过一些例子说实际看看不同的淘汰策略在系统的效果等,关于maxmemory和maxmemory-policy两个参数有两种方法可以配置,一种是修改redis.conf文件,然后重启Redis服务,这个时永久性的.还有一种是通过CONFIG GET [maxmemory|maxmemory-policy] [parameter ...]动态修改,这个时临时的,当Redis服务被重启后会丢失手工动态配置的参数.我下面为了方便主要还是通过动态修改来讲解这种情况.
-
 
 以下这三个就暂时用Redis提供的默认值,暂时不修改.
 

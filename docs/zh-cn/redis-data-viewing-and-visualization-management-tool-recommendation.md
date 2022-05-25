@@ -38,6 +38,7 @@ Redis Explorer
 https://redis.io/docs/manual/persistence/
 
 # 解读Redis 缓存逐出策略
-## Explaining of Redis cache eviction strategy
+## Interpretation of Redis cache eviction strategy
+### interpretation-of-redis-cache-eviction-strategy
 
 https://redis.io/docs/manual/eviction/

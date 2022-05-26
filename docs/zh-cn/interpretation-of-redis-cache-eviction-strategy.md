@@ -93,11 +93,9 @@ L&nbsp;&nbsp;&nbsp;&nbsp; LFU算法的主要是在一些资源比较稀少且设
 
 # 逐出策略
 
-&nbsp;&nbsp;&nbsp;&nbsp; 在redis中,允许用户设置最大使用内存大小 maxmemory（需要配合maxmemory-policy使用），设置为0表示不限制；当redis内存数据集快到达maxmemory时，redis会实行数据淘汰策略。Redis提供6种数据淘汰策略：
+&nbsp;&nbsp;&nbsp;&nbsp; 在redis中,缓存能够存储多少是设 `maxmemory` (最大内存) 限制的,这个参数决定最多能够存储多少缓存数据.这个参数可以接受的单位有: `bytes(不带单位,默认)、K|KB、M|MB、G|GB` 这些,而32位系统默认使用的是 3G 隐式内存限制,64位系统按默认为0表示不限制或者根据用户配置决定.但是内部怎么计算哪些缓存应该保留,哪些应该踢掉,是由 `maxmemory-policy` (缓存策略) 参数控制的.Redis总共提供8种淘汰策略:
 
-&nbsp;&nbsp;&nbsp;&nbsp; 在redis中,缓存能够存储多少是设 `maxmemory` (最大内存) 限制的,这个参数决定最多能够存储多少缓存数据.这个参数可以接受的单位有: `bytes(不带单位,默认)、K|KB、M|MB、G|GB` 这些,而32位系统使用3G 的隐式内存限制,64位系统按默认为0表示不限制或者根据用户配置决定.但是内部怎么计算哪些缓存应该保留,哪些应该踢掉,是由 `maxmemory-policy` (缓存策略) 参数控制的.Redis总共提供8种淘汰策略:
-
-* <mark>noeviction</mark>:  不踢除(默认淘汰策,),直到达到内存最大配置 (maxmemory),该配置下当内存不够时会发生OOM. 但是当使用主从复制模式时,从库的最大数据量由主库来决定.
+* <mark>noeviction</mark>:  不踢除(默认淘汰策略),直到达到内存最大配置 (maxmemory),该配置下当内存不够时会发生OOM. 但是当使用主从复制模式时,从库的最大数据量由主库来决定.
 
 * <mark>allkeys-lru</mark>:  基于LRU算法对所有的key进行删除,保留一段时间内访问过的键,移除一段时间内未被访问的键.
 

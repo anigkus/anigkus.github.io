@@ -19,7 +19,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 [> <br/>]:#
 
 # 算法背景
-&nbsp;&nbsp;&nbsp;&nbsp; 先简单说明下一些缓存淘汰算法,现在常用有(LFU、LRU、FIFO、2Q、MRU)这些算法,用的最多的还是LFU、LRU、FIFO这三种.我把这几种都用一些例子解释下
+&nbsp;&nbsp;&nbsp;&nbsp; 先简单说明下一些缓存淘汰算法,现在常用有(LFU、LRU、FIFO、2Q、MRU)这些算法,用的最多的还是LFU、LRU、FIFO这三种.我把这几种简单解释下.
 
 * LFU
 

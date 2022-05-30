@@ -17,3 +17,8 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 - [聊聊消息中间件中的投递语义.](./talk-about-delivery-semantics-in-message-middleware.md)<br/>
 - [运维工程师这些技能你应该知道!](./operation-and-maintenance-engineer-these-skills-you-should-know.md)<br/>
 - [现在入个前端坑容易嘛?](./is-it-easy-to-enter-a-front-end-pit-now.md)<br/>
+- [手动编译开源网关konga与kong集成.](./manually-compile-open-source-gateway-konga-and-integrate-with-kong.md)<br/>
+- [解读Redis 缓存逐出策略.](./interpretation-of-redis-cache-eviction-strategy.md)<br/>
+- [你必须得明白的Redis安全措施.](./you-must-understand-redis-security-measures.md)<br/>
+- [记录一个关于Git中的‘Permission denied’的解决思路.](./record-a-solution-about-permission-denied-in-git.md)<br/>
+- [如何在MySQL中使用外部插件功能](./how-to-use-external-plugin-functionality-in-mysql.md)<br/>

@@ -48,30 +48,3 @@ https://redis.io/docs/manual/eviction/
 ## Redis security knowledge you must understand
 ### redis-security-knowledge-you-must-understand
 #### https://redis.io/docs/manual/security/
-
-# Network security
-
-# Protected mode
-
-# Authentication
-
-# TLS support 
-
-# Disallowing specific commands
-
-# String escaping and NoSQL injection
-
-# Code security
-
-# ACL
-
-# TLS
-
-
-This document provides an introduction to the topic of security from the point of view of Redis. It covers the access control provided by Redis, code security concerns, attacks that can be triggered from the outside by selecting malicious inputs, and other similar topics.
-
-For security-related contacts, open an issue on GitHub, or when you feel it is really important to preserve the security of the communication, use the GPG key at the end of this document
-本文档从 Redis 的角度介绍了安全主题。它涵盖了 Redis 提供的访问控制、代码安全问题、可以通过选择恶意输入从外部触发的攻击以及其他类似主题。
-
-对于与安全相关的联系人，请在 GitHub 上打开一个问题，或者当您认为保护通信的安全性非常重要时，请使用本文档末尾的 GPG 密钥
-

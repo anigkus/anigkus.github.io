@@ -225,18 +225,6 @@ protected-mode yes # default
 CONFIG SET protected-mode no
 ```
 
-The Redis protocol has no concept of string escaping, so injection is impossible under normal circumstances using a normal client library. The protocol uses prefixed-length strings and is completely binary safe.
-
-Since Lua scripts executed by the EVAL and EVALSHA commands follow the same rules, those commands are also safe.
-
-While it would be a strange use case, the application should avoid composing the body of the Lua script from strings obtained from untrusted sources.
-Redis 协议没有字符串转义的概念，因此在正常情况下使用普通的客户端库是不可能进行注入的。该协议使用前缀长度的字符串并且是完全二进制安全的。
-
-由于 EVAL 和 EVALSHA 命令执行的 Lua 脚本遵循相同的规则，因此这些命令也是安全的。
-
-虽然这将是一个奇怪的用例，但应用程序应该避免使用从不受信任的来源获得的字符串组成 Lua 脚本的主体。
-Translated with Google (English → Chinese (Simplified))
-
 # 指令安全
 
 ## NoSQL 注入
@@ -419,7 +407,6 @@ REDIS0009�      redis-ver6.2.7�
 
 ```
 
-http://10.0.11.101/phpinfo.php 
 <center>
 <img src="../assets/images/you-must-understand-redis-security-measures/figure-2.png" alt="Anigkus github article template title" title="Github of Anigkus" >
 </center>

@@ -303,8 +303,6 @@ EVAL
 
 * CONFIG : 获取服务器信息或者动态更改服务器配置信息等.最危险的还是` config set `指令.
 
-127.0.0.1:6379> config set dir /var/www/ 
-(error) ERR CONFIG SET failed (possibly related to argument 'dir') - can't set protected config
 
 [redis](https://download.redis.io/releases/)
 

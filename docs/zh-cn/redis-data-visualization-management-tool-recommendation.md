@@ -41,21 +41,10 @@ Redis Explorer
 
 RedisStudio
 
-
-redis desktop manager
-medis
 AnotherRedisDesktopManager
-fastoredis
-redis-plus
-red
-redis-insight
-Iedis2
 
-1、Redis Desktop Manager
-2、RedisStudio
-3、phpRedisAdmin
-4、Go-Redis
-5、RedisClient
+QuickRedis
+
 
 # 测试数据
  
@@ -173,8 +162,6 @@ OK
 ## 软件说明
 
 ## 安装方法
-
-## 主要功能
 
 ## 软件截图
 

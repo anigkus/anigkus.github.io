@@ -33,7 +33,7 @@ gc="$gcs"
 #gc=3
 rd=$(( ( RANDOM % 10 )  + 1 ))
 fc=`expr $rd - $gc`
-#echo "rd:$rd, gc:$gc, fc:$fc"
+echo "rd:$rd, gc:$gc, fc:$fc"
 if [ $fc -gt 0 ]
 then
   while [ $fc -gt 0 ]
@@ -42,16 +42,16 @@ then
     if [ ! -f "$FILE" ]; then
       # Script statements if $FILE not-exists.
       touch $FILE
-      #echo "touch"
+      echo "touch"
     else
       if [ -s "$FILE" ];  then
         # The file is not-empty.
         rm -f $SHELL_FOLDER/auto.md
-        #echo "not-empty"
+        echo "not-empty"
       else
         # The file is empty.
         echo -e "# "`date`"\n  It's auto generated content." >> $SHELL_FOLDER/auto.md
-        #echo "empty"
+        echo "empty"
       fi
     fi
      commit='fix:(example) Auto commit.'`date`

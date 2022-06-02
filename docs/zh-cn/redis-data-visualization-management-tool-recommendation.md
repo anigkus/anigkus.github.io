@@ -159,35 +159,104 @@ OK
 
 # RedisInsight
 
-## 软件说明
+&nbsp;&nbsp;&nbsp;&nbsp; RedisInsight 是由 RedisLab 公司出品的, Redis Labs 是一家云数据库服务供应商,致力于为 Redis、 Memcached 等流行的 NoSQL 开源数据库提供云托管服务平台.官方提供了很多 Redis 集成插件,比如 RediSearch、RedisJSON、RedisGears、RedisAI、RedisGraph、RedisTimeSeries、RedisBloom 等.这些都是通过`.so`包形式和Redis集成,并且在社区反响都非常好,而且性能也很高.RedisInsight 核心代码是使用TypeScript开发,然后通过构建成不同平台发行包,也就是外面套个不同平台的壳而已,内部集成HTML渲染引擎而成的.
 
-## 安装方法
+## 功能特点
+
+* RedisLab出品
+
+* 对Redis模块的内置支持
+
+* Redis的内存分析
+
+* Trace Redis命令
+
+* Redis资源监控
+
+* 支持主流的操作系统
+
+* 支持单机版、Redis Sentinel、Redis Enterprise Cluster、Redis Enterprise Cloud等多个版本
+
+* 支持自动选择数据库、SSL协议、新版Auth鉴权模式
+
+* 直观的CLI
+
+## 软件截图
+
+<center>
+<img src="../assets/images/redis-data-visualization-management-tool-recommendation/figure-2.png" alt="Redis data visualization management tool recommendation" title="Github of Anigkus" >
+</center>
+
+## 评测心得
+
+* 界面非常漂亮
+
+* 功能一目了然
+
+* 操作非常简单
+
+* 各种资源报表
+
+* 支持RedisJSON格式 
+
+* 方便浏览、过滤和可视化Redis数据结构中的关键值
+
+* 高级命令行界面(Workbench)
+
+
+<mark>Recommended</mark> : 🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟</br>
+
+<mark>Repository</mark> : https://github.com/RedisInsight/RedisInsight</br>
+
+<mark>Download</mark> : https://redis.com/redis-enterprise/redis-insight/</br>
+
+<mark>Developer languages</mark> : TypeScript</br>
+
+<mark>Support platform</mark> : Mac OS Intel、Mac OS M1、Windows、Linux、Docker</br>
+
+
+# RESP.app
+
+&nbsp;&nbsp;&nbsp;&nbsp; RESP.app (以前称为 RedisDesktopManager),是由 Ukraine 一家公司开发的一个用于 Redis 跨平台开源 GUI应用,可以在 Windows、Linux 和 macOS 上使用.该工具为您提供了一个易于使用的界面来访问您的 Redis 并执行一些基本操作等,并且还可以连接主流云上的Redis实例.
+
+RESP.app (formerly RedisDesktopManager) — is a cross-platform open source GUI for Redis ® available on Windows, Linux and macOS. This tool offers you an easy-to-use GUI to access your Redis ® DB and perform some basic operations: view keys as a tree, CRUD keys, execute commands via shell. RESP.app supports SSL/TLS encryption, SSH tunnels and cloud Redis instances, such as: Amazon ElastiCache, Microsoft Azure Redis Cache and other Redis ® clouds.
+RESP.app（以前称为 RedisDesktopManager）— 是用于 Redis ® 的跨平台开源 GUI，可在 Windows、Linux 和 macOS 上使用。该工具为您提供了一个易于使用的 GUI 来访问您的 Redis ® DB 并执行一些基本操作：以树的形式查看键、CRUD 键、通过 shell 执行命令。 RESP.app 支持 SSL/TLS 加密、SSH 隧道和云 Redis 实例，例如：Amazon ElastiCache、Microsoft Azure Redis Cache 和其他 Redis ® 云。
+Translated with Google (English → Chinese (Simplified))
+
+
+## 功能特点
+
+* 树的形式查看键
+
+* 支持 CRUD 操作
+
+* 支持 SSL/TLS 加密
+
+* 支持通过SSH 隧道连接云上 Redis 实例
 
 ## 软件截图
 
 ## 评测心得
 
+* 收费软件(linux免费),并且不同平台、不同功能收费不一样
 
-<br/>
+* 没有资源监控功能
 
-<mark>推荐指数</mark> : 🌟🌟🌟🌟🌟</br>
+* 支持RedisJSON格式 
 
-<mark>是否开源</mark> : 是/否</br>
+* 支持导入导出数据
 
-<mark>仓库地址</mark> : http://github.com/anigkus</br>
+* 新旧
 
-<mark>下载地址</mark> : http://github.com/anigkus<</br>
+<mark>Recommended</mark> : 🌟🌟🌟🌟🌟🌟🌟🌟🌟</br>
 
-<mark>是否收费</mark> : 是/否</br>
+<mark>Repository</mark> : https://github.com/uglide/RedisDesktopManager</br>
 
-<mark>开发语言</mark> : Java+Golang</br>
+<mark>Download</mark> : https://resp.app/</br>
 
-<mark>用户群体</mark> : 美国、中国</br>
+<mark>Developer languages</mark> : C++、QML</br>
 
-<mark>支持平台</mark> : Mac、Windows、Linux</br>
-
-
-
+<mark>Support platform</mark> : Mac OS 、Windows、Linux</br>
 
 
 

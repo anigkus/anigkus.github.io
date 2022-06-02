@@ -31,16 +31,33 @@ date=`date +"%Y-%m-%d" `
 gcs=`git log --since='$date 00:00:00' --author="anigkus" --oneline | wc -l`
 gc="$gcs" 
 #gc=3
-fc=`expr 5 - $gc`
+rd=$(( ( RANDOM % 10 )  + 1 ))
+fc=`expr $rd - $gc`
+#echo "rd:$rd, gc:$gc, fc:$fc"
 if [ $fc -gt 0 ]
 then
   while [ $fc -gt 0 ]
   do
-     echo -e "# "`date`"\n  It's auto generated content." >> $SHELL_FOLDER/auto.md
+    FILE=$SHELL_FOLDER"/auto.md"
+    if [ ! -f "$FILE" ]; then
+      # Script statements if $FILE not-exists.
+      touch $FILE
+      #echo "touch"
+    else
+      if [ -s "$FILE" ];  then
+        # The file is not-empty.
+        rm -f $SHELL_FOLDER/auto.md
+        #echo "not-empty"
+      else
+        # The file is empty.
+        echo -e "# "`date`"\n  It's auto generated content." >> $SHELL_FOLDER/auto.md
+        #echo "empty"
+      fi
+    fi
      commit='fix:(example) Auto commit.'`date`
      git commit -m "$commit" $SHELL_FOLDER/auto.md 
      sleep 5
-    (( fc-- ))
+     (( fc-- ))
   done
 else
  echo "Nothing..."

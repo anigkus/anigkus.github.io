@@ -55,7 +55,6 @@ then
       fi
     fi
      commit='fix:(example) Auto commit.'`date`
-     # error: pathspec '**/auto.md' did not match any file(s) known to git.
      git commit -m "$commit" $SHELL_FOLDER/auto.md  
      sleep 5
      (( fc-- ))

@@ -21,4 +21,5 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 - [解读Redis 缓存逐出策略.](./interpretation-of-redis-cache-eviction-strategy.md)<br/>
 - [你必须得明白的Redis安全措施.](./you-must-understand-redis-security-measures.md)<br/>
 - [记录一个关于Git中的‘Permission denied’的解决思路.](./record-a-solution-about-permission-denied-in-git.md)<br/>
-- [如何在MySQL中使用外部插件功能](./how-to-use-external-plugin-functionality-in-mysql.md)<br/>
+- [如何在MySQL中使用外部插件功能.](./how-to-use-external-plugin-functionality-in-mysql.md)<br/>
+- [Redis 数据可视化管理工具推荐.](./redis-data-visualization-management-tool-recommendation.md)

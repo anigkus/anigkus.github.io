@@ -329,7 +329,7 @@ OK
 
 <mark>Support platform</mark> : Mac App 、Windows、Linux
 
-# Redis Commander(npm uninstall -g redis-commander)
+# Redis Commander
 
 &nbsp;&nbsp;&nbsp;&nbsp; Redis-Commander 是一个 node.js Web 应用程序,可以用于查看、编辑和管理 Redis 数据库.
 
@@ -375,7 +375,7 @@ OK
 
 <mark>Support platform</mark> : Web browser
 
-# QRedis ( pip uninstall qredis)
+# QRedis
 
 &nbsp;&nbsp;&nbsp;&nbsp; QRedis 是一个使用Python +Qt开发的小型GUI工具,命令行安装方式.
 
@@ -559,7 +559,7 @@ OK
 <mark>Support platform</mark> : Windows 
 
 
-# Redis Browser (gem uninstall redis-browser)
+# Redis Browser
 
 &nbsp;&nbsp;&nbsp;&nbsp; 基于Ruby+JavaScript开发的一个Web应用程序,功能真的是及其简单.
 

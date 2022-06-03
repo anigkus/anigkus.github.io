@@ -9,7 +9,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 [<h1 style="color:#606c71;text-align:center;" >Is it easy to enter a front-end pit now?</h1><br/>]:#
 
 <center>
-<img src="../assets/images/is-it-easy-to-enter-a-front-end-pit-now/figure-1.jpg" alt="Is it easy to enter a front-end pit now?" title="Github of Anigkus" >
+<img src="../assets/images/is-it-easy-to-enter-a-front-end-pit-now/figure-1.jpeg" alt="Is it easy to enter a front-end pit now?" title="Github of Anigkus" >
 </center>
 
 [<center>]:#

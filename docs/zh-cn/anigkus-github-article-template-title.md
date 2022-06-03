@@ -9,7 +9,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 [<h1 style="color:#606c71;text-align:center;" >Anigkus github article template title</h1><br/>]:#
 
 <center>
-<img src="../assets/images/figure-1.jpg" alt="Anigkus github article template title" title="Github of Anigkus" >
+<img src="../assets/images/figure-1.jpeg" alt="Anigkus github article template title" title="Github of Anigkus" >
 </center>
 
 > <br/>&nbsp;&nbsp;&nbsp;&nbsp; 文章简要说明.<br/>

@@ -9,7 +9,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 [<h1 style="color:#606c71;text-align:center;" >Talk about the three highs in the integration of flink streaming and batching</h1><br/>]:#
 
 <center>
-<img src="../assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-1.jpg" alt="Talk about the three highs in the integration of flink streaming and batching" title="Github of Anigkus" >
+<img src="../assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-1.jpeg" alt="Talk about the three highs in the integration of flink streaming and batching" title="Github of Anigkus" >
 </center>
 
 [<center>]:#

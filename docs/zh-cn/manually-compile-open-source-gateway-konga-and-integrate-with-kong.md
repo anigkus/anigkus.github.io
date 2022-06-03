@@ -9,7 +9,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 [<h1 style="color:#606c71;text-align:center;" >Manually compile open source gateway konga and integrate with kong</h1><br/>]:#
 
 <center>
-<img src="../assets/images/manually-compile-open-source-gateway-konga-and-integrate-with-kong/figure-1.jpg" alt="Manually compile open source gateway konga and integrate with kong" title="Github of Anigkus" >
+<img src="../assets/images/manually-compile-open-source-gateway-konga-and-integrate-with-kong/figure-1.jpeg" alt="Manually compile open source gateway konga and integrate with kong" title="Github of Anigkus" >
 </center>
 
 
@@ -449,15 +449,15 @@ Make sure it is triggering its `initialize()` callback, or else set `sails.confi
 打开浏览器, http://x.x.x.x:1337/register ,x.x.x.x 是本机IP
 
 <center>
+<img src="../assets/images/manually-compile-open-source-gateway-konga-and-integrate-with-kong/figure-2.png" alt="Manually compile open source gateway konga and integrate with kong" title="Github of Anigkus" >
+</center>
+
+<center>
 <img src="../assets/images/manually-compile-open-source-gateway-konga-and-integrate-with-kong/figure-3.png" alt="Manually compile open source gateway konga and integrate with kong" title="Github of Anigkus" >
 </center>
 
 <center>
 <img src="../assets/images/manually-compile-open-source-gateway-konga-and-integrate-with-kong/figure-4.png" alt="Manually compile open source gateway konga and integrate with kong" title="Github of Anigkus" >
-</center>
-
-<center>
-<img src="../assets/images/manually-compile-open-source-gateway-konga-and-integrate-with-kong/figure-5.png" alt="Manually compile open source gateway konga and integrate with kong" title="Github of Anigkus" >
 </center>
 
 

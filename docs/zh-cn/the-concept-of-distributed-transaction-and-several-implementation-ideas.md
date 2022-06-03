@@ -8,7 +8,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 [<h1 style="color:#606c71;text-align:center;" >The concept of distributed transaction and several implementation ideas</h1><br/>]:#
 
-![The concept of distributed transaction and several implementation ideas](../assets/images/the-concept-of-distributed-transaction-and-several-implementation-ideas/figure-1.jpg "Github of Anigkus")
+![The concept of distributed transaction and several implementation ideas](../assets/images/the-concept-of-distributed-transaction-and-several-implementation-ideas/figure-1.jpeg "Github of Anigkus")
 
 [! The concept of distributed transaction and several implementation ideas (assets/images/the-concept-of-distributed-transaction-and-several-implementation-ideas/figure-1.jpg "Github of Anigkus")]:#
 

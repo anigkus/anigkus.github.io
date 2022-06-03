@@ -6,7 +6,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 <h1 style="color:#606c71;text-align:center;" >The concept of distributed transaction and several implementation ideas</h1><br/>
 
-![The concept of distributed transaction and several implementation ideas](assets/images/the-concept-of-distributed-transaction-and-several-implementation-ideas/figure-1.jpg "Github of Anigkus")
+![The concept of distributed transaction and several implementation ideas](assets/images/the-concept-of-distributed-transaction-and-several-implementation-ideas/figure-1.jpeg "Github of Anigkus")
 
 
 > <br/>&nbsp;&nbsp;&nbsp;&nbsp;After serviceization, the single system is split into multiple service systems,and each service accesses its own database. Our one request operation is likely so span multiple services, and we need to operate the data of multilple databases at the same time. We found that the previously used Database transactions are not easy to use. So how can ensure data consistency again after the split architecture based on microservices?<br/>

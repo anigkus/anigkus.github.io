@@ -7,7 +7,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 <h1 style="color:#606c71;text-align:center;" >Talk about the three highs in the integration of flink streaming and batching</h1><br/>
 
 <center>
-<img src="assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-1.jpg" alt="Talk about the three highs in the integration of flink streaming and batching" title="Github of Anigkus" >
+<img src="assets/images/talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching/figure-1.jpeg" alt="Talk about the three highs in the integration of flink streaming and batching" title="Github of Anigkus" >
 </center>
 
 > <br/>&nbsp;&nbsp;&nbsp;&nbsp; The "three highs" mentioned here are not "[three hights](https://baike.baidu.com/item/三高/2898551)"(😂) Oh,there have always been three pursuit goals in the iterative history of software development: high performance, high concurrency, and higt availability, commonly known as three hights. The there are both different and related. From the perspective of software development history, I personally think that the development process is high performance ( Single core) -> high concurrency (multi-core) -> high availability (multi-machine). 

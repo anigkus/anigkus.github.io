@@ -9,7 +9,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 [<h1 style="color:#606c71;text-align:center;" >Operation and Maintenance Engineer These Skills You Should Know</h1><br/>]:#
 
 <center>
-<img src="../assets/images/operation-and-maintenance-engineer-these-skills-you-should-know/figure-1.jpg" alt="Operation and Maintenance Engineer These Skills You Should Know" title="Github of Anigkus" >
+<img src="../assets/images/operation-and-maintenance-engineer-these-skills-you-should-know/figure-1.jpeg" alt="Operation and Maintenance Engineer These Skills You Should Know" title="Github of Anigkus" >
 </center>
 
 [<center>]:#

@@ -9,7 +9,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 [<h1 style="color:#606c71;text-align:center;" >Record a solution about 'Permission denied' in Git</h1><br/>]:#
 
 <center>
-<img src="../assets/images/record-a-solution-about-permission-denied-in-git/figure-1.jpg" alt="Record a solution about 'Permission denied' in Git" title="Github of Anigkus" >
+<img src="../assets/images/record-a-solution-about-permission-denied-in-git/figure-1.jpeg" alt="Record a solution about 'Permission denied' in Git" title="Github of Anigkus" >
 </center>
 
 > <br/>&nbsp;&nbsp;&nbsp;&nbsp; 平常我们使用`git clone`代码的时候,都是安装好git工具,然后生成ssh 私钥对,并把公钥添加到github或者gitlib的SSH keys即可.但是我有时就碰到这种情况,提示`Permission denied`.那么我这里就记录下,我是如何解决这个问题的,也多给大伙提供一个解决这个问题的思路吧.<br/>

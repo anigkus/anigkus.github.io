@@ -4,7 +4,7 @@ var pageHeader=document.getElementsByClassName("page-header")[0].innerHTML;
 document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 </script>
 
-![Anigkus github article template title](assets/images/figure-1.jpg "Github of Anigkus")
+![Anigkus github article template title](assets/images/figure-1.jpeg "Github of Anigkus")
 <br/>
 
 [- Favorite list of frequently used regular expressions.(./favorite-list-of-frequently-used-regular-expressions.md) <br/>]:#

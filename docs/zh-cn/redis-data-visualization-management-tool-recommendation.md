@@ -178,15 +178,15 @@ OK
 * 高级命令行界面(Workbench)
 
 
-<mark>Recommended</mark> : 🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟</br>
+<mark>Recommended</mark> : 🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟
 
-<mark>Repository</mark> : https://github.com/RedisInsight/RedisInsight</br>
+<mark>Repository</mark> : https://github.com/RedisInsight/RedisInsight
 
-<mark>Download</mark> : https://redis.com/redis-enterprise/redis-insight/</br>
+<mark>Download</mark> : https://redis.com/redis-enterprise/redis-insight/
 
-<mark>Developer languages</mark> : TypeScript</br>
+<mark>Developer languages</mark> : TypeScript
 
-<mark>Support platform</mark> : Mac App Intel、Mac App M1、Windows、Linux、Docker</br>
+<mark>Support platform</mark> : Mac App Intel、Mac App M1、Windows、Linux、Docker
 
 # p3x-redis-ui
 
@@ -227,15 +227,15 @@ OK
 
 * 支持多皮肤切换
 
-<mark>Recommended</mark> : 🌟🌟🌟🌟🌟🌟🌟🌟🌟</br>
+<mark>Recommended</mark> : 🌟🌟🌟🌟🌟🌟🌟🌟🌟
 
-<mark>Repository</mark> : https://github.com/patrikx3/redis-ui</br>
+<mark>Repository</mark> : https://github.com/patrikx3/redis-ui
 
-<mark>Download</mark> : https://www.corifeus.com/redis-ui</br>
+<mark>Download</mark> : https://www.corifeus.com/redis-ui
 
-<mark>Developer languages</mark> : JavaScript、HTML</br>
+<mark>Developer languages</mark> : JavaScript、HTML
 
-<mark>Support platform</mark> : Mac App 、Windows、Linux</br>
+<mark>Support platform</mark> : Mac App 、Windows、Linux
 
 # AnotherRedisDesktopManager
 
@@ -273,15 +273,15 @@ OK
 
 * 支持不同的Tab页切换很方便
 
-<mark>Recommended</mark> : 🌟🌟🌟🌟🌟🌟🌟🌟</br>
+<mark>Recommended</mark> : 🌟🌟🌟🌟🌟🌟🌟🌟
 
-<mark>Repository</mark> : https://github.com/qishibo/AnotherRedisDesktopManager</br>
+<mark>Repository</mark> : https://github.com/qishibo/AnotherRedisDesktopManager
 
-<mark>Download</mark> : https://github.com/qishibo/AnotherRedisDesktopManager</br>
+<mark>Download</mark> : https://github.com/qishibo/AnotherRedisDesktopManager
 
-<mark>Developer languages</mark> : C++ ,C</br>
+<mark>Developer languages</mark> : C++ ,C
 
-<mark>Support platform</mark> : Windows、Mac App、Linux</br>
+<mark>Support platform</mark> : Windows、Mac App、Linux
 
 
 # RESP.app
@@ -319,15 +319,15 @@ OK
 
 * 不足点:集群模式支持不够,好想默认就主从
 
-<mark>Recommended</mark> : 🌟🌟🌟🌟🌟🌟🌟</br>
+<mark>Recommended</mark> : 🌟🌟🌟🌟🌟🌟🌟
 
-<mark>Repository</mark> : https://github.com/uglide/RedisDesktopManager</br>
+<mark>Repository</mark> : https://github.com/uglide/RedisDesktopManager
 
-<mark>Download</mark> : https://resp.app/ , https://docs.resp.app/en/latest/install/</br>
+<mark>Download</mark> : https://resp.app/ , https://docs.resp.app/en/latest/install/
 
-<mark>Developer languages</mark> : C++、QML</br>
+<mark>Developer languages</mark> : C++、QML
 
-<mark>Support platform</mark> : Mac App 、Windows、Linux</br>
+<mark>Support platform</mark> : Mac App 、Windows、Linux
 
 # Redis Commander(npm uninstall -g redis-commander)
 
@@ -365,15 +365,15 @@ OK
 
 * 不足点:默认启动会去连本机6379端口,如果没有会有错误日志,就是有点体验不好而已
 
-<mark>Recommended</mark> : 🌟🌟🌟🌟🌟🌟</br>
+<mark>Recommended</mark> : 🌟🌟🌟🌟🌟🌟
 
-<mark>Repository</mark> : https://github.com/joeferner/redis-commander</br>
+<mark>Repository</mark> : https://github.com/joeferner/redis-commander
 
-<mark>Download</mark> : http://joeferner.github.io/redis-commander/</br>
+<mark>Download</mark> : http://joeferner.github.io/redis-commander/
 
-<mark>Developer languages</mark> : JavaScript、EJS</br>
+<mark>Developer languages</mark> : JavaScript、EJS
 
-<mark>Support platform</mark> : Web browser</br>
+<mark>Support platform</mark> : Web browser
 
 # QRedis ( pip uninstall qredis)
 
@@ -409,15 +409,15 @@ OK
 * 连接时支持key过滤和分割,可以减少加载数据量
 
 
-<mark>Recommended</mark> : 🌟🌟🌟🌟🌟</br>
+<mark>Recommended</mark> : 🌟🌟🌟🌟🌟
 
-<mark>Repository</mark> : https://github.com/tiagocoutinho/qredis</br>
+<mark>Repository</mark> : https://github.com/tiagocoutinho/qredis
 
-<mark>Download</mark> : https://github.com/tiagocoutinho/qredis</br>
+<mark>Download</mark> : https://github.com/tiagocoutinho/qredis
 
-<mark>Developer languages</mark> : Python+Qt </br>
+<mark>Developer languages</mark> : Python+Qt 
 
-<mark>Support platform</mark> : Mac App 、Windows、Linux</br>
+<mark>Support platform</mark> : Mac App 、Windows、Linux
 
 # QuickRedis
 
@@ -460,15 +460,15 @@ OK
 * 不支持服务器资源监控功能
 
 
-<mark>Recommended</mark> : 🌟🌟🌟🌟</br>
+<mark>Recommended</mark> : 🌟🌟🌟🌟
 
-<mark>Repository</mark> : https://github.com/quick123official/quick_redis_blog</br>
+<mark>Repository</mark> : https://github.com/quick123official/quick_redis_blog
 
-<mark>Download</mark> : https://quick123.net/</br>
+<mark>Download</mark> : https://quick123.net/
 
-<mark>Developer languages</mark> : JavaScript</br>
+<mark>Developer languages</mark> : JavaScript
 
-<mark>Support platform</mark> : Windows 、 Mac OS X 、 Linux</br>
+<mark>Support platform</mark> : Windows 、 Mac OS X 、 Linux
 
 
 # RedisStudio
@@ -505,15 +505,15 @@ OK
 
 * 没法跨平台,只是 Windows 系统
 
-<mark>Recommended</mark> : 🌟🌟🌟</br>
+<mark>Recommended</mark> : 🌟🌟🌟
 
-<mark>Repository</mark> : https://github.com/cinience/RedisStudio</br>
+<mark>Repository</mark> : https://github.com/cinience/RedisStudio
 
-<mark>Download</mark> : https://github.com/cinience/RedisStudio</br>
+<mark>Download</mark> : https://github.com/cinience/RedisStudio
 
-<mark>Developer languages</mark> : C++ ,C</br>
+<mark>Developer languages</mark> : C++ ,C
 
-<mark>Support platform</mark> : Windows</br>
+<mark>Support platform</mark> : Windows
 
 
 # Redis Explorer
@@ -548,15 +548,15 @@ OK
 
 * 没法跨平台,只是 Windows 系统
 
-<mark>Recommended</mark> : 🌟🌟</br>
+<mark>Recommended</mark> : 🌟🌟
 
-<mark>Repository</mark> : https://github.com/leegould/RedisExplorer</br>
+<mark>Repository</mark> : https://github.com/leegould/RedisExplorer
 
-<mark>Download</mark> : https://github.com/leegould/RedisExplorer</br>
+<mark>Download</mark> : https://github.com/leegould/RedisExplorer
 
-<mark>Developer languages</mark> : C#</br>
+<mark>Developer languages</mark> : C#
 
-<mark>Support platform</mark> : Windows </br>
+<mark>Support platform</mark> : Windows 
 
 
 # Redis Browser (gem uninstall redis-browser)
@@ -597,15 +597,15 @@ OK
 * 除了可以查看基本键值外,再无其他功能,简直就是个demo而已
 
 
-<mark>Recommended</mark> : 🌟</br>
+<mark>Recommended</mark> : 🌟
 
-<mark>Repository</mark> : https://github.com/humante/redis-browser</br>
+<mark>Repository</mark> : https://github.com/humante/redis-browser
 
-<mark>Download</mark> : https://github.com/humante/redis-browser</br>
+<mark>Download</mark> : https://github.com/humante/redis-browser
 
-<mark>Developer languages</mark> : JavaScript、Ruby</br>
+<mark>Developer languages</mark> : JavaScript、Ruby
 
-<mark>Support platform</mark> :Linux、Mac OS、Windows</br>
+<mark>Support platform</mark> :Linux、Mac OS、Windows
 
 # 总结
 

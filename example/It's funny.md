@@ -37,3 +37,12 @@ This is a comment that will be hidden3.]:#
     https://markdowncss.github.io/
     https://markdowntohtml.com/
     https://itsfoss.com/online-markdown-editors/
+
+# Name Format
+
+    ```
+    author="Kus Anig", 库斯.阿尼格|Kus.Anig
+    author_email="anigkus@gmail.com",
+
+    英美人姓名的排列是名在前姓在后. 如John Wilson译为约翰·维尔逊，John是名，Wilson 是姓. 又如Edward Adam Davis译为爱德华·亚当·戴维斯, Edward是教名，Adam是本人名，Davis为姓.
+    ```

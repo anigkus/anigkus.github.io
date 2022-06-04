@@ -12,10 +12,10 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 <img src="../assets/images/curator-internal-implementation-mechanism/figure-1.jpeg" alt="Curator internal implementation mechanism" title="Github of Anigkus" >
 </center>
 
-> <br/>&nbsp;&nbsp;&nbsp;&nbsp; [Zookeeper](https://zookeeper.apache.org/) 对大家都不是很陌生,需要开源的中间件都在使用 Zookeeper 来作为分布式协调中心服务.那么Java中操作 Zookeeper的客户端有 Zookeeper 原生提供的、开源 [zkclient](https://github.com/sgroschupf/zkclient) 以及 [Apache Curator](https://curator.apache.org/). 而 Zookeeper 原生算是比较底层,操作起来特别不方便,接口和方法表达的方式不够直接,并且还有不少问题.而 zkclient 是对 Zookeeper 原生封装了一层,但是其中的文档不足,以及重试、异常等机制有不少问题,也一直被社区所诟病.那么有没有一款现在比较好的客户端呢,那就是 Curator.这篇文章我将从内部角度来分析下 Curator 的实现机制.<br/>
+> <br/>&nbsp;&nbsp;&nbsp;&nbsp; [Zookeeper](https://zookeeper.apache.org/) 对大家都不是很陌生,现在好多开源的中间件都在使用 Zookeeper 来作为分布式协调中心服务.那么Java中操作 Zookeeper的客户端有 Zookeeper 原生提供的、开源 [zkclient](https://github.com/sgroschupf/zkclient) 以及 [Apache Curator](https://curator.apache.org/). 而 Zookeeper 原生算是比较底层,操作起来特别不方便,接口和方法表达的方式不够直接,并且还有不少问题.而 zkclient 是对 Zookeeper 原生封装了一层,但是其中的文档不足,以及重试、异常等机制有不少问题,也一直被社区所诟病.那么有没有一款现在比较好的客户端呢,那就是 Curator.这篇文章我将从内部角度来分析下 Curator 的实现机制.<br/>
 > <br/>
 
-[> <br/>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ---Zookeeper+++(https://zookeeper.apache.org/) is not very unfamiliar to everyone, and the middleware that requires open source is using Zookeeper as a distributed coordination center service. Then in Java The clients that operate Zookeeper are natively provided by Zookeeper, open source ---zkclient+++(https://github.com/sgroschupf/zkclient) and ---Apache Curator+++(https://curator.apache.org/). Zookeeper is natively regarded as Compared with the bottom layer, it is particularly inconvenient to operate, the interface and method expression is not direct enough, and there are still many problems. The zkclient is a native encapsulation of Zookeeper, but the documentation is insufficient, and the retry, exception and other mechanisms are Many problems have been criticized by the community. So is there a better client now, that is Curator. In this article, I will analyze the implementation mechanism of Curator from an internal perspective.<br/>]:#
+[> <br/>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ---Zookeeper+++(https://zookeeper.apache.org/) is not very unfamiliar to everyone. Now many open source middleware are using Zookeeper as a distributed coordination center service. Then the client that operates Zookeeper in Java has Zookeeper Natively provided, open source ---zkclient+++(https://github.com/sgroschupf/zkclient) and ---Apache Curator+++(https://curator.apache.org/). Zookeeper is relatively low-level, and it is very difficult to operate. Convenience, the way of expressing interfaces and methods is not direct enough, and there are still many problems. The zkclient is a native encapsulation of Zookeeper, but the documentation is insufficient, and there are many problems in the retry, exception and other mechanisms, and it has been used for a long time. The community criticized. So is there a better client now, that is Curator. In this article, I will analyze the implementation mechanism of Curator from an internal perspective.<br/>]:#
 [> <br/>]:#
 
 # 什么是使用开源的正确姿势?
@@ -278,6 +278,7 @@ maxSleepMs: 最大重试时间.
 | setData() | SetDataBuilderImpl | 开始设置ZNode节点数据的操作,在最后调用`forPath()`指定要操作ZNode |
 | getChildren() | GetChildrenBuilderImpl | 开始获得ZNode的子节点列表,在最后调用`forPath()`指定要操作ZNode |
 
+###### &nbsp;
 [| Core API | Internal implementation | Describe |]:#
 [| :--- | :---  | :---  |]:#
 [| create() | CreateBuilderImpl | Start creating the operation, and call f`orPath()` at the end to specify the ZNode to operate |]:#
@@ -593,6 +594,7 @@ NodeCache比较简单,只监听当前结点的变化.
 | :--- | :---  | :---  |:---  |
 | nodeChanged事件 | 当前结点创建 | 当前结点删除 | 当前结点内容更改 |
 
+###### &nbsp;
 [| Event | Operate | Operate | Operate |]:#
 [| :--- | :---  | :---  |:---  |]:#
 [| nodeChanged Event | Create the current node | Delete the current node | Changes the Current node |]:#
@@ -617,6 +619,7 @@ TreeCache监听当前结点的变化(增删改),以及子节点的变化(增删�
 | NODE_REMOVED |  | 👌 |  |  | 👌 |  |
 | NODE_UPDATED |  |  | 👌 |  |  | 👌 |
 
+###### &nbsp;
 [| Node Event | Create the current node | Delete the current node | Change the current node | Create the child node | Delete the child node | Change the child node |]:#
 [| :--- | :---  | :---  |:---  |:---  |:---  |:---  |]:#
 [| NODE_ADDED | 👌 |  |  | 👌 |  |  |]:#

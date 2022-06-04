@@ -414,9 +414,9 @@ leaderLatch.close();
 
 Curator为我们提供全局的分布式栅栏.
 
-[You must wait for all tasks to be ready before starting a transaction.
-In a single process, the java.util.concurrent package provides Barrier.
-So what if it controls all the processes or threads that are distributed across different machines? ]:#
+[You must wait for all tasks to be ready before starting a transaction.]:#
+[In a single process, the java.util.concurrent package provides Barrier.]:#
+[So what if it controls all the processes or threads that are distributed across different machines? ]:#
 
 [Curator provides a global distributed fence.]:#
 

@@ -16,3 +16,4 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 - [Talk about the three highs in the integration of flink streaming and batching.](./talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching.md)<br/>
 - [Talk about delivery semantics in message middleware.](./talk-about-delivery-semantics-in-message-middleware.md)<br/>
 - [Is it easy to enter a front-end pit now?](./is-it-easy-to-enter-a-front-end-pit-now.md)<br/>
+- [Curator internal implementation mechanism.](./curator-internal-implementation-mechanism.md)<br/>

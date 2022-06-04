@@ -15,7 +15,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 > <br/>&nbsp;&nbsp;&nbsp;&nbsp; [Zookeeper](https://zookeeper.apache.org/) 对大家都不是很陌生,现在好多开源的中间件都在使用 Zookeeper 来作为分布式协调中心服务.那么Java中操作 Zookeeper的客户端有 Zookeeper 原生提供的、开源 [zkclient](https://github.com/sgroschupf/zkclient) 以及 [Apache Curator](https://curator.apache.org/). 而 Zookeeper 原生算是比较底层,操作起来特别不方便,接口和方法表达的方式不够直接,并且还有不少问题.而 zkclient 是对 Zookeeper 原生封装了一层,但是其中的文档不足,以及重试、异常等机制有不少问题,也一直被社区所诟病.那么有没有一款现在比较好的客户端呢,那就是 Curator.这篇文章我将从内部角度来分析下 Curator 的实现机制.<br/>
 > <br/>
 
-[> <br/>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ---Zookeeper+++(https://zookeeper.apache.org/) is not very unfamiliar to everyone. Now many open source middleware are using Zookeeper as a distributed coordination center service. Then the client that operates Zookeeper in Java has Zookeeper Natively provided, open source ---zkclient+++(https://github.com/sgroschupf/zkclient) and ---Apache Curator+++(https://curator.apache.org/). Zookeeper is relatively low-level, and it is very difficult to operate. Convenience, the way of expressing interfaces and methods is not direct enough, and there are still many problems. The zkclient is a native encapsulation of Zookeeper, but the documentation is insufficient, and there are many problems in the retry, exception and other mechanisms, and it has been used for a long time. The community criticized. So is there a better client now, that is Curator. In this article, I will analyze the implementation mechanism of Curator from an internal perspective.<br/>]:#
+[> <br/>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ???Zookeeper+++(https://zookeeper.apache.org/) is not very unfamiliar to everyone. Now many open source middleware are using Zookeeper as a distributed coordination center service. Then the client that operates Zookeeper in Java has Zookeeper Natively provided, open source ???zkclient+++(https://github.com/sgroschupf/zkclient) and ???pache Curator+++(https://curator.apache.org/). Zookeeper is relatively low-level, and it is very difficult to operate. Convenience, the way of expressing interfaces and methods is not direct enough, and there are still many problems. The zkclient is a native encapsulation of Zookeeper, but the documentation is insufficient, and there are many problems in the retry, exception and other mechanisms, and it has been used for a long time. The community criticized. So is there a better client now, that is Curator. In this article, I will analyze the implementation mechanism of Curator from an internal perspective.<br/>]:#
 [> <br/>]:#
 
 # 什么是使用开源的正确姿势?
@@ -316,8 +316,7 @@ maxSleepMs: 最大重试时间.
 
 多个分布在不同机器,对同一个原子变量进行并发操作,其它机器都能看到最新的值.
 
-[Multiple distributions on different machines perform concurrent operations on the same atomic variable, All other machines can see the latest value.
-]:#
+[Multiple distributions on different machines perform concurrent operations on the same atomic variable, All other machines can see the latest value.]:#
 
 ```
 RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 10);
@@ -414,11 +413,10 @@ leaderLatch.close();
 
 Curator为我们提供全局的分布式栅栏.
 
-[You must wait for all tasks to be ready before starting a transaction.]:#
-[In a single process, the java.util.concurrent package provides Barrier.]:#
-[So what if it controls all the processes or threads that are distributed across different machines? ]:#
+[You must wait for all tasks to be ready before you can start transaction processing. In a single process, the java.util.concurrent package provides Barrier. So what if you control all processes or threads distributed across different machines?]:#
 
-[Curator provides a global distributed fence.]:#
+[Curator provides us with a global distributed fence.]:#
+
 
 
 ## 分布式栅栏DistributedBarrier代码片段
@@ -498,16 +496,16 @@ sessionTimeoutMs为30秒.
 
 第20秒开始尝试重连其它服务器.
 
-第29秒后重连上，那么该session还有效.
+第29秒后重连上,那么该session还有效.
 
 第31秒重连上之后,该Session将标记为Expired,Curator帮我们重建会话,NodeCache/TreeCache等监听器依然有效,但是一次性消费的Watcher将失效。
 
-[sessionTimeoutMs refers to the current client and server disconnection timeout time. When the client and server are disconnected for longer than this time, the session will be Expired.]:#
+[`sessionTimeoutMs` refers to the current client and server disconnection timeout time. When the client and server are disconnected for longer than this time, the session will be `Expired`.]:#
 
-[If the session times out, all temporary data stored on ZK and registered subscribers will be removed. In this case, a ZooKeeper client instance needs to be recreated, and some additional processing needs to be coded by yourself.]:#
+[If the session times out, all temporary data stored on `ZK` and registered subscribers will be removed. In this case, a ZooKeeper client instance needs to be recreated, and some additional processing needs to be coded by yourself.]:#
 
-[Fortunately, Curator does the following for us:]:#
-[A. First close the old zookeeper client,B. Get the connection string and recreate the new zookeeper client through the zookeeperFactory factory.]:#
+[Fortunately, `Curator` does the following for us:]:#
+[A. First close the old zookeeper client,B. Get the connection string and recreate the new `zookeeper` client through the `zookeeperFactory` factory.]:#
 
 [sessionTimeoutMs is 30 seconds.]:#
 
@@ -563,9 +561,9 @@ LOST:当重连超时或者Session超时的时候.当下列的情况下会出现L
 * 重连的时候超过了sessionTimeoutMs超时
 
 
-注意:由于curator3.0版本以下有个bug,假如connectionTimeoutMs和sessionTimeoutMs一样的情况,需要超过两倍时间,才能收到LOST状态和事件.]:#
+注意:由于curator3.0版本以下有个bug,假如connectionTimeoutMs和sessionTimeoutMs一样的情况,需要超过两倍时间,才能收到LOST状态和事件.
 
-关于LOST事件的抛出,可参考CuratorFrameworkImpl.doSyncForSuspendedConnection方法.]:#
+关于LOST事件的抛出,可参考CuratorFrameworkImpl.doSyncForSuspendedConnection方法.
 
 [CONNECTED: Entire lifetime will only be entered once.]:#
 
@@ -600,6 +598,8 @@ NodeCache比较简单,只监听当前结点的变化.
 [| nodeChanged Event | Create the current node | Delete the current node | Changes the Current node |]:#
 
 ## NodeCache事件实现原理
+
+[## NodeCache event implementation principle]:#
 
 <center>
 <img src="../assets/images/curator-internal-implementation-mechanism/figure-11.png" alt="Curator internal implementation mechanism" title="Github of Anigkus" >
@@ -656,6 +656,8 @@ maxDepth监听可以控制监听树的哪一级节点.
 
 # Curator 最佳实践
 
+[# Curator Best Practices]:#
+
 ## 最佳实践1：使用流式编程模式
 
 [## Best Practice 1: Use Streaming Programming Patterns]:#
@@ -711,16 +713,13 @@ Curator的Session一旦超时,zk服务器将清除所有监听器,并会立刻�
 
 [But we need to recreate the corresponding temporary nodes ourselves, and re-register the Watcher listeners (non-NodeCache/TreeCache listeners) and so on.]:#
 
-
 ## 最佳实践6：谨慎使用LOST事件
 
 [## Best practice 6: Use LOST events with caution]:#
 
 LOST大部分为客户端与zk服务端连接超时,并非Session超时.收到LOST事件,不一定代表Session超时.很多人都会误用,包括网上的很多文档.LOST为Curator客户端发送出来的事件,Session_Expired为服务器发给客户端的事件,两者不要混淆.
 
-[Most of the LOST is the connection timeout between the client and the zk server, not the session timeout. The received LOST event does not necessarily mean the session timeout. Many people misuse it, including many documents on the Internet. LOST is an event sent by the Curator client. Session_Expired is an event sent by the server to the client, and the two should not be confused.
-]:#
-
+[Most of the LOST is the connection timeout between the client and the zk server, not the session timeout. The received LOST event does not necessarily mean the session timeout. Many people misuse it, including many documents on the Internet. LOST is an event sent by the Curator client. Session_Expired is an event sent by the server to the client, and the two should not be confused.]:#
 
 ## 最佳实践7：优先使用NodeCache/TreeCache，而不是Watcher
 
@@ -729,7 +728,6 @@ LOST大部分为客户端与zk服务端连接超时,并非Session超时.收到LO
 Watcher 是一次性消费,消费之后必须重新注册,容易出错.通过 NodeCache/TreeCache ,让 Curator 为我们管理监听器.包括断开ReConnected/Session超时等,都会注册监听器.
 
 [Watcher is a one-time consumption, and it must be re-registered after consumption, which is prone to errors. Through NodeCache/TreeCache, let Curator manage the listener for us. Including disconnection of ReConnected/Session timeout, etc., the listener will be registered.]:#
-
 
 ## 介绍最佳实践8之前,先针对一个场景提出一个疑问.
 

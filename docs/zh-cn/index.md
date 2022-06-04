@@ -23,3 +23,4 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 - [记录一个关于Git中的‘Permission denied’的解决思路.](./record-a-solution-about-permission-denied-in-git.md)<br/>
 - [如何在MySQL中使用外部插件功能.](./how-to-use-external-plugin-functionality-in-mysql.md)<br/>
 - [Redis 数据可视化管理工具推荐.](./redis-data-visualization-management-tool-recommendation.md)
+- [Curator内部实现机制.](./curator-internal-implementation-mechanism.md)<br/>

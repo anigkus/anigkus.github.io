@@ -12,13 +12,13 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 <img src="../assets/images/curator-internal-implementation-mechanism/figure-1.jpeg" alt="Curator internal implementation mechanism" title="Github of Anigkus" >
 </center>
 
-> <br/>&nbsp;&nbsp;&nbsp;&nbsp; 文章简要说明.<br/>
+> <br/>&nbsp;&nbsp;&nbsp;&nbsp; [Zookeeper](https://zookeeper.apache.org/) 对大家都不是很陌生,需要开源的中间件都在使用 Zookeeper 来作为分布式协调中心服务.那么Java中操作 Zookeeper的客户端有 Zookeeper 原生提供的、开源 [zkclient](https://github.com/sgroschupf/zkclient) 以及 [Apache Curator](https://curator.apache.org/). 而 Zookeeper 原生算是比较底层,操作起来特别不方便,接口和方法表达的方式不够直接,并且还有不少问题.而 zkclient 是对 Zookeeper 原生封装了一层,但是其中的文档不足,以及重试、异常等机制有不少问题,也一直被社区所诟病.那么有没有一款现在比较好的客户端呢,那就是 Curator.这篇文章我将从内部角度来分析下 Curator 的实现机制.<br/>
 > <br/>
 
-[> <br/>&nbsp;&nbsp;&nbsp;&nbsp; Some general notes on article.<br/>]:#
+[> <br/>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ---Zookeeper+++(https://zookeeper.apache.org/) is not very unfamiliar to everyone, and the middleware that requires open source is using Zookeeper as a distributed coordination center service. Then in Java The clients that operate Zookeeper are natively provided by Zookeeper, open source ---zkclient+++(https://github.com/sgroschupf/zkclient) and ---Apache Curator+++(https://curator.apache.org/). Zookeeper is natively regarded as Compared with the bottom layer, it is particularly inconvenient to operate, the interface and method expression is not direct enough, and there are still many problems. The zkclient is a native encapsulation of Zookeeper, but the documentation is insufficient, and the retry, exception and other mechanisms are Many problems have been criticized by the community. So is there a better client now, that is Curator. In this article, I will analyze the implementation mechanism of Curator from an internal perspective.<br/>]:#
 [> <br/>]:#
 
-# 如何正确的使用开源
+# 什么是使用开源的正确姿势?
 
 [# What's the right posture to use open source?]:#
 
@@ -291,13 +291,489 @@ maxSleepMs: 最大重试时间.
 
 [# Curator Application Scenario]:#
 
+## 分布式原子值
 
+[## Distributed Atomic Values]:#
+
+<center>
+<img src="../assets/images/curator-internal-implementation-mechanism/figure-4.png" alt="Curator internal implementation mechanism" title="Github of Anigkus" >
+同一个进程内,多个线程通过java并发包提供的原子值进行操作,保证了多个线程的并发原子性.
+</center>
+
+[In the same process, multiple threads operate through the atomic value provided by the java concurrent package, ensuring the concurrent atomicity of multiple threads]:#
+
+<center>
+<img src="../assets/images/curator-internal-implementation-mechanism/figure-5.png" alt="Curator internal implementation mechanism" title="Github of Anigkus" >
+不同进程无法利用jdk的并发包的原子值.Curator的atomic提供了类似的功能,在分布式环境内共享同一个原子值.
+</center>
+
+[Different processes cannot use the atomic value of jdk's concurrent packets. Curator's atomic provides a similar function, sharing the same atomic value in a distributed environment.]:#
+
+## 分布式原子值代码片段实例
+
+[## Distributed Atomic Value Code Snippet Example]:#
+
+多个分布在不同机器,对同一个原子变量进行并发操作,其它机器都能看到最新的值.
+
+[Multiple distributions on different machines perform concurrent operations on the same atomic variable, All other machines can see the latest value.
+]:#
+
+```
+RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 10);
+CuratorFramework cf = CuratorFrameworkFactory.builder().connectString(CONNECT_ADDR).sessionTimeoutMs(SESSION_OUTTIME).retryPolicy(retryPolicy).build();
+cf.start();
+
+DistributedAtomicInteger atomicIntger = new DistributedAtomicInteger(cf, "/atomicValue",new RetryNTimes(3, 1000));
+System.out.println(atomicIntger.get().preValue()); 
+AtomicValue<Integer> value = atomicIntger.add(1);
+System.out.println(value.postValue()); 
+```
+
+## 分布式锁
+
+[## Distributed Lock]:#
+
+<center>
+<img src="../assets/images/curator-internal-implementation-mechanism/figure-6.png" alt="Curator internal implementation mechanism" title="Github of Anigkus" >
+同一个进程内,多个线程通过java并发包提供的锁,保证多线程的共享锁.
+</center>
+
+[In the same process, multiple threads use the lock provided by java concurrent package to ensure the shared lock of multiple threads.]:#
+
+<center>
+<img src="../assets/images/curator-internal-implementation-mechanism/figure-7.png" alt="Curator internal implementation mechanism" title="Github of Anigkus" >
+不同进程无法利用jdk的并发包的锁,Curator的locks提供了类似的功能,在分布式环境内进行全局锁的处理.
+</center>
+
+[Different processes cannot use the locks of JDK's concurrent packets. Curator's locks provide a similar function to process global locks in a distributed environment.]:#
+
+## 分布式锁代码片段实例
+
+[## Distributed lock code snippet]:#
+
+多个分布在不同机器,只要得到锁才能执行循环里面的代码,因此就能避免重复执行的逻辑.
+
+[Multiple distributed in different machines, the code in the loop can be executed only if the lock is obtained, so the logic of repeated execution can be avoided.]:#
+
+```
+RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 10);
+CuratorFramework cf = CuratorFrameworkFactory.builder().connectString(CONNECT_ADDR)
+			.sessionTimeoutMs(SESSION_OUTTIME).retryPolicy(retryPolicy).build();
+cf.start();
+InterProcessMutex lock = new InterProcessMutex(cf, "/lock");
+
+try {
+	lock.acquire();
+	for (int i = 0; i < 1000000; i++) {
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss|SSS");
+		System.out.println(sdf.format(new Date()));
+		TimeUnit.SECONDS.sleep(1);
+}
+} finally {
+	lock.release();
+}
+```
+
+## 主从选举片段实例
+
+[## Master-slave election fragment instance]:#
+
+&nbsp;&nbsp;&nbsp;&nbsp; 在分布式系统设计中，选主是一个常见的场景。选主是一个这样的过程，通过选主，主节点被选择出来控制其他节点或者是分配任务。
+选主算法要满足的几个特征：
+1. 各个节点均衡的获得成为主节点的权利，一旦主节点被选出，其他的节点可以感知到谁是主节点
+2. 主节点是唯一存在的
+3. 一旦主节点失效，宕机或者断开连接，其他的节点能够感知，并且重新进行选主算法。
+
+[&nbsp;&nbsp;&nbsp;&nbsp; In distributed system design, master election is a common scenario. Master election is a process by which the master node is selected to control other nodes or assign tasks.]:#
+[Several characteristics to be satisfied by the main election algorithm:]:#
+[1. Each node obtains the right to become the master node in a balanced manner.Once the master node is selected, other nodes can perceive who is the master node. ]:#
+[2. The master node is the only one that exists]:#
+[3. Once the master node fails, goes down or disconnects, other nodes can sense it and re-select the master algorithm.]:#
+
+```
+RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 10);
+CuratorFramework cf = CuratorFrameworkFactory.builder().connectString(CONNECT_ADDR)
+			.sessionTimeoutMs(SESSION_OUTTIME).retryPolicy(retryPolicy).build();
+cf.start();
+
+LeaderLatch leaderLatch = new LeaderLatch(cf, "/latch");
+leaderLatch.start();
+leaderLatch.await(10, TimeUnit.SECONDS);
+if (leaderLatch.hasLeadership()) {
+	System.out.println("yes, i am leader");
+}
+leaderLatch.close();
+```
+
+## 分布式栅栏 DistributedBarrier
+
+[## Distributed DistributedBarrier]:#
+
+必须等全部任务就绪之后,才能启动事务处理.在单进程中,java.util.concurrent包提供了Barrier.那么假如是控制所有分布在不同机器的进程或线程呢？
+
+Curator为我们提供全局的分布式栅栏.
+
+[You must wait for all tasks to be ready before starting a transaction.
+In a single process, the java.util.concurrent package provides Barrier.
+So what if it controls all the processes or threads that are distributed across different machines? ]:#
+
+[Curator provides a global distributed fence.]:#
+
+
+## 分布式栅栏DistributedBarrier代码片段
+
+[## Distributed DistributedBarrier code snippet]:#
+
+```
+RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 10);
+CuratorFramework cf = CuratorFrameworkFactory.builder().connectString(CONNECT_ADDR)
+		.sessionTimeoutMs(SESSION_OUTTIME).retryPolicy(retryPolicy).build();
+cf.start();
+ExecutorService service = Executors.newFixedThreadPool(10);
+DistributedBarrier controlBarrier = new DistributedBarrier(cf, "/barrier");
+controlBarrier.setBarrier();
+
+for (int i = 0; i < 10; ++i) {
+final int index = i;
+Callable<Void> task = () -> {
+	Thread.sleep((long) (3 * Math.random()));				controlBarrier.waitOnBarrier();
+	System.out.println("Client #" + index + " begins");
+	return null;
+	};
+service.submit(task);
+}
+Thread.sleep(10000);
+System.out.println("all Barrier instances should wait the condition");
+controlBarrier.removeBarrier();
+service.shutdown();
+```
 
 # Curator 内部剖析
 
+[# Curator Internal Anatomy]:#
+
+## 超时检查和重试机制：以创建结点为例
+
+[## Timeout Check and Retry Mechanism: Take Creating Nodes as an Example]:#
+
+<center>
+<img src="../assets/images/curator-internal-implementation-mechanism/figure-8.png" alt="Curator internal implementation mechanism" title="Github of Anigkus" >
+</center>
+
+备注:
+
+其中超时时间为创建Curator客户端的时候设置的connectionTimeoutMs.
+
+Curator中任何的操作都需要等待连接完成就是等待connectionTimeoutMs的时间,如果在该时间没连上,则操作失败,那么操作是否继续就要根据Retry策略.
+
+Background的异步create由于时间篇幅关系,不展开讲,具体实现类似.
+
+[Remark:]:#
+
+[The timeout is the connectionTimeoutMs set when the Curator client was created.]:#
+
+[Any operation in Curator needs to wait for the connection to complete, which is the time to wait for connectionTimeoutMs. If it is not connected within this time, the operation fails. Then whether the operation continues depends on the Retry policy.]:#
+
+[The asynchronous create of Background will not be discussed due to the time and space. The specific implementation is similar.]:#
+
+## 会话超时和会话重建
+
+[## Session timeout and session rebuild]:#
+
+<center>
+<img src="../assets/images/curator-internal-implementation-mechanism/figure-9.png" alt="Curator internal implementation mechanism" title="Github of Anigkus" >
+</center>
+
+`sessionTimeoutMs`则是指当前客户端和服务器断开超时的时间.当客户端和服务器断连的时间超过该时间,会话将`Expired`.
+
+会话超时,那么存储在`ZK`上的所有临时数据与注册的订阅者都会被移除,此时需要重新创建一个ZooKeeper客户端实例,需要自己编码做一些额外的处理.
+
+幸运的是,`Curator`会帮我们做如下的事情:
+A.先关闭旧的`zookeeper`客户端,B.获取连接串,通过`zookeeperFactory`工厂重新创建新的`Zookeeper`客户端.
+
+sessionTimeoutMs为30秒.
+
+第10秒ping server.
+
+第20秒开始尝试重连其它服务器.
+
+第29秒后重连上，那么该session还有效.
+
+第31秒重连上之后,该Session将标记为Expired,Curator帮我们重建会话,NodeCache/TreeCache等监听器依然有效,但是一次性消费的Watcher将失效。
+
+[sessionTimeoutMs refers to the current client and server disconnection timeout time. When the client and server are disconnected for longer than this time, the session will be Expired.]:#
+
+[If the session times out, all temporary data stored on ZK and registered subscribers will be removed. In this case, a ZooKeeper client instance needs to be recreated, and some additional processing needs to be coded by yourself.]:#
+
+[Fortunately, Curator does the following for us:]:#
+[A. First close the old zookeeper client,B. Get the connection string and recreate the new zookeeper client through the zookeeperFactory factory.]:#
+
+[sessionTimeoutMs is 30 seconds.]:#
+
+[10 seconds ping server.]:#
+
+[At 20 seconds, try to reconnect to other servers.]:#
+
+[If you reconnect after 29 seconds, the session is still valid.]:#
+
+[After the 31st second reconnection, the session will be marked as Expired. Curator helps us rebuild the session. Listeners such as NodeCache/TreeCache are still valid. But the one-time consumption Watcher will be invalid.]:#
+
+## Curator事件监听
+
+事件监听是Zookeeper最核心功能,也是Curator的核心功能.离开了事件监听,zooekeeper什么也不是.
+
+由于zookeeper原生处理是一次性消费,非常不方便.
+Curator对Zookeeper事件处理做了封装,主要如下:
+
+* ConnectionStateListener: 生命周期事件.
+* Watcher: CuratorWatcher.
+* NodeCache: 监听结点本身内容变化和结点的增删事件.
+* TreeCache: 监听结点本身的增删改以及子结点的增删改.
+
+[## Curator event listener]:#
+
+[Event monitoring is the core function of Zookeeper and the core function of Curator. Without event listeners, zooekeeper is nothing.]:#
+
+[Since the native processing of zookeeper is a one-time consumption, it is very inconvenient.]:#
+[Curator encapsulates Zookeeper event processing, mainly as follows:]:#
+
+[* ConnectionStateListener：Lifecycle Events.]:#
+[* Watcher: CuratorWatcher.]:#
+[* NodeCache：Monitor the content changes of the node itself and the addition and deletion events of the node.]:#
+[* TreeCache：Monitor the additions, deletions and changes of the node itself and the additions, deletions and changes of child nodes.]:#
+
+## Curator生命周期事件: ConnectionStateListener
+
+[## Curator life cycle events: ConnectionStateListener]:#
+
+<center>
+<img src="../assets/images/curator-internal-implementation-mechanism/figure-10.png" alt="Curator internal implementation mechanism" title="Github of Anigkus" >
+</center>
+
+CONNECTED:整个生命周期只会进入一次.
+
+SUSPENDED:每次中断都会进入此状态.
+
+RECONNECTED:重新连接成功.
+
+LOST:当重连超时或者Session超时的时候.当下列的情况下会出现LOST事件:
+
+* 重连的时候connectionTimeoutMs超时
+* 重连的时候超过了sessionTimeoutMs超时
+
+
+注意:由于curator3.0版本以下有个bug,假如connectionTimeoutMs和sessionTimeoutMs一样的情况,需要超过两倍时间,才能收到LOST状态和事件.]:#
+
+关于LOST事件的抛出,可参考CuratorFrameworkImpl.doSyncForSuspendedConnection方法.]:#
+
+[CONNECTED: Entire lifetime will only be entered once.]:#
+
+[SUSPENDED: This state is entered on every interrupt.]:#
+
+[RECONNECTED: reconnected successfully.]:#
+
+[LOST: When the reconnection times out or the Session times out. The LOST event occurs in the following cases:]:#
+
+[* connectionTimeoutMs times out when reconnecting.]:#
+[* The sessionTimeoutMs timeout exceeded when reconnecting.]:#
+
+[Note: Due to a bug in curator version 3.0 and below, if connectionTimeoutMs is the same as sessionTimeoutMs, it will take more than twice the time to receive LOST status and events.]:#
+
+[For the throwing of the LOST event, please refer to CuratorFrameworkImpl.doSyncForSuspendedConnection method.]:#
+
+## NodeCache事件监听
+
+[## NodeCache event listener]:#
+
+NodeCache比较简单,只监听当前结点的变化.
+
+[NodeCache is relatively simple, and only listens for changes in the current node.]:#
+
+| 事件 | 操作 | 操作 | 操作 |
+| :--- | :---  | :---  |:---  |
+| nodeChanged事件 | 当前结点创建 | 当前结点删除 | 当前结点内容更改 |
+
+[| Event | Operate | Operate | Operate |]:#
+[| :--- | :---  | :---  |:---  |]:#
+[| nodeChanged Event | Create the current node | Delete the current node | Changes the Current node |]:#
+
+## NodeCache事件实现原理
+
+<center>
+<img src="../assets/images/curator-internal-implementation-mechanism/figure-11.png" alt="Curator internal implementation mechanism" title="Github of Anigkus" >
+</center>
+
+## TreeCache事件监听
+
+[## TreeCache event listener]:#
+
+TreeCache监听当前结点的变化(增删改),以及子节点的变化(增删改).
+
+[TreeCache listens to the changes of the current node (Create/Delete/Change), as well as the changes of child nodes (Create/Delete/Change).]:#
+
+| 节点事件 | 当前结点增加 | 当前结点删除 | 当前节点修改 | 子结点增加 | 子结点删除 | 子节点修改 |
+| :--- | :---  | :---  |:---  |:---  |:---  |:---  |
+| NODE_ADDED | 👌 |  |  | 👌 |  |  |
+| NODE_REMOVED |  | 👌 |  |  | 👌 |  |
+| NODE_UPDATED |  |  | 👌 |  |  | 👌 |
+
+[| Node Event | Create the current node | Delete the current node | Change the current node | Create the child node | Delete the child node | Change the child node |]:#
+[| :--- | :---  | :---  |:---  |:---  |:---  |:---  |]:#
+[| NODE_ADDED | 👌 |  |  | 👌 |  |  |]:#
+[| NODE_REMOVED |  | 👌 |  |  | 👌 |  |]:#
+[| NODE_UPDATED |  |  | 👌 |  |  | 👌 |]:#
+
+## TreeCache事件原理
+
+[## TreeCache event principle]:#
+
+<center>
+<img src="../assets/images/curator-internal-implementation-mechanism/figure-12.png" alt="Curator internal implementation mechanism" title="Github of Anigkus" >
+</center>
+
+maxDepth监听可以控制监听树的哪一级节点.
+
+0 只监听本节点
+
+1 监听本节点+子节点
+
+以此类推.
+
+[maxDepth monitoring can control the monitoring tree which level node.]:#
+
+[0 only listen to this node]:#
+
+[1 Monitor this node + child nodes]:#
+
+[and so on]:#
+
+<center>
+<img src="../assets/images/curator-internal-implementation-mechanism/figure-13.png" alt="Curator internal implementation mechanism" title="Github of Anigkus" >
+</center>
+
 # Curator 最佳实践
 
-# 总结
+## 最佳实践1：使用流式编程模式
+
+[## Best Practice 1: Use Streaming Programming Patterns]:#
+
+```
+CuratorFrameworkFactory.Builder builder = CuratorFrameworkFactory.builder().connectString("localhost:2181").sessionTimeoutMs(30000).connectionTimeoutMs(5000).retryPolicy(new ExponentialBackoffRetry(5000, 3, 10000)). namespace("a.b.c");
+CuratorFramework curatorFramework = builder.build();
+
+curatorFramework.create().creatingParentContainersIfNeeded().withMode(CreateMode.EPHEMERAL).forPath("/a/b/c");
+```
+
+## 最佳实践2：保存并复用CuratorFrameImpl客户端
+
+[## Best Practice 2: Save and reuse the CuratorFrameImpl client]:#
+
+CuratorFrameImpl就是对zookeeper客户端的一个包装,创建和销毁都比较昂贵.创建好之后可以复用,甚至全局共用一个实例.
+
+[CuratorFrameImpl is a wrapper around the zookeeper client, which is expensive to create and destroy.After it is created, it can be reused, or even share an instance globally.]:#
+
+## 最佳实践3：善用处理跨机器的分布式并发同步
+
+[## Best Practice 3: Take Advantage of Distributed Concurrent Objects]:#
+
+Curator提供的Locks、Barrier、Queue、Leader能够解决很多跨机器的分布式同步问题.
+
+[The Locks, Barrier, Queue, and Leader provided by Curator can solve many distributed synchronization problems across machines.]:#
+
+## 最佳实践4：合理设置connectonTimeoutMs和sessionTimeoutMs
+
+[## Best practice 4: Set connectonTimeoutMs and sessionTimeoutMs reasonably]:#
+
+1. connectionTimeoutMs和sessionTimeoutMs根据集群网络的情况设置,不宜太大,也不宜太小.
+
+2. connectionTimeoutMs设置要比sessionTimeoutMs小,connectionTimeoutMs比sessionTimeoutMs没意义.
+
+[1. connectionTimeoutMs and sessionTimeoutMs are set according to the cluster network conditions. Neither too big nor too small.]:#
+
+[2. The connectionTimeoutMs setting is smaller than the sessionTimeoutMs. connectionTimeoutMs is less meaningful than sessionTimeoutMs.]:#
+
+## 最佳实践5：监听sessionExpired事件。会话超时，重新连上，需要重建会话
+
+[## Best Practice 5: Listen to the sessionExpired event]:#
+
+Curator的Session一旦超时,zk服务器将清除所有监听器,并会立刻删除empmeral结点.
+
+如果重新成功,服务器发现已经超过了session设置的超时时限,那么客户端将会收到一个Expired event,表示会话已经终止,需要重建客户端.Curator已为我们做好这些.
+
+但是需要我们自己重新创建相应的临时结点,并重新注册Watcher监听 器(非NodeCache/TreeCache监听器）等等.
+
+[Once the Curator's Session times out, the zk server will clear all listeners and delete the emperal node immediately.]:#
+
+[If successful again. The server finds that the timeout period set by the session has been exceeded, then the client will receive an Expired event, indicating that the session has been terminated and the client needs to be rebuilt. Curator has done this for us.]:#
+
+[But we need to recreate the corresponding temporary nodes ourselves, and re-register the Watcher listeners (non-NodeCache/TreeCache listeners) and so on.]:#
+
+
+## 最佳实践6：谨慎使用LOST事件
+
+[## Best practice 6: Use LOST events with caution]:#
+
+LOST大部分为客户端与zk服务端连接超时,并非Session超时.收到LOST事件,不一定代表Session超时.很多人都会误用,包括网上的很多文档.LOST为Curator客户端发送出来的事件,Session_Expired为服务器发给客户端的事件,两者不要混淆.
+
+[Most of the LOST is the connection timeout between the client and the zk server, not the session timeout. The received LOST event does not necessarily mean the session timeout. Many people misuse it, including many documents on the Internet. LOST is an event sent by the Curator client. Session_Expired is an event sent by the server to the client, and the two should not be confused.
+]:#
+
+
+## 最佳实践7：优先使用NodeCache/TreeCache，而不是Watcher
+
+[## Best Practice 7: Prefer NodeCache/TreeCache over Watcher]:#
+
+Watcher 是一次性消费,消费之后必须重新注册,容易出错.通过 NodeCache/TreeCache ,让 Curator 为我们管理监听器.包括断开ReConnected/Session超时等,都会注册监听器.
+
+[Watcher is a one-time consumption, and it must be re-registered after consumption, which is prone to errors. Through NodeCache/TreeCache, let Curator manage the listener for us. Including disconnection of ReConnected/Session timeout, etc., the listener will be registered.]:#
+
+
+## 介绍最佳实践8之前,先针对一个场景提出一个疑问.
+
+[## Before introducing Best Practice 8, let's ask a question about a scenario.]:#
+
+<center>
+<img src="../assets/images/curator-internal-implementation-mechanism/figure-14.png" alt="Curator internal implementation mechanism" title="Github of Anigkus" >
+</center>
+
+设想一个场景:
+
+1. 客户端创建一个顺序结点00000000.
+2. 服务器创建成功,并且服务器集群事务提交成功.
+3. 返回给客户端.
+4. 数据包发送到线路之前网络异常断开,此次客户端请求就会执行失败.那么客户端无法确定是成功还是失败.
+5. Curator会为我们在此重试,那么就会创建00000001.
+
+显然这不是我们要的结果。
+
+[Consider a scenario:]:#
+
+[1. The client creates a sequence node 00000000.]:#
+[2. The server was created successfully, and the server cluster transaction was submitted successfully.]:#
+[3. Return to the client.]:#
+[4. The network is abnormally disconnected before the data packet is sent to the line, and the client request will fail to execute this time. Then the client cannot determine success or failure.]:#
+[5. Curator will retry for us here, then it will create 00000001.]:#
+
+[Obviously this is not the result we want]:#
+
+## 最佳实践8: 创建顺序结点使用withProtection
+
+[## Best Practice 8: Use withProtection to create sequential nodes]:#
+
+```
+curatorFramework.create().creatingParentsIfNeeded().withProtection().withMode(CreateMode.EPHEMERAL_SEQUENTIAL).forPath(path);
+```
+
+CreateBuilder 提供了一个 withProtection 方法来通知Curator客户端,在创建的有序节点前添加一个唯一标识符,如果create操作失败了,客户端就会开始重试操作,而重试操作的一个步骤就是验证是否存在一个节点包含这个唯一标识符.
+
+Curator客户端中提供了一个方法,对应用程序的delete操作的执行提供了保障,Curator客户端会重新执行操作,直到成功为止,或Curator客户端实例不可用时.使用该功能,只需要使用DeleteBuilder接口中定义的 guaranteed 方法.
+
+[CreateBuilder provides a withProtection method to notify the Curator client to add a unique identifier before the created ordered node. If the create operation fails, the client will start to retry the operation, and one step of the retry operation is to verify whether There exists a node containing this unique identifier.]:#
+
+[A method is provided in the Curator client to guarantee the execution of the application's delete operation, and the Curator client will re-execute the operation until it succeeds, or when the Curator client instance is unavailable. To use this feature, it is only necessary to use the guaranteed method defined in the DeleteBuilder interface.]:#
+
+
+
 
 <br>
 

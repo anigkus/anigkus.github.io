@@ -1,5 +1,3 @@
-
-
 # 解读Redis 持久化存储模式
 ## Interpretation of Redis persistent storage mode
 ### interpretation-of-redis-persistent-storage-mode

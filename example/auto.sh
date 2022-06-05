@@ -40,24 +40,25 @@ then
   do
     FILE=$SHELL_FOLDER"/auto.md"
     if [ ! -f "$FILE" ]; then
-      # Script statements if $FILE not-exists.
+      ## Script statements if $FILE not-exists.
       touch $FILE
       echo "touch"
-    else
-      if [ -s "$FILE" ];  then
-        # The file is not-empty.
-        rm -f $SHELL_FOLDER/auto.md
-        echo "not-empty"
-      else
-        # The file is empty.
-        echo -e "# "`date`"\n  It's auto generated content." >> $SHELL_FOLDER/auto.md
-        echo "empty"
-      fi
+    #else
+      #if [ -s "$FILE" ];  then
+        ## The file is not-empty.
+        #rm -f $SHELL_FOLDER/auto.md
+        #echo "not-empty"
+      #else
+        ## The file is empty.
+        #echo -e "# "`date`"\n  It's auto generated content." >> $SHELL_FOLDER/auto.md
+        #echo "empty"
+      #fi
     fi
-     commit='fix:(example) Auto commit.'`date`
-     git commit -m "$commit" $SHELL_FOLDER/auto.md  
-     sleep 5
-     (( fc-- ))
+    echo -e "# "`date`"\n  It's auto generated content." > $SHELL_FOLDER/auto.md
+    commit='fix:(example) Auto commit.'`date`
+    git commit -m "$commit" $SHELL_FOLDER/auto.md  
+    sleep 5
+    (( fc-- ))
   done
 else
  echo "Nothing..."

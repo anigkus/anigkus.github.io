@@ -54,7 +54,7 @@ then
         #echo "empty"
       #fi
     fi
-    echo -e "# "`date`"\n  It's auto generated content." > $SHELL_FOLDER/auto.md
+    echo "# "`date`"  -  It's auto generated content." > $SHELL_FOLDER/auto.md
     commit='fix:(example) Auto commit.'`date`
     git commit -m "$commit" $SHELL_FOLDER/auto.md  
     sleep 5

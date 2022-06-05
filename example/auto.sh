@@ -32,6 +32,12 @@ gcs=`git log --since='$date 00:00:00' --author="anigkus" --oneline | wc -l`
 gc="$gcs" 
 #gc=3
 rd=$(( ( RANDOM % 10 )  + 1 ))
+
+if [ $rd -le 0 ]
+then
+  rd=5 ## default
+fi
+
 fc=`expr $rd - $gc`
 echo "rd:$rd, gc:$gc, fc:$fc"
 if [ $fc -gt 0 ]

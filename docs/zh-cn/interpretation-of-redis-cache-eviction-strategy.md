@@ -4,7 +4,7 @@ var pageHeader=document.getElementsByClassName("page-header")[0].innerHTML;
 document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 </script>
 
-<h1 style="color:#606c71;text-align:center;" >解读Redis 缓存逐出策略</h1><br/>
+<h1 style="color:#606c71;text-align:center;" >解读 Redis 缓存逐出策略</h1><br/>
 
 [<h1 style="color:#606c71;text-align:center;" >Interpretation of Redis cache eviction strategy</h1><br/>]:#
 

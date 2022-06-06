@@ -4,12 +4,12 @@ var pageHeader=document.getElementsByClassName("page-header")[0].innerHTML;
 document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 </script>
 
-<h1 style="color:#606c71;text-align:center;" >解读 Redis 持久化存储模式</h1><br/>
+<h1 style="color:#606c71;text-align:center;" >MongoDB 性能调优操作指南</h1><br/>
 
-[<h1 style="color:#606c71;text-align:center;" >Interpretation of Redis persistent storage mode</h1><br/>]:#
+[<h1 style="color:#606c71;text-align:center;" >MongoDB Performance Tuning Operation Guide</h1><br/>]:#
 
 <center>
-<img src="../assets/images/interpretation-of-redis-persistent-storage-mode/figure-1.jpeg" alt="Interpretation of Redis persistent storage mode" title="Github of Anigkus" >
+<img src="../assets/images/mongodb-performance-tuning-operation-guide/figure-1.jpeg" alt="Anigkus github article template title" title="Github of Anigkus" >
 </center>
 
 > <br/>&nbsp;&nbsp;&nbsp;&nbsp; 文章简要说明.<br/>
@@ -18,34 +18,12 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 [> <br/>&nbsp;&nbsp;&nbsp;&nbsp; Some general notes on article.<br/>]:#
 [> <br/>]:#
 
-https://redis.io/docs/manual/persistence/
+&nbsp;&nbsp;&nbsp;&nbsp; 技术专家, 作者, 对分布式技术和云原生领域感兴趣.<br/><br/>
 
-# Backgroup
-&nbsp;&nbsp;&nbsp;&nbsp; 
+[&nbsp;&nbsp;&nbsp;&nbsp; Technologist, Author, Interested in Distributed Technology and Cloud Native Fields.<br/><br/>]:#
 
-# RDB
+...
 
-## RDB的优点
-
-## 原理
-
-## RDB的缺点
-
-# AOF
-
-## AOF的优点
-
-## 原理
-
-## AOF的缺点
-
-# RDB + AOF
-
-## 原理
-
-# 备份和恢复
-
-# 总结
 
 <br>
 

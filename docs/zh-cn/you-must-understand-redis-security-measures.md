@@ -4,7 +4,7 @@ var pageHeader=document.getElementsByClassName("page-header")[0].innerHTML;
 document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 </script>
 
-<h1 style="color:#606c71;text-align:center;" >你必须得明白的Redis安全措施</h1><br/>
+<h1 style="color:#606c71;text-align:center;" >你必须得明白的 Redis 安全措施</h1><br/>
 
 [<h1 style="color:#606c71;text-align:center;" >You must understand Redis security measures</h1><br/>]:#
 

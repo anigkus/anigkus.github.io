@@ -12,10 +12,6 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 <img src="../assets/images/operation-and-maintenance-engineer-these-skills-you-should-know/figure-1.jpeg" alt="Operation and Maintenance Engineer These Skills You Should Know" title="Github of Anigkus" >
 </center>
 
-[<center>]:#
-[<img src="assets/images/operation-and-maintenance-engineer-these-skills-you-should-know/figure-1.jpg" alt="Operation and Maintenance Engineer These Skills You Should Know" title="Github of Anigkus" >]:#
-[</center>]:#
-
 > <br/>&nbsp;&nbsp;&nbsp;&nbsp; 运维工程师有点像传统行业中的售后角色(不要误会,没其它意思).就是产品研究人员提供一个idea想法(产品经理),再到产品设计师或者工业制造者把产品的想法变成一个成品(研发人员),再到销售人员把成品的东西卖给客户(运营人员).但是东西已经推向市场如果出现问题,我们的售后客服就会收到市场的反馈,然后让技术售后负责协助解决(运维人员).如果这个问题或者这个现象已经已经发生过,并且在规范文档或者历史存档资料中有相应的解决方案,那么就把产品修护好,让产品回归正常(比如应用自动挂了,需要重启即可(<font color="red">别杠精</font>).如果不是售后的文件规定的或者不知道怎么修,可能需要反馈给产品设计者(研发人员)一起沟通和协助解决.因此售后工程师需要丰富的经验和技能,不然啥情况都找设计者,公司就一直停留的原地,没法产出新产品(设计->维修->设计...循环).所以在IT工程中也一样,我们的运维工程师也需要集成多种专业知识才能维护生产上运行的应用.让我们来看看作为运维工程师应该具备哪些技能呢?<br/>
 > <br/>
 
@@ -84,7 +80,6 @@ By Role
 By Career
 </center>
 
-
 # Linux基础
 
 &nbsp;&nbsp;&nbsp;&nbsp; Linux操作系统绝对是当前线上服务器的王者.因此必须要熟悉底层系统模型的一些原理,才能在遇到问题更好的去分析问题的所在.比如Linux 内核、文件系统模型、Linux C编程、常用网络IO模型、系统安全模型、Linux设备模型、Linux权限模型、以及Linux常用的发行版等.
@@ -113,7 +108,7 @@ By Career
 
 [* Linux permission model: The basic permission system of linux is based on UGO (U: user permission\G: permission of the group\O: other user permission), and files and folders RWX (read/write/execute) Permissions can be represented by 7 (4+2+1)) permissions and extended permissions (suid, sgid, sticky), etc.]:#
 
-[* Linux device model: Four important concepts in the Linux device model: Bus (bus)/Class (classification)/Device (device)/Driver (driver) and which data are stored and the basic operations of their respective interactions, etc.] :#
+[* Linux device model: Four important concepts in the Linux device model: Bus (bus)/Class (classification)/Device (device)/Driver (driver) and which data are stored and the basic operations of their respective interactions, etc.]:#
 
 [* Linux security model: understand SELinux mandatory access control, kernel security, network security, remote authentication, file system security, local authentication, security policy, basic theoretical knowledge of security control, etc., and know the application and configuration of basic system security\physical security and login security\disable root login and sudo\pluggable authentication module (PAM)\PAM-based password security and password policy\PAM-based access control.]:#
 
@@ -177,7 +172,7 @@ By Career
 
 [* Databases: MySQL, HBase, Mariadb]:#
 
-[* Web server: Apache, Tomcat, Jboss]: #
+[* Web server: Apache, Tomcat, Jboss]:#
 
 [* Cache middleware: Redis, MongoDB, MemCached]:#
 
@@ -283,7 +278,7 @@ By Career
 
 [# Cloud vendors]:#
 
-[&nbsp;&nbsp;&nbsp;&nbsp; Now the cloud platform is very mature and stable, the cloud platform products are simple and efficient, and the processing capacity is elastically scalable computing services. Help you quickly build more stable and secure applications, improve operation and maintenance efficiency, reduce IT costs make you more focused on core business innovation. Therefore, you must be familiar with and use the products of current mainstream cloud vendors, including cloud servers, databases, load balancing, elastic scaling, CDN, etc., and large cloud vendors have relevant certifications , For example, Ali has ACA/ACP/ACE. Amazon has SAA/SAP, Tencent has TCA/TCP/TCE, Google's PCA/PCD, Microsoft AZ-300/AZ-301, etc. If you have passed several cloud platform advanced The certification qualification will definitely give you a lot of points in the job search process. It is enough to use Alibaba Cloud for domestic business, and the market share of other cloud vendors can basically be ignored (too little), and Amazon Cloud is enough for foreign business.] :#
+[&nbsp;&nbsp;&nbsp;&nbsp; Now the cloud platform is very mature and stable, the cloud platform products are simple and efficient, and the processing capacity is elastically scalable computing services. Help you quickly build more stable and secure applications, improve operation and maintenance efficiency, reduce IT costs make you more focused on core business innovation. Therefore, you must be familiar with and use the products of current mainstream cloud vendors, including cloud servers, databases, load balancing, elastic scaling, CDN, etc., and large cloud vendors have relevant certifications , For example, Ali has ACA/ACP/ACE. Amazon has SAA/SAP, Tencent has TCA/TCP/TCE, Google's PCA/PCD, Microsoft AZ-300/AZ-301, etc. If you have passed several cloud platform advanced The certification qualification will definitely give you a lot of points in the job search process. It is enough to use Alibaba Cloud for domestic business, and the market share of other cloud vendors can basically be ignored (too little), and Amazon Cloud is enough for foreign business.]:#
 
 # 结论
 

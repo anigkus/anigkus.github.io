@@ -1,4 +1,4 @@
-<script>
+\\<script>
 var pageHeader=document.getElementsByClassName("page-header")[0].innerHTML;
  pageHeader="<center><img style='border-radius: 50% !important;' src='https://avatars.githubusercontent.com/u/88264073?s=400&amp;u=63e618520a5b6aa87636714e69f8228374c4e9b1&amp;v=4' width='200' height='200' alt='@anigkus' title='Github of Anigkus' ></center>"+pageHeader;
 document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
@@ -17,3 +17,4 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 - [Talk about delivery semantics in message middleware.](./talk-about-delivery-semantics-in-message-middleware.md)<br/>
 - [Is it easy to enter a front-end pit now?](./is-it-easy-to-enter-a-front-end-pit-now.md)<br/>
 - [Curator internal implementation mechanism.](./curator-internal-implementation-mechanism.md)<br/>
+- [You must understand Redis security measures.](./you-must-understand-redis-security-measures.md)

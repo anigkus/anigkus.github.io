@@ -246,9 +246,9 @@ OK
 
 [## Features]:#
 
-* Server resource monitoring]:#
+[* Server resource monitoring]:#
 
-[*View keys in tree form]:#
+[* View keys in tree form]:#
 
 [* View and edit key values]:#
 

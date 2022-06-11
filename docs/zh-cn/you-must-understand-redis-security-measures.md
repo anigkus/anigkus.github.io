@@ -76,19 +76,19 @@ redis:x:1001:1001::/home/redis:/bin/nologin
 
 [# Network security]:#
 
-### 网络边界
+## 网络边界
 
 &nbsp;&nbsp;&nbsp;&nbsp; 大多数情况下,不要把Redis服务暴露给公网访问,因此,内网服务和外网服务一定要严格区分,不能服务使用的不同的VPC,并且严格控制不同VPC的路由规则和访问控制.安装后要及时更改Redis默认的端口号(6379),避免网络上的端口探测器侦测.
 
-### 限制访问
+## 限制访问
 
 &nbsp;&nbsp;&nbsp;&nbsp; 以下是表示的是指定本机可以接受连接的IP地址,因为一台服务器可能有多个IP地址,以下下表示只绑定127.0.0.1这一个IP地址.
 
-[### Network Boundary]:#
+[## Network Boundary]:#
 
 [&nbsp;&nbsp;&nbsp;&nbsp; In most cases, do not expose Redis services to public network access. Therefore, internal network services and external network services must be strictly distinguished, and different VPCs cannot be used for services, and different strictly controlled Routing rules and access control of VPC. Change the default port number (6379) of Redis in time after installation to avoid detection by port detectors on the network.]:#
 
-[### Restricted Access]:#
+[## Restricted Access]:#
 
 [&nbsp;&nbsp;&nbsp;&nbsp; The following is to specify the IP address that the machine can accept connections to, because a server may have multiple IP addresses, the following indicates that only the 127.0.0.1 IP address is bound.]:#
 
@@ -179,6 +179,7 @@ Error: Connection reset by peer
 127.0.0.1:6379> keys *
 (empty array)
 ```
+
 ### 生成JKS证书
 
 [### Generate JKS Certificate]:#

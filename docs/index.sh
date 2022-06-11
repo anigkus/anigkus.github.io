@@ -18,9 +18,10 @@
 # Generate Homepage Content
 #
 
+# Variables
 ul="";
-assets_prefix=""
 pwd=`pwd`
+assets_prefix=""
 
 # Check Args
 if [ "$1" != "" ];then
@@ -28,12 +29,13 @@ if [ "$1" != "" ];then
   assets_prefix="../"
 fi
 
-# Parse HTML
+# Parse Directory
 for filename in `ls -al | grep ".md" | grep -Ev "index.|anigkus-|draft-" | awk '{print $9}'`;  
 do          
   title_name=`cat \`pwd\`"/$filename" | grep "<h1" | head -1 | sed 's:<h1[^>]*>\([^<]*\)</h1><br/>:\1:;q'`;   ul+="- [$title_name](./$filename)<br/>\n" 
 done
 
+# bundle HTML
 index_content="<script>\nvar pageHeader=document.getElementsByClassName(\"page-header\")[0].innerHTML;\npageHeader=\"<center><img style='border-radius: 50% \!important;' src='https://avatars.githubusercontent.com/u/88264073?s=400&amp;u=63e618520a5b6aa87636714e69f8228374c4e9b1&amp;v=4' width='200' height='200' alt='@anigkus' title='Github of Anigkus' ></center>\"+pageHeader;\ndocument.getElementsByClassName(\"page-header\")[0].innerHTML=pageHeader;\n</script>\n\n![Anigkus github article template title]("$assets_prefix"assets/images/figure-1.jpeg \"Github of Anigkus\")
 <br/>\n\n$ul";
 

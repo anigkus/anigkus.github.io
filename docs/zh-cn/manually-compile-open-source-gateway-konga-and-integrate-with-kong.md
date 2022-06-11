@@ -16,16 +16,21 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 > <br/>&nbsp;&nbsp;&nbsp;&nbsp; [`Kong`](https://docs.konghq.com/) 由Mashape公司开发的一款云原生、平台无关、可扩展的 API 网关,是基于OpenResty(Nginx + Lua）而编写的.而 [`konga`](https://github.com/pantsel/konga) 是社区贡献的,主要是为了更好和方便管理和操作kong而提供的一套Web系统. kong 和 konga 都无论是社区还是官方都提供容器部署版本,但是有时候我们的客户没法使用容器化方案,因此就需要使用二进制来安装.kong官方提供了rpm和多种系统的二进制安装教程,而konga就需要自己编译了.因此本文主要是简单说明下如何使用二进制的方式来部署来部署.<br/>
 > <br/>
 
-[> <br/>&nbsp;&nbsp;&nbsp;&nbsp; Some general notes on article.<br/>]:#
+[> <br/>&nbsp;&nbsp;&nbsp;&nbsp;___`Kong`+++(https://docs.konghq.com/) A cloud-native, platform-independent, and extensible API gateway developed by Mashape, which is based on OpenResty (Nginx + Lua). While ___`konga`+++(https://github.com/pantsel/konga) is a web system contributed by the community, mainly for better and convenient management and operation of kong. Both kong and konga are community or official Both provide container deployment versions, but sometimes our customers cannot use the containerization solution, so they need to use binary to install. Kong officially provides binary installation tutorials for rpm and various systems, and konga needs to be compiled by itself. Therefore This article is mainly to briefly explain how to use the binary method to deploy and deploy.<br/>]:#
 [> <br/>]:#
 
 
 # 安装 PostgreSQL
 
+[# Install PostgreSQL]:#
+
 &nbsp;&nbsp;&nbsp;&nbsp; 因为Kong只支持Cassandra或PostgreSQL,我这里就使用PG了.也可以看[官方安装文档](https://www.postgresql.org/download/linux/redhat/#yum).我这里使用二进制解压的方式来安装 Postgresql.
 
+[&nbsp;&nbsp;&nbsp;&nbsp; Because Kong only supports Cassandra or PostgreSQL, I use PG here. You can also see ___official installation documentation+++(https://www.postgresql.org/download/linux/redhat/#yum ). I use binary decompression to install Postgresql.]:#
 
 ## 下载文件和解压
+
+[Download file and decompress]:#
 
 ```
 $ yum install gcc -y
@@ -51,6 +56,8 @@ PostgreSQL installation complete.
 ```
 
 ## 配置环境和用户
+
+[## Configure environment and users]:#
 
 ```
 $ mkdir -p /data/postgresql-11.2/{data,logs,pg_archive} 
@@ -80,6 +87,8 @@ $ vi /data/postgresql-11.2/data/pg_hba.conf
 ```
 
 ## 首次初始数据库
+
+[## First init database]:#
 
 ```
 # su - postgres
@@ -121,6 +130,8 @@ psql (PostgreSQL) 11.2
 
 ## 启动数据库服务
 
+[## Start the database service]:#
+
 ```
 $ ./pg_ctl -D /data/postgresql-11.2/data -l logfile start
 
@@ -128,6 +139,8 @@ $ ./pg_ctl stop
 ```
 
 ## 配置账号和密码
+
+[## Configure account and password]:#
 
 ```
 $ su postgres
@@ -149,11 +162,6 @@ postgres=# GRANT ALL PRIVILEGES ON DATABASE kong to kong;
 GRANT
 postgres=# GRANT ALL PRIVILEGES ON DATABASE konga to konga;
 GRANT
-# 至关重要,主从复制或者和 patroni 都用到了这2个玩意(如果已经同步了执行这个DDL语句,会自动复制到所有的slave节点上的),这里可以不需要忽略即可.
-postgres=# create user replipuser replication login encrypted password 'replipuser123456';
-postgres=# select * from pg_roles; #查询所有角色
-postgres=# select * from pg_user; #查询所有用户
-
 postgres=# exit
 $ exit
 $
@@ -161,10 +169,12 @@ $
 
 ## 做成启动服务项
 
+[## Make a startup service item]:#
+
 ```
 $ su  # root
 
-$ cd  /root/postgresql-11.2/contrib/start-scripts/ # 源码包目录
+$ cd  /root/postgresql-11.2/contrib/start-scripts/
 
 $ chmod a+x linux
 
@@ -189,7 +199,10 @@ $
 
 ```
 
-## 容器启动数据库
+## 容器启动数据库(二选一)
+
+[## The container starts the database (choose one of two)]:#
+
 ```
 $ docker pull postgres:11.2
 $ mkdir -p /soft/postgresql
@@ -217,12 +230,17 @@ sh start_postgresql.sh
 
 # 安装 Kong
 
+[# Install Kong ]:#
+
 ```
 $ wget --no-check-certificate  https://download.konghq.com/gateway-2.x-centos-8/Packages/k/kong-2.8.1.el8.amd64.rpm
 $  yum install kong-2.8.1.el7.amd64.rpm -y 
 ```
 
 ## 配置 Kong
+
+[## Configurate Kong]:#
+
 ```
 $ kong version
 2.8.1
@@ -231,7 +249,7 @@ $ cp /etc/kong/kong.conf.default /etc/kong/kong.conf
 
 $ vi /etc/kong/kong.conf
 
-# x.x.x.x 是本机IP
+# x.x.x.x this local IP
 $ grep "^\s*[^# \t].*$" /etc/kong/kong.conf
 admin_listen = 127.0.0.1:8001,x.x.x.x:8001 reuseport backlog=16384, 127.0.0.1:8444,x.x.x.x:8444 http2 ssl reuseport backlog=16384
 pg_host = localhost             # Host of the Postgres server.
@@ -243,6 +261,9 @@ pg_database = kong              # The database name to connect to.
 ```
 
 ## 初始化 kong
+
+[## initialize the kong]:#
+
 ```
 $ kong migrations bootstrap
 2021/10/13 16:31:30 [warn] ulimit is currently set to "1024". For better performance set it to at least "4096" using "ulimit -n"
@@ -308,6 +329,9 @@ Database is up-to-date
 
 ```
 ## 启动 kong
+
+[## Start kong]:#
+
 ```
 $ kong start 
 2021/10/13 16:31:52 [warn] ulimit is currently set to "1024". For better performance set it to at least "4096" using "ulimit -n"
@@ -328,7 +352,16 @@ root      442320  438512  0 14:12 pts/0    00:00:00 grep --color=auto kong
 
 # 安装 Konga
 
+[# Install Konga]:#
+
+&nbsp;&nbsp;&nbsp;&nbsp; 因为Konga是使用JavaScript编写的,因此需要配置`Node`环境来编译和安装.
+
+[&nbsp;&nbsp;&nbsp;&nbsp; Because Konga is written in JavaScript, the `Node` environment needs to be configured to compile and install.]:#
+
 ## 安装 Node
+
+[## Install Node]:#
+
 ```
 $ VERSION=v14.18.0
 
@@ -359,7 +392,11 @@ $ npm -v
 6.14.15
 
 ```
+
 ## 配置 Konga
+
+[## Configurate Konga]:#
+
 ```
 $ yum install -g git
 
@@ -399,6 +436,8 @@ $ yarn add pg -g
 
 &nbsp;&nbsp;&nbsp;&nbsp; 如果没有进行这一步,那么就是使用本地临时存储,在执行`npm run  production`的时候就会输出`No DB Adapter defined. Using localDB...`.
 
+[&nbsp;&nbsp;&nbsp;&nbsp; If this step is not performed, then local temporary storage is used, and when `npm run production` is executed, it will output `No DB Adapter defined. Using localDB...`.]:#
+
 ```
 $ cp .env_example .env
 
@@ -434,7 +473,11 @@ To hide this warning message, enable `sails.config.orm.skipProductionWarnings`.
 
 ## 错误
 
+[## Errors ]:#
+
 &nbsp;&nbsp;&nbsp;&nbsp; 这个错误,官方和网上都说增加 `hookTimeout`能解决,我怎么都解决不了,这个错误在 `node prepare ...` 或者 `npm run production` 都可能会出现,因为kong是使用sails开发的.但是这个错误出现了机率还是很大的.我一共安装过三次,只有一次是非常顺利的.其它三次都是要么卡在 `node prepare ...` 阶段,要么卡在 `npm run production` 阶段,因此运气成分很大啊.但似乎我已经提了[issue] (https://github.com/pantsel/konga/issues/775)了.
+
+[&nbsp;&nbsp;&nbsp;&nbsp; This error, official and online say that adding `hookTimeout` can be solved, I can't solve it at all, this error may appear in `node prepare ...` or `npm run production` , because kong is developed using sails. But there is still a high chance of this error. I have installed it three times in total, and only one was very smooth. The other three times were either stuck in the `node prepare ...` stage, or Stuck in the `npm run production` stage, so there is a lot of luck. But it seems that I have already raised ___issue+++ (https://github.com/pantsel/konga/issues/775).]:#
 
 ```
 Error: The hook `orm` is taking too long to load.
@@ -444,9 +487,13 @@ Make sure it is triggering its `initialize()` callback, or else set `sails.confi
     at processTimers (internal/timers.js:500:7)
 ```
 
-## 访问 konga
+## 访问 Konga
+
+[## Viste Konga]:#
 
 打开浏览器, http://x.x.x.x:1337/register ,x.x.x.x 是本机IP
+
+[Open the browser, http://x.x.x.x:1337/register , x.x.x.x is the local IP]:#
 
 <center>
 <img src="../assets/images/manually-compile-open-source-gateway-konga-and-integrate-with-kong/figure-2.png" alt="Manually compile open source gateway konga and integrate with kong" title="Github of Anigkus" >

@@ -15,7 +15,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 > <br/>&nbsp;&nbsp;&nbsp;&nbsp; Redis 本身对我们来说并不陌生,现在大多数业务如果需要用到分布式缓存的时候.首先都会想到使用它来做中间数据的缓存层,主要原因就是性能高、分布式、入门简单且是开源免费的.但是开源意味着需要我们对它了解的更多,不然出现任何问题就只能自己解决(因为你是白嫖😄).那么我认为当中最需要关注的点就是安全问题,安全问题一直是开源软件首先需要完善的基础功能.从2022年大家最为熟悉和震感的 Log4j 的 [RCE](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228) 安全问题,还有 FastJson 的 [Autotype](https://securityonline.info/fastjson-remote-code-execution-vulnerability/) 安全问题,这些都是当前最流行和使用最频繁的开源软件,当中不乏还是有不少安全问题.因此团队如果需要引入一个新组件,需要我们就它的安全功能作一个全面的评估和验证测试.本文主要就我们在使用 Redis 时需要关注的一些安全主题做下介绍,也为了避免我们后续碰到这些问题的时候有个预防措施和解决思路等.<br/>
 > <br/>
 
-[> <br/>&nbsp;&nbsp;&nbsp;&nbsp; Some general notes on article.<br/>]:#
+[> <br/>&nbsp;&nbsp;&nbsp;&nbsp; Redis itself is not unfamiliar to us. Now, when most businesses need to use distributed cache, they will first think of using it as a cache layer for intermediate data. The main reason is high performance. , distributed, easy to get started, and open source free. But open source means that we need to know more about it, otherwise any problems can only be solved by ourselves (because you are a white prostitute 😄). Then I think the most important thing is to pay attention to it. The point is the security issue. Security issues have always been the basic functions that open source software needs to improve first. From 2022, Log4j's ___RCE+++(https://cve.mitre.org/cgi-bin/cvename. cgi?name=CVE-2021-44228) security issues, and FastJson's ___Autotype+++(https://securityonline.info/fastjson-remote-code-execution-vulnerability/) security issues, these are the most popular and Many of the most frequently used open source software still have many security issues. Therefore, if the team needs to introduce a new component, we need to conduct a comprehensive evaluation and verification test on its security function. This article mainly focuses on what we need when using Redis. Some security topics that we are concerned about are introduced, and there are preventive measures and solutions in order to avoid our subsequent encounters with these problems.<br/>]:#
 [> <br/>]:#
 
 
@@ -24,6 +24,12 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 &nbsp;&nbsp;&nbsp;&nbsp; Redis 本身是不需要很大的权限的,因此启动 Redis 进程千万不要使用`root`用户做完服务启动用户,因为这会带来诸多安全问题.比如通过redis本身的`config set *` 指令,可以做出SSH登录攻击、shell任意脚本风险、webshell任意脚本风险等等,远远不止这些风险.
 
 以下给个简单的参考步骤.
+
+[# Process Security]:#
+
+[&nbsp;&nbsp;&nbsp;&nbsp; Redis itself does not require a lot of permissions, so when starting the Redis process, do not use the `root` user to finish the service and start the user, because this will bring many security problems. For example, through redis The `config set *` command itself can make SSH login attacks, shell arbitrary script risks, webshell arbitrary script risks, etc., far more than these risks.]:#
+
+[The following is a simple reference step.]:#
 
 ```
 $ groupadd redis
@@ -78,17 +84,29 @@ redis:x:1001:1001::/home/redis:/bin/nologin
 
 &nbsp;&nbsp;&nbsp;&nbsp; 以下是表示的是指定本机可以接受连接的IP地址,因为一台服务器可能有多个IP地址,以下下表示只绑定127.0.0.1这一个IP地址.
 
+[### Network Boundary]:#
+
+[&nbsp;&nbsp;&nbsp;&nbsp; In most cases, do not expose Redis services to public network access. Therefore, internal network services and external network services must be strictly distinguished, and different VPCs cannot be used for services, and different strictly controlled Routing rules and access control of VPC. Change the default port number (6379) of Redis in time after installation to avoid detection by port detectors on the network.]:#
+
+[### Restricted Access]:#
+
+[&nbsp;&nbsp;&nbsp;&nbsp; The following is to specify the IP address that the machine can accept connections to, because a server may have multiple IP addresses, the following indicates that only the 127.0.0.1 IP address is bound.]:#
+
 ```
 bind 127.0.0.1 -::1  # default
 ```
 
 只能 192.168.1.100和127.0.0.1的访问.
 
+[Only access to  192.168.1.100 and 127.0.0.1.]:#
+
 ```
 bind 192.168.1.100 127.0.0.1  # listens on two specific IPv4 addresses
 ```
 
 如果你想控制统一的Redis出口路由地址,可以配置下面这个参数,因此是所有Redis出口地址都指向 `10.0.0.1`.一般情况下,我们不会设置这个,除非你想在统一的出口处做其它安全控制或者敏感信息过滤等.
+
+[If you want to control the unified Redis exit routing address, you can configure the following parameter, so all Redis exit addresses point to `10.0.0.1`. Under normal circumstances, we will not set this unless you want to be at the unified exit Do other security controls or sensitive information filtering, etc.]:#
 
 ```
 # bind-source-addr 10.0.0.1
@@ -98,7 +116,11 @@ bind 192.168.1.100 127.0.0.1  # listens on two specific IPv4 addresses
 
 &nbsp;&nbsp;&nbsp;&nbsp; 如果需要使用 Redis 的TLS功能,需要在编译阶段就把 TLS 模块编译进去,不然是不能使用.TLS其实大家都很熟悉,只要涉及到外网或者说不可控的网络环境下,建议都要使用TLS协议交互,虽然会有一点性能损失.Redis TLS支持客户端和服务器通信、主从模式、集群模式、哨兵模式等.以下是启用TLS的基本步骤,供大家参考.
 
+[&nbsp;&nbsp;&nbsp;&nbsp; If you need to use the TLS function of Redis, you need to compile the TLS module in the compilation stage, otherwise it cannot be used. TLS is actually familiar to everyone, as long as it involves the external network or uncontrollable In the network environment, it is recommended to use the TLS protocol for interaction, although there will be a little performance loss. Redis TLS supports client-server communication, master-slave mode, cluster mode, sentinel mode, etc. The following are the basic steps to enable TLS for your reference .]:#
+
 ### 安装
+
+[### Install]:#
 
 ```
 $ yum -y install openssl-devel
@@ -117,6 +139,8 @@ $ chmod 777 /root/redis-6.2.7/tests/tls/*
 
 ### 配置
 
+[### Configurate]:#
+
 [redis](https://download.redis.io/releases/)
 
 ```
@@ -130,11 +154,15 @@ tls-dh-params-file /root/redis-6.2.7/tests/tls/redis.dh
 
 ### 启动
 
+[### Start]:#
+
 ```
 /usr/local/redis-627/bin/redis-server /usr/local/redis-627/bin/redis.conf
 ```
 
 ### 使用
+
+[### Use]:#
 
 ```
 # No TSL
@@ -152,6 +180,8 @@ Error: Connection reset by peer
 (empty array)
 ```
 ### 生成JKS证书
+
+[### Generate JKS Certificate]:#
 
 ```
 $ ll /root/redis-6.2.7/tests/tls/
@@ -205,13 +235,17 @@ $ keytool -importkeystore -srckeystore  /root/redis-6.2.7/tests/tls/redis.jks -s
 ```
 
 
-### 客户端(Java)
+### Reference Code
 
 &nbsp;&nbsp;&nbsp;&nbsp; 可以参考这个文件里面的说明[java_redis_tls](https://github.com/anigkus/anigkus.github.io/blob/main/snippets/java_redis_tls.md).完整的说明请查看官方手册 [TLS](https://redis.io/docs/manual/security/encryption/).
+
+[&nbsp;&nbsp;&nbsp;&nbsp; You can refer to the instructions in this file___java_redis_tls+++(https://github.com/anigkus/anigkus.github.io/blob/main/snippets/java_redis_tls.md). For complete instructions, please Check out the official manual ___TLS+++(https://redis.io/docs/manual/security/encryption/).]:#
 
 ## Protected mode
 
 &nbsp;&nbsp;&nbsp;&nbsp; 这个参数的作用就是为了保护Redis自身,然后会屏蔽掉一些特殊指令.如果是在 Redis <3.2 之前的版本,只能通过bind和密码来做.对于 Redis >= 3.2以后的版本中,默认保护模式是打开的,意思在这种模式下Redis 只回复来自回环接口的查询,也就是本机,其它地址请求将返回错误.
+
+[&nbsp;&nbsp;&nbsp;&nbsp; The function of this parameter is to protect Redis itself, and then block some special instructions. If it is a version before Redis <3.2, it can only be done by bind and password. For Redis >= In versions after 3.2, the default protection mode is turned on, which means that in this mode, Redis will only reply to the query from the loopback interface, that is, the local machine, other address requests will return errors.]:#
 
 [redis.conf](https://github.com/redis/redis/blob/unstable/redis.conf)
 
@@ -221,19 +255,27 @@ protected-mode yes # default
 
 手动关闭保护模式 (<font color="red">公网情况千万不要这么做</font>) ,这个只代表当前Redis进程生效,重启后就没用了,一切以 `redis.conf` 配置文件为准.
 
+[Turn off the protected mode manually (<font color="red">Do not do this in the case of the public network</font>), this only means that the current Redis process takes effect, and it will be useless after restarting, everything is `redis.conf` The configuration file shall prevail.]:#
+
 ```
 CONFIG SET protected-mode no
 ```
 
 # 指令安全
 
+[# Instruction Security]:#
+
 ## NoSQL 注入
 
-[## NoSQL injection ]:#
+[## NoSQL Injection ]:#
 
 &nbsp;&nbsp;&nbsp;&nbsp; Redis 协议本身是不存在字符串转义的概念的.以前我们可能总是认为注入只能在 `SQL` 中存在,但是注入其实在 NoSQL 也一样会发生.这就要看客户端是否处理了,比如我们看下面,这是 Redis 和 Node 结合的例子.
 
 例如,以下两个调用导致完全相同的结果.
+
+[&nbsp;&nbsp;&nbsp;&nbsp; The Redis protocol itself does not have the concept of string escaping. We may always think that injection can only exist in `SQL`, but injection can actually happen in NoSQL as well. This It depends on whether the client handles it. For example, let's look at the following, which is an example of the combination of Redis and Node.]:#
+
+[For example, the following two calls lead to the exact same result.]:#
 
 ```
 redisClient.set("key", "value1"); 
@@ -256,10 +298,15 @@ app.post('/', function (req, res) {
 
 如果注入成功,最终的结果是 `key=value2`.
 
+[If the injection is successful, the final result is `key=value2`.]:#
 
 ## 重写特殊指令
 
 &nbsp;&nbsp;&nbsp;&nbsp; 前面说过某些指令是对服务器来说是非常关键和危险的,因此 Redis 提供了一个功能,就是可以重写某些指令,或者也可以说是禁止了某些指令,这个对于客户端和服务端是同时生效的.
+
+[## Override Special Instructions]:#
+
+[&nbsp;&nbsp;&nbsp;&nbsp; As mentioned earlier, some instructions are very critical and dangerous to the server, so Redis provides a function that can rewrite some instructions, or it can be said that certain instructions are prohibited. These commands are valid for both client and server.]:#
 
 [redis.conf](https://github.com/redis/redis/blob/unstable/redis.conf)
 
@@ -270,8 +317,9 @@ rename-command FLUSHDB ""
 rename-command FLUSHALL ""
 ```
 
- 比如我在上面重写了`CONFIG` 指令,那么再次执行的时候就会报 `ERR unknown command` 错误.
+比如我在上面重写了`CONFIG` 指令,那么再次执行的时候就会报 `ERR unknown command` 错误.
 
+[For example, if I rewrite the `CONFIG` command above, then the `ERR unknown command` error will be reported when it is executed again.]:#
 
 ```
 127.0.0.1:6379> CONFIG get  protected*
@@ -282,9 +330,11 @@ rename-command FLUSHALL ""
 
 ## 代码安全
 
-[## Code security]:# 
+[## Code Security]:# 
 
 &nbsp;&nbsp;&nbsp;&nbsp; Redis 本身已经提供了非常优秀的方式来保护代码安全,比如防止缓冲区溢出、格式错误和其他内存损坏问题等,但是有些指令本身作用就非常大,如果使用不当,很可能造成非常危险的事故,比如以下两个指令.
+
+[&nbsp;&nbsp;&nbsp;&nbsp; Redis itself has provided a very good way to protect code security, such as preventing buffer overflow, format errors and other memory corruption problems, etc., but some instructions themselves are very useful, if used improperly , is likely to cause a very dangerous accident, such as the following two commands.]:#
 
 ```
 CONFIG
@@ -293,6 +343,8 @@ EVAL
 
 * EVAL: 执行任意脚本,特别需要注意的地方,就是这个地方不能让用户直接传参,不然后果很严重.因此在需要执行 `EVAL` 指令的时候,一定要做字符串白名单等. 语法: `EVAL script numkeys key [key ...] arg [arg ...] `
 
+[* EVAL: Execute an arbitrary script. Special attention should be paid to the fact that this place cannot allow users to directly pass parameters, otherwise the consequences will be serious. Therefore, when the `EVAL` command needs to be executed, you must do a string whitelist, etc. Syntax : `EVAL script numkeys key ___key ...+++ arg ___arg ...+++ `]:#
+
 ```
 127.0.0.1:6379> eval "return {KEYS[1],ARGV[1],ARGV[2]}" 1 k1 v1 v2
 1) "k1"
@@ -300,9 +352,9 @@ EVAL
 3) "v2"
 ```
 
-
 * CONFIG : 获取服务器信息或者动态更改服务器配置信息等.最危险的还是` config set `指令.
 
+[* CONFIG : Get server information or dynamically change server configuration information, etc. The most dangerous is the ` config set ` command.]:#
 
 [redis](https://download.redis.io/releases/)
 
@@ -343,7 +395,9 @@ $ /usr/local/redis-7/bin/redis-server
 
 &nbsp;&nbsp;&nbsp;&nbsp; `dir` 默认没有配置文件指定的话,是以在哪个目录启动redis-server脚本存储目录,比如下面就是 `/tmp/` 目录下就会生成 `dump.rdb` 文件.
 
-[`var/www/`  directory must exists]:#
+[&nbsp;&nbsp;&nbsp;&nbsp; `var/www/` directory must exist, this experiment can be in redis-3.0.0, redis-4.0.0, redis-5.0.0, redis-6.0.0, redis-6.2 .7 can be reproduced, I have not verified other versions, but `redis-7.0.0` cannot reproduce, because 7.0 has further restrictions on some special parameters of `config set`, see the following `config set` dir /var/www/` error log.]:#
+
+[&nbsp;&nbsp;&nbsp;&nbsp; `dir` If there is no configuration file specified by default, it is the directory in which to start the redis-server script storage directory, such as the following is the `/tmp/` directory will generate `dump.rdb` document.]:#
 
 ```
 # CONFIG SET protected-mode no
@@ -411,13 +465,19 @@ REDIS0009�      redis-ver6.2.7�
 
 # 鉴权安全
 
+[# Authentication Security]:#
+
 ## ACL
 
 &nbsp;&nbsp;&nbsp;&nbsp; ACL (Access control list) 全称访问控制列表,类似的权限控制还有MAC、DAC、RBAC已经ABAC等. kubernetes就是实现RBAC来控制权限的,其实维度不一样,ACL更多是控制命令或者说执行指令,RBAC更多是控制资源等.一直以来 Redis 的命令权限控制力度一直是社区在讨论的地方.但从 Redis 6发布了第一个 ACL 版本开始到现在 ACL 已经比较完善了.如果多个团队是共用一个Redis集群并且需要严格控制更细粒度的权限,那么ACL就能够满足这个要求,否则不用也行,因为引入 ACL对操作本身到不会增加工作,但是会提示`no permissions`,不知道的话还以为报错了.以下是个基本的操作例子.
 
+[&nbsp;&nbsp;&nbsp;&nbsp; ACL (Access control list) is the full name of the access control list. Similar permission controls include MAC, DAC, RBAC, and ABAC. Kubernetes implements RBAC to control permissions. In fact, the dimensions are different. ACL It is more about controlling commands or executing instructions, and RBAC is more about controlling resources, etc. Redis’s command permission control has always been a topic of discussion in the community. But since Redis 6 released the first ACL version, ACL has been It is relatively complete. If multiple teams share a Redis cluster and need to strictly control more fine-grained permissions, then ACL can meet this requirement, otherwise it is not necessary, because the introduction of ACL will not add work to the operation itself, but it will Prompt `no permissions`, if you don't know it, you will think that an error is reported. The following is a basic operation example.]:#
+
 ### Terminal 1
 
 &nbsp;&nbsp;&nbsp;&nbsp; 添加一个`anigkus`用户,并设置密码为`123456`,赋予`get` 指令权限,只能匹配着几个键开头的键:`objects:*、 items:*、public:*、cached:*`.
+
+[&nbsp;&nbsp;&nbsp;&nbsp; Add a `anigkus` user, and set the password to `123456`, grant the `get` command permission, can only match the keys at the beginning of several keys: `objects:*, items:* , public:*, cached:*`.]:#
 
 ```
 127.0.0.1:6379> ACL LIST
@@ -487,6 +547,8 @@ OK
 
 &nbsp;&nbsp;&nbsp;&nbsp; 切换 `anigkus`用户验证,符合上面配置的权限,访问 `key1` 就提示权限不足,因为并没有授权可以访问 `key1` 这种格式的键.
 
+[&nbsp;&nbsp;&nbsp;&nbsp; Switch `anigkus` user authentication, in line with the permissions configured above, access `key1` will prompt insufficient permissions, because there is no authorization to access keys in the format of `key1`.]:#
+
 ```
 127.0.0.1:6379> AUTH anigkus 123456
 OK
@@ -501,11 +563,19 @@ OK
 
 完整的说明请查看官方手册 [ACL](https://redis.io/docs/manual/security/acl/).
 
+[Please check the official manual ___ACL+++(https://redis.io/docs/manual/security/acl/) for complete instructions]:#
+
 ## 密码鉴权
 
 &nbsp;&nbsp;&nbsp;&nbsp; Redis提供了一个简单的身份验证层,可以通过编辑 [redis.conf](https://download.redis.io/releases/) 文件来打开它.当启用授权后,Redis 将拒绝未经身份验证的客户端的任何查询.但是客户端可以通过发送 `AUTH` 指令和密码来验证是否是授权的请求.有个地方要注意的是,`AUTH` 指令本身和其它 Redis 命令一样,是通过明文发送的,因此传输需要使用 `TLS` 协议才能保证不会被窃听攻击.
 
 &nbsp;&nbsp;&nbsp;&nbsp; `requirepass` 是以明文的形式存储在配置文件中,因此设置的密码,密码长度和复杂性不能太过简单,防止被暴力破解.以下是个简单的例子,我直接动态手工测试,正常情况 `requirepass` 应该写在配置文件中,并且除来管理员不能随便任意访问和编辑这个文件.
+
+[## Password Authentication]:#
+
+[&nbsp;&nbsp;&nbsp;&nbsp; Redis provides a simple authentication layer that can be turned on by editing the ___redis.conf+++(https://download.redis.io/releases/) file. When authorization is enabled, Redis will reject any query from an unauthenticated client. However, the client can verify that it is an authorized request by sending the `AUTH` directive and password. One thing to note is that the `AUTH` directive itself and other Redis commands The same, is sent in clear text, so the transmission needs to use the `TLS` protocol to ensure that it is not subject to eavesdropping attacks.]:#
+
+[&nbsp;&nbsp;&nbsp;&nbsp; `requirepass` is stored in the configuration file in plaintext, so the set password, password length and complexity should not be too simple to prevent brute force cracking. The following is a simple example, I Direct dynamic manual testing, normally `requirepass` should be written in the configuration file, and administrators cannot access and edit this file arbitrarily.]:#
 
 [redis.conf](https://download.redis.io/releases/) 
 ```
@@ -526,9 +596,13 @@ OK
 
 ```
 
-# 总结
+# 结论
 
 &nbsp;&nbsp;&nbsp;&nbsp; 本文主要涵盖 Redis 提供的进程安全、网络安全、指令安全、鉴权安全等几方面.提供了一些保证措施和可能出现的危险说明,这些都需要在使用之前提前去控制,需要和公司运维、研发一起去协助完成的.避免给公司造成更严重的安全事故.
+
+[# Conclusion]:#
+
+[&nbsp;&nbsp;&nbsp;&nbsp; This article mainly covers process security, network security, instruction security, authentication security and other aspects provided by Redis. It provides some guarantee measures and possible danger descriptions, which need to be used in advance To control, it needs to be completed with the company's operation and maintenance and R&D. To avoid causing more serious security incidents to the company.]:#
 
 
 

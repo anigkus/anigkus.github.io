@@ -13,7 +13,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 > <br/>&nbsp;&nbsp;&nbsp;&nbsp; In order to standardize database operations, unify team communication methods, facilitate subsequent project maintenance, improve product code quality, and guide software developers to write concise, maintainable, reliable, testable, efficient, and portable SQL, refer to company conditions and industry database specification, so this specification was written and codified.<br/>
 > <br/>
 
-# term description
+# Term
 
 * <font color="red">Principle</font>: The guiding ideology that must be adhered to when programming.
 

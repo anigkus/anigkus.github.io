@@ -30,7 +30,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 
 <mark>示例</mark>:对此原则/规则/建议从正、反两个方面给出例子. 延伸阅读材料：建议进一步阅读的参考材料
 
-[# term description]:#
+[# Term]:#
 
 [* <font color="red">Principle</font>: The guiding ideology that must be adhered to when programming.]:#
 

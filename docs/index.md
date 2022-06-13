@@ -16,6 +16,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 - [Operation and Maintenance Engineer These Skills You Should Know](./operation-and-maintenance-engineer-these-skills-you-should-know.md)<br/>
 - [Record a solution about 'Permission denied' in Git](./record-a-solution-about-permission-denied-in-git.md)<br/>
 - [Redis data visualization management tool recommendation](./redis-data-visualization-management-tool-recommendation.md)<br/>
+- [Some principles of the database and table specifications](./some-principles-of-the-database-and-table-specifications.md)<br/>
 - [Some suggestions for improving mysql database security](./some-suggestions-for-improving-mysql-database-security.md)<br/>
 - [Talk about delivery semantics in message middleware](./talk-about-delivery-semantics-in-message-middleware.md)<br/>
 - [Talk about the Lookup RCE vulnerability of Log4j2](./talk-about-the-lookup-rce-vulnerability-of-log4j2.md)<br/>

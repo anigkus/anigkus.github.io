@@ -16,6 +16,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 - [运维工程师这些技能你应该知道!](./operation-and-maintenance-engineer-these-skills-you-should-know.md)<br/>
 - [记录一个关于Git中的 ‘Permission denied’ 的解决思路](./record-a-solution-about-permission-denied-in-git.md)<br/>
 - [Redis 数据可视化管理工具推荐](./redis-data-visualization-management-tool-recommendation.md)<br/>
+- [关于数据库和表的一些原则性规范](./some-principles-of-the-database-and-table-specifications.md)<br/>
 - [提升 MySQL 数据库安全的一些建议](./some-suggestions-for-improving-mysql-database-security.md)<br/>
 - [聊聊消息中间件中的投递语义](./talk-about-delivery-semantics-in-message-middleware.md)<br/>
 - [聊聊Log4j2的Lookup RCE漏洞](./talk-about-the-lookup-rce-vulnerability-of-log4j2.md)<br/>

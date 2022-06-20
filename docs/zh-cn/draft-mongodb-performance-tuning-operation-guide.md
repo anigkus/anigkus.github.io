@@ -22,9 +22,23 @@ https://www.mongodb.com/docs/manual/reference/configuration-options/
 
 # 入门调优
 
+
+
 # 中级调优
 
 # 高级调优
+
+
+## 通用配置
+
+## 单机版
+
+## 主从复制
+
+## 副本集
+
+## 分片
+
 
 
 <br>

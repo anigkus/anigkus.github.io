@@ -31,3 +31,11 @@
 
 # 常用中间件性能优化配置
 ## Common middleware performance optimization configurations
+
+# 主流配置中心数据变更原理解读
+## Interpretation of Data Change Principles of Mainstream Configuration Centers
+### interpretation-of-data-change-principles-of-mainstream-configuration-centers
+#### Nacos\Apoll\DisConf\Spring Config\Consul
+
+# mongo mongosh, mongod , mongos 是什么
+## what is mongo mongosh, mongod , mongos

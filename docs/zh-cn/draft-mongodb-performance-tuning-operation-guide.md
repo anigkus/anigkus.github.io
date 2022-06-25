@@ -28,16 +28,31 @@ https://www.mongodb.com/docs/manual/reference/configuration-options/
 
 # 高级调优
 
+# 系统设置
 
-## 通用配置
+## vm.zone_reclaim_mode
+```bash
+# 修改,重启后失效
+sysctl -w vm.zone_reclaim_mode=0
+# 永久修改
+echo "vm.zone_reclaim_mode = 0" >> /etc/sysctl.conf 
+sysctl -p
+# 查询当前参数配置
+sysctl -a |grep vm.zone_reclaim_mode
+```
 
-## 单机版
 
-## 主从复制
+# 通用配置
 
-## 副本集
 
-## 分片
+
+# 单机版
+
+# 主从复制
+
+# 副本集
+
+# 分片
 
 
 

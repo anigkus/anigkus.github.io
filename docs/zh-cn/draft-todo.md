@@ -29,13 +29,12 @@
 ### how-to-complete-mongodb-backup-and-migration
 #### https://www.mongodb.com/docs/manual/core/backups/
 
-# 常用中间件性能优化配置
-## Common middleware performance optimization configurations
-
 # 主流配置中心数据变更原理解读
 ## Interpretation of Data Change Principles of Mainstream Configuration Centers
 ### interpretation-of-data-change-principles-of-mainstream-configuration-centers
 #### Nacos\Apoll\DisConf\Spring Config\Consul
 
-# mongo mongosh, mongod , mongos 是什么
-## what is mongo mongosh, mongod , mongos
+# 解读 mongo, mongosh, mongod , mongos 是什么
+## Interpretation of mongo, mongosh, mongod , mongos What is
+### interpretation-of-mongo-mongosh-mongod-mongos-what-is
+#### https://www.helenjoscott.com/2022/01/29/mongod-mongo-mongosh-mongos-what-now/

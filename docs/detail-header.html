@@ -1,8 +1,12 @@
 <!--detail-header.html-->
 <script>
-    var kusifream = document.getElementById("kusifream");
+    /*var kusifream = document.getElementById("kusifream");
+    console.log(kusifream)
     var kusdocument = (kusifream.contentWindow || kusifream.contentDocument);
     if (kusdocument.document){kusdocument = kusdocument.document;}
-    var pageHeader=kusdocument.getElementsByClassName("page-header")[0].innerHTML;
+    var pageHeader=kusdocument.getElementsByClassName("page-header")[0].innerHTML;*/
+
+    var pageHeader=window.parent.document.getElementsByClassName("page-header")[0].innerHTML;
     console.log(pageHeader)
+   
 </script>

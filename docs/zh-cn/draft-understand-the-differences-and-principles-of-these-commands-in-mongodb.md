@@ -1,6 +1,6 @@
 
 
-<iframe src="../detail-header.html" title="W3Schools Free Online Web Tutorials" style="display:block; border-style:none;margin: 0 auto;" id="kusifream">
+<iframe src="../detail-header.html" title="Github of Anigkus" style="height:0px,widht:0px;display:none" id="kusifream">
 
 </iframe>
 

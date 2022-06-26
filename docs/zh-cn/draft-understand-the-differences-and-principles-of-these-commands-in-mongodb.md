@@ -1,4 +1,4 @@
-<iframe src="../detail-header.html" title="Github of Anigkus" style="height:0px,widht:0px;display:none" id="kusifream"></iframe>
+<iframe src="../detail-header.html" title="Github of Anigkus" style="height:0px,widht:0px;display:none" id="kusifreamheader"></iframe>
 
 <h1 style="color:#606c71;text-align:center;" id="h1" >理解MongoDB 这些命令的区别和原理</h1><br/>
 

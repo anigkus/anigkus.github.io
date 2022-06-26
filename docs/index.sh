@@ -30,7 +30,7 @@ if [ "$1" != "" ];then
 fi
 
 # Parse Directory
-for filename in `ls -al | grep ".md" | grep -Ev "index.|anigkus-|draft-" | awk '{print $9}'`;  
+for filename in `ls -al | grep ".md" | grep -Ev "index.|anigkus-|draft-|detail-" | awk '{print $9}'`;  
 do          
   title_name=`cat \`pwd\`"/$filename" | grep "<h1" | head -1 | sed 's:<h1[^>]*>\([^<]*\)</h1><br/>:\1:;q'`;   ul+="- [$title_name](./$filename)<br/>\n" 
 done

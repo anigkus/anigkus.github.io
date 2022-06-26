@@ -1,10 +1,6 @@
-<script>
-var pageHeader=document.getElementsByClassName("page-header")[0].innerHTML;
- pageHeader="<center><img style='border-radius: 50% !important;' src='https://avatars.githubusercontent.com/u/88264073?s=400&amp;u=63e618520a5b6aa87636714e69f8228374c4e9b1&amp;v=4' width='200' height='200' alt='@anigkus' title='Github of Anigkus' ></center>"+pageHeader;
-document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
-</script>
+<iframe src="detail-header.html" title="Github of Anigkus" style="height:0px,widht:0px;display:none" id="kusifreamheader"></iframe>
 
-<h1 style="color:#606c71;text-align:center;" >You must understand Redis security measures</h1><br/>
+<h1 style="color:#606c71;text-align:center;" id="h1" >You must understand Redis security measures</h1><br/>
 
 <center>
 <img src="assets/images/you-must-understand-redis-security-measures/figure-1.jpeg" alt="Anigkus github article template title" title="Github of Anigkus" >

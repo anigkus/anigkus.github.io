@@ -5,11 +5,23 @@
      pageHeader="<center><img style='border-radius: 50% !important;' src='https://avatars.githubusercontent.com/u/88264073?s=400&amp;u=63e618520a5b6aa87636714e69f8228374c4e9b1&amp;v=4' width='200' height='200' alt='@anigkus' title='Github of Anigkus' ></center>"+pageHeader;
      parentDocument.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
     
-    //<meta property="og:title" content="文章模版标题" />
+     var description = parentDocument.getElementsByTagName("blockquote")[0].innerText.toString().replaceAll("\n","").replace("     ","")
+     var title=parentDocument.getElementById("h1").innerHTML;
+
+     parentDocument.title=title;
+     parentDocument.querySelector('meta[property="og:title"]').setAttribute('content',title)
+     parentDocument.querySelector('meta[property="twitter:title"]').setAttribute('content',title)
+
+     parentDocument.querySelector('meta[name="description"]').setAttribute('content',title)
+     parentDocument.querySelector('meta[property="og:description"]').setAttribute('content',title)
+     
+
+
     //<title>文章模版标题 | Kus Anig</title>
+    //<meta property="og:title" content="文章模版标题" />
     //<meta property="twitter:title" content="文章模版标题" />
     
     //<meta name="description" content="文章简要说明" />
     //<meta property="og:description" content="文章简要说明" />
-    
+
 </script>

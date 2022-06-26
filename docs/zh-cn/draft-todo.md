@@ -14,7 +14,7 @@
 ### interpretation-of-redis-persistent-storage-mode
 #### https://redis.io/docs/manual/persistence/
 
-# MongoDB 性能调优操作指南(Process)
+# MongoDB 性能调优操作指南
 ## MongoDB Performance Tuning Operation Guide
 ### mongodb-performance-tuning-operation-guide
 #### https://www.mongodb.com/docs/manual/administration/analyzing-mongodb-performance/
@@ -34,7 +34,8 @@
 ### interpretation-of-data-change-principles-of-mainstream-configuration-centers
 #### Nacos\Apoll\DisConf\Spring Config\Consul
 
-# 解读 mongo, mongosh, mongod , mongos 是什么
-## Interpretation of mongo, mongosh, mongod , mongos What is
-### interpretation-of-mongo-mongosh-mongod-mongos-what-is
+# 理解MongoDB 这些命令的区别和原理(Process)
+## Understand the differences and principles of these commands in MongoDB
+### understand-the-differences-and-principles-of-these-commands-in-mongodb
 #### https://www.helenjoscott.com/2022/01/29/mongod-mongo-mongosh-mongos-what-now/
+

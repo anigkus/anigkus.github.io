@@ -39,3 +39,9 @@
 ### understand-the-differences-and-principles-of-these-commands-in-mongodb
 #### https://www.helenjoscott.com/2022/01/29/mongod-mongo-mongosh-mongos-what-now/
 
+# 了解下不同版本JDK默认垃圾回收器
+## Learn about the default garbage collector of different versions of JDK
+### learn-about-the-default-garbage-collector-of-different-versions-of-jdk
+
+
+# 命令行终端远程数据库

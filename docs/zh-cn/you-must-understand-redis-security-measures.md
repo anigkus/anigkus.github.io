@@ -356,6 +356,8 @@ EVAL
 [redis](https://download.redis.io/releases/)
 
 ```
+$ yum install -y gcc automake autoconf libtool make
+
 $ mkdir -p /usr/local/redis-{3,4,5,6,627,7}
 
 $  wget https://download.redis.io/releases/redis-3.0.0.tar.gz

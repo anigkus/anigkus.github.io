@@ -1,6 +1,6 @@
 <iframe src="../detail-header.html" title="Github of Anigkus" style="height:0px,widht:0px;display:none" id="kusifreamheader"></iframe>
 
-<h1 style="color:#606c71;text-align:center;" id="h1" >理解MongoDB 这些命令的区别和原理</h1><br/>
+<h1 style="color:#606c71;text-align:center;" id="h1" >理解MongoDB 这些命令的区别和原理,理解MongoDB 这几个命令的原理和区别</h1><br/>
 
 [<h1 style="color:#606c71;text-align:center;" >Understand the differences and principles of these commands in MongoDB</h1><br/>]:#
 
@@ -16,7 +16,7 @@
 
 # mongo
 
-&nbsp;&nbsp;&nbsp;&nbsp;它是一个命令客户端,使用javascript编写而封装的一个组件,通过底层网络接口与 MongoDB 服务器 (mongod) 进行交互.可以使用这个命令行工具查询、更新数据和执行一些管理操作等.
+&nbsp;&nbsp;&nbsp;&nbsp;它是一个命令客户端,使用 Javascript编写而封装的一个组件,通过底层网络接口与 MongoDB 服务器 (mongod) 进行交互.可以使用这个命令行工具查询、更新数据和执行一些管理操作等.
 
 https://its401.com/article/pourtheworld/106175737
 https://www.cnblogs.com/daizhj/archive/2011/03/17/1987311.html

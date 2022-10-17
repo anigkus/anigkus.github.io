@@ -225,7 +225,7 @@ OK
 
 ## Features
 
-*View keys in tree form
+* View keys in tree form
 
 * Support CLI operation
 

@@ -267,7 +267,7 @@ OK
 
 ## Features
 
-*View keys in tree form
+* View keys in tree form
 
 * Supports CRUD operations
 
@@ -355,7 +355,7 @@ OK
 
 ## Features
 
-*View keys in tree form
+* View keys in tree form
 
 * Support CLI operation
 
@@ -395,7 +395,7 @@ OK
 
 ## Features
 
-*View keys in tree form
+* View keys in tree form
 
 * Support CLI operation
 
@@ -441,7 +441,7 @@ OK
 
 ## Features
 
-*View keys in tree form
+* View keys in tree form
 
 * Support CLI operation
 
@@ -481,7 +481,7 @@ OK
 
 ## Features
 
-*View keys in tree form
+* View keys in tree form
 
 * Support CLI operation
 
@@ -522,7 +522,7 @@ OK
 
 ## Features
 
-*View keys in tree form
+* View keys in tree form
 
 * View all redis types of content
 

@@ -14,3 +14,8 @@ go get github.com/lib/pq@v1.8.0
 ```
 go mod tidy
 ```
+
+# Build
+```
+go build main.go
+```

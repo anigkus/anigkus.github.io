@@ -19,3 +19,9 @@ go mod tidy
 ```
 go build main.go
 ```
+
+# Refereces
+## How to Sort Golang Map By Keys or Values?
+https://www.geeksforgeeks.org/how-to-sort-golang-map-by-keys-or-values/
+## Go build command explain
+https://www.lsdcloud.com/go/middleware/go-build.html

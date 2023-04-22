@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <div id="root"></div>
+</body>
+<!-- This setup is not suitable for production. -->
+<!-- Only use it in development! -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react?dev",
+    "react-dom/client": "https://esm.sh/react-dom/client?dev"
+  }
+}
+</script>
+<script type="text/babel" data-type="module">
+import React, { StrictMode, useState,Profiler } from 'react';
+  import { createRoot } from 'react-dom/client';
+
+  const root = createRoot(document.getElementById("root"));
+  root.render(
+    <StrictMode>
+      <Profiler id="App" onRender={onRender}>
+        <Xxx />
+      </Profiler>
+    </StrictMode>
+
+  );
+  function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime) {
+    // Aggregate or log render timings...
+  }
+</script>
+
+</html>

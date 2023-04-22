@@ -13,28 +13,18 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-
-
-
-
-
-
 /**
  * https://www.tutorialspoint.com/vuejs/vuejs_environment_setup.htm
  * https://www.tutorialspoint.com/typescript/typescript_variables.htm
  * https://www.electronjs.org/
  */
-
-function app(){
-     
-    let message = "Hello, App!";
-    console.log(message)
-    let [a, [[b], c]] = [1, [[21,5], 3]];
-    console.log(a+","+b+","+c)
+function app() {
+    var message = "Hello, App!";
+    console.log(message);
+    var _a = [1, [[21, 5], 3]], a = _a[0], _b = _a[1], b = _b[0][0], c = _b[1];
+    console.log(a + "," + b + "," + c);
 }
-
 //start App
-app()
-let sy = Symbol("KK");
-console.log(sy);   // Symbol(KK)
-
+app();
+var sy = Symbol("KK");
+console.log(sy); // Symbol(KK)

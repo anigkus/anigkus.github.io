@@ -22,6 +22,7 @@ document.getElementsByClassName("page-header")[0].innerHTML=pageHeader;
 - [聊聊Log4j2的Lookup RCE漏洞](./talk-about-the-lookup-rce-vulnerability-of-log4j2.md)<br/>
 - [聊聊Flink流批一体中的"三高"](./talk-about-the-three-highs-in-the-integration-of-flink-streaming-and-batching.md)<br/>
 - [分布式事务概念和几种实现思路](./the-concept-of-distributed-transaction-and-several-implementation-ideas.md)<br/>
+- [在 Alpine Linux中使用定时任务](./using-cron-tasks-in-alpine-linux.md)<br/>
 - [开源包中SHA和ASC两个文件到底是什么?](./what-are-the-sha-and-asc-files-in-the-open-source-package.md)<br/>
 - [你必须得明白的 Redis 安全措施](./you-must-understand-redis-security-measures.md)<br/>
 

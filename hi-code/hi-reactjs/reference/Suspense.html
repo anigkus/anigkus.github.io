@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <div id="root"></div>
+</body>
+<!-- This setup is not suitable for production. -->
+<!-- Only use it in development! -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react?dev",
+    "react-dom/client": "https://esm.sh/react-dom/client?dev"
+  }
+}
+</script>
+<script type="text/babel" data-type="module">
+  import React, { StrictMode, Profiler, Suspense } from 'react';
+  import { createRoot } from 'react-dom/client';
+
+  const root = createRoot(document.getElementById("root"));
+  root.render(
+    <StrictMode>
+      <Profiler id="App" onRender={onRender}>
+        <Suspense fallback={<Loading />}>
+          <PostTitle id="123" name="456" />
+        </Suspense>
+      </Profiler>
+    </StrictMode>
+
+  );
+  function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime) {
+    // Aggregate or log render timings...
+  }
+  function Loading() {
+    return <h2>🌀 Loading...</h2>;
+  }
+
+  function PostTitle(data) {
+    
+    let x = fetchData(data.id);
+    return use(x);
+
+    // setTimeout(function(){
+    //   return null;
+    // }, 3000);
+    // return <h1>{data.id}</h1>
+  }
+  let cache = new Map();
+  function fetchData(id) {
+    if (!cache.has(id)) {
+      cache.set(id, getData(id));
+    }
+    return cache.get(id);
+  }
+  async function getData(id) {
+    return await getAlbums(id);
+  }
+  async function getAlbums(id) {
+    await new Promise(resolve => {
+      setTimeout(resolve, 3000);
+    });
+    return <h1>{id}</h1>
+  }
+
+  function use(promise) {
+    if (promise.status === 'fulfilled') {
+      return promise.value;
+    } else if (promise.status === 'rejected') {
+      throw promise.reason;
+    } else if (promise.status === 'pending') {
+      throw promise;
+    } else {
+      promise.status = 'pending';
+      promise.then(
+        result => {
+          promise.status = 'fulfilled';
+          promise.value = result;
+        },
+        reason => {
+          promise.status = 'rejected';
+          promise.reason = reason;
+        },
+      );
+      throw promise;
+    }
+  }
+</script>
+
+</html>

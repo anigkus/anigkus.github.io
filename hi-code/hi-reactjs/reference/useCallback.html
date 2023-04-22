@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <div id="root"></div>
+</body>
+<!-- This setup is not suitable for production. -->
+<!-- Only use it in development! -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react?dev",
+    "react-dom/client": "https://esm.sh/react-dom/client?dev"
+    //"apps": "/App.js",
+  }
+}
+</script>
+<script type="text/babel" data-type="module">
+import React, { StrictMode, Profiler,useState,memo,useCallback } from 'react';
+  import { createRoot } from 'react-dom/client';
+  //import './App.css';
+  //import app from "App";
+  
+
+  const root = createRoot(document.getElementById("root"));
+  root.render(
+    <StrictMode>
+      <Profiler id="App" onRender={onRender}>
+        <App />
+      </Profiler>
+    </StrictMode>
+
+  );
+  function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime) {
+    // Aggregate or log render timings...
+  }
+
+
+
+  const Todos = ({ todos, addTodo }) => {
+  console.log("child render");
+  return (
+    <>
+      <h2>My Todos</h2>
+      {todos.map((todo, index) => {
+        return <p key={index}>{todo}</p>;
+      })}
+      <button onClick={addTodo}>Add Todo</button>
+    </>
+  );
+};
+
+export default memo(Todos);
+
+  function App() {
+  const [count, setCount] = useState(0);
+  const [todos, setTodos] = useState([]);
+
+  const increment = () => {
+    setCount((c) => c + 1);
+  };
+  // const addTodo = () => {
+  //   setTodos((t) => [...t, "New Todo"]);
+  // };
+  const addTodo = useCallback(() => {
+    setTodos((t) => [...t, "New Todo"]);
+  }, [todos]);
+
+  return (
+    <>
+      <Todos todos={todos} addTodo={addTodo} />
+      <hr />
+      <div>
+        Count: {count}
+        <button onClick={increment}>+</button>
+      </div>
+    </>
+  );
+};
+
+
+
+
+</script>
+
+</html>

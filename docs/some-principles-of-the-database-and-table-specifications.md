@@ -149,7 +149,7 @@ UPDATE `d_name`.`t_name` SET created_time=NOW() WHERE id in(1,2,3);
 SELECT id,created_time  FROM `d_name`.`t_name` WHERE id in(1,2,3) INTO OUTFILE '/tmp/mysql/d_name-t_name-YYYYMMDD-num.csv' FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\r\n';
 ```
 
-## <font color="red">原则</font>: It is not allowed to delete fields that already exist in the table
+## <font color="red">Principle</font>: It is not allowed to delete fields that already exist in the table
 
 <mark>Explanation</mark>:
 
@@ -289,8 +289,6 @@ Alter table tablea drop column col;
 &nbsp;&nbsp;&nbsp;&nbsp; For example: ALTER TABLE `old_table` RENAME AS `new_table`;
 
 &nbsp;&nbsp;&nbsp;&nbsp; For example: ALTER TABLE  `old_table` change `old_column` `new_columb` column_type;
-
-<mark>示例</mark>:
 
 <mark>Example</mark>:
 

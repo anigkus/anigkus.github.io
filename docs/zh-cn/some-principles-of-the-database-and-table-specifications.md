@@ -234,7 +234,7 @@ SELECT id,created_time  FROM `d_name`.`t_name` WHERE id in(1,2,3) INTO OUTFILE '
 
 <mark>示例</mark>:
 
-[## <font color="red">原则</font>: It is not allowed to delete fields that already exist in the table]:#
+[## <font color="red">Principle</font>: It is not allowed to delete fields that already exist in the table]:#
 
 [<mark>Explanation</mark>:]:#
 
